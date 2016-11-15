@@ -55,7 +55,7 @@
       </Group>
       <Group layoutX="-47.0" layoutY="-22.0">
          <children>
-            <Label layoutX="130.0" layoutY="610.0" prefHeight="35.0" prefWidth="660.0" text="Set the code that shall be solved:">
+            <Label layoutX="130.0" layoutY="610.0" prefHeight="35.0" prefWidth="660.0" text="Set the secret code:">
                <font>
                   <Font size="24.0" />
                </font>
