@@ -3,6 +3,12 @@ package config;
 public enum Configuration {
 
 	INSTANCE;
-	public final int MAX_NUMBER_OF_WHOLES_IN_ROW = 5; //goal: 10
-	public final int NUMBER_OF_TRIES = 10; //goal: 15
+	public final int DEFAULT_LENGTH_OF_CODE = 10;
+	public final int DEFAULT_NUMBER_OF_COLORS = 20;
+	public final int DEFAULT_NUMBER_OF_TRIES = 20;
+	public final int MAX_LENGTH_OF_CODE = 10;
+	public final int MAX_NUMBER_OF_COLORS = 20;
+	public final int MAX_NUMBER_OF_TRIES = 20;
+
+	public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
 }
