@@ -2,7 +2,7 @@ package gui;
 
 import config.Configuration;
 import evolution.IChromosome;
-import evolution.Chromosome;
+import evolution.NumChromosome;
 
 public class ConfigurationPage {
     //attributes
@@ -21,7 +21,7 @@ public class ConfigurationPage {
 
     public IChromosome onclickGetRandomCode(){
         System.out.println("Configuration Page - onclickGetRandomCode");
-        return new Chromosome();
+        return new NumChromosome();
     }
 
     public void onclickStartSimulation(){
