@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ConfigurationPage">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ConfigurationController">
    <children>
       <Text layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure Simulation" textAlignment="CENTER" wrappingWidth="1280.0">
          <font>
@@ -22,13 +22,13 @@
       </Button>
       <Group layoutX="-32.0" layoutY="-21.0">
          <children>
-            <Slider blockIncrement="1.0" layoutX="113.0" layoutY="257.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1117.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+            <Slider fx:id="loc_slider" blockIncrement="1.0" layoutX="113.0" layoutY="257.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1117.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
             <Label layoutX="113.0" layoutY="176.0" prefHeight="35.0" prefWidth="1000.0" text="Length of code:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField alignment="CENTER" layoutX="297.0" layoutY="176.0" prefHeight="39.0" prefWidth="87.0" text="5" />
+            <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="297.0" layoutY="176.0" onAction="#onchangeLengthOfCodeTextfield" prefHeight="39.0" prefWidth="87.0" text="5" />
          </children>
       </Group>
       <Group layoutX="-22.0" layoutY="-14.0">
