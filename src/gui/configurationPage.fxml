@@ -21,7 +21,7 @@
             <Font name="System Italic" size="18.0" />
          </font>
       </Button>
-      <Group fx:id="settingsArea">
+      <Group fx:id="parameterSettingArea">
          <children>
             <Group layoutX="-22.0" layoutY="-34.0">
                <children>
@@ -56,7 +56,7 @@
                   <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="297.0" layoutY="176.0" onAction="#onchangeLOCTextfield" prefHeight="39.0" prefWidth="87.0" text="5" />
                </children>
             </Group>
-            <Button layoutX="544.0" layoutY="573.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="194.0" text="Next Step" />
+            <Button fx:id="buttonNextStep" layoutX="544.0" layoutY="573.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="38.0" prefWidth="194.0" text="Next Step" />
          </children>
       </Group>
       <Group fx:id="codeSettingArea" disable="true" layoutX="-48.0" layoutY="27.0">
@@ -66,10 +66,123 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button layoutX="593.0" layoutY="608.0" mnemonicParsing="false" text="Create Random Code" />
-            <Canvas height="57.0" layoutX="130.0" layoutY="660.0" style="-fx-border-color: black;" width="908.0" />
-            <Button fx:id="startSimulationButton" layoutX="1079.0" layoutY="660.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="170.0" text="Start Simulation" />
-            <Button layoutX="1077.0" layoutY="610.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="173.0" text="Back to last step" />
+            <Button fx:id="buttonCreateRandom" layoutX="593.0" layoutY="608.0" mnemonicParsing="false" text="Create Random Code" />
+            <Button fx:id="buttonStartSimulation" layoutX="1079.0" layoutY="660.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="57.0" prefWidth="170.0" text="Start Simulation" />
+            <Button fx:id="buttonLastStep" layoutX="1077.0" layoutY="610.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="39.0" prefWidth="173.0" text="Back to last step" />
+            <Pane layoutX="130.0" layoutY="660.0" prefHeight="57.0" prefWidth="923.0" style="-fx-border-color: lightgrey;">
+               <children>
+                  <Circle fx:id="c0" layoutX="55.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="-0.025316455696202445" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="WHITE" />
+                              <Stop color="RED" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c1" layoutX="145.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c2" layoutX="235.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c3" layoutX="325.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle layoutX="415.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c4" layoutX="415.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c5" layoutX="505.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c6" layoutX="595.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c7" layoutX="685.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c9" layoutX="865.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+                  <Circle fx:id="c8" layoutX="775.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
+                     <fill>
+                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
+                           <stops>
+                              <Stop color="#dddddd" />
+                              <Stop color="BLACK" offset="1.0" />
+                           </stops>
+                        </RadialGradient>
+                     </fill>
+                  </Circle>
+               </children>
+            </Pane>
          </children>
       </Group>
    </children>

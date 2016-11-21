@@ -4,10 +4,19 @@ import config.Configuration;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +41,41 @@ public class ConfigurationController implements Initializable{
     TextField not_textfield;
     @FXML
     Slider not_slider;
+    @FXML
+    Button buttonNextStep;
+    @FXML
+    Button buttonLastStep;
+    @FXML
+    Button buttonCreateRandom;
+    @FXML
+    Button buttonStartSimulation;
+    @FXML
+    Group parameterSettingArea;
+    @FXML
+    Group codeSettingArea;
+    @FXML
+    Circle c0;
+    @FXML
+    Circle c1;
+    @FXML
+    Circle c2;
+    @FXML
+    Circle c3;
+    @FXML
+    Circle c4;
+    @FXML
+    Circle c5;
+    @FXML
+    Circle c6;
+    @FXML
+    Circle c7;
+    @FXML
+    Circle c8;
+    @FXML
+    Circle c9;
+
+    private Circle[] circles = {c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
+    private Color[] colors;
 
     //functions
     private int checkBoundaries(String sValue, int maxValue){
@@ -97,16 +141,58 @@ public class ConfigurationController implements Initializable{
         }
     }
 
-    public void saveSettings(){
-        System.out.println("Configuration Page - saveSettings");
+    @FXML
+    private void onclickNextStep(){
+        System.out.println("ConfigurationController - onclickNextStep");
+
+        parameterSettingArea.setDisable(true);
+        codeSettingArea.setDisable(false);
+
+        initializeCodeSettingField();
     }
 
-    public void generateCodeSettingField(){
-        System.out.println("Configuration Page - generateCodeSettingField");
+    @FXML
+    private void onclickGenerateRandom(){
+        System.out.println("ConfigurationController - onclickGenerateRandom");
+
     }
 
-    public void onclickStartSimulation(){
-        System.out.println("Configuration Page - onclickStartSimulation");
+    @FXML
+    private void onclickLastStep(){
+        System.out.println("ConfigurationController - onclickLastStep");
+
+        parameterSettingArea.setDisable(false);
+        codeSettingArea.setDisable(true);
+
+    }
+
+    @FXML
+    private void onclickStartSimulation(){
+        System.out.println("ConfigurationController - onclickStartSimulation");
+
+    }
+
+    private void incrColor(Circle circle){
+        System.out.println("ConfigurationController - incrColor");
+        LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
+                new Stop(0, Color.web("#000000")),
+                new Stop(1, Color.web("#ffffff")));
+        circle.fillProperty().set(gradient);
+
+    }
+
+    private void initializeCodeSettingField(){
+        System.out.println("Configuration Page - initializeCodeSettingField");
+        //initialize colors
+        String[] hexCodes = {"#000000", "#199999", "#333333", "#4CCCCC", "#666666",
+                            "#7FFFFF", "#999999", "#B33332", "#CCCCCC", "#E66665"};
+
+        for(int i = 0; i<lengthOfCode; i++){
+            colors[i] = Color.web(hexCodes[i], 1.0);
+        }
+
+        //todo show only needed number of holes
+
     }
 
     //getter + setter
@@ -163,5 +249,14 @@ public class ConfigurationController implements Initializable{
                     }
                 }
         );
+        c0.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(c0);
+            }
+        });
+
     }
 }
