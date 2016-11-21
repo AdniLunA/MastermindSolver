@@ -22,35 +22,35 @@
       </Button>
       <Group layoutX="-32.0" layoutY="-21.0">
          <children>
-            <Slider fx:id="loc_slider" blockIncrement="1.0" layoutX="113.0" layoutY="257.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1117.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+            <Slider fx:id="loc_slider" blockIncrement="1.0" layoutX="113.0" layoutY="253.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1117.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
             <Label layoutX="113.0" layoutY="176.0" prefHeight="35.0" prefWidth="1000.0" text="Length of code:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="297.0" layoutY="176.0" onAction="#onchangeLengthOfCodeTextfield" prefHeight="39.0" prefWidth="87.0" text="5" />
+            <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="297.0" layoutY="176.0" onAction="#onchangeLOCTextfield" prefHeight="39.0" prefWidth="87.0" text="5" />
          </children>
       </Group>
       <Group layoutX="-22.0" layoutY="-14.0">
          <children>
-            <TextField alignment="CENTER" layoutX="314.0" layoutY="316.0" prefHeight="39.0" prefWidth="87.0" text="10" />
-            <Label layoutX="108.0" layoutY="318.0" prefHeight="35.0" prefWidth="1000.0" text="Number of colors:">
+            <TextField fx:id="noc_textfield" alignment="CENTER" layoutX="314.0" layoutY="316.0" onAction="#onchangeNOCTextfield" prefHeight="39.0" prefWidth="87.0" text="10" />
+            <Label layoutX="108.0" layoutY="318.0" prefHeight="35.0" prefWidth="206.0" text="Number of colors:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Slider blockIncrement="1.0" layoutX="101.0" layoutY="386.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+            <Slider fx:id="noc_slider" blockIncrement="1.0" layoutX="101.0" layoutY="386.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
          </children>
       </Group>
       <Group layoutX="-38.0" layoutY="-15.0">
          <children>
-            <Slider blockIncrement="1.0" layoutX="119.0" layoutY="541.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+            <Slider fx:id="not_slider" blockIncrement="1.0" layoutX="119.0" layoutY="541.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
             <Label layoutX="125.0" layoutY="467.0" prefHeight="35.0" prefWidth="850.0" text="Number of tries:">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <TextField alignment="CENTER" layoutX="316.0" layoutY="465.0" prefHeight="39.0" prefWidth="87.0" text="10" />
+            <TextField fx:id="not_textfield" alignment="CENTER" layoutX="316.0" layoutY="465.0" onAction="#onchangeNOTTextfield" prefHeight="39.0" prefWidth="87.0" text="10" />
          </children>
       </Group>
       <Group layoutX="-47.0" layoutY="-22.0">
