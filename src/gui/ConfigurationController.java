@@ -28,6 +28,7 @@ public class ConfigurationController implements Initializable {
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
+    private GUIManager guiManager;
 
     @FXML
     private TextField loc_textfield;
@@ -41,14 +42,6 @@ public class ConfigurationController implements Initializable {
     private TextField not_textfield;
     @FXML
     private Slider not_slider;
-    @FXML
-    private Button buttonNextStep;
-    @FXML
-    private Button buttonLastStep;
-    @FXML
-    private Button buttonCreateRandom;
-    @FXML
-    private Button buttonStartSimulation;
     @FXML
     private Group paramSettingArea;
     @FXML
@@ -117,7 +110,7 @@ public class ConfigurationController implements Initializable {
     private Rectangle[] rectangles;
     private Circle[] circles;
     private int[] circleState = new int[Configuration.INSTANCE.MAX_LENGTH_OF_CODE];
-    private Color[] colors = new Color[Configuration.INSTANCE.MAX_NUMBER_OF_COLORS];
+    private Color[] colors;
 
     //functions
     private int checkBoundaries(String sValue, int maxValue) {
@@ -195,7 +188,7 @@ public class ConfigurationController implements Initializable {
     @FXML
     private void onclickGenerateRandom() {
         System.out.println("ConfigurationController - onclickGenerateRandom");
-
+        guiManager.startWithRandomCode(lengthOfCode, numberOfColors, numberOfTries);
     }
 
     @FXML
@@ -210,14 +203,20 @@ public class ConfigurationController implements Initializable {
     @FXML
     private void onclickStartSimulation() {
         System.out.println("ConfigurationController - onclickStartSimulation");
-
+        //todo check if constraints/restrictions for code are fullfilled
+        /*
+        Constraints are:
+        - all holes are filled (none of the states has value > numberOfColors)
+        - no color is repeated
+         */
+        //if they are, guiManager.startWithPresetCode(lengthOfCode, numberOfColors, numberOfTries, circleState);
     }
 
     private void incrColor(int pos) {
         System.out.println("ConfigurationController - incrColor");
         Circle circle = circles[pos];
         int nextState = circleState[pos] + 1;
-        if (nextState >= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS) {
+        if (nextState >= numberOfColors) {
             nextState = 0;
         }
         circleState[pos] = nextState;
@@ -225,41 +224,38 @@ public class ConfigurationController implements Initializable {
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, nextColor),
                 new Stop(1, Color.web("#ffffff")));
-        System.out.println("new color: " + nextColor + ", circle position: " + pos);
+        System.out.println("new color: " + nextColor + ", state: "+nextState+", circle position: " + pos);
         circle.fillProperty().set(gradient);
 
     }
 
     private void initializeColors() {
-        String[] hexCodes = {"0xFFFFFF", "0xC0C0C0", "0x000000", "0xFFE800", "0xFF7B00", "0xFF0000", "0xFF00DC",
-                "0x872BFF", "0x0026FF", "0x00FFFF", "0x00FF59", "0xC7FF47", "0xE0A674", "0x7F0037", "0xFF9E9E",
-                "0xFFC4F0", "0xB57FFF", "0xB2C4FF", "0x3FBDC6", "0x007F0E"};
-
+        System.out.println("ConfigurationController - initializeColors");
         for (int i = 0; i < Configuration.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             try {
-                colors[i] = Color.web(hexCodes[i]);
                 LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                         new Stop(0, colors[i]),
                         new Stop(1, Color.web("#ffffff")));
                 rectangles[i].fillProperty().set(gradient);
             } catch (IllegalArgumentException e) {
-                System.out.println("ConfigurationPage - exception" + e);
+                System.out.println("ConfigurationController - exception" + e);
             }
         }
     }
 
     private void initializeParamSettingArea() {
-        System.out.println("ConfigurationPage - initializeParamSettingArea");
+        System.out.println("ConfigurationController - initializeParamSettingArea");
 
         lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
         numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
         numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
+        colors = Configuration.INSTANCE.COLORS;
 
         noc_slider.setMin((double)lengthOfCode);
     }
 
     private void initializeCodeSettingArea() {
-        System.out.println("ConfigurationPage - initializeCodeSettingArea");
+        System.out.println("ConfigurationController - initializeCodeSettingArea");
 
         for (int i = 0; i < Configuration.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
             circles[i].setVisible(true);
@@ -304,6 +300,7 @@ public class ConfigurationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //attributes
+        guiManager = GUIManager.getInstance();
         rectangles = new Rectangle[]{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19};
         circles = new Circle[]{c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
         for(int i = 0; i < circleState.length; i++){

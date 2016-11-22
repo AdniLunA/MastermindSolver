@@ -53,7 +53,7 @@
                   <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="224.0" layoutY="179.0" onAction="#onchangeLOCTextfield" prefHeight="30.0" prefWidth="50.0" text="5" />
                </children>
             </Group>
-            <Button fx:id="buttonNextStep" layoutX="446.0" layoutY="540.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="170.0" text="Next Step">
+            <Button layoutX="446.0" layoutY="540.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="170.0" text="Next Step">
                <font>
                   <Font size="14.0" />
                </font></Button>
@@ -65,15 +65,15 @@
                <font>
                   <Font name="System Bold" size="14.0" />
                </font></Label>
-            <Button fx:id="buttonCreateRandom" layoutX="796.0" layoutY="621.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="215.0" text="Start with random code">
+            <Button layoutX="796.0" layoutY="621.0" mnemonicParsing="false" onAction="#onclickGenerateRandom" prefHeight="30.0" prefWidth="215.0" text="Start with random code">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="buttonStartSimulation" layoutX="442.0" layoutY="778.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="30.0" prefWidth="215.0" text="Start with self set code">
+            <Button layoutX="442.0" layoutY="778.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="30.0" prefWidth="215.0" text="Start with self set code">
                <font>
                   <Font size="14.0" />
                </font></Button>
-            <Button fx:id="buttonLastStep" layoutX="465.0" layoutY="621.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="30.0" prefWidth="170.0" text="Back to last step">
+            <Button layoutX="465.0" layoutY="621.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="30.0" prefWidth="170.0" text="Back to last step">
                <font>
                   <Font size="14.0" />
                </font></Button>

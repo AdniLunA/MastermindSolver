@@ -10,19 +10,32 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GUIManager{
-    //constructor
-    public GUIManager(GameEngine gameEngine){
-        this.gameEngine = gameEngine;
-    }
-
     //attributes
+    private static GUIManager guiManager; //Singleton Pattern
+
     private ConfigurationController configPg = new ConfigurationController();
     private SimulationController simulationPg = new SimulationController();
-    private GameEngine gameEngine;
+    private GameEngine gameEngine = GameEngine.getInstance();
+
+    private int lengthOfCode;
+    private int numberOfColors;
+    private int numberOfTries;
+    private int[] secretCode;
 
     //functions
-    public void setStage(Stage primaryStage) throws IOException {
-        System.out.println("GUIManager - setStage");
+    public static final GUIManager getInstance(){ //Singleton Pattern
+        if(guiManager == null){
+            return new GUIManager();
+        } else {
+            return guiManager;
+        }
+    }
+    private GUIManager() {
+        this.guiManager = this; //Singleton Pattern
+    }
+
+    public void openConfigurationPage(Stage primaryStage) throws IOException {
+        System.out.println("GUIManager - openConfigurationPage");
 
         Pane configPage = (Pane) FXMLLoader.load(getClass().getResource("configurationPage.fxml"));
         Scene scene = new Scene(configPage);
@@ -31,16 +44,39 @@ public class GUIManager{
         primaryStage.show();
     }
 
+    public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode){
+        System.out.println("GUIManager - startWithPresetCode");
+        this.lengthOfCode = lengthOfCode;
+        this.numberOfColors = numberOfColors;
+        this.numberOfTries = numberOfTries;
+        this.secretCode = secretCode;
 
-    public void openConfigurationPage(){
-        System.out.println("GUIManager - openConfigurationPage");
+        System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: "+lengthOfCode
+                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+secretCode);
+
+        openSimulationPage();
     }
 
-    public void openSimulationPage(){
+    public void startWithRandomCode(int lengthOfCode, int numberOfColors, int numberOfTries){
+        System.out.println("GUIManager - startWithRandomCode");
+        this.lengthOfCode = lengthOfCode;
+        this.numberOfColors = numberOfColors;
+        this.numberOfTries = numberOfTries;
+        int[] test = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
+        this.secretCode = test;
+
+        System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: "+lengthOfCode
+                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+secretCode);
+
+        openSimulationPage();
+    }
+
+    private void openSimulationPage(){
         System.out.println("GUIManager - openSimulationPage");
     }
 
     //getter + setter
+
     public ConfigurationController getConfigPg() {
         return configPg;
     }

@@ -16,9 +16,9 @@ public class Mastermind extends Application{
     public void start (Stage primaryStage) throws IOException {
         System.out.println("Mastermind - start");
 
-        GameEngine gameEngine = new GameEngine();
-        GUIManager gui = new GUIManager(gameEngine);
-        gui.setStage(primaryStage);
+        GameEngine gameEngine = GameEngine.getInstance();
+        GUIManager gui = GUIManager.getInstance();
+        gui.openConfigurationPage(primaryStage);
 
         /*
             Pane testPage = (Pane) FXMLLoader.load(getClass().getResource("gui/test.fxml"));
