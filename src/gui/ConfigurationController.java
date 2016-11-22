@@ -3,7 +3,6 @@ package gui;
 import config.Configuration;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,87 +16,129 @@ import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 //import evolution.NumChromosome;
 //import evolution.IChromosome;
 
-public class ConfigurationController implements Initializable{
+public class ConfigurationController implements Initializable {
     //attributes
-    private int lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
-    private int numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
-    private int numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
+    private int lengthOfCode;
+    private int numberOfColors;
+    private int numberOfTries;
 
     @FXML
-    TextField loc_textfield;
+    private TextField loc_textfield;
     @FXML
-    Slider loc_slider;
+    private Slider loc_slider;
     @FXML
-    TextField noc_textfield;
+    private TextField noc_textfield;
     @FXML
-    Slider noc_slider;
+    private Slider noc_slider;
     @FXML
-    TextField not_textfield;
+    private TextField not_textfield;
     @FXML
-    Slider not_slider;
+    private Slider not_slider;
     @FXML
-    Button buttonNextStep;
+    private Button buttonNextStep;
     @FXML
-    Button buttonLastStep;
+    private Button buttonLastStep;
     @FXML
-    Button buttonCreateRandom;
+    private Button buttonCreateRandom;
     @FXML
-    Button buttonStartSimulation;
+    private Button buttonStartSimulation;
     @FXML
-    Group parameterSettingArea;
+    private Group parameterSettingArea;
     @FXML
-    Group codeSettingArea;
+    private Group codeSettingArea;
     @FXML
-    Circle c0;
+    private Circle c0;
     @FXML
-    Circle c1;
+    private Circle c1;
     @FXML
-    Circle c2;
+    private Circle c2;
     @FXML
-    Circle c3;
+    private Circle c3;
     @FXML
-    Circle c4;
+    private Circle c4;
     @FXML
-    Circle c5;
+    private Circle c5;
     @FXML
-    Circle c6;
+    private Circle c6;
     @FXML
-    Circle c7;
+    private Circle c7;
     @FXML
-    Circle c8;
+    private Circle c8;
     @FXML
-    Circle c9;
+    private Circle c9;
+    @FXML
+    private Rectangle r0;
+    @FXML
+    private Rectangle r1;
+    @FXML
+    private Rectangle r2;
+    @FXML
+    private Rectangle r3;
+    @FXML
+    private Rectangle r4;
+    @FXML
+    private Rectangle r5;
+    @FXML
+    private Rectangle r6;
+    @FXML
+    private Rectangle r7;
+    @FXML
+    private Rectangle r8;
+    @FXML
+    private Rectangle r9;
+    @FXML
+    private Rectangle r10;
+    @FXML
+    private Rectangle r11;
+    @FXML
+    private Rectangle r12;
+    @FXML
+    private Rectangle r13;
+    @FXML
+    private Rectangle r14;
+    @FXML
+    private Rectangle r15;
+    @FXML
+    private Rectangle r16;
+    @FXML
+    private Rectangle r17;
+    @FXML
+    private Rectangle r18;
+    @FXML
+    private Rectangle r19;
 
-    private Circle[] circles = {c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
-    private Color[] colors;
+    private Rectangle[] rectangles;
+    private Circle[] circles;
+    private int[] circleState = new int[Configuration.INSTANCE.MAX_LENGTH_OF_CODE];
+    private Color[] colors = new Color[Configuration.INSTANCE.MAX_NUMBER_OF_COLORS];
 
     //functions
-    private int checkBoundaries(String sValue, int maxValue){
-        try{
+    private int checkBoundaries(String sValue, int maxValue) {
+        try {
             int value = Integer.parseInt(sValue);
             if (value < 1) {
                 return 1;
             }
-            if (value > maxValue){
+            if (value > maxValue) {
                 return maxValue;
-            }
-            else {
+            } else {
                 return value;
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             System.out.println("Invalid entry.");
             return 0;
         }
     }
 
     @FXML
-    private void onchangeLOCTextfield(){
+    private void onchangeLOCTextfield() {
         System.out.println("ConfigurationController - onchangeLOCTextfield");
 
         int newValue = checkBoundaries(loc_textfield.getText(), Configuration.INSTANCE.MAX_LENGTH_OF_CODE);
@@ -112,7 +153,7 @@ public class ConfigurationController implements Initializable{
     }
 
     @FXML
-    private void onchangeNOCTextfield(){
+    private void onchangeNOCTextfield() {
         System.out.println("ConfigurationController - onchangNOCTextfield");
 
         int newValue = checkBoundaries(noc_textfield.getText(), Configuration.INSTANCE.MAX_NUMBER_OF_COLORS);
@@ -127,7 +168,7 @@ public class ConfigurationController implements Initializable{
     }
 
     @FXML
-    private void onchangeNOTTextfield(){
+    private void onchangeNOTTextfield() {
         System.out.println("ConfigurationController - onchangeNOTTextfield");
 
         int newValue = checkBoundaries(not_textfield.getText(), Configuration.INSTANCE.MAX_NUMBER_OF_TRIES);
@@ -142,23 +183,23 @@ public class ConfigurationController implements Initializable{
     }
 
     @FXML
-    private void onclickNextStep(){
+    private void onclickNextStep() {
         System.out.println("ConfigurationController - onclickNextStep");
 
         parameterSettingArea.setDisable(true);
+        initializeCodeSettingArea();
         codeSettingArea.setDisable(false);
 
-        initializeCodeSettingField();
     }
 
     @FXML
-    private void onclickGenerateRandom(){
+    private void onclickGenerateRandom() {
         System.out.println("ConfigurationController - onclickGenerateRandom");
 
     }
 
     @FXML
-    private void onclickLastStep(){
+    private void onclickLastStep() {
         System.out.println("ConfigurationController - onclickLastStep");
 
         parameterSettingArea.setDisable(false);
@@ -167,32 +208,62 @@ public class ConfigurationController implements Initializable{
     }
 
     @FXML
-    private void onclickStartSimulation(){
+    private void onclickStartSimulation() {
         System.out.println("ConfigurationController - onclickStartSimulation");
 
     }
 
-    private void incrColor(Circle circle){
+    private void incrColor(int pos) {
         System.out.println("ConfigurationController - incrColor");
+        Circle circle = circles[pos];
+        int nextState = circleState[pos] + 1;
+        if (nextState >= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS) {
+            nextState = 0;
+        }
+        circleState[pos] = nextState;
+        Color nextColor = colors[nextState];
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-                new Stop(0, Color.web("#000000")),
+                new Stop(0, nextColor),
                 new Stop(1, Color.web("#ffffff")));
+        System.out.println("new color: " + nextColor + ", circle position: " + pos);
         circle.fillProperty().set(gradient);
 
     }
 
-    private void initializeCodeSettingField(){
-        System.out.println("Configuration Page - initializeCodeSettingField");
-        //initialize colors
-        String[] hexCodes = {"#000000", "#199999", "#333333", "#4CCCCC", "#666666",
-                            "#7FFFFF", "#999999", "#B33332", "#CCCCCC", "#E66665"};
+    private void initializeColors() {
+        String[] hexCodes = {"0xFFFFFF", "0xC0C0C0", "0x000000", "0xFFE800", "0xFF7B00", "0xFF0000", "0xFF00DC",
+                "0x872BFF", "0x0026FF", "0x00FFFF", "0x00FF59", "0xC7FF47", "0xE0A674", "0x7F0037", "0xFF9E9E",
+                "0xFFC4F0", "0xB57FFF", "0xB2C4FF", "0x3FBDC6", "0x007F0E"};
 
-        for(int i = 0; i<lengthOfCode; i++){
-            colors[i] = Color.web(hexCodes[i], 1.0);
+        for (int i = 0; i < Configuration.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
+            try {
+                colors[i] = Color.web(hexCodes[i]);
+                LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
+                        new Stop(0, colors[i]),
+                        new Stop(1, Color.web("#ffffff")));
+                rectangles[i].fillProperty().set(gradient);
+            } catch (IllegalArgumentException e) {
+                System.out.println("ConfigurationPage - exception" + e);
+            }
+        }
+    }
+
+    private void initializeCodeSettingArea() {
+        System.out.println("ConfigurationPage - initializeCodeSettingArea");
+
+        for (int i = 0; i < Configuration.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
+            circles[i].setVisible(true);
+        }
+        for (int i = Configuration.INSTANCE.MAX_LENGTH_OF_CODE-1; i >= lengthOfCode; i--) {
+            circles[i].setVisible(false);
         }
 
-        //todo show only needed number of holes
-
+        for (int i = 0; i < Configuration.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
+            rectangles[i].setVisible(true);
+        }
+        for (int i = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS-1; i >= numberOfColors; i--) {
+            rectangles[i].setVisible(false);
+        }
     }
 
     //getter + setter
@@ -222,12 +293,28 @@ public class ConfigurationController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //attributes
+        lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
+        numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
+        numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
+
+        rectangles = new Rectangle[]{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19};
+        circles = new Circle[]{c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
+        for(int i = 0; i < circleState.length; i++){
+            circleState[i] = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS;
+        }
+
+        //functions
+        initializeColors();
+
         this.loc_slider.valueProperty().addListener(
                 new ChangeListener<Number>() {
                     @Override
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                         loc_textfield.setText(String.valueOf(newValue.intValue()));
+                        lengthOfCode = newValue.intValue();
                         loc_textfield.setStyle("-fx-text-inner-color: black;");
+                        noc_slider.setMin((double)newValue);
                     }
                 }
         );
@@ -236,6 +323,7 @@ public class ConfigurationController implements Initializable{
                     @Override
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                         noc_textfield.setText(String.valueOf(newValue.intValue()));
+                        numberOfColors = newValue.intValue();
                         noc_textfield.setStyle("-fx-text-inner-color: black;");
                     }
                 }
@@ -245,18 +333,80 @@ public class ConfigurationController implements Initializable{
                     @Override
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
                         not_textfield.setText(String.valueOf(newValue.intValue()));
+                        numberOfTries = newValue.intValue();
                         not_textfield.setStyle("-fx-text-inner-color: black;");
                     }
                 }
         );
-        c0.setOnMouseClicked(new EventHandler<MouseEvent>()
-        {
+        c0.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
                 System.out.println("ConfigurationController - onclickToggleColor");
-                incrColor(c0);
+                incrColor(0);
             }
         });
-
+        c1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(1);
+            }
+        });
+        c2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(2);
+            }
+        });
+        c3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(3);
+            }
+        });
+        c4.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(4);
+            }
+        });
+        c5.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(5);
+            }
+        });
+        c6.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(6);
+            }
+        });
+        c7.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(7);
+            }
+        });
+        c8.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(8);
+            }
+        });
+        c9.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent t) {
+                System.out.println("ConfigurationController - onclickToggleColor");
+                incrColor(9);
+            }
+        });
     }
 }

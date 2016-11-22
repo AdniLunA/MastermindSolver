@@ -25,164 +25,77 @@
          <children>
             <Group layoutX="-22.0" layoutY="-34.0">
                <children>
-                  <TextField fx:id="noc_textfield" alignment="CENTER" layoutX="314.0" layoutY="316.0" onAction="#onchangeNOCTextfield" prefHeight="39.0" prefWidth="87.0" text="10" />
-                  <Label layoutX="108.0" layoutY="318.0" prefHeight="35.0" prefWidth="206.0" text="Number of colors:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
+                  <TextField fx:id="noc_textfield" alignment="CENTER" layoutX="271.0" layoutY="316.0" onAction="#onchangeNOCTextfield" prefHeight="39.0" prefWidth="50.0" text="10" />
+                  <Label layoutX="108.0" layoutY="318.0" prefHeight="35.0" prefWidth="206.0" text="Number of colors:" />
                   <Slider fx:id="noc_slider" blockIncrement="1.0" layoutX="101.0" layoutY="386.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
                </children>
             </Group>
             <Group layoutX="-38.0" layoutY="-57.0">
                <children>
                   <Slider fx:id="not_slider" blockIncrement="1.0" layoutX="119.0" layoutY="541.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
-                  <Label layoutX="125.0" layoutY="467.0" prefHeight="35.0" prefWidth="850.0" text="Number of tries:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="not_textfield" alignment="CENTER" layoutX="316.0" layoutY="465.0" onAction="#onchangeNOTTextfield" prefHeight="39.0" prefWidth="87.0" text="10" />
+                  <Label layoutX="125.0" layoutY="467.0" prefHeight="35.0" prefWidth="162.0" text="Number of tries:" />
+                  <TextField fx:id="not_textfield" alignment="CENTER" layoutX="268.0" layoutY="465.0" onAction="#onchangeNOTTextfield" prefHeight="39.0" prefWidth="50.0" text="10" />
                </children>
             </Group>
             <Group layoutX="-32.0" layoutY="-21.0">
                <children>
                   <Slider fx:id="loc_slider" blockIncrement="1.0" layoutX="113.0" layoutY="253.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1117.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
-                  <Label layoutX="113.0" layoutY="176.0" prefHeight="35.0" prefWidth="1000.0" text="Length of code:">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="297.0" layoutY="176.0" onAction="#onchangeLOCTextfield" prefHeight="39.0" prefWidth="87.0" text="5" />
+                  <Label layoutX="113.0" layoutY="176.0" prefHeight="35.0" prefWidth="161.0" text="Length of code:" />
+                  <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="252.0" layoutY="174.0" onAction="#onchangeLOCTextfield" prefHeight="39.0" prefWidth="50.0" text="5" />
                </children>
             </Group>
-            <Button fx:id="buttonNextStep" layoutX="544.0" layoutY="573.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="38.0" prefWidth="194.0" text="Next Step" />
+            <Button fx:id="buttonNextStep" layoutX="556.0" layoutY="538.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="170.0" text="Next Step" />
          </children>
       </Group>
-      <Group fx:id="codeSettingArea" disable="true" layoutX="-48.0" layoutY="27.0">
+      <Group fx:id="codeSettingArea" disable="true" layoutX="-50.0" layoutY="-12.0">
          <children>
-            <Label layoutX="130.0" layoutY="610.0" prefHeight="35.0" prefWidth="660.0" text="Set the secret code:">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Button fx:id="buttonCreateRandom" layoutX="593.0" layoutY="608.0" mnemonicParsing="false" text="Create Random Code" />
-            <Button fx:id="buttonStartSimulation" layoutX="1079.0" layoutY="660.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="57.0" prefWidth="170.0" text="Start Simulation" />
-            <Button fx:id="buttonLastStep" layoutX="1077.0" layoutY="610.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="39.0" prefWidth="173.0" text="Back to last step" />
+            <Label layoutX="130.0" layoutY="610.0" prefHeight="35.0" prefWidth="212.0" text="Set the secret code:" />
+            <Button fx:id="buttonCreateRandom" layoutX="1080.0" layoutY="608.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" text="Start with random code" />
+            <Button fx:id="buttonStartSimulation" layoutX="1080.0" layoutY="677.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="30.0" prefWidth="170.0" text="Start with code on the left" />
+            <Button fx:id="buttonLastStep" layoutX="605.0" layoutY="608.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="30.0" prefWidth="170.0" text="Back to last step" />
             <Pane layoutX="130.0" layoutY="660.0" prefHeight="57.0" prefWidth="923.0" style="-fx-border-color: lightgrey;">
                <children>
-                  <Circle fx:id="c0" layoutX="55.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="-0.025316455696202445" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="RED" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c1" layoutX="145.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c2" layoutX="235.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c3" layoutX="325.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle layoutX="415.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c4" layoutX="415.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c5" layoutX="505.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c6" layoutX="595.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c7" layoutX="685.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c9" layoutX="865.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
-                  <Circle fx:id="c8" layoutX="775.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.7023121387283238" centerY="0.35221674876847286" focusAngle="-36.25" focusDistance="0.05063291139240511" radius="0.7278481012658228">
-                           <stops>
-                              <Stop color="#dddddd" />
-                              <Stop color="BLACK" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                  </Circle>
+                  <Circle fx:id="c0" layoutX="55.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c1" layoutX="145.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c2" layoutX="235.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c3" layoutX="325.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c4" layoutX="415.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c5" layoutX="505.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c6" layoutX="595.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c7" layoutX="685.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c9" layoutX="865.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c8" layoutX="775.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
                </children>
             </Pane>
+            <Pane layoutX="273.0" layoutY="728.0" prefHeight="46.0" prefWidth="780.0">
+               <children>
+                  <Rectangle fx:id="r0" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="29.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="66.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r2" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="103.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r3" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="140.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r4" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="177.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r5" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="214.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r6" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="251.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r7" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="288.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r8" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="325.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r9" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="362.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r10" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="399.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r11" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="436.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r12" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="473.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r13" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="510.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r14" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="547.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r15" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="584.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r16" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="621.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r17" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="658.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r18" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="695.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+                  <Rectangle fx:id="r19" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="732.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
+               </children>
+            </Pane>
+            <Label layoutX="130.0" layoutY="735.0" text="Available Colors:">
+               <font>
+                  <Font name="System Italic" size="18.0" />
+               </font>
+            </Label>
          </children>
       </Group>
    </children>
