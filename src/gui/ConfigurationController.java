@@ -50,7 +50,7 @@ public class ConfigurationController implements Initializable {
     @FXML
     private Button buttonStartSimulation;
     @FXML
-    private Group parameterSettingArea;
+    private Group paramSettingArea;
     @FXML
     private Group codeSettingArea;
     @FXML
@@ -186,7 +186,7 @@ public class ConfigurationController implements Initializable {
     private void onclickNextStep() {
         System.out.println("ConfigurationController - onclickNextStep");
 
-        parameterSettingArea.setDisable(true);
+        paramSettingArea.setDisable(true);
         initializeCodeSettingArea();
         codeSettingArea.setDisable(false);
 
@@ -202,7 +202,7 @@ public class ConfigurationController implements Initializable {
     private void onclickLastStep() {
         System.out.println("ConfigurationController - onclickLastStep");
 
-        parameterSettingArea.setDisable(false);
+        paramSettingArea.setDisable(false);
         codeSettingArea.setDisable(true);
 
     }
@@ -246,6 +246,16 @@ public class ConfigurationController implements Initializable {
                 System.out.println("ConfigurationPage - exception" + e);
             }
         }
+    }
+
+    private void initializeParamSettingArea() {
+        System.out.println("ConfigurationPage - initializeParamSettingArea");
+
+        lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
+        numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
+        numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
+
+        noc_slider.setMin((double)lengthOfCode);
     }
 
     private void initializeCodeSettingArea() {
@@ -294,10 +304,6 @@ public class ConfigurationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //attributes
-        lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
-        numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
-        numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
-
         rectangles = new Rectangle[]{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19};
         circles = new Circle[]{c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
         for(int i = 0; i < circleState.length; i++){
@@ -305,8 +311,11 @@ public class ConfigurationController implements Initializable {
         }
 
         //functions
+        initializeParamSettingArea();
         initializeColors();
+        initializeCodeSettingArea();
 
+        //event listeners
         this.loc_slider.valueProperty().addListener(
                 new ChangeListener<Number>() {
                     @Override

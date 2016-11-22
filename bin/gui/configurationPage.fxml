@@ -9,51 +9,75 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ConfigurationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ConfigurationController">
    <children>
-      <Text layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure Simulation" textAlignment="CENTER" wrappingWidth="1280.0">
+      <Text layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure Simulation" textAlignment="CENTER" wrappingWidth="1100.0">
          <font>
-            <Font name="System Bold" size="60.0" />
+            <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="997.0" layoutY="8.0" mnemonicParsing="false" text="(i) How does Mastermind work?">
+      <Button layoutX="862.0" layoutY="14.0" mnemonicParsing="false" text="(i) How does Mastermind work?">
          <font>
-            <Font name="System Italic" size="18.0" />
+            <Font name="System Italic" size="15.0" />
          </font>
       </Button>
-      <Group fx:id="parameterSettingArea">
+      <Group fx:id="paramSettingArea" layoutX="20.0" layoutY="-28.0">
          <children>
             <Group layoutX="-22.0" layoutY="-34.0">
                <children>
-                  <TextField fx:id="noc_textfield" alignment="CENTER" layoutX="271.0" layoutY="316.0" onAction="#onchangeNOCTextfield" prefHeight="39.0" prefWidth="50.0" text="10" />
-                  <Label layoutX="108.0" layoutY="318.0" prefHeight="35.0" prefWidth="206.0" text="Number of colors:" />
-                  <Slider fx:id="noc_slider" blockIncrement="1.0" layoutX="101.0" layoutY="386.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+                  <TextField fx:id="noc_textfield" alignment="CENTER" layoutX="231.0" layoutY="321.0" onAction="#onchangeNOCTextfield" prefHeight="30.0" prefWidth="50.0" text="10" />
+                  <Label layoutX="108.0" layoutY="318.0" prefHeight="35.0" prefWidth="132.0" text="Number of colors:">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Slider fx:id="noc_slider" blockIncrement="1.0" layoutX="101.0" layoutY="386.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="900.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
                </children>
             </Group>
             <Group layoutX="-38.0" layoutY="-57.0">
                <children>
-                  <Slider fx:id="not_slider" blockIncrement="1.0" layoutX="119.0" layoutY="541.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1119.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
-                  <Label layoutX="125.0" layoutY="467.0" prefHeight="35.0" prefWidth="162.0" text="Number of tries:" />
-                  <TextField fx:id="not_textfield" alignment="CENTER" layoutX="268.0" layoutY="465.0" onAction="#onchangeNOTTextfield" prefHeight="39.0" prefWidth="50.0" text="10" />
+                  <Slider fx:id="not_slider" blockIncrement="1.0" layoutX="119.0" layoutY="541.0" majorTickUnit="1.0" max="20.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="900.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" />
+                  <Label layoutX="125.0" layoutY="467.0" prefHeight="35.0" prefWidth="162.0" text="Number of tries:">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="not_textfield" alignment="CENTER" layoutX="237.0" layoutY="470.0" onAction="#onchangeNOTTextfield" prefHeight="30.0" prefWidth="50.0" text="10" />
                </children>
             </Group>
             <Group layoutX="-32.0" layoutY="-21.0">
                <children>
-                  <Slider fx:id="loc_slider" blockIncrement="1.0" layoutX="113.0" layoutY="253.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="1117.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
-                  <Label layoutX="113.0" layoutY="176.0" prefHeight="35.0" prefWidth="161.0" text="Length of code:" />
-                  <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="252.0" layoutY="174.0" onAction="#onchangeLOCTextfield" prefHeight="39.0" prefWidth="50.0" text="5" />
+                  <Slider fx:id="loc_slider" blockIncrement="1.0" layoutX="113.0" layoutY="253.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="900.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="5.0" />
+                  <Label layoutX="113.0" layoutY="176.0" prefHeight="35.0" prefWidth="161.0" text="Length of code:">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField fx:id="loc_textfield" alignment="CENTER" layoutX="224.0" layoutY="179.0" onAction="#onchangeLOCTextfield" prefHeight="30.0" prefWidth="50.0" text="5" />
                </children>
             </Group>
-            <Button fx:id="buttonNextStep" layoutX="556.0" layoutY="538.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="170.0" text="Next Step" />
+            <Button fx:id="buttonNextStep" layoutX="446.0" layoutY="540.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="170.0" text="Next Step">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
          </children>
       </Group>
-      <Group fx:id="codeSettingArea" disable="true" layoutX="-50.0" layoutY="-12.0">
+      <Group fx:id="codeSettingArea" disable="true" layoutX="1.0" layoutY="-50.0">
          <children>
-            <Label layoutX="130.0" layoutY="610.0" prefHeight="35.0" prefWidth="212.0" text="Set the secret code:" />
-            <Button fx:id="buttonCreateRandom" layoutX="1080.0" layoutY="608.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="170.0" text="Start with random code" />
-            <Button fx:id="buttonStartSimulation" layoutX="1080.0" layoutY="677.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="30.0" prefWidth="170.0" text="Start with code on the left" />
-            <Button fx:id="buttonLastStep" layoutX="605.0" layoutY="608.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="30.0" prefWidth="170.0" text="Back to last step" />
-            <Pane layoutX="130.0" layoutY="660.0" prefHeight="57.0" prefWidth="923.0" style="-fx-border-color: lightgrey;">
+            <Label layoutX="102.0" layoutY="621.0" prefHeight="35.0" prefWidth="212.0" text="Set the secret code:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font></Label>
+            <Button fx:id="buttonCreateRandom" layoutX="796.0" layoutY="621.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="215.0" text="Start with random code">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="buttonStartSimulation" layoutX="442.0" layoutY="778.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="30.0" prefWidth="215.0" text="Start with self set code">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="buttonLastStep" layoutX="465.0" layoutY="621.0" mnemonicParsing="false" onAction="#onclickLastStep" prefHeight="30.0" prefWidth="170.0" text="Back to last step">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Pane layoutX="88.0" layoutY="664.0" prefHeight="57.0" prefWidth="923.0" style="-fx-border-color: lightgrey;">
                <children>
                   <Circle fx:id="c0" layoutX="55.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
                   <Circle fx:id="c1" layoutX="145.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
@@ -67,7 +91,7 @@
                   <Circle fx:id="c8" layoutX="775.0" layoutY="30.0" radius="18.0" stroke="#8a8a8a" strokeType="INSIDE" />
                </children>
             </Pane>
-            <Pane layoutX="273.0" layoutY="728.0" prefHeight="46.0" prefWidth="780.0">
+            <Pane layoutX="215.0" layoutY="728.0" prefHeight="46.0" prefWidth="780.0">
                <children>
                   <Rectangle fx:id="r0" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="29.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
                   <Rectangle fx:id="r1" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="66.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
@@ -91,9 +115,9 @@
                   <Rectangle fx:id="r19" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="20.0" layoutX="732.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="20.0" />
                </children>
             </Pane>
-            <Label layoutX="130.0" layoutY="735.0" text="Available Colors:">
+            <Label layoutX="122.0" layoutY="741.0" text="Available Colors:">
                <font>
-                  <Font name="System Italic" size="18.0" />
+                  <Font name="System Italic" size="14.0" />
                </font>
             </Label>
          </children>
