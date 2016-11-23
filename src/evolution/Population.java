@@ -8,7 +8,7 @@ public class Population {
     //functions
     public IChromosome getFittest(){
         System.out.println("Population - getFittest");
-        return new NumChromosome();
+        return new NumChromosome(1,1);//todo
     }
 
     public void evolve(){

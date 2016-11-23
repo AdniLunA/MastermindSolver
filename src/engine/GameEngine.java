@@ -1,5 +1,6 @@
 package engine;
 
+import evolution.IChromosome;
 import evolution.NumChromosome;
 
 public class GameEngine {
@@ -23,10 +24,15 @@ public class GameEngine {
         this.gameEngine = this; //Singleton Pattern
     }
 
-    public int[] getRandomCode(int codeLength, int numColors){
+    public IChromosome getRandomCode(int codeLength, int numColors){
         System.out.println("GameEngine - getRandomCode");
-        codeGenerator.generateRandom(codeLength, numColors);
-        return codeGenerator.getSequence();
+        codeGenerator = new NumChromosome(codeLength, numColors);
+        codeGenerator.generateRandom();
+        return codeGenerator;
+    }
+
+    public void startGame(){
+        //todo
     }
 
     //getter + setter

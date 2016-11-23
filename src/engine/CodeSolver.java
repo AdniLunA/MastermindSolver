@@ -12,7 +12,7 @@ public class CodeSolver {
     //functions
     public IChromosome submitSequence(){
         System.out.println("CodeSolver - submitSequence");
-        return new NumChromosome();
+        return new NumChromosome(1,1);//todo
     }
 
     public void handleResponse(int[] response) {

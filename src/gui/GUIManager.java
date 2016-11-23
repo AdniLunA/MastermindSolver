@@ -1,6 +1,8 @@
 package gui;
 
 import engine.GameEngine;
+import evolution.IChromosome;
+import evolution.NumChromosome;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,11 +18,11 @@ public class GUIManager{
     private ConfigurationController configPg = new ConfigurationController();
     private SimulationController simulationPg = new SimulationController();
     private GameEngine gameEngine = GameEngine.getInstance();
+    private IChromosome code;
 
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
-    private int[] secretCode;
 
     //functions
     public static final GUIManager getInstance(){ //Singleton Pattern
@@ -49,10 +51,10 @@ public class GUIManager{
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
-        this.secretCode = secretCode;
+        this.code = new NumChromosome(secretCode);
 
         System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: "+lengthOfCode
-                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+secretCode);
+                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+code.toString());
 
         openSimulationPage();
     }
@@ -62,11 +64,10 @@ public class GUIManager{
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
-        int[] test = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
-        this.secretCode = test;
+        this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
 
         System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: "+lengthOfCode
-                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+secretCode);
+                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+code.toString());
 
         openSimulationPage();
     }
