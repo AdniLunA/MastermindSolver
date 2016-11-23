@@ -10,6 +10,9 @@ public class GameEngine {
     private NumChromosome codeGenerator;
     private CodeValidator validator;
     private CodeSolver solver;
+    private int codeLength;
+    private int numColors;
+    private int numTries;
 
     //functions
     public static final GameEngine getInstance(){ //Singleton Pattern
@@ -31,9 +34,30 @@ public class GameEngine {
         return codeGenerator;
     }
 
-    public void startGame(){
+    public void startGame(int codeLength, int numColors, int numTries, IChromosome code){
+        System.out.println("GameEngine - startGame");
+        validator = new CodeValidator(code);
+        solver = new CodeSolver();
+        solver.run();
+    }
+
+    public Submission resolveSubmission(IChromosome chromosome) {
+        System.out.println("GameEngine - resolve Submission");
         //todo
+        return new Submission();
     }
 
     //getter + setter
+    public int getNumTries() {
+        return numTries;
+    }
+
+    public int getNumColors() {
+        return numColors;
+    }
+
+    public int getCodeLength() {
+        return codeLength;
+    }
+
 }

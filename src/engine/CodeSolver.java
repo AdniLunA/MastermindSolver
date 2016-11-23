@@ -3,6 +3,7 @@ package engine;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 
+import java.awt.color.ICC_ColorSpace;
 import java.util.ArrayList;
 
 public class CodeSolver {
@@ -10,9 +11,15 @@ public class CodeSolver {
     private ArrayList<Submission> pastSubmissions;
 
     //functions
-    public IChromosome submitSequence(){
+    public void run(){
+        System.out.println("CodeSolver - run");
+    }
+
+    private void submitSequence(){
         System.out.println("CodeSolver - submitSequence");
-        return new NumChromosome(1,1);//todo
+        IChromosome chromosome = new NumChromosome();
+        Submission newSumbmission = GameEngine.getInstance().resolveSubmission(chromosome);
+        pastSubmissions.add(newSumbmission);
     }
 
     public void handleResponse(int[] response) {
@@ -20,5 +27,4 @@ public class CodeSolver {
     }
 
     //getter + setter
-
 }
