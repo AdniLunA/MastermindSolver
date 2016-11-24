@@ -19,6 +19,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 //import evolution.NumChromosome;
 //import evolution.IChromosome;
@@ -203,13 +204,50 @@ public class ConfigurationController implements Initializable {
     @FXML
     private void onclickStartSimulation() {
         System.out.println("ConfigurationController - onclickStartSimulation");
-        //todo check if constraints/restrictions for code are fullfilled
-        /*
-        Constraints are:
-        - all holes are filled (none of the states has value > numberOfColors)
-        - no color is repeated
-         */
-        //if they are, guiManager.startWithPresetCode(lengthOfCode, numberOfColors, numberOfTries, circleState);
+
+        boolean[] accepted = checkCodeAcceptance();
+
+        if(accepted[0]&&accepted[1]){
+            int[] secretCode = Arrays.copyOf(circleState, lengthOfCode);
+            guiManager.startWithPresetCode(lengthOfCode, numberOfColors, numberOfTries, secretCode);
+        }
+        if(!accepted[0]){
+            //todo show empty hole message
+        }
+        if(!accepted[1]){
+            //todo show duplicate color message
+        }
+    }
+
+    private boolean[] checkCodeAcceptance() {
+        System.out.println("ConfigurationController - checkCodeAcceptance");
+
+        //test if a hole is not filled
+        int i = 0;
+        boolean emptyHoleFound = false;
+        while(i < lengthOfCode && !emptyHoleFound){
+            if (circleState[i] >= numberOfColors){
+                emptyHoleFound = true;
+                System.out.println("found empty hole at pos "+i);
+            }
+            i++;
+        }
+
+        //test if there are duplicates
+        int[] sortedCode = Arrays.copyOf(circleState, lengthOfCode);
+        Arrays.sort(sortedCode);
+        int j = 1;
+        boolean duplicateFound = false;
+        while(j < lengthOfCode && !duplicateFound){
+            if(sortedCode[j] == sortedCode[j-1]){
+                duplicateFound = true;
+                System.out.println("found duplicate color number "+sortedCode[j]);
+            }
+            j++;
+        }
+
+        boolean[] error = {emptyHoleFound, duplicateFound};
+        return error;
     }
 
     private void incrColor(int pos) {

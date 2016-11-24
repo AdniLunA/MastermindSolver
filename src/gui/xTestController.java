@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class TestController {
+public class xTestController {
     @FXML
     TextArea textArea;
 
@@ -21,14 +21,14 @@ public class TestController {
 
     @FXML
     protected void buttonPressed(ActionEvent event) throws IOException {
-        System.out.println("TestController - buttonPressed");
+        System.out.println("xTestController - buttonPressed");
         /*
         String text = textArea.getText();
         label.setText(text);
         textArea.clear();
          */
 
-        Parent homePageParent = FXMLLoader.load(getClass().getResource("test2.fxml"));
+        Parent homePageParent = FXMLLoader.load(getClass().getResource("xtest2.fxml"));
         Scene homePageScene = new Scene(homePageParent);
         Stage appStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(homePageScene);

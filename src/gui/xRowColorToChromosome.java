@@ -2,13 +2,13 @@ package gui;
 
 import evolution.IChromosome;
 
-public class RowColorToChromosome {
+public class xRowColorToChromosome {
     //attributes
     private IChromosome chromosome;
 
     //functions
     public IChromosome translateToChromosome(RowColorValues rowColors){
-        System.out.println("RowColorToChromosome - translateToChromosome");
+        System.out.println("xRowColorToChromosome - translateToChromosome");
         return chromosome;
     }
 }

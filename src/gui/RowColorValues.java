@@ -11,20 +11,20 @@ public class RowColorValues {
     }
 
     public RowColorValues(IChromosome sequence){
-        rowColors.add(new RGBValues(sequence));
+        rowColors.add(new xRGBValues(sequence));
     }
 
     //attributes
-    private ArrayList<RGBValues> rowColors = new ArrayList<RGBValues>();
+    private ArrayList<xRGBValues> rowColors = new ArrayList<xRGBValues>();
 
     //functions
 
     //getter + setter
-    public ArrayList<RGBValues> getRowColors() {
+    public ArrayList<xRGBValues> getRowColors() {
         return rowColors;
     }
 
-    public void setRowColors(ArrayList<RGBValues> rowColors) {
+    public void setRowColors(ArrayList<xRGBValues> rowColors) {
         this.rowColors = rowColors;
     }
 }

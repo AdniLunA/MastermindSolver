@@ -11,7 +11,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ConfigurationController">
    <children>
-      <Text layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure Simulation" textAlignment="CENTER" wrappingWidth="1100.0">
+      <Text layoutX="1.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Configure Simulation" textAlignment="CENTER" wrappingWidth="1100.0">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
@@ -21,7 +21,7 @@
             <Font name="System Italic" size="15.0" />
          </font>
       </Button>
-      <Group fx:id="paramSettingArea" layoutX="20.0" layoutY="-28.0">
+      <Group fx:id="paramSettingArea" layoutX="20.0" layoutY="-50.0">
          <children>
             <Group layoutX="-22.0" layoutY="-34.0">
                <children>
@@ -59,7 +59,7 @@
                </font></Button>
          </children>
       </Group>
-      <Group fx:id="codeSettingArea" disable="true" layoutX="1.0" layoutY="-50.0">
+      <Group fx:id="codeSettingArea" disable="true" layoutX="2.0" layoutY="-89.0">
          <children>
             <Label layoutX="102.0" layoutY="621.0" prefHeight="35.0" prefWidth="212.0" text="Set the secret code:">
                <font>
@@ -118,6 +118,21 @@
             <Label layoutX="122.0" layoutY="741.0" text="Available Colors:">
                <font>
                   <Font name="System Italic" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="codeErrorInformation" disable="true" layoutX="120.0" layoutY="819.0" text="Invalid code. The following issues occured: " textFill="#ae0000" visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="codeError1" disable="true" layoutX="457.0" layoutY="819.0" prefHeight="25.0" prefWidth="170.0" text="Some holes are empty." textFill="#ae0000" visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="codeError2" disable="true" layoutX="635.0" layoutY="819.0" prefHeight="25.0" prefWidth="161.0" text="A color occurs twice." textFill="#ae0000" visible="false">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
                </font>
             </Label>
          </children>

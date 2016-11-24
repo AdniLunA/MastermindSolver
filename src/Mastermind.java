@@ -21,7 +21,7 @@ public class Mastermind extends Application{
         gui.openConfigurationPage(primaryStage);
 
         /*
-            Pane testPage = (Pane) FXMLLoader.load(getClass().getResource("gui/test.fxml"));
+            Pane testPage = (Pane) FXMLLoader.load(getClass().getResource("gui/xtest.fxml"));
             Scene scene = new Scene(testPage);
             primaryStage.setTitle("Page 1");
             primaryStage.setScene(scene);

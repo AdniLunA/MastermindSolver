@@ -2,10 +2,10 @@ package gui;
 
 import evolution.IChromosome;
 
-public class RGBValues {
+public class xRGBValues {
     //todo
     //constructor
-    RGBValues(IChromosome sequence){
+    xRGBValues(IChromosome sequence){
         transformSequenceToRGB();
     }
 
@@ -15,7 +15,7 @@ public class RGBValues {
     //functions
     public void transformSequenceToRGB(){
         //todo set rgb
-        System.out.println("RGBValues - transformSequenceToRGB");
+        System.out.println("xRGBValues - transformSequenceToRGB");
     }
 
     //getter + setter
