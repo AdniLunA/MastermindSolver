@@ -15,8 +15,25 @@ public class CodeValidator {
 
     //functions
     private int[] calculateResponse(IChromosome sequenceToCheck){
-        int[] response = new int[2];
+        redResponse = 0;
+        whiteResponse = 0;
         System.out.println("CodeValidator - calculateResponse");
+        for(int i = 0; i < secretCode.getSequence().length; i++){
+            if(secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]){
+                redResponse++;
+            }
+        }
+
+        int[] sortedSecretCode = secretCode.getSequenceSorted();
+        int[] sortedSequenceToCheck = sequenceToCheck.getSequenceSorted();
+        for(int i = 0; i < sortedSecretCode.length; i++){
+            if(sortedSecretCode[i] == sortedSequenceToCheck[i]){
+                whiteResponse++;
+            }
+        }
+        whiteResponse -= redResponse;
+
+        int[] response = {redResponse, whiteResponse};
         return response;
     }
 

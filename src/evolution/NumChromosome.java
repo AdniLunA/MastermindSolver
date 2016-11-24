@@ -1,5 +1,7 @@
 package evolution;
 
+import java.util.Arrays;
+
 public class NumChromosome implements IChromosome {
     public NumChromosome() {
     }
@@ -36,6 +38,14 @@ public class NumChromosome implements IChromosome {
         System.out.println("NumChromosome - getFitness");
         //todo
         return 0;
+    }
+
+    //Java.util.Arrays.sort(int[])
+    @Override
+    public int[] getSequenceSorted(){
+        int[] copyOfSequence = sequence;
+        Arrays.sort(copyOfSequence);
+        return copyOfSequence;
     }
 
     public String toString(){
