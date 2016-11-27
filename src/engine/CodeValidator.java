@@ -24,11 +24,15 @@ public class CodeValidator {
             }
         }
 
-        //todo fix function for white response -> count occurence of each of the different available colors!
         int[] sortedSecretCode = secretCode.getSequenceSorted();
         int[] sortedSequenceToCheck = sequenceToCheck.getSequenceSorted();
+        int[] colorCounter = new int[secretCode.getNumberOfColors()];
         for(int i = 0; i < sortedSecretCode.length; i++){
-            if(sortedSecretCode[i] == sortedSequenceToCheck[i]){
+            colorCounter[sortedSecretCode[i]]++;
+            colorCounter[sortedSequenceToCheck[i]]++;
+        }
+        for(int colorCount : colorCounter){
+            if (colorCount == 2){
                 whiteResponse++;
             }
         }

@@ -52,6 +52,11 @@ public class NumChromosome implements IChromosome {
         return copyOfSequence;
     }
 
+    @Override
+    public int getNumberOfColors() {
+        return numberOfColors;
+    }
+
     public String toString(){
         String array = "";
         for (int elem: sequence) {
