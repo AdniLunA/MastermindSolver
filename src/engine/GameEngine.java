@@ -1,7 +1,9 @@
 package engine;
 
+import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import evolution.Submission;
 
 public class GameEngine {
     //attributes
@@ -41,10 +43,11 @@ public class GameEngine {
         solver.run();
     }
 
-    public Submission resolveSubmission(IChromosome chromosome) {
+    public void resolveSubmission(IChromosome chromosome) {
         System.out.println("GameEngine - resolve Submission");
-        //todo
-        return new Submission();
+        int[] response = validator.calculateResponse(chromosome);
+
+        FitnessCalculator.getInstance().addSubmission(new Submission(chromosome, response[0], response[1]));
     }
 
     //getter + setter

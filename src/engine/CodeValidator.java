@@ -14,7 +14,7 @@ public class CodeValidator {
     private int whiteResponse;
 
     //functions
-    private int[] calculateResponse(IChromosome sequenceToCheck){
+    public int[] calculateResponse(IChromosome sequenceToCheck){
         redResponse = 0;
         whiteResponse = 0;
         System.out.println("CodeValidator - calculateResponse");
@@ -24,6 +24,7 @@ public class CodeValidator {
             }
         }
 
+        //todo fix function for white response -> count occurence of each of the different available colors!
         int[] sortedSecretCode = secretCode.getSequenceSorted();
         int[] sortedSequenceToCheck = sequenceToCheck.getSequenceSorted();
         for(int i = 0; i < sortedSecretCode.length; i++){

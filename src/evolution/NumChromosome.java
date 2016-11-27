@@ -3,6 +3,7 @@ package evolution;
 import java.util.Arrays;
 
 public class NumChromosome implements IChromosome {
+    //constructors
     public NumChromosome() {
     }
 
@@ -10,15 +11,18 @@ public class NumChromosome implements IChromosome {
         this.sequence = sequence;
     }
 
-    private int lengthOfCode;
-    private int numberOfColors;
-    private int[] sequence;
-
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
     }
 
+    //attributes
+    private int lengthOfCode;
+    private int numberOfColors;
+    private int[] sequence;
+    private int fitness = 0;
+
+    //functions
     @Override
     public int[] getSequence(){
         return sequence;
@@ -36,13 +40,13 @@ public class NumChromosome implements IChromosome {
     @Override
     public int getFitness() {
         System.out.println("NumChromosome - getFitness");
-        //todo
-        return 0;
+        return FitnessCalculator.getInstance().calculateFitness(this);
     }
 
     //Java.util.Arrays.sort(int[])
     @Override
     public int[] getSequenceSorted(){
+        System.out.println("NumChromosome - getSequenceSorted");
         int[] copyOfSequence = sequence;
         Arrays.sort(copyOfSequence);
         return copyOfSequence;

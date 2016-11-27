@@ -1,35 +1,33 @@
-package engine;
-
-import evolution.IChromosome;
+package evolution;
 
 public class Submission {
     //constructor
     public Submission() {
     }
 
-    public Submission(IChromosome submission, int red, int white) {
-        setAttributes(submission, red, white);
+    public Submission(IChromosome submittedChromosome, int red, int white) {
+        setAttributes(submittedChromosome, red, white);
     }
 
     //attributes
-    private IChromosome submission;
+    private IChromosome submittedChromosome;
     private int red;
     private int white;
 
     //functions
     public void setAttributes(IChromosome submission, int red, int white){
-        this.submission = submission;
+        this.submittedChromosome = submission;
         this.red = red;
         this.white = white;
     }
 
     //getter + setter
-    public IChromosome getSubmission() {
-        return submission;
+    public IChromosome getChromosome() {
+        return submittedChromosome;
     }
 
-    public void setSubmission(IChromosome submission) {
-        this.submission = submission;
+    public void setSubmittedChromosome(IChromosome submittedChromosome) {
+        this.submittedChromosome = submittedChromosome;
     }
 
     public int getRed() {
