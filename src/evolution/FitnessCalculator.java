@@ -30,8 +30,8 @@ public class FitnessCalculator {
 
     public int calculateFitness(IChromosome chromosomeToCheck) {
         System.out.println("FitnessCalculator - calculateFitness");
-        //if no submissions has been set, fitness can't be guessed.
-        int fitness = 0;
+        //smaller illness = better fitness
+        int illness = 0;
         if (!submissions.isEmpty()) {
             //calculate if the chromosome would fit to the responses of the submissions
             for (Submission submission : submissions) {
@@ -46,7 +46,7 @@ public class FitnessCalculator {
                     }
                 }
 
-                int redFitDifference = Math.abs(submission.getRed() - redFit);
+                int redDifference = Math.abs(submission.getRed() - redFit);
 
                 //check white fit
                 int whiteFit = 0;
@@ -64,18 +64,26 @@ public class FitnessCalculator {
                 }
                 whiteFit -= redFit;
 
-                int whiteFitDifference = Math.abs(submission.getWhite() - whiteFit);
+                int whiteDifference = Math.abs(submission.getWhite() - whiteFit);
 
-                fitness += Configuration.INSTANCE.WEIGHT_OF_RED_FIT * redFit + Configuration.INSTANCE.WEIGHT_OF_WHITE_FIT;
+                illness += (Configuration.INSTANCE.WEIGHT_OF_RED_DIFFERENCE * redDifference
+                            + Configuration.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE * whiteDifference);
             }
+            int fitness = getMaxFitness(chromosomeToCheck) - illness;
             return fitness;
         } else {
-            return Integer.MAX_VALUE;
+            //if no submissions has been set, fitness can't be calculated.
+            return 0;
         }
     }
 
     //getter + setter
     public ArrayList<Submission> getSubmissions() {
         return submissions;
+    }
+
+    private int getMaxFitness(IChromosome chromosomeToCheck){
+        int maxDifference = chromosomeToCheck.getNumberOfColors();
+        return submissions.size() * maxDifference *(Configuration.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + Configuration.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
     }
 }

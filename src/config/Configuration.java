@@ -5,6 +5,8 @@ import javafx.scene.paint.Color;
 public enum Configuration {
 
 	INSTANCE;
+	public final int SIZE_OF_POPULATION = 50;
+
 	public final int DEFAULT_LENGTH_OF_CODE = 5;
 	public final int DEFAULT_NUMBER_OF_COLORS = 10;
 	public final int DEFAULT_NUMBER_OF_TRIES = 10;
@@ -14,8 +16,8 @@ public enum Configuration {
 
 	public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
 
-	public final int WEIGHT_OF_WHITE_FIT = 1;
-	public final int WEIGHT_OF_RED_FIT = 2;
+	public final int WEIGHT_OF_WHITE_DIFFERENCE = 1;
+	public final int WEIGHT_OF_RED_DIFFERENCE = 2;
 
 	public final Color[] COLORS = new Color[]{
 		Color.web("0xFFFFFF"), Color.web("0xC0C0C0"), Color.web("0x000000"), Color.web("0xFFE800"),

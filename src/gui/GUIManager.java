@@ -51,7 +51,7 @@ public class GUIManager{
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
-        this.code = new NumChromosome(secretCode);
+        this.code = new NumChromosome(lengthOfCode,numberOfColors,secretCode);
 
         System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: "+lengthOfCode
                 +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+code.toString());

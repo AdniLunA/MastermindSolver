@@ -4,16 +4,14 @@ import java.util.Arrays;
 
 public class NumChromosome implements IChromosome {
     //constructors
-    public NumChromosome() {
-    }
-
-    public NumChromosome(int[] sequence) {
-        this.sequence = sequence;
-    }
-
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
+    }
+
+    public NumChromosome(int lengthOfCode, int numberOfColors, int[] sequence) {
+        this(lengthOfCode, numberOfColors);
+        this.sequence = sequence;
     }
 
     //attributes
@@ -21,6 +19,7 @@ public class NumChromosome implements IChromosome {
     private int numberOfColors;
     private int[] sequence;
     private int fitness = 0;
+    private int generation = 0;
 
     //functions
     @Override
@@ -55,6 +54,16 @@ public class NumChromosome implements IChromosome {
     @Override
     public int getNumberOfColors() {
         return numberOfColors;
+    }
+
+    @Override
+    public int getGeneration() {
+        return generation;
+    }
+
+    @Override
+    public void setGeneration(int generation) {
+        this.generation = generation;
     }
 
     public String toString(){

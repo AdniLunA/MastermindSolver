@@ -5,9 +5,12 @@ public interface IChromosome {
 
     public int getFitness();
     public int[] getSequence();
+    public int getGeneration();
 
     //Java.util.Arrays.sort(int[])
     int[] getSequenceSorted();
 
     int getNumberOfColors();
+
+    void setGeneration(int generation);
 }

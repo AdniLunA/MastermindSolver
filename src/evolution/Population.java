@@ -1,14 +1,17 @@
 package evolution;
 
+import config.Configuration;
+
 public class Population {
     //attributes
-    private int generationCounter = 0;
-    private IChromosome[] generation;
+    private int maxGenerationCounter = 0;
+    private IChromosome[] population = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
+    private IChromosome[] sortedPopulation = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
 
     //functions
     public IChromosome getFittest(){
         System.out.println("Population - getFittest");
-        return new NumChromosome(1,1);//todo
+        return new NumChromosome();//todo
     }
 
     public void evolve(){
@@ -17,22 +20,23 @@ public class Population {
 
     public void sortPopulation(){
         System.out.println("Population - sortPopulation");
+
     }
 
     //getter + setter
-    public int getGenerationCounter() {
-        return generationCounter;
+    public int getMaxGenerationCounter() {
+        return maxGenerationCounter;
     }
 
-    public void setGenerationCounter(int generationCounter) {
-        this.generationCounter = generationCounter;
+    public void setMaxGenerationCounter(int maxGenerationCounter) {
+        this.maxGenerationCounter = maxGenerationCounter;
     }
 
-    public IChromosome[] getGeneration() {
-        return generation;
+    public IChromosome[] getPopulation() {
+        return population;
     }
 
-    public void setGeneration(IChromosome[] generation) {
-        this.generation = generation;
+    public void setPopulation(IChromosome[] population) {
+        this.population = population;
     }
 }
