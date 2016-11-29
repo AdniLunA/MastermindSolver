@@ -9,4 +9,8 @@ public interface IPopulation {
     void evolve();
 
     void sortPopulation();
+
+    IChromosome[] getPopulation();
+
+    int getSumPopulationFitness();
 }

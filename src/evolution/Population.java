@@ -3,6 +3,14 @@ package evolution;
 import config.Configuration;
 
 public class Population implements IPopulation{
+    //constructors
+    public Population() {
+    }
+
+    public Population(IChromosome[] population) {
+        this.population = population;
+    }
+
     //attributes
     private int maxGenerationCounter = 0;
     private IChromosome[] population = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
@@ -35,12 +43,22 @@ public class Population implements IPopulation{
         this.maxGenerationCounter = maxGenerationCounter;
     }
 
+    @Override
     public IChromosome[] getPopulation() {
         return population;
     }
 
     public void setPopulation(IChromosome[] population) {
         this.population = population;
+    }
+
+    @Override
+    public int getSumPopulationFitness(){
+        int sum = 0;
+        for (IChromosome chromosome:population) {
+            sum += chromosome.getFitness();
+        }
+        return sum;
     }
 
 }
