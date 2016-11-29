@@ -2,7 +2,7 @@ package evolution;
 
 import java.util.Arrays;
 
-public class NumChromosome implements IChromosome {
+public class NumChromosome implements IChromosome, Comparable<NumChromosome>{
     //constructors
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
@@ -72,5 +72,17 @@ public class NumChromosome implements IChromosome {
             array += elem+", ";
         }
         return array;
+    }
+
+    @Override
+    public int compareTo(NumChromosome other) {
+        //<0 -> less than other; =0 -> equals; >0 -> greater than other
+        if(this.fitness < other.getFitness()){
+            return -1;
+        } else if(this.fitness > other.getFitness()){
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }

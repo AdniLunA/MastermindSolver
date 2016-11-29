@@ -2,6 +2,8 @@ package evolution;
 
 import config.Configuration;
 
+import java.util.Arrays;
+
 public class Population implements IPopulation{
     //constructors
     public Population() {
@@ -26,12 +28,16 @@ public class Population implements IPopulation{
     @Override
     public void evolve(){
         System.out.println("Population - evolve");
+        maxGenerationCounter++;
+        //todo
     }
 
     @Override
-    public void sortPopulation(){
-        System.out.println("Population - sortPopulation");
-
+    public IChromosome[] getPopulationSorted(){
+        System.out.println("Population - getPopulationSorted");
+        sortedPopulation = Arrays.copyOf(population,population.length);
+        Arrays.sort(sortedPopulation);
+        return sortedPopulation;
     }
 
     //getter + setter
@@ -54,6 +60,7 @@ public class Population implements IPopulation{
 
     @Override
     public int getSumPopulationFitness(){
+        System.out.println("Population - getSumPopulationFitness");
         int sum = 0;
         for (IChromosome chromosome:population) {
             sum += chromosome.getFitness();

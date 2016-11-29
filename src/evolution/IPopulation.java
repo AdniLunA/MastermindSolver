@@ -8,7 +8,7 @@ public interface IPopulation {
 
     void evolve();
 
-    void sortPopulation();
+    IChromosome[] getPopulationSorted();
 
     IChromosome[] getPopulation();
 

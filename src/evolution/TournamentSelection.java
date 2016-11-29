@@ -1,6 +1,5 @@
 package evolution;
 
-import config.SelectionEnum;
 import java.util.Arrays;
 
 public class TournamentSelection implements ISelection{
@@ -10,12 +9,12 @@ public class TournamentSelection implements ISelection{
 
     //functions
     @Override
-    public IChromosome[] selectParents(IPopulation population) {
-        System.out.println("TournamentSelection - selectParents");
+    public IChromosome[] getParents(IPopulation population) {
+        System.out.println("TournamentSelection - getParents");
         splitPopulation(population);
         IChromosome[] parents = new NumChromosome[2];
-        parents[0] = doTournamentSelection(fatherPool);
-        parents[1] = doTournamentSelection(motherPool);
+        parents[0] = selectParents(fatherPool);
+        parents[1] = selectParents(motherPool);
         return parents;
     }
 
@@ -30,7 +29,7 @@ public class TournamentSelection implements ISelection{
     }
 
     @Override
-    public IChromosome doTournamentSelection(IPopulation populationPool){
+    public IChromosome selectParents(IPopulation populationPool){
         return populationPool.getFittest();
     }
 }

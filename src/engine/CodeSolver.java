@@ -16,7 +16,7 @@ public class CodeSolver {
 
     private void submitSequence(){
         System.out.println("CodeSolver - submitSequence");
-        IChromosome chromosome = new NumChromosome();
+        IChromosome chromosome = null; //TODO
         GameEngine.getInstance().resolveSubmission(chromosome);
     }
 

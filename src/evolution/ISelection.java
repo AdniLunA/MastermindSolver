@@ -3,9 +3,9 @@ package evolution;
 import config.SelectionEnum;
 
 public interface ISelection {
-    public IChromosome[] selectParents(IPopulation population);
+    public IChromosome[] getParents(IPopulation population);
 
     void splitPopulation(IPopulation population);
 
-    IChromosome doTournamentSelection(IPopulation populationPool);
+    IChromosome selectParents(IPopulation populationPool);
 }

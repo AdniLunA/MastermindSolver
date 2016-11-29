@@ -5,7 +5,7 @@ import evolution.IChromosome;
 
 public class CodeGenerator {
     //attributes
-    private IChromosome randomChromosome = new NumChromosome();
+    private IChromosome randomChromosome;
 
     //functions
     public void generateRandomChromosome(){
