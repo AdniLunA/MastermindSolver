@@ -8,7 +8,7 @@ public class RouletteWheelSelection implements ISelection{
     //attributes
     private IPopulation fatherPool;
     private IPopulation motherPool;
-    private MersenneTwisterFast randomGenerator = new MersenneTwisterFast();
+    private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
 
     //functions
     @Override
@@ -23,8 +23,7 @@ public class RouletteWheelSelection implements ISelection{
         return parents;
     }
 
-    @Override
-    public void splitPopulation(IPopulation population){
+    private void splitPopulation(IPopulation population){
         System.out.println("TournamentSelection - splitPopulation");
         //copyOfRange: original [], inclusive from, exclusive to
         fatherPool = new Population(Arrays.copyOfRange(population.getPopulation(),
@@ -33,8 +32,7 @@ public class RouletteWheelSelection implements ISelection{
                 population.getPopulation().length / 2, population.getPopulation().length));
     }
 
-    @Override
-    public IChromosome selectParents(IPopulation populationPool) {
+    private IChromosome selectParents(IPopulation populationPool) {
         System.out.println("TournamentSelection - selectParents");
         double totalPopulationFitness = (double) populationPool.getSumPopulationFitness();
         double roulettePointer = randomGenerator.nextDouble(true, false); //incl. 0, excl. 1

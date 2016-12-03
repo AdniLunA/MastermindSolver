@@ -1,6 +1,7 @@
 package gui;
 
 import config.Configuration;
+import config.CrossoverEnum;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -281,7 +282,7 @@ public class ConfigurationController implements Initializable {
         }
     }
 
-    private void initializeParamSettingArea() {
+    private void initializeParamSettingArea(int locMinLength) {
         System.out.println("ConfigurationController - initializeParamSettingArea");
 
         lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
@@ -289,6 +290,7 @@ public class ConfigurationController implements Initializable {
         numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
         colors = Configuration.INSTANCE.COLORS;
 
+        loc_slider.setMin(locMinLength);
         noc_slider.setMin((double)lengthOfCode);
     }
 
@@ -339,6 +341,16 @@ public class ConfigurationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         //attributes
         guiManager = GUIManager.getInstance();
+
+        int k = Configuration.INSTANCE.K_FOR_CROSS_OVER;
+        int minValue;
+        if(Configuration.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT){
+            minValue = k + 1;
+        } else {
+            minValue = 0;
+        }
+        final int LOC_MIN_VALUE = minValue;
+
         rectangles = new Rectangle[]{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19};
         circles = new Circle[]{c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
         for(int i = 0; i < circleState.length; i++){
@@ -346,7 +358,7 @@ public class ConfigurationController implements Initializable {
         }
 
         //functions
-        initializeParamSettingArea();
+        initializeParamSettingArea(LOC_MIN_VALUE);
         initializeColors();
         initializeCodeSettingArea();
 

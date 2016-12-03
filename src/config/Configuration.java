@@ -7,7 +7,8 @@ public enum Configuration {
 	INSTANCE;
 	//evolution settings
 	public final static SelectionEnum SELECTION_TYPE = SelectionEnum.ROULETTE_WHEEL; //best results with Roulette_wheel
-	public final static CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.UNIFORM;
+	public final static CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.K_POINT;
+	//Must be greater than length of code (always < 20!):
 	public final static int K_FOR_CROSS_OVER = 3; // for kPoint crossover
 	public final static float MIXING_RATIO = 0.75f; // for uniform crossover; best results with > 0.5, like 0.75 -> awesome.
 	public final static MutationEnum MUTATION_TYPE = MutationEnum.SCRAMBLE; //best results with SCRAMBLE

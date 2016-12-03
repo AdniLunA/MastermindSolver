@@ -42,6 +42,13 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome>{
         return FitnessCalculator.getInstance().calculateFitness(this);
     }
 
+    @Override
+    public boolean checkValidity(){
+        System.out.println("NumChromosome - checkValidity");
+        //todo
+        return true;
+    }
+
     //Java.util.Arrays.sort(int[])
     @Override
     public int[] getSequenceSorted(){
@@ -64,6 +71,11 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome>{
     @Override
     public void setGeneration(int generation) {
         this.generation = generation;
+    }
+
+    @Override
+    public int getLength(){
+        return lengthOfCode;
     }
 
     public String toString(){

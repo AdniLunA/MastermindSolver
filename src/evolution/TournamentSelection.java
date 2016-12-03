@@ -18,8 +18,7 @@ public class TournamentSelection implements ISelection{
         return parents;
     }
 
-    @Override
-    public void splitPopulation(IPopulation population){
+    private void splitPopulation(IPopulation population){
         System.out.println("TournamentSelection - splitPopulation");
         //copyOfRange: original [], inclusive from, exclusive to
         fatherPool = new Population(Arrays.copyOfRange(population.getPopulation(),
@@ -28,8 +27,7 @@ public class TournamentSelection implements ISelection{
                 population.getPopulation().length / 2, population.getPopulation().length));
     }
 
-    @Override
-    public IChromosome selectParents(IPopulation populationPool){
+    private IChromosome selectParents(IPopulation populationPool){
         return populationPool.getFittest();
     }
 }
