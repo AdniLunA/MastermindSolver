@@ -1,7 +1,7 @@
 package evolution;
 
 public class Submission {
-    //constructor
+    /*constructor*/
     public Submission() {
     }
 
@@ -9,19 +9,20 @@ public class Submission {
         setAttributes(submittedChromosome, red, white);
     }
 
-    //attributes
+    /*attributes*/
     private IChromosome submittedChromosome;
     private int red;
     private int white;
 
-    //functions
-    public void setAttributes(IChromosome submittedChromosome, int red, int white){
+    /*functions*/
+    public void setAttributes(IChromosome submittedChromosome, int red, int white) {
+        System.out.println("Submission - setAttributes");
         this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;
     }
 
-    //getter + setter
+    /*getter + setter*/
     public IChromosome getChromosome() {
         return submittedChromosome;
     }

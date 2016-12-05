@@ -3,7 +3,6 @@ package gui;
 import engine.GameEngine;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -11,9 +10,14 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class GUIManager{
-    //attributes
-    private static GUIManager guiManager; //Singleton Pattern
+public class GUIManager {
+    /*constructor*/
+    private GUIManager() {
+        guiManager = this; /*Singleton Pattern*/
+    }
+
+    /*attributes*/
+    private static GUIManager guiManager; /*Singleton Pattern*/
 
     private ConfigurationController configPg = new ConfigurationController();
     private SimulationController simulationPg = new SimulationController();
@@ -24,16 +28,14 @@ public class GUIManager{
     private int numberOfColors;
     private int numberOfTries;
 
-    //functions
-    public static final GUIManager getInstance(){ //Singleton Pattern
-        if(guiManager == null){
+    /*functions*/
+    public static final GUIManager getInstance() { /*Singleton Pattern*/
+        System.out.println("GUIManager - getInstance");
+        if (guiManager == null) {
             return new GUIManager();
         } else {
             return guiManager;
         }
-    }
-    private GUIManager() {
-        this.guiManager = this; //Singleton Pattern
     }
 
     public void openConfigurationPage(Stage primaryStage) throws IOException {
@@ -46,37 +48,37 @@ public class GUIManager{
         primaryStage.show();
     }
 
-    public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode){
+    public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
         System.out.println("GUIManager - startWithPresetCode");
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
-        this.code = new NumChromosome(lengthOfCode,numberOfColors,secretCode);
+        this.code = new NumChromosome(secretCode, numberOfColors);
 
-        System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: "+lengthOfCode
-                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+code.toString());
+        System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: " + lengthOfCode
+                + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
 
         openSimulationPage();
     }
 
-    public void startWithRandomCode(int lengthOfCode, int numberOfColors, int numberOfTries){
+    public void startWithRandomCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
         System.out.println("GUIManager - startWithRandomCode");
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
         this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
 
-        System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: "+lengthOfCode
-                +", NOC: "+numberOfColors+", NOT: "+numberOfTries+", secret code: "+code.toString());
+        System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: " + lengthOfCode
+                + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
 
         openSimulationPage();
     }
 
-    private void openSimulationPage(){
+    private void openSimulationPage() {
         System.out.println("GUIManager - openSimulationPage");
     }
 
-    //getter + setter
+    /*getter + setter*/
 
     public ConfigurationController getConfigPg() {
         return configPg;

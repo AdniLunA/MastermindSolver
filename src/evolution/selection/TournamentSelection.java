@@ -5,11 +5,11 @@ import evolution.*;
 import java.util.Arrays;
 
 public class TournamentSelection implements ISelection {
-    //attributes
+    /*attributes*/
     private IPopulation fatherPool;
     private IPopulation motherPool;
 
-    //functions
+    /*functions*/
     @Override
     public IChromosome[] getParents(IPopulation population) {
         System.out.println("TournamentSelection - getParents");
@@ -22,7 +22,7 @@ public class TournamentSelection implements ISelection {
 
     private void splitPopulation(IPopulation population){
         System.out.println("TournamentSelection - splitPopulation");
-        //copyOfRange: original [], inclusive from, exclusive to
+        /*copyOfRange: original [], inclusive from, exclusive to*/
         fatherPool = new Population(Arrays.copyOfRange(population.getPopulation(),
                 0,                                     population.getPopulation().length / 2));
         motherPool = new Population(Arrays.copyOfRange(population.getPopulation(),

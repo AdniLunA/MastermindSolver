@@ -5,7 +5,7 @@ import config.Configuration;
 import java.util.ArrayList;
 
 public class SimulationController {
-    //constructors
+    /*constructors*/
     public SimulationController(int lengthOfCode, int numberOfColors, int numberOfTries) {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
@@ -13,6 +13,7 @@ public class SimulationController {
 
         generateMatrix(lengthOfCode, numberOfColors, numberOfTries);
     }
+
     public SimulationController() {
         this.lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
         this.numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
@@ -21,7 +22,7 @@ public class SimulationController {
         generateMatrix(lengthOfCode, numberOfColors, numberOfTries);
     }
 
-    //attributes
+    /*attributes*/
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
@@ -30,25 +31,24 @@ public class SimulationController {
     private boolean showBlackboxContent = Configuration.INSTANCE.DEFAULT_SHOW_BLACKBOX_CONTENT;
     private int[] redResponse = new int[numberOfTries];
     private int[] whiteResponse = new int[numberOfTries];
-    private ArrayList<RowColorValues> solverSequences = new ArrayList<RowColorValues>();
+    private ArrayList<xRowColorValues> solverSequences = new ArrayList<xRowColorValues>();
 
-    //functions
-
-    private void generateMatrix(int code, int colors, int tries){
+    /*functions*/
+    private void generateMatrix(int code, int colors, int tries) {
         System.out.println("SimulationController - generateMatrix");
     }
 
-    private void onclickChangeSimulationSpeed(int newSpeed){
-        System.out.println("SimulationController - onclickChangeSimulationSpeed from "+ simulationSpeed +" to " + newSpeed);
+    private void onclickChangeSimulationSpeed(int newSpeed) {
+        System.out.println("SimulationController - onclickChangeSimulationSpeed from " + simulationSpeed + " to " + newSpeed);
         simulationSpeed = newSpeed;
     }
 
-    private void onclickChangeBlackboxState(boolean newState){
-        System.out.println("SimulationController - onclickChangeBlackboxState from "+ showBlackboxContent +" to " + newState);
+    private void onclickChangeBlackboxState(boolean newState) {
+        System.out.println("SimulationController - onclickChangeBlackboxState from " + showBlackboxContent + " to " + newState);
         showBlackboxContent = newState;
     }
 
-    //getter + setter
+    /*getter + setter*/
     public int getLengthOfCode() {
         return lengthOfCode;
     }
@@ -105,11 +105,11 @@ public class SimulationController {
         this.whiteResponse = whiteResponse;
     }
 
-    public ArrayList<RowColorValues> getSolverSequences() {
+    public ArrayList<xRowColorValues> getSolverSequences() {
         return solverSequences;
     }
 
-    public void setSolverSequences(ArrayList<RowColorValues> solverSequences) {
+    public void setSolverSequences(ArrayList<xRowColorValues> solverSequences) {
         this.solverSequences = solverSequences;
     }
 }

@@ -7,16 +7,16 @@ import evolution.Submission;
 import java.util.ArrayList;
 
 public class CodeSolver {
-    //attributes
+    /*attributes*/
 
-    //functions
+    /*functions*/
     public void run(){
         System.out.println("CodeSolver - run");
     }
 
     private void submitSequence(){
         System.out.println("CodeSolver - submitSequence");
-        IChromosome chromosome = null; //TODO
+        IChromosome chromosome = null; /*TODO*/
         GameEngine.getInstance().resolveSubmission(chromosome);
     }
 
@@ -24,5 +24,5 @@ public class CodeSolver {
         System.out.println("CodeSolver - handleResponse");
     }
 
-    //getter + setter
+    /*getter + setter*/
 }

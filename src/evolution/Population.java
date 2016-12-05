@@ -4,8 +4,8 @@ import config.Configuration;
 
 import java.util.Arrays;
 
-public class Population implements IPopulation{
-    //constructors
+public class Population implements IPopulation {
+    /*constructors*/
     public Population() {
     }
 
@@ -13,34 +13,43 @@ public class Population implements IPopulation{
         this.population = population;
     }
 
-    //attributes
+    /*attributes*/
     private int maxGenerationCounter = 0;
     private IChromosome[] population = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
-    private IChromosome[] sortedPopulation = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
 
-    //functions
+    /*functions*/
     @Override
-    public IChromosome getFittest(){
+    public IChromosome getFittest() {
         System.out.println("Population - getFittest");
-        return new NumChromosome(1,1);//todo
+        return new NumChromosome(1, 1);/*todo*/
     }
 
     @Override
-    public void evolve(){
+    public void evolve() {
         System.out.println("Population - evolve");
         maxGenerationCounter++;
-        //todo
+        /*todo*/
     }
 
     @Override
-    public IChromosome[] getPopulationSorted(){
+    public IChromosome[] getPopulationSorted() {
         System.out.println("Population - getPopulationSorted");
-        sortedPopulation = Arrays.copyOf(population,population.length);
+        IChromosome[] sortedPopulation = Arrays.copyOf(population, population.length);
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
     }
 
-    //getter + setter
+    @Override
+    public int getSumPopulationFitness() {
+        System.out.println("Population - getSumPopulationFitness");
+        int sum = 0;
+        for (IChromosome chromosome : population) {
+            sum += chromosome.getFitness();
+        }
+        return sum;
+    }
+
+    /*getter + setter*/
     public int getMaxGenerationCounter() {
         return maxGenerationCounter;
     }
@@ -58,14 +67,5 @@ public class Population implements IPopulation{
         this.population = population;
     }
 
-    @Override
-    public int getSumPopulationFitness(){
-        System.out.println("Population - getSumPopulationFitness");
-        int sum = 0;
-        for (IChromosome chromosome:population) {
-            sum += chromosome.getFitness();
-        }
-        return sum;
-    }
 
 }

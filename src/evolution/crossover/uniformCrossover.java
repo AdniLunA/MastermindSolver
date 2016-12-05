@@ -9,12 +9,9 @@ import evolution.crossover.ICrossover;
 import java.util.Arrays;
 
 public class uniformCrossover implements ICrossover {
-    //constructor
-
-
-    IChromosome parent1;
-    //attributes
+    /*attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
+    private IChromosome parent1;
     private IChromosome parent2;
     private int sequenceLength;
     private float mixingRatio = readValidMixingRatio();
@@ -22,10 +19,10 @@ public class uniformCrossover implements ICrossover {
     private int p1Capacity;
     private int p2Capacity;
 
-    //functions
+    /*functions*/
     private float readValidMixingRatio() {
-        float ratio = 100 * Configuration.MIXING_RATIO; //transform to percent
-        //no 0 or 100 allowed
+        float ratio = 100 * Configuration.INSTANCE.MIXING_RATIO; /*transform to percent
+        /*no 0 or 100 allowed*/
         if (ratio <= 0 || ratio >= 100) {
             throw new IllegalArgumentException("The mixing ratio in the configuration must be a value between 0 and 1.");
         }
@@ -54,8 +51,8 @@ public class uniformCrossover implements ICrossover {
 
     private IChromosome[] breedChildren() {
         calculateCapacity();
-        int[] childSequence1 = new int[parent1.getLength()];
-        int[] childSequence2 = new int[parent1.getLength()];
+        int[] childSequence1 = new int[sequenceLength];
+        int[] childSequence2 = new int[sequenceLength];
         int[] parentSequence1 = parent1.getSequence();
         int[] parentSequence2 = parent2.getSequence();
         IChromosome child1;
@@ -69,12 +66,12 @@ public class uniformCrossover implements ICrossover {
 
             /*choose parent gene*/
             chooseRandom = (countP1 < p1Capacity) && (countP2 < p2Capacity) ;
-            //if capacity is reached by one p, only take gene of the other
+            /*if capacity is reached by one p, only take gene of the other*/
             if (!chooseRandom){
                 choose1to1 = countP1 < p1Capacity;
-            } else { //if capacity is not reached by p1 or p2, choose gene randomized.
-                //choose gene random
-                int randomPointer = randomGenerator.nextInt(0,101);//incl. 0, excl. 101
+            } else { /*if capacity is not reached by p1 or p2, choose gene randomized.*/
+                /*choose gene random*/
+                int randomPointer = randomGenerator.nextInt(0,101);/*incl. 0, excl. 101*/
                 choose1to1 = (randomPointer <= mixingRatio);
             }
 
@@ -83,8 +80,8 @@ public class uniformCrossover implements ICrossover {
             childSequence1[i] = (choose1to1 ? parentSequence2[i] : parentSequence1[i]);
         }
 
-        child1 = new NumChromosome(parent1.getLength(), parent1.getNumberOfColors(), childSequence1);
-        child2 = new NumChromosome(parent1.getLength(), parent1.getNumberOfColors(), childSequence2);
+        child1 = new NumChromosome(childSequence1, parent1.getNumberOfColors());
+        child2 = new NumChromosome(childSequence2, parent1.getNumberOfColors());
         return new IChromosome[]{child1, child2};
     }
 
@@ -99,5 +96,5 @@ public class uniformCrossover implements ICrossover {
         p2Capacity = sequenceLength - p1Capacity;
     }
 
-    //getter + setter
+    /*getter + setter*/
 }

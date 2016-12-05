@@ -2,38 +2,39 @@ package evolution;
 
 import java.util.Arrays;
 
-public class NumChromosome implements IChromosome, Comparable<NumChromosome>{
-    //constructors
+public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
+    /*constructors*/
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
     }
 
-    public NumChromosome(int lengthOfCode, int numberOfColors, int[] sequence) {
-        this(lengthOfCode, numberOfColors);
+    public NumChromosome(int[] sequence, int numberOfColors) {
+        this(sequence.length, numberOfColors);
         this.sequence = sequence;
     }
 
-    //attributes
+    /*attributes*/
     private int lengthOfCode;
     private int numberOfColors;
     private int[] sequence;
-    private int fitness = 0;
     private int generation = 0;
 
-    //functions
-    @Override
-    public int[] getSequence(){
-        return sequence;
-    }
-
+    /*functions*/
     @Override
     public void generateRandom() {
         System.out.println("NumChromosome - generateRandom");
         sequence = new int[lengthOfCode];
-        for(int i = 0; i < sequence.length; i++){
+        for (int i = 0; i < sequence.length; i++) {
             sequence[i] = (int) Math.floor((Math.random() * numberOfColors) + 1);
         }
+    }
+
+    @Override
+    public boolean checkValidity() {
+        System.out.println("NumChromosome - checkValidity");
+        /*todo*/
+        return true;
     }
 
     @Override
@@ -43,19 +44,36 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome>{
     }
 
     @Override
-    public boolean checkValidity(){
-        System.out.println("NumChromosome - checkValidity");
-        //todo
-        return true;
-    }
-
-    //Java.util.Arrays.sort(int[])
-    @Override
-    public int[] getSequenceSorted(){
+    public int[] getSequenceSorted() {
         System.out.println("NumChromosome - getSequenceSorted");
         int[] copyOfSequence = sequence;
         Arrays.sort(copyOfSequence);
         return copyOfSequence;
+    }
+
+    @Override
+    public String toString() {
+        String array = "";
+        for (int elem : sequence) {
+            array += elem + ", ";
+        }
+        return array;
+    }
+    @Override
+    public int compareTo(NumChromosome other) {
+        /*<0 -> less than other; =0 -> equals; >0 -> greater than other*/
+        if (this.getFitness() < other.getFitness()) {
+            return -1;
+        } else if (this.getFitness() > other.getFitness()) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
+    /*getters + setters*/
+    @Override
+    public int[] getSequence() {
+        return sequence;
     }
 
     @Override
@@ -74,27 +92,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome>{
     }
 
     @Override
-    public int getLength(){
+    public int getLength() {
         return lengthOfCode;
-    }
-
-    public String toString(){
-        String array = "";
-        for (int elem: sequence) {
-            array += elem+", ";
-        }
-        return array;
-    }
-
-    @Override
-    public int compareTo(NumChromosome other) {
-        //<0 -> less than other; =0 -> equals; >0 -> greater than other
-        if(this.fitness < other.getFitness()){
-            return -1;
-        } else if(this.fitness > other.getFitness()){
-            return 1;
-        } else {
-            return 0;
-        }
     }
 }

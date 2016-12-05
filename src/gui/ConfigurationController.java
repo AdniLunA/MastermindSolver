@@ -8,7 +8,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -22,11 +21,9 @@ import javafx.scene.shape.Rectangle;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.ResourceBundle;
-//import evolution.NumChromosome;
-//import evolution.IChromosome;
 
 public class ConfigurationController implements Initializable {
-    //attributes
+    /*attributes*/
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
@@ -114,8 +111,9 @@ public class ConfigurationController implements Initializable {
     private int[] circleState = new int[Configuration.INSTANCE.MAX_LENGTH_OF_CODE];
     private Color[] colors;
 
-    //functions
+    /*functions*/
     private int checkBoundaries(String sValue, int maxValue) {
+        System.out.println("ConfigurationController - checkBoundaries");
         try {
             int value = Integer.parseInt(sValue);
             if (value < 1) {
@@ -208,41 +206,41 @@ public class ConfigurationController implements Initializable {
 
         boolean[] accepted = checkCodeAcceptance();
 
-        if(accepted[0]&&accepted[1]){
+        if (accepted[0] && accepted[1]) {
             int[] secretCode = Arrays.copyOf(circleState, lengthOfCode);
             guiManager.startWithPresetCode(lengthOfCode, numberOfColors, numberOfTries, secretCode);
         }
-        if(!accepted[0]){
-            //todo show empty hole message
+        if (!accepted[0]) {
+            /*todo show empty hole message*/
         }
-        if(!accepted[1]){
-            //todo show duplicate color message
+        if (!accepted[1]) {
+            /*todo show duplicate color message*/
         }
     }
 
     private boolean[] checkCodeAcceptance() {
         System.out.println("ConfigurationController - checkCodeAcceptance");
 
-        //test if a hole is not filled
+        /*test if a hole is not filled*/
         int i = 0;
         boolean emptyHoleFound = false;
-        while(i < lengthOfCode && !emptyHoleFound){
-            if (circleState[i] >= numberOfColors){
+        while (i < lengthOfCode && !emptyHoleFound) {
+            if (circleState[i] >= numberOfColors) {
                 emptyHoleFound = true;
-                System.out.println("found empty hole at pos "+i);
+                System.out.println("found empty hole at pos " + i);
             }
             i++;
         }
 
-        //test if there are duplicates
+        /*test if there are duplicates*/
         int[] sortedCode = Arrays.copyOf(circleState, lengthOfCode);
         Arrays.sort(sortedCode);
         int j = 1;
         boolean duplicateFound = false;
-        while(j < lengthOfCode && !duplicateFound){
-            if(sortedCode[j] == sortedCode[j-1]){
+        while (j < lengthOfCode && !duplicateFound) {
+            if (sortedCode[j] == sortedCode[j - 1]) {
                 duplicateFound = true;
-                System.out.println("found duplicate color number "+sortedCode[j]);
+                System.out.println("found duplicate color number " + sortedCode[j]);
             }
             j++;
         }
@@ -252,7 +250,9 @@ public class ConfigurationController implements Initializable {
     }
 
     private void incrColor(int pos) {
-        System.out.println("ConfigurationController - incrColor");
+        if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+            System.out.println("ConfigurationController - incrColor");
+        }
         Circle circle = circles[pos];
         int nextState = circleState[pos] + 1;
         if (nextState >= numberOfColors) {
@@ -263,9 +263,10 @@ public class ConfigurationController implements Initializable {
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, nextColor),
                 new Stop(1, Color.web("#ffffff")));
-        System.out.println("new color: " + nextColor + ", state: "+nextState+", circle position: " + pos);
+        if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+            System.out.println("new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
+        }
         circle.fillProperty().set(gradient);
-
     }
 
     private void initializeColors() {
@@ -291,7 +292,7 @@ public class ConfigurationController implements Initializable {
         colors = Configuration.INSTANCE.COLORS;
 
         loc_slider.setMin(locMinLength);
-        noc_slider.setMin((double)lengthOfCode);
+        noc_slider.setMin((double) lengthOfCode);
     }
 
     private void initializeCodeSettingArea() {
@@ -300,19 +301,19 @@ public class ConfigurationController implements Initializable {
         for (int i = 0; i < Configuration.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
             circles[i].setVisible(true);
         }
-        for (int i = Configuration.INSTANCE.MAX_LENGTH_OF_CODE-1; i >= lengthOfCode; i--) {
+        for (int i = Configuration.INSTANCE.MAX_LENGTH_OF_CODE - 1; i >= lengthOfCode; i--) {
             circles[i].setVisible(false);
         }
 
         for (int i = 0; i < Configuration.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             rectangles[i].setVisible(true);
         }
-        for (int i = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS-1; i >= numberOfColors; i--) {
+        for (int i = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS - 1; i >= numberOfColors; i--) {
             rectangles[i].setVisible(false);
         }
     }
 
-    //getter + setter
+    /*getter + setter*/
     public int getLengthOfCode() {
         return lengthOfCode;
     }
@@ -339,12 +340,13 @@ public class ConfigurationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //attributes
+        System.out.println("ConfigurationController - initialize");
+        /*attributes*/
         guiManager = GUIManager.getInstance();
 
         int k = Configuration.INSTANCE.K_FOR_CROSS_OVER;
         int minValue;
-        if(Configuration.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT){
+        if (Configuration.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT) {
             minValue = k + 1;
         } else {
             minValue = 0;
@@ -353,16 +355,16 @@ public class ConfigurationController implements Initializable {
 
         rectangles = new Rectangle[]{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19};
         circles = new Circle[]{c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
-        for(int i = 0; i < circleState.length; i++){
+        for (int i = 0; i < circleState.length; i++) {
             circleState[i] = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS;
         }
 
-        //functions
+        /*functions*/
         initializeParamSettingArea(LOC_MIN_VALUE);
         initializeColors();
         initializeCodeSettingArea();
 
-        //event listeners
+        /*event listeners*/
         this.loc_slider.valueProperty().addListener(
                 new ChangeListener<Number>() {
                     @Override
@@ -370,7 +372,7 @@ public class ConfigurationController implements Initializable {
                         loc_textfield.setText(String.valueOf(newValue.intValue()));
                         lengthOfCode = newValue.intValue();
                         loc_textfield.setStyle("-fx-text-inner-color: black;");
-                        noc_slider.setMin((double)newValue);
+                        noc_slider.setMin((double) newValue);
                     }
                 }
         );
@@ -397,70 +399,90 @@ public class ConfigurationController implements Initializable {
         c0.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(0);
             }
         });
         c1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(1);
             }
         });
         c2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(2);
             }
         });
         c3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(3);
             }
         });
         c4.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(4);
             }
         });
         c5.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(5);
             }
         });
         c6.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(6);
             }
         });
         c7.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(7);
             }
         });
         c8.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(8);
             }
         });
         c9.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                System.out.println("ConfigurationController - onclickToggleColor");
+                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                    System.out.println("ConfigurationController - onclickToggleColor");
+                }
                 incrColor(9);
             }
         });

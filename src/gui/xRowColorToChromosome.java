@@ -7,7 +7,7 @@ public class xRowColorToChromosome {
     private IChromosome chromosome;
 
     //functions
-    public IChromosome translateToChromosome(RowColorValues rowColors){
+    public IChromosome translateToChromosome(xRowColorValues rowColors){
         System.out.println("xRowColorToChromosome - translateToChromosome");
         return chromosome;
     }

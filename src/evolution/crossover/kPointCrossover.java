@@ -8,19 +8,15 @@ import evolution.NumChromosome;
 import java.util.Arrays;
 
 public class kPointCrossover implements ICrossover{
-    //constructor
-
-
-    //attributes
+    /*attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
     private IChromosome parent2;
     private int sequenceLength;
-    private int kForKPointC = Configuration.INSTANCE.K_FOR_CROSS_OVER;
     private IChromosome[] children = new IChromosome[2];
     private int[] splits;
 
-    //functions
+    /*functions*/
     @Override
     public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
         this.parent1 = parent1;
@@ -44,10 +40,11 @@ public class kPointCrossover implements ICrossover{
     }
 
     private void generateRandomSplitPos() {
-        splits = new int[kForKPointC+2];
+        int kForKPointC = Configuration.INSTANCE.K_FOR_CROSS_OVER;
+        splits = new int[kForKPointC +2];
         splits[0] = 0;
         splits[1] = sequenceLength;
-        for (int i = 2; i < kForKPointC+2; i++) {
+        for (int i = 2; i < kForKPointC +2; i++) {
             splits[i] = createValidRandomSplitPos(i);
         }
         Arrays.sort(splits);
@@ -63,7 +60,7 @@ public class kPointCrossover implements ICrossover{
              * if that is the case, search new position.
              */
             do {
-                //nextInt: incl. minimum, incl. maximum
+                /*nextInt: incl. minimum, incl. maximum*/
                 pos = randomGenerator.nextInt(1, sequenceLength - 2);
                 invalid = false;
                 for (int i = currentPos; (i > 1 && !invalid); i--) {
@@ -73,8 +70,7 @@ public class kPointCrossover implements ICrossover{
                 }
             } while (invalid);
         } catch (RuntimeException r){
-            System.out.println("kPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos);
-            System.out.println(r);
+            System.out.printf("kPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos+"\n"+r);
         }
 
         return pos;
@@ -91,14 +87,14 @@ public class kPointCrossover implements ICrossover{
             dnaForC1 = (i % 2 == 0) ? parent1 : parent2;
             dnaForC2 = (i % 2 == 0) ? parent2 : parent1;
 
-            //copyOfRange: from incl., to excl.
+            /*copyOfRange: from incl., to excl.*/
             childSequence1 = Arrays.copyOfRange(dnaForC1.getSequence(), splits[i - 1], splits[i]);
             childSequence2 = Arrays.copyOfRange(dnaForC2.getSequence(), splits[i - 1], splits[i]);
         }
-        child1 = new NumChromosome(sequenceLength, parent1.getNumberOfColors(), childSequence1);
-        child2 = new NumChromosome(sequenceLength, parent1.getNumberOfColors(), childSequence2);
+        child1 = new NumChromosome(childSequence1, parent1.getNumberOfColors());
+        child2 = new NumChromosome(childSequence2, parent1.getNumberOfColors());
         return new IChromosome[]{child1, child2};
     }
 
-    //getter + setter
+    /*getter + setter*/
 }

@@ -4,10 +4,10 @@ import evolution.IChromosome;
 
 public class xChromosomeToRowColor {
     //attributes
-    private RowColorValues rowColors;
+    private xRowColorValues rowColors;
 
     //functions
-    public RowColorValues translateToRowColors(IChromosome chromosome){
+    public xRowColorValues translateToRowColors(IChromosome chromosome){
         System.out.println("xChromosomeToRowColor - translateToRowColors");
         return rowColors;
     }

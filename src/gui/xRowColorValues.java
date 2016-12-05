@@ -4,22 +4,21 @@ import evolution.IChromosome;
 
 import java.util.ArrayList;
 
-public class RowColorValues {
-    //constructor
-    public RowColorValues(){
-
+public class xRowColorValues {
+    /*constructor*/
+    public xRowColorValues() {
     }
 
-    public RowColorValues(IChromosome sequence){
+    public xRowColorValues(IChromosome sequence) {
         rowColors.add(new xRGBValues(sequence));
     }
 
-    //attributes
+    /*attributes*/
     private ArrayList<xRGBValues> rowColors = new ArrayList<xRGBValues>();
 
-    //functions
+    /*functions*/
 
-    //getter + setter
+    /*getter + setter*/
     public ArrayList<xRGBValues> getRowColors() {
         return rowColors;
     }

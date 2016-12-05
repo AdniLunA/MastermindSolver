@@ -3,20 +3,18 @@ package engine;
 import evolution.IChromosome;
 
 public class CodeValidator {
-    //constructor
+    /*constructor*/
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
     }
 
-    //attributes
+    /*attributes*/
     private IChromosome secretCode;
-    private int redResponse;
-    private int whiteResponse;
 
-    //functions
+    /*functions*/
     public int[] calculateResponse(IChromosome sequenceToCheck){
-        redResponse = 0;
-        whiteResponse = 0;
+        int redResponse = 0;
+        int whiteResponse = 0;
         System.out.println("CodeValidator - calculateResponse");
         for(int i = 0; i < secretCode.getSequence().length; i++){
             if(secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]){
@@ -42,5 +40,5 @@ public class CodeValidator {
         return response;
     }
 
-    //getter + setter
+    /*getter + setter*/
 }

@@ -4,15 +4,15 @@ import evolution.NumChromosome;
 import evolution.IChromosome;
 
 public class CodeGenerator {
-    //attributes
+    /*attributes*/
     private IChromosome randomChromosome;
 
-    //functions
+    /*functions*/
     public void generateRandomChromosome(){
         System.out.println("CodeGenerator - generateRandomChromosome");
     }
 
-    //getter + setter
+    /*getter + setter*/
     public IChromosome getRandomChromosome() {
         return randomChromosome;
     }
