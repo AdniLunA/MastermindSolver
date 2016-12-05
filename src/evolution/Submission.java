@@ -15,8 +15,8 @@ public class Submission {
     private int white;
 
     //functions
-    public void setAttributes(IChromosome submission, int red, int white){
-        this.submittedChromosome = submission;
+    public void setAttributes(IChromosome submittedChromosome, int red, int white){
+        this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;
     }

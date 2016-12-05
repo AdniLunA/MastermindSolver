@@ -1,10 +1,11 @@
-package evolution;
+package evolution.selection;
 
 import config.MersenneTwisterFast;
+import evolution.*;
 
 import java.util.Arrays;
 
-public class RouletteWheelSelection implements ISelection{
+public class RouletteWheelSelection implements ISelection {
     //attributes
     private IPopulation fatherPool;
     private IPopulation motherPool;

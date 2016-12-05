@@ -1,4 +1,4 @@
-package evolution;
+package evolution.mutation;
 
 public interface IMutation {
 

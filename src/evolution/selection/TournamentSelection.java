@@ -1,8 +1,10 @@
-package evolution;
+package evolution.selection;
+
+import evolution.*;
 
 import java.util.Arrays;
 
-public class TournamentSelection implements ISelection{
+public class TournamentSelection implements ISelection {
     //attributes
     private IPopulation fatherPool;
     private IPopulation motherPool;

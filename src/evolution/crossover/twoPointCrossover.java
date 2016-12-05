@@ -1,27 +1,30 @@
-package evolution;
+package evolution.crossover;
 
-import config.Configuration;
 import config.MersenneTwisterFast;
+import evolution.IChromosome;
+import evolution.NumChromosome;
+import evolution.crossover.ICrossover;
 
 import java.util.Arrays;
 
-public class kPointCrossover implements ICrossover{
+public class twoPointCrossover implements ICrossover {
     //constructor
 
 
     //attributes
-    MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
-    IChromosome parent1;
-    IChromosome parent2;
-    int kForKPointC = Configuration.INSTANCE.K_FOR_CROSS_OVER;
-    IChromosome[] children = new IChromosome[2];
-    int[] splits;
+    private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
+    private IChromosome parent1;
+    private IChromosome parent2;
+    private int sequenceLength;
+    private IChromosome[] children = new IChromosome[2];
+    private int[] splits = new int[4];
 
     //functions
     @Override
     public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
         this.parent1 = parent1;
         this.parent2 = parent2;
+        sequenceLength = parent1.getLength();
 
         int numberOfHealthyChildren = 0;
 
@@ -40,12 +43,10 @@ public class kPointCrossover implements ICrossover{
     }
 
     private void generateRandomSplitPos() {
-        splits = new int[kForKPointC];
         splits[0] = 0;
-        splits[1] = parent1.getLength();
-        for (int i = 2; i < kForKPointC+2; i++) {
-            splits[i] = createValidRandomSplitPos(i);
-        }
+        splits[1] = sequenceLength;
+        splits[2] = createValidRandomSplitPos(2);
+        splits[3] = createValidRandomSplitPos(3);
         Arrays.sort(splits);
     }
 
@@ -60,7 +61,7 @@ public class kPointCrossover implements ICrossover{
              */
             do {
                 //nextInt: incl. minimum, incl. maximum
-                pos = randomGenerator.nextInt(1, parent1.getLength() - 2);
+                pos = randomGenerator.nextInt(1, sequenceLength - 2);
                 invalid = false;
                 for (int i = currentPos; (i > 1 && !invalid); i--) {
                     if (pos == splits[i]) {
@@ -69,7 +70,7 @@ public class kPointCrossover implements ICrossover{
                 }
             } while (invalid);
         } catch (RuntimeException r){
-            System.out.println("kPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos);
+            System.out.println("twoPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos);
             System.out.println(r);
         }
 
@@ -77,8 +78,8 @@ public class kPointCrossover implements ICrossover{
     }
 
     private IChromosome[] breedChildren() {
-        int[] childSequence1 = new int[parent1.getLength()];
-        int[] childSequence2 = new int[parent1.getLength()];
+        int[] childSequence1 = new int[sequenceLength];
+        int[] childSequence2 = new int[sequenceLength];
         IChromosome dnaForC1;
         IChromosome dnaForC2;
         IChromosome child1;
@@ -91,10 +92,9 @@ public class kPointCrossover implements ICrossover{
             childSequence1 = Arrays.copyOfRange(dnaForC1.getSequence(), splits[i - 1], splits[i]);
             childSequence2 = Arrays.copyOfRange(dnaForC2.getSequence(), splits[i - 1], splits[i]);
         }
-        child1 = new NumChromosome(parent1.getLength(), parent1.getNumberOfColors(), childSequence1);
-        child2 = new NumChromosome(parent1.getLength(), parent1.getNumberOfColors(), childSequence2);
-        IChromosome[] children = {child1, child2};
-        return children;
+        child1 = new NumChromosome(sequenceLength, parent1.getNumberOfColors(), childSequence1);
+        child2 = new NumChromosome(sequenceLength, parent1.getNumberOfColors(), childSequence2);
+        return new IChromosome[]{child1, child2};
     }
 
     //getter + setter
