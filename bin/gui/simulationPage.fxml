@@ -9,9 +9,67 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="950.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SimulationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SimulationController">
    <children>
-      <Pane layoutX="144.0" layoutY="233.0" prefHeight="58.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
+      <Pane prefHeight="800.0" prefWidth="286.0" style="-fx-background-color: snow;">
+         <children>
+            <Group layoutX="-36.0" layoutY="38.0">
+               <children>
+                  <Label layoutX="58.0" layoutY="156.0" text="Slow simulation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Slider blockIncrement="1.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="100.0" />
+                  <Label layoutX="213.0" layoutY="156.0" text="Fast simulation">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Group layoutX="-168.0" layoutY="82.0">
+               <children>
+                  <CheckBox layoutX="188.0" layoutY="219.0" mnemonicParsing="false" selected="true" text="Yes">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <Label layoutX="188.0" layoutY="191.0" prefHeight="32.0" prefWidth="186.0" text="Show secret code?">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Group>
+               <children>
+                  <Label layoutX="20.0" layoutY="107.0" text="Run simulation automated or manually?">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Group layoutX="-20.0" layoutY="-115.0">
+                     <children>
+                        <RadioButton layoutX="53.0" layoutY="251.0" mnemonicParsing="false" text="Automated">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                        <RadioButton layoutX="192.0" layoutY="250.0" mnemonicParsing="false" text="Manually">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </Group>
+               </children>
+            </Group>
+            <Button layoutX="32.0" layoutY="388.0" mnemonicParsing="false" text="Next Step" />
+            <Button layoutX="48.0" layoutY="738.0" mnemonicParsing="false" text="&lt;&lt; Return to Configuration Page" />
+         </children>
+      </Pane>
+      <Pane layoutX="442.0" layoutY="121.0" prefHeight="58.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
             <Group layoutX="1.0" layoutY="-10.0">
                <children>
@@ -199,22 +257,7 @@
             </Group>
          </children>
       </Pane>
-      <Group layoutX="-2.0" layoutY="-35.0">
-         <children>
-            <Label layoutX="58.0" layoutY="156.0" text="Slow simulation">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-            <Slider blockIncrement="1.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="700.0" snapToTicks="true" value="100.0" />
-            <Label layoutX="594.0" layoutY="156.0" text="Fast simulation">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </Group>
-      <ScrollPane layoutY="300.0" prefHeight="600.0" prefWidth="800.0">
+      <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1300.0" prefWidth="780.0">
                <children>
@@ -223,24 +266,10 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Text layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind Simulation" textAlignment="CENTER" wrappingWidth="800.0">
+      <Text layoutX="292.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind Simulation" textAlignment="CENTER" wrappingWidth="800.0">
          <font>
-            <Font name="System Bold" size="60.0" />
+            <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Group layoutX="74.0" layoutY="4.0">
-         <children>
-            <CheckBox layoutX="386.0" layoutY="192.0" mnemonicParsing="false" selected="true" text="Yes">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </CheckBox>
-            <Label layoutX="188.0" layoutY="191.0" prefHeight="32.0" prefWidth="186.0" text="Show secret code?">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </Label>
-         </children>
-      </Group>
    </children>
 </Pane>

@@ -28,6 +28,8 @@ public class GUIManager {
     private int numberOfColors;
     private int numberOfTries;
 
+    private Stage primaryStage;
+
     /*functions*/
     public static final GUIManager getInstance() { /*Singleton Pattern*/
         System.out.println("GUIManager - getInstance");
@@ -38,14 +40,21 @@ public class GUIManager {
         }
     }
 
-    public void openConfigurationPage(Stage primaryStage) throws IOException {
+    public void openConfigurationPage(Stage primaryStage) {
         System.out.println("GUIManager - openConfigurationPage");
 
-        Pane configPage = (Pane) FXMLLoader.load(getClass().getResource("configurationPage.fxml"));
-        Scene scene = new Scene(configPage);
-        primaryStage.setTitle("Mastermind Simulation");
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        this.primaryStage = primaryStage;
+
+        try {
+            Pane configPage = (Pane) FXMLLoader.load(getClass().getResource("configurationPage.fxml"));
+            Scene scene = new Scene(configPage);
+            primaryStage.setTitle("Mastermind Simulation");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("GUIManager - openSimulationPage: can't find \"configurationPage.fxml\"");
+            e.printStackTrace();
+        }
     }
 
     public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
@@ -76,10 +85,27 @@ public class GUIManager {
 
     private void openSimulationPage() {
         System.out.println("GUIManager - openSimulationPage");
+        //only accept valid code
+        if (!code.checkValidity()) {
+            /*todo: error message */
+        } else {
+            /*todo: redirect page*/
+
+
+            try {
+                Pane simulationPage = (Pane) FXMLLoader.load(getClass().getResource("simulationPage.fxml"));
+                Scene scene = new Scene(simulationPage);
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            } catch (IOException e) {
+                System.out.println("GUIManager - openSimulationPage: can't find \"simulationPage.fxml\"");
+                e.printStackTrace();
+            }
+            gameEngine.startGame(lengthOfCode, numberOfColors, numberOfTries, code);
+        }
     }
 
     /*getter + setter*/
-
     public ConfigurationController getConfigPg() {
         return configPg;
     }

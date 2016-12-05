@@ -1,6 +1,7 @@
 package gui;
 
 import config.Configuration;
+import gui.legacy.xRowColorValues;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,4 @@
-package gui;
+package gui.legacy;
 
 import evolution.IChromosome;
 

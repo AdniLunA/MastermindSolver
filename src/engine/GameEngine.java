@@ -26,7 +26,7 @@ public class GameEngine {
     }
 
     private GameEngine() {
-        this.gameEngine = this; /*Singleton Pattern*/
+        gameEngine = this; /*Singleton Pattern*/
     }
 
     public IChromosome getRandomCode(int codeLength, int numColors){

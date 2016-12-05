@@ -4,9 +4,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.xTestController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.legacy.xTestController">
    <children>
-      <Button fx:id="button" layoutX="19.0" layoutY="217.0" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="25.0" prefWidth="550.0" text="yay" />
+      <Button fx:id="button" layoutX="19.0" layoutY="217.0" mnemonicParsing="false" onAction="#buttonPressed" prefHeight="25.0" prefWidth="550.0" text="switch to page 1" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="600.0">
          <menus>
             <Menu mnemonicParsing="false" text="Help">
