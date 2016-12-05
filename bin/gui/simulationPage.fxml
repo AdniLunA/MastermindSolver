@@ -72,7 +72,7 @@
             </Group>
             <Group layoutX="-140.0" layoutY="-61.0">
                <children>
-                  <CheckBox fx:id="cbShowSecretCode" layoutX="328.0" layoutY="197.0" mnemonicParsing="false" selected="true" text="Yes">
+                  <CheckBox fx:id="cbShowSecretCode" layoutX="328.0" layoutY="197.0" mnemonicParsing="false" onAction="#onclickShowSecretCode" selected="true" text="Yes">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -102,7 +102,7 @@
       </Pane>
       <Pane layoutX="442.0" layoutY="121.0" prefHeight="58.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
-            <Group fx:id="gHiddenSequence" layoutX="1.0" layoutY="-10.0">
+            <Group fx:id="gBlackBox" layoutX="1.0" layoutY="-10.0">
                <children>
                   <Circle fx:id="c0" layoutX="24.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
                   <Circle fx:id="c1" layoutX="74.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
@@ -120,9 +120,9 @@
       </Pane>
       <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
+          <AnchorPane fx:id="apScrollableField" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
                <children>
-                  <Canvas height="600.0" layoutX="40.0" layoutY="10.0" width="700.0" />
+                  <Canvas fx:id="cGameField" height="600.0" layoutX="40.0" layoutY="10.0" width="700.0" />
                </children>
             </AnchorPane>
         </content>

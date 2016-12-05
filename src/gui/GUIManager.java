@@ -52,7 +52,7 @@ public class GUIManager {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
-            System.out.println("GUIManager - openSimulationPage: can't find \"configurationPage.fxml\"");
+            System.out.println("GUIManager - openSimulationPage: errors in \"configurationPage.fxml\" or corresponding controller");
             e.printStackTrace();
         }
     }
@@ -98,7 +98,7 @@ public class GUIManager {
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (IOException e) {
-                System.out.println("GUIManager - openSimulationPage: can't find \"simulationPage.fxml\"");
+                System.out.println("GUIManager - openSimulationPage: errors in \"simulationPage.fxml\" or the corresponding controller");
                 e.printStackTrace();
             }
             gameEngine.startGame(lengthOfCode, numberOfColors, numberOfTries, code);
@@ -128,5 +128,13 @@ public class GUIManager {
 
     public void setGameEngine(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
+    }
+
+    public int getLengthOfCode() {
+        return lengthOfCode;
+    }
+
+    public int getNumberOfTries() {
+        return numberOfTries;
     }
 }

@@ -212,9 +212,11 @@ public class ConfigurationController implements Initializable {
         }
         if (!accepted[0]) {
             /*todo show empty hole message*/
+            System.out.println("code not accepted due to empty hole(s)");
         }
         if (!accepted[1]) {
             /*todo show duplicate color message*/
+            System.out.println("code not accepted due to duplicate colors");
         }
     }
 
@@ -245,8 +247,8 @@ public class ConfigurationController implements Initializable {
             j++;
         }
 
-        boolean[] error = {emptyHoleFound, duplicateFound};
-        return error;
+        boolean[] accepted = {!emptyHoleFound, !duplicateFound};
+        return accepted;
     }
 
     private void incrColor(int pos) {

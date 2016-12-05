@@ -29,6 +29,8 @@ public enum Configuration {
 	/*gui settings*/
 	public final boolean TRACK_CODE_SETTING = false;
 	public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
+	public final boolean DEFAULT_RUN_AUTOMATED = true;
+	public final int DEFAULT_SIMULATION_SPEED = 50;
 
 	public final Color[] COLORS = new Color[]{
 		Color.web("0xFFFFFF"), Color.web("0xC0C0C0"), Color.web("0x000000"), Color.web("0xFFE800"),
