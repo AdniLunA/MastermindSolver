@@ -11,257 +11,118 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SimulationController">
    <children>
-      <Pane prefHeight="800.0" prefWidth="286.0" style="-fx-background-color: snow;">
+      <Pane prefHeight="800.0" prefWidth="279.0" style="-fx-background-color: snow; -fx-border-color: gainsboro;">
          <children>
-            <Group layoutX="-36.0" layoutY="38.0">
+            <Group layoutX="-3.0" layoutY="14.0">
                <children>
-                  <Label layoutX="58.0" layoutY="156.0" text="Slow simulation">
+                  <Group fx:id="gRunAutomatedSettings" layoutX="-36.0" layoutY="165.0">
+                     <children>
+                        <Label layoutX="56.0" layoutY="166.0" text="Slow simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="spd_slider" blockIncrement="1.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="50.0" />
+                        <Label layoutX="213.0" layoutY="166.0" text="Fast simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="bPauseSimulation" layoutX="103.0" layoutY="234.0" mnemonicParsing="false" onAction="#onclickPauseSimulation" prefHeight="30.0" prefWidth="150.0" text="Pause simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="bContinueSimulation" layoutX="103.0" layoutY="234.0" mnemonicParsing="false" onAction="#onclickContinueSimulation" prefHeight="25.0" prefWidth="150.0" text="Continue simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Group>
+                  <Group layoutY="116.0">
+                     <children>
+                        <Label layoutX="20.0" layoutY="87.0" text="Run simulation automated or manually?">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Group layoutX="-14.0" layoutY="-118.0">
+                           <children>
+                              <RadioButton fx:id="rbRunAutomated" layoutX="53.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunAutomated" selected="true" text="Automated">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="rbRunManually" layoutX="180.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunManually" text="Manually">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+                  <Button fx:id="bNextStep" layoutX="67.0" layoutY="430.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="150.0" text="Next Step">
                      <font>
                         <Font size="14.0" />
                      </font>
-                  </Label>
-                  <Slider blockIncrement="1.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="100.0" />
-                  <Label layoutX="213.0" layoutY="156.0" text="Fast simulation">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
+                  </Button>
                </children>
             </Group>
-            <Group layoutX="-168.0" layoutY="82.0">
+            <Group layoutX="-140.0" layoutY="-61.0">
                <children>
-                  <CheckBox layoutX="188.0" layoutY="219.0" mnemonicParsing="false" selected="true" text="Yes">
+                  <CheckBox fx:id="cbShowSecretCode" layoutX="328.0" layoutY="197.0" mnemonicParsing="false" selected="true" text="Yes">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </CheckBox>
-                  <Label layoutX="188.0" layoutY="191.0" prefHeight="32.0" prefWidth="186.0" text="Show secret code?">
+                  <Label layoutX="188.0" layoutY="193.0" prefHeight="32.0" prefWidth="120.0" text="Show secret code?">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
                </children>
             </Group>
-            <Group>
-               <children>
-                  <Label layoutX="20.0" layoutY="107.0" text="Run simulation automated or manually?">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Group layoutX="-20.0" layoutY="-115.0">
-                     <children>
-                        <RadioButton layoutX="53.0" layoutY="251.0" mnemonicParsing="false" text="Automated">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </RadioButton>
-                        <RadioButton layoutX="192.0" layoutY="250.0" mnemonicParsing="false" text="Manually">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </RadioButton>
-                     </children>
-                  </Group>
-               </children>
-            </Group>
-            <Button layoutX="32.0" layoutY="388.0" mnemonicParsing="false" text="Next Step" />
-            <Button layoutX="48.0" layoutY="738.0" mnemonicParsing="false" text="&lt;&lt; Return to Configuration Page" />
+            <Button layoutX="29.0" layoutY="738.0" mnemonicParsing="false" onAction="#onclickReturnToConfigPg" text="&lt;&lt; Return to Configuration Page">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="bStartSimulation" layoutX="66.0" layoutY="557.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="58.0" prefWidth="150.0" style="-fx-background-color: lightgreen; -fx-border-color: limegreen; -fx-border-width: 3px; -fx-border-radius: 3px;" text="Start simulation" textFill="#276f27">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="-1.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Settings" textAlignment="CENTER" wrappingWidth="279.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
          </children>
       </Pane>
       <Pane layoutX="442.0" layoutY="121.0" prefHeight="58.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
-            <Group layoutX="1.0" layoutY="-10.0">
+            <Group fx:id="gHiddenSequence" layoutX="1.0" layoutY="-10.0">
                <children>
-                  <Circle layoutX="74.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="124.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="174.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="424.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="24.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="274.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="474.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="374.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="224.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
-                  <Circle layoutX="324.0" layoutY="39.0" radius="15.0" strokeType="INSIDE">
-                     <fill>
-                        <RadialGradient centerX="0.49421965317919075" centerY="0.35221674876847286" focusAngle="-4.4" focusDistance="0.5063291139240507" radius="0.43670886075949367">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="#ffffff00" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </fill>
-                     <stroke>
-                        <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                           <stops>
-                              <Stop color="WHITE" />
-                              <Stop color="WHITE" offset="1.0" />
-                           </stops>
-                        </RadialGradient>
-                     </stroke>
-                  </Circle>
+                  <Circle fx:id="c0" layoutX="24.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c1" layoutX="74.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c2" layoutX="124.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c3" layoutX="224.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c4" layoutX="174.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c5" layoutX="274.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c6" layoutX="324.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c7" layoutX="374.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c8" layoutX="424.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
+                  <Circle fx:id="c9" layoutX="474.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
                </children>
             </Group>
          </children>
       </Pane>
       <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1300.0" prefWidth="780.0">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
                <children>
-                  <Canvas height="1200.0" layoutX="40.0" layoutY="10.0" width="700.0" />
+                  <Canvas height="600.0" layoutX="40.0" layoutY="10.0" width="700.0" />
                </children>
             </AnchorPane>
         </content>
