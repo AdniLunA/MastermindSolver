@@ -351,7 +351,7 @@ public class ConfigurationController implements Initializable {
         if (Configuration.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT) {
             minValue = k + 1;
         } else {
-            minValue = 1;
+            minValue = 0;
         }
         final int LOC_MIN_VALUE = minValue;
 
