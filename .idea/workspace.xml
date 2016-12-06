@@ -2,33 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xChromosomeToRowColor.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xRGBValues.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xRowColorToChromosome.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xRowColorValues.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xTestController.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xconfigurationPageStatic.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xgamePage.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xsimulationPageStatic.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xtest.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/gui/legacy/xtest2.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xChromosomeToRowColor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xRGBValues.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xRowColorToChromosome.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xRowColorValues.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xTestController.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xconfigurationPageStatic.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xgamePage.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xsimulationPageStatic.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xtest.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/gui/legacy/xtest2.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/config/Configuration.class" afterPath="$PROJECT_DIR$/bin/config/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/SimulationController.class" afterPath="$PROJECT_DIR$/bin/gui/SimulationController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/config/MersenneTwisterFast.class" afterPath="$PROJECT_DIR$/bin/config/MersenneTwisterFast.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/kPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/kPointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/twoPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/twoPointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/uniformCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/uniformCrossover.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/simulationPage.fxml" afterPath="$PROJECT_DIR$/bin/gui/simulationPage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/Configuration.java" afterPath="$PROJECT_DIR$/src/config/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ConfigurationController.java" afterPath="$PROJECT_DIR$/src/gui/ConfigurationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/SimulationController.java" afterPath="$PROJECT_DIR$/src/gui/SimulationController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/simulationPage.fxml" afterPath="$PROJECT_DIR$/src/gui/simulationPage.fxml" />
     </list>
     <ignored path="MastermindSolver.iws" />
@@ -51,12 +30,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="SimulationController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="SimulationController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/SimulationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="138" column="30" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
-              <folding />
+            <state vertical-scroll-proportion="0.40801457">
+              <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+              <folding>
+                <element signature="e#2045#2046#0" expanded="true" />
+                <element signature="e#2116#2117#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,8 +46,8 @@
       <file leaf-file-name="simulationPage.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/simulationPage.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.2638888">
-              <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
+            <state vertical-scroll-proportion="-1.6724138">
+              <caret line="104" column="86" selection-start-line="104" selection-start-column="86" selection-end-line="104" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -84,10 +66,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ConfigurationController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ConfigurationController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/ConfigurationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38217822">
+            <state vertical-scroll-proportion="-4.3863635">
               <caret line="349" column="21" selection-start-line="349" selection-start-column="21" selection-end-line="349" selection-end-column="21" />
               <folding />
             </state>
@@ -142,12 +124,12 @@
         <option value="$PROJECT_DIR$/src/engine/CodeValidator.java" />
         <option value="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" />
         <option value="$PROJECT_DIR$/src/gui/GUIManager.java" />
-        <option value="$PROJECT_DIR$/src/gui/simulationPage.fxml" />
         <option value="$PROJECT_DIR$/src/gui/ShadesCircle.java" />
         <option value="$PROJECT_DIR$/src/gui/ShadedCircle.java" />
         <option value="$PROJECT_DIR$/src/config/Configuration.java" />
         <option value="$PROJECT_DIR$/src/gui/SimulationController.java" />
         <option value="$PROJECT_DIR$/src/gui/ConfigurationController.java" />
+        <option value="$PROJECT_DIR$/src/gui/simulationPage.fxml" />
       </list>
     </option>
   </component>
@@ -653,7 +635,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#2045#2046#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -698,7 +683,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="39" selection-start-line="25" selection-start-column="39" selection-end-line="25" selection-end-column="39" />
-          <folding />
+          <folding>
+            <element signature="e#2045#2046#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,23 +1019,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/SimulationController.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/ConfigurationController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="138" column="30" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
+        <state vertical-scroll-proportion="-4.3863635">
+          <caret line="349" column="21" selection-start-line="349" selection-start-column="21" selection-end-line="349" selection-end-column="21" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/simulationPage.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.2638888">
-          <caret line="109" column="31" selection-start-line="109" selection-start-column="31" selection-end-line="109" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUIManager.java">
@@ -1058,11 +1035,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/ConfigurationController.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/simulationPage.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38217822">
-          <caret line="349" column="21" selection-start-line="349" selection-start-column="21" selection-end-line="349" selection-end-column="21" />
+        <state vertical-scroll-proportion="-1.6724138">
+          <caret line="104" column="86" selection-start-line="104" selection-start-column="86" selection-end-line="104" selection-end-column="86" />
           <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/SimulationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40801457">
+          <caret line="138" column="9" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+          <folding>
+            <element signature="e#2045#2046#0" expanded="true" />
+            <element signature="e#2116#2117#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
