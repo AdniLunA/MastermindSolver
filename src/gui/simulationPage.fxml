@@ -100,29 +100,16 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="442.0" layoutY="121.0" prefHeight="58.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
+      <Pane layoutX="442.0" layoutY="112.0" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
-            <Group fx:id="gBlackBox" layoutX="1.0" layoutY="-10.0">
-               <children>
-                  <Circle fx:id="c0" layoutX="24.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c1" layoutX="74.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c2" layoutX="124.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c3" layoutX="224.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c4" layoutX="174.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c5" layoutX="274.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c6" layoutX="324.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c7" layoutX="374.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c8" layoutX="424.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c9" layoutX="474.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-               </children>
-            </Group>
+            <Pane fx:id="pBlackBox" layoutY="15.0" prefHeight="30.0" prefWidth="500.0" style="-fx-border-color: gray;" />
          </children>
       </Pane>
       <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
         <content>
-          <AnchorPane fx:id="apScrollableField" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
+          <AnchorPane fx:id="apScrollableField" layoutX="50.0" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
                <children>
-                  <Canvas fx:id="cGameField" height="600.0" layoutX="40.0" layoutY="10.0" width="700.0" />
+                  <Pane fx:id="pGameArea" layoutX="40.0" prefHeight="600.0" prefWidth="700.0" />
                </children>
             </AnchorPane>
         </content>

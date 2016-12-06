@@ -11,6 +11,12 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.Slider;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.CycleMethod;
+import javafx.scene.paint.LinearGradient;
+import javafx.scene.paint.Stop;
+import javafx.scene.shape.Circle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,35 +37,37 @@ public class SimulationController implements Initializable {
     private int simulationSpeed = Configuration.INSTANCE.DEFAULT_SIMULATION_SPEED;
 
     @FXML
-    CheckBox cbShowSecretCode;
-    @FXML
-    Group gBlackBox;
+    private CheckBox cbShowSecretCode;
 
     @FXML
-    RadioButton rbRunAutomated;
+    private RadioButton rbRunAutomated;
     @FXML
-    Group gRunAutomatedSettings;
+    private Group gRunAutomatedSettings;
     @FXML
-    Slider spd_slider;
+    private Slider spd_slider;
     @FXML
-    Button bContinueSimulation;
+    private Button bContinueSimulation;
     @FXML
-    Button bPauseSimulation;
+    private Button bPauseSimulation;
 
     @FXML
-    RadioButton rbRunManually;
+    private RadioButton rbRunManually;
     @FXML
-    Button bNextStep;
+    private Button bNextStep;
 
     @FXML
-    Button bStartSimulation;
+    private Button bStartSimulation;
 
     @FXML
-    Canvas cGameField;
+    private Pane pBlackBox;
+    private Circle[] blackBox;
+
     @FXML
-    AnchorPane apScrollableField;
+    private AnchorPane apScrollableField;
+    @FXML
+    private Pane pGameArea;
 
-
+    private Circle[][] circleMatrix;
 
     /*functions*/
     private void addNewLine(Submission lineInfo){
@@ -70,6 +78,42 @@ public class SimulationController implements Initializable {
         System.out.println("SimulationController - generateMatrix");
         int x = lengthOfCode;
         int y = numberOfTries;
+
+        /*circle positions*/
+        float[] circleXPositions = new float[lengthOfCode];
+        float cXDistance = 500f / lengthOfCode;
+        circleXPositions[0] = 100f + (cXDistance / 2f);
+        for (int i = 1; i < lengthOfCode; i++) {
+            circleXPositions[i] = circleXPositions[i-1]+cXDistance;
+        }
+
+        int[] circleYPositions = new int[numberOfTries];
+        int cYDistance = 50;
+        circleYPositions[0] = cYDistance;
+        for (int i = 1; i < numberOfTries; i++) {
+            circleYPositions[i] = circleYPositions[i-1]+cYDistance;
+        }
+
+        /*gameFieldHeight*/
+        apScrollableField.setPrefHeight(circleYPositions[numberOfTries-1]+cYDistance);
+
+        /*place blackBox circles*/
+        blackBox = new Circle[lengthOfCode];
+        for(int i = 0; i < lengthOfCode; i++){
+            blackBox[i] = new Circle(15, Color.BLACK);
+            blackBox[i].relocate(circleXPositions[i]-115, 0.0);
+        }
+        pBlackBox.getChildren().addAll(blackBox);
+
+        /*place game circles*/
+        circleMatrix = new Circle[lengthOfCode][numberOfTries];
+        for(int row = 0; row < lengthOfCode; row++){
+            for(int col = 0; col < numberOfTries; col ++){
+                circleMatrix[row][col] = new Circle(15, Color.BLACK);
+                circleMatrix[row][col].relocate(circleXPositions[row], circleYPositions[col]);
+            }
+            pBlackBox.getChildren().addAll(circleMatrix[row]);
+        }
     }
 
     private void onclickChangeSimulationSpeed(int newSpeed) {
@@ -85,7 +129,7 @@ public class SimulationController implements Initializable {
     private void refreshDependencies(){
         System.out.println("SimulationController - refreshDependencies");
         /*show secret code?*/
-        gBlackBox.setVisible(cbShowSecretCode.isSelected());
+        pBlackBox.setVisible(cbShowSecretCode.isSelected());
 
         /*run simulation automated or manually?*/
         runAutomated = rbRunAutomated.isSelected();
@@ -115,6 +159,14 @@ public class SimulationController implements Initializable {
         }
 
         refreshDependencies();
+    }
+
+    private LinearGradient getCircleGradient(int color){
+        LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
+                new Stop(0, Configuration.INSTANCE.COLORS[color]),
+                new Stop(1, Color.web("#ffffff")));
+        /*this.fillProperty().set(gradient);*/
+        return gradient;
     }
 
     @FXML
@@ -185,6 +237,7 @@ public class SimulationController implements Initializable {
         spd_slider.setValue(simulationSpeed);
 
 
+        /*todo: set code colors*/
 
 
         refreshDependencies();
