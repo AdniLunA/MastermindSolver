@@ -22,7 +22,7 @@
                               <Font size="14.0" />
                            </font>
                         </Label>
-                        <Slider fx:id="spd_slider" blockIncrement="1.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" min="1.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="50.0" />
+                        <Slider fx:id="spd_slider" blockIncrement="100.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" max="5000.0" min="100.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="1000.0" />
                         <Label layoutX="213.0" layoutY="166.0" text="Fast simulation">
                            <font>
                               <Font size="14.0" />
@@ -102,7 +102,7 @@
       </Pane>
       <Pane layoutX="442.0" layoutY="112.0" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
-            <Pane fx:id="pBlackBox" layoutY="15.0" prefHeight="30.0" prefWidth="500.0"/>
+            <Pane fx:id="pBlackBox" layoutY="15.0" prefHeight="30.0" prefWidth="500.0" />
          </children>
       </Pane>
       <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
