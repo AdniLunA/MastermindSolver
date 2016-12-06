@@ -8,7 +8,7 @@ import evolution.ArrayBuilder;
 import java.util.Arrays;
 
 public class twoPointCrossover implements ICrossover {
-    /*attributes*/
+    /***attributes***/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
     private IChromosome parent2;
@@ -16,7 +16,7 @@ public class twoPointCrossover implements ICrossover {
     private IChromosome[] children = new IChromosome[2];
     private int[] splits = new int[4];
 
-    /*functions*/
+    /***functions***/
     @Override
     public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
         this.parent1 = parent1;
@@ -92,5 +92,5 @@ public class twoPointCrossover implements ICrossover {
         return new IChromosome[]{child1, child2};
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
 }

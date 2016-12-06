@@ -6,12 +6,12 @@ import evolution.*;
 import java.util.Arrays;
 
 public class RouletteWheelSelection implements ISelection {
-    /*attributes*/
+    /***attributes***/
     private IPopulation fatherPool;
     private IPopulation motherPool;
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
 
-    /*functions*/
+    /***functions***/
     @Override
     public IChromosome[] getParents(IPopulation population) {
         System.out.println("TournamentSelection - getParents");

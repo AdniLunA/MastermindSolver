@@ -9,7 +9,7 @@ import evolution.crossover.ICrossover;
 import java.util.Arrays;
 
 public class uniformCrossover implements ICrossover {
-    /*attributes*/
+    /***attributes***/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
     private IChromosome parent2;
@@ -19,7 +19,7 @@ public class uniformCrossover implements ICrossover {
     private int p1Capacity;
     private int p2Capacity;
 
-    /*functions*/
+    /***functions***/
     private float readValidMixingRatio() {
         float ratio = 100 * Configuration.INSTANCE.MIXING_RATIO; /*transform to percent
         /*no 0 or 100 allowed*/
@@ -96,5 +96,5 @@ public class uniformCrossover implements ICrossover {
         p2Capacity = sequenceLength - p1Capacity;
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
 }

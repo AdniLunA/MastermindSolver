@@ -9,9 +9,9 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class Mastermind extends Application {
-    /*attributes*/
+    /***attributes***/
 
-    /*functions*/
+    /***functions***/
 
     @Override
     public void start(Stage primaryStage) throws IOException {

@@ -8,10 +8,10 @@ public class CodeValidator {
         this.secretCode = secretCode;
     }
 
-    /*attributes*/
+    /***attributes***/
     private IChromosome secretCode;
 
-    /*functions*/
+    /***functions***/
     public int[] calculateResponse(IChromosome sequenceToCheck){
         int redResponse = 0;
         int whiteResponse = 0;
@@ -40,5 +40,5 @@ public class CodeValidator {
         return response;
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
 }

@@ -7,9 +7,9 @@ import evolution.Submission;
 import java.util.ArrayList;
 
 public class CodeSolver {
-    /*attributes*/
+    /***attributes***/
 
-    /*functions*/
+    /***functions***/
     public void run(){
         System.out.println("CodeSolver - run");
     }
@@ -24,5 +24,5 @@ public class CodeSolver {
         System.out.println("CodeSolver - handleResponse");
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
 }

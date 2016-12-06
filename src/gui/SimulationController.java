@@ -23,7 +23,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SimulationController implements Initializable {
-    /*attributes*/
+    /***attributes***/
     private int lengthOfCode;
     private int numberOfTries;
 
@@ -72,7 +72,7 @@ public class SimulationController implements Initializable {
     private Rectangle[] rRedFeedback;
     private Rectangle[] rWhiteFeedback;
 
-    /*functions*/
+    /***functions***/
     private void addNewLine(Submission lineInfo){
         System.out.println("SimulationController - addNewLine");
     }
@@ -270,26 +270,24 @@ public class SimulationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("SimulationController -  initialize");
-        /*initialize variables*/
+        /***initialize variables*/
         GUIManager manager = GUIManager.getInstance();
         lengthOfCode = manager.getLengthOfCode();
         numberOfTries = manager.getNumberOfTries();
 
-        /*initialize page settings*/
+        /***initialize page settings*/
         generateGameMatrix();
         cbShowSecretCode.setSelected(showBlackboxContent);
         rbRunAutomated.setSelected(runAutomated);
         rbRunManually.setSelected(!runAutomated);
         spd_slider.setValue(simulationSpeed);
+        /*set blackBox colors*/
         fillCircleLine(blackBox, manager.getSecretCode());
-
-        /*todo: set code colors*/
-
 
         refreshDependencies();
 
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
 
 }

@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ConfigurationController implements Initializable {
-    /*attributes*/
+    /***attributes***/
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
@@ -111,7 +111,7 @@ public class ConfigurationController implements Initializable {
     private int[] circleState = new int[Configuration.INSTANCE.MAX_LENGTH_OF_CODE];
     private Color[] colors;
 
-    /*functions*/
+    /***functions***/
     private int checkBoundaries(String sValue, int maxValue) {
         System.out.println("ConfigurationController - checkBoundaries");
         try {
@@ -315,7 +315,7 @@ public class ConfigurationController implements Initializable {
         }
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
     public int getLengthOfCode() {
         return lengthOfCode;
     }
@@ -343,7 +343,7 @@ public class ConfigurationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("ConfigurationController - initialize");
-        /*attributes*/
+        /***attributes***/
         guiManager = GUIManager.getInstance();
 
         int k = Configuration.INSTANCE.K_FOR_CROSS_OVER;
@@ -361,7 +361,7 @@ public class ConfigurationController implements Initializable {
             circleState[i] = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS;
         }
 
-        /*functions*/
+        /***functions***/
         initializeParamSettingArea(LOC_MIN_VALUE);
         initializeColors();
         initializeCodeSettingArea();

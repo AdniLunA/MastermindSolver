@@ -5,7 +5,7 @@ import config.Configuration;
 import java.util.ArrayList;
 
 public class FitnessCalculator {
-    /*attributes*/
+    /***attributes***/
     private static FitnessCalculator fitnessCalculator; /*Singleton Pattern*/
 
     private ArrayList<Submission> submissions = new ArrayList<Submission>();
@@ -14,7 +14,7 @@ public class FitnessCalculator {
         fitnessCalculator = this; /*Singleton Pattern*/
     }
 
-    /*functions*/
+    /***functions***/
     public static final FitnessCalculator getInstance() { /*Singleton Pattern*/
         System.out.println("FitnessCalculator - getInstance");
         if (fitnessCalculator == null) {
@@ -82,7 +82,7 @@ public class FitnessCalculator {
         return submissions.size() * maxDifference *(Configuration.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + Configuration.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
     public ArrayList<Submission> getSubmissions() {
         return submissions;
     }

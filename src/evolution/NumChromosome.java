@@ -5,7 +5,7 @@ import config.Configuration;
 import java.util.Arrays;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
-    /*constructors*/
+    /***constructors***/
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
@@ -16,13 +16,13 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         this.sequence = sequence;
     }
 
-    /*attributes*/
+    /***attributes***/
     private int lengthOfCode;
     private int numberOfColors;
     private int[] sequence;
     private int generation = 0;
 
-    /*functions*/
+    /***functions***/
     @Override
     public void generateRandom() {
         System.out.println("NumChromosome - generateRandom");

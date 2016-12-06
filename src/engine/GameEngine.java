@@ -6,7 +6,7 @@ import evolution.NumChromosome;
 import evolution.Submission;
 
 public class GameEngine {
-    /*attributes*/
+    /***attributes***/
     private static GameEngine gameEngine; /*Singleton Pattern*/
 
     private NumChromosome codeGenerator;
@@ -16,7 +16,7 @@ public class GameEngine {
     private int numColors;
     private int numTries;
 
-    /*functions*/
+    /***functions***/
     public static final GameEngine getInstance(){ /*Singleton Pattern*/
         if (gameEngine == null){
             return new GameEngine();
@@ -50,7 +50,7 @@ public class GameEngine {
         FitnessCalculator.getInstance().addSubmission(new Submission(chromosome, response[0], response[1]));
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
     public int getNumTries() {
         return numTries;
     }

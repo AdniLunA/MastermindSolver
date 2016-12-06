@@ -5,7 +5,7 @@ import config.Configuration;
 import java.util.Arrays;
 
 public class Population implements IPopulation {
-    /*constructors*/
+    /***constructors***/
     public Population() {
     }
 
@@ -13,11 +13,11 @@ public class Population implements IPopulation {
         this.population = population;
     }
 
-    /*attributes*/
+    /***attributes***/
     private int maxGenerationCounter = 0;
     private IChromosome[] population = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
 
-    /*functions*/
+    /***functions***/
     @Override
     public IChromosome getFittest() {
         System.out.println("Population - getFittest");
@@ -49,7 +49,7 @@ public class Population implements IPopulation {
         return sum;
     }
 
-    /*getter + setter*/
+    /***getter + setter***/
     public int getMaxGenerationCounter() {
         return maxGenerationCounter;
     }
