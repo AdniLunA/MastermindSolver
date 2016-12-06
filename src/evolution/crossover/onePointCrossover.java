@@ -3,6 +3,7 @@ package evolution.crossover;
 import config.MersenneTwisterFast;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import evolution.ArrayBuilder;
 
 import java.util.Arrays;
 
@@ -44,8 +45,7 @@ public class onePointCrossover implements ICrossover{
     }
 
     private IChromosome[] breedChildren() {
-        int[] childSequence1;
-        int[] childSequence2 = new int[sequenceLength];
+        ArrayBuilder builder = new ArrayBuilder();
         IChromosome dnaForC1;
         IChromosome dnaForC2;
         IChromosome child1;
@@ -55,18 +55,18 @@ public class onePointCrossover implements ICrossover{
         dnaForC1 = parent1;
         dnaForC2 = parent2;
         /*copyOfRange: from incl., to excl.*/
-        childSequence1 = Arrays.copyOfRange(dnaForC1.getSequence(), 0, splitPos);
-        childSequence2 = Arrays.copyOfRange(dnaForC2.getSequence(), 0, splitPos);
+        builder.addToQueue(1, Arrays.copyOfRange(dnaForC1.getSequence(), 0, splitPos));
+        builder.addToQueue(2, Arrays.copyOfRange(dnaForC2.getSequence(), 0, splitPos));
 
         /*second part*/
         dnaForC1 = parent2;
         dnaForC2 = parent1;
         /*copyOfRange: from incl., to excl.*/
-        childSequence1 = Arrays.copyOfRange(dnaForC1.getSequence(), splitPos, sequenceLength);
-        childSequence2 = Arrays.copyOfRange(dnaForC2.getSequence(), splitPos, sequenceLength);
+        builder.addToQueue(1, Arrays.copyOfRange(dnaForC1.getSequence(), splitPos, sequenceLength));
+        builder.addToQueue(2, Arrays.copyOfRange(dnaForC2.getSequence(), splitPos, sequenceLength));
 
-        child1 = new NumChromosome(childSequence1, parent1.getNumberOfColors());
-        child2 = new NumChromosome(childSequence2, parent1.getNumberOfColors());
+        child1 = new NumChromosome(builder.getChild1Sequence(), parent1.getNumberOfColors());
+        child2 = new NumChromosome(builder.getChild2Sequence(), parent1.getNumberOfColors());
         return new IChromosome[]{child1, child2};
     }
 

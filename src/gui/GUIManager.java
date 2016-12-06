@@ -57,6 +57,11 @@ public class GUIManager {
         }
     }
 
+    protected void returnToConfigurationPage(){
+        System.out.println("GUIManager - returnToConfigurationPage");
+        openConfigurationPage(primaryStage);
+    }
+
     public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
         System.out.println("GUIManager - startWithPresetCode");
         this.lengthOfCode = lengthOfCode;
@@ -130,11 +135,15 @@ public class GUIManager {
         this.gameEngine = gameEngine;
     }
 
-    public int getLengthOfCode() {
+    protected int getLengthOfCode() {
         return lengthOfCode;
     }
 
-    public int getNumberOfTries() {
+    protected int getNumberOfTries() {
         return numberOfTries;
+    }
+
+    protected int[] getSecretCode() {
+        return code.getSequence();
     }
 }

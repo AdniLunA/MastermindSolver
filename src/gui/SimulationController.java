@@ -5,7 +5,6 @@ import evolution.Submission;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
@@ -78,8 +77,8 @@ public class SimulationController implements Initializable {
         System.out.println("SimulationController - addNewLine");
     }
 
-    private void generateMatrix() {
-        System.out.println("SimulationController - generateMatrix");
+    private void generateGameMatrix() {
+        System.out.println("SimulationController - generateGameMatrix");
         int x = lengthOfCode;
         int y = numberOfTries;
 
@@ -163,7 +162,9 @@ public class SimulationController implements Initializable {
     private void refreshDependencies(){
         System.out.println("SimulationController - refreshDependencies");
         /*show secret code?*/
-        pBlackBox.setVisible(cbShowSecretCode.isSelected());
+        for (Circle circle : blackBox) {
+            circle.setVisible(cbShowSecretCode.isSelected());
+        }
 
         /*run simulation automated or manually?*/
         runAutomated = rbRunAutomated.isSelected();
@@ -196,11 +197,21 @@ public class SimulationController implements Initializable {
     }
 
     private LinearGradient getCircleGradient(int color){
+        //System.out.println("SimulationController - getCircleGradient");
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, Configuration.INSTANCE.COLORS[color]),
                 new Stop(1, Color.web("#ffffff")));
         /*this.fillProperty().set(gradient);*/
         return gradient;
+    }
+
+    private void fillCircleLine(Circle[] circles, int colors[]){
+        System.out.printf("SimulationController - fillCircleLine: ");
+        for (int i = 0; i < circles.length; i++) {
+            System.out.printf(colors[i] +" ");
+            circles[i].fillProperty().set(getCircleGradient(colors[i]));
+        }
+        System.out.println();
     }
 
     @FXML
@@ -247,12 +258,13 @@ public class SimulationController implements Initializable {
     @FXML
     private void onclickReturnToConfigPg(){
         System.out.println("SimulationController - onclickReturnToConfigPg");
-        /*todo*/
+        GUIManager.getInstance().returnToConfigurationPage();
     }
 
     @FXML
     private void onclickShowSecretCode(){
-
+        System.out.println("SimulationController - onclickShowSecretCode");
+        refreshDependencies();
     }
 
     @Override
@@ -264,12 +276,12 @@ public class SimulationController implements Initializable {
         numberOfTries = manager.getNumberOfTries();
 
         /*initialize page settings*/
-        generateMatrix();
+        generateGameMatrix();
         cbShowSecretCode.setSelected(showBlackboxContent);
         rbRunAutomated.setSelected(runAutomated);
         rbRunManually.setSelected(!runAutomated);
         spd_slider.setValue(simulationSpeed);
-
+        fillCircleLine(blackBox, manager.getSecretCode());
 
         /*todo: set code colors*/
 

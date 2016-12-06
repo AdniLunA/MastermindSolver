@@ -3,7 +3,7 @@ package evolution.crossover;
 import config.MersenneTwisterFast;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.crossover.ICrossover;
+import evolution.ArrayBuilder;
 
 import java.util.Arrays;
 
@@ -74,8 +74,7 @@ public class twoPointCrossover implements ICrossover {
     }
 
     private IChromosome[] breedChildren() {
-        int[] childSequence1 = new int[sequenceLength];
-        int[] childSequence2 = new int[sequenceLength];
+        ArrayBuilder builder = new ArrayBuilder();
         IChromosome dnaForC1;
         IChromosome dnaForC2;
         IChromosome child1;
@@ -85,11 +84,11 @@ public class twoPointCrossover implements ICrossover {
             dnaForC2 = (i % 2 == 0) ? parent2 : parent1;
 
             /*copyOfRange: from incl., to excl.*/
-            childSequence1 = Arrays.copyOfRange(dnaForC1.getSequence(), splits[i - 1], splits[i]);
-            childSequence2 = Arrays.copyOfRange(dnaForC2.getSequence(), splits[i - 1], splits[i]);
+            builder.addToQueue(1, Arrays.copyOfRange(dnaForC1.getSequence(), splits[i - 1], splits[i]));
+            builder.addToQueue(2, Arrays.copyOfRange(dnaForC2.getSequence(), splits[i - 1], splits[i]));
         }
-        child1 = new NumChromosome(childSequence1, parent1.getNumberOfColors());
-        child2 = new NumChromosome(childSequence2, parent1.getNumberOfColors());
+        child1 = new NumChromosome(builder.getChild1Sequence(), parent1.getNumberOfColors());
+        child2 = new NumChromosome(builder.getChild2Sequence(), parent1.getNumberOfColors());
         return new IChromosome[]{child1, child2};
     }
 

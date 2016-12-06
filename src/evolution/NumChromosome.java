@@ -1,5 +1,7 @@
 package evolution;
 
+import config.Configuration;
+
 import java.util.Arrays;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
@@ -24,16 +26,56 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     @Override
     public void generateRandom() {
         System.out.println("NumChromosome - generateRandom");
-        sequence = new int[lengthOfCode];
-        for (int i = 0; i < sequence.length; i++) {
-            sequence[i] = (int) Math.floor((Math.random() * numberOfColors) + 1);
+        boolean validSequence = false;
+        int numOfTries = 0;
+        while(!validSequence){
+            /*TODO FIX!!!*/
+            sequence = new int[lengthOfCode];
+            int[] numberPool = new int[numberOfColors];
+            for (int i = 0; i < numberOfColors; i++) {
+                numberPool[i] = i;
+            }
+            /*reduce available numbers after one was picked*/
+            for (int i = 0; i < sequence.length; i++) {
+                int randomPointer = (int) Math.floor((Math.random() * numberPool.length));
+                int randomNumber = numberPool[randomPointer];
+                numberPool = removeItemOfArray(numberPool, randomPointer);
+                sequence[i] = randomNumber;
+            }
+            numOfTries++;
+            validSequence = checkValidity();
         }
+        System.out.println("NumChromosome - generateRandom: Number of tries to find random code: "+numOfTries);
+    }
+
+    private int[] removeItemOfArray(int[] numberPool, int numberPosition) {
+        ArrayBuilder builder = new ArrayBuilder();
+        /*from inclusive, to exclusive*/
+        builder.addToQueue(Arrays.copyOfRange(numberPool, 0, numberPosition));
+        builder.addToQueue(Arrays.copyOfRange(numberPool, numberPosition+1, numberPool.length));
+
+        return builder.getSequence();
     }
 
     @Override
     public boolean checkValidity() {
         System.out.println("NumChromosome - checkValidity");
-        /*todo*/
+        /*every color should occur max. 1 time*/
+        int[] colorCounter = new int[numberOfColors];
+        for (int i = 0; i < lengthOfCode; i++) {
+            /*a color has to be set at each position*/
+            if(sequence[i] >= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS){
+                return false;
+            }
+            /*count color occurrences*/
+            colorCounter[sequence[i]]++;
+        }
+        /*check double occurrences*/
+        for (int count : colorCounter) {
+            if(count > 1){
+                return false;
+            }
+        }
         return true;
     }
 
