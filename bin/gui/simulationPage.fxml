@@ -102,15 +102,7 @@
       </Pane>
       <Pane layoutX="442.0" layoutY="112.0" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
-            <Pane fx:id="pBlackBox" layoutY="15.0" prefHeight="30.0" prefWidth="500.0" style="-fx-border-color: gray;">
-               <children>
-                  <Circle fx:id="c02" layoutX="50.0" layoutY="15.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c021" layoutX="150.0" layoutY="15.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c0211" layoutX="250.0" layoutY="15.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c02111" layoutX="350.0" layoutY="15.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-                  <Circle fx:id="c02112" layoutX="450.0" layoutY="15.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-               </children>
-            </Pane>
+            <Pane fx:id="pBlackBox" layoutY="15.0" prefHeight="30.0" prefWidth="500.0" />
          </children>
       </Pane>
       <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
@@ -127,19 +119,5 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Group fx:id="gBlackBox" layoutX="407.0" layoutY="-11.0">
-         <children>
-            <Circle fx:id="c0" layoutX="24.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c1" layoutX="74.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c3" layoutX="224.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c4" layoutX="174.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c5" layoutX="274.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c6" layoutX="324.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c7" layoutX="374.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c8" layoutX="424.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c9" layoutX="474.0" layoutY="39.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-            <Circle fx:id="c01" layoutX="34.0" layoutY="49.0" radius="15.0" stroke="#8a8a8a" strokeType="INSIDE" />
-         </children>
-      </Group>
    </children>
 </Pane>
