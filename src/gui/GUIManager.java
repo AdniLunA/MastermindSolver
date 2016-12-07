@@ -25,7 +25,7 @@ public class GUIManager {
     private GameEngine gameEngine = GameEngine.getInstance();
     private IChromosome code;
 
-    private Submission nextLine;
+    private Submission[] submissions;
 
     private int lengthOfCode;
     private int numberOfColors;
@@ -72,6 +72,7 @@ public class GUIManager {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
+        this.submissions = new Submission[numberOfTries];
         this.code = new NumChromosome(secretCode, numberOfColors);
 
         System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: " + lengthOfCode
@@ -85,6 +86,7 @@ public class GUIManager {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
+        this.submissions = new Submission[numberOfTries];
         this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
 
         System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: " + lengthOfCode
@@ -112,17 +114,22 @@ public class GUIManager {
         }
     }
 
-    public void handleSubmission(Submission submission){
+    public void handleSubmission(Submission submission, int position){
         System.out.println("GUIManager - handleSubmission");
-        nextLine = submission;
-        subscriber.informLineAvailable();
+        submissions[position] = submission;
+        System.out.println("    GUIManager: position = "+position+", red = "+submission.getRed()+", white = "+submission.getWhite()+", sequence = "+submission.getChromosome().toString());
     }
 
     public void handleSubmissionRequest(int requestCounter) {
         System.out.println("GUIManager - handleSubmissionRequest");
         if(requestCounter < numberOfTries) {
-            Submission currentLine = nextLine;
-            gameEngine.calculateNextSubmission(requestCounter);
+            Submission currentLine = submissions[requestCounter];
+            System.out.println("    GUIManager: position = "+requestCounter+", red = "+currentLine.getRed()+", white = "+currentLine.getWhite()+", sequence = "+currentLine.getChromosome().toString());
+            System.out.println("    calculate submission #"+requestCounter+1);
+            gameEngine.calculateNextSubmission(requestCounter+1);
+            System.out.println("    After calculating next submission: ");
+            System.out.println("    GUIManager: position = "+requestCounter+", red = "+currentLine.getRed()+", white = "+currentLine.getWhite()+", sequence = "+currentLine.getChromosome().toString());
+
             subscriber.setNewSubmission(currentLine);
         }
     }
@@ -150,6 +157,10 @@ public class GUIManager {
 
     public void setGameEngine(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
+    }
+
+    public Submission[] getSubmissions() {
+        return submissions;
     }
 
     protected int getLengthOfCode() {

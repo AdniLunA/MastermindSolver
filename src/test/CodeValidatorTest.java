@@ -58,7 +58,19 @@ public class CodeValidatorTest {
 
         int[] testSequence4 = {1, 3};
         int[] testResponse4 = validator.calculateResponse(new NumChromosome(testSequence4, sampleNOC));
-        /*red 0, white 1*/
+        /*red 1, white 0*/
         assertTrue((testResponse4[0] == 0) && (testResponse4[1] == 1));
+    }
+
+    @Test
+    public void validate3() {
+        int sampleNOC = 4;
+        int[] sampleSequence = {1, 2};
+        CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence, sampleNOC));
+
+        int[] testSequence1 = {0, 2};
+        int[] testResponse1 = validator.calculateResponse(new NumChromosome(testSequence1, sampleNOC));
+        /*red 1, white 0*/
+        assertTrue((testResponse1[0] == 1) && (testResponse1[1] == 0));
     }
 }

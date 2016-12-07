@@ -34,8 +34,6 @@ public class SimulationController implements Initializable {
 
     private int currentLineToPrint = 0;
 
-    private boolean lineAvailable = false;
-
     /*default values*/
     private boolean showBlackboxContent = Configuration.INSTANCE.DEFAULT_SHOW_BLACKBOX_CONTENT;
     private boolean runAutomated = Configuration.INSTANCE.DEFAULT_RUN_AUTOMATED;
@@ -188,7 +186,7 @@ public class SimulationController implements Initializable {
             circle.setVisible(cbShowSecretCode.isSelected());
         }
 
-        /*run simulation automated or manually?*/
+        /*solve simulation automated or manually?*/
         runAutomated = rbRunAutomated.isSelected();
         gRunAutomatedSettings.setVisible(runAutomated);
         bNextStep.setVisible(!runAutomated);
@@ -239,18 +237,20 @@ public class SimulationController implements Initializable {
     private void requestNewSubmission() {
         System.out.println("*****************SimulationController - requestNewSubmission");
         GUIManager manager = GUIManager.getInstance();
-        System.out.println("new line available: " + lineAvailable);
-        do {
-            manager.handleSubmissionRequest(currentLineToPrint);
-        } while (!lineAvailable);
+        manager.handleSubmissionRequest(currentLineToPrint);
+        System.out.println();
+        System.out.println();
     }
 
     public void setNewSubmission(Submission newLine) {
         System.out.println("SimulationController - setNewSubmission");
+        System.out.println("    Got information:");
+        System.out.println("    SimulationController: position = "+currentLineToPrint+", red = "+newLine.getRed()+", white = "+newLine.getWhite()+", sequence = "+newLine.getChromosome().toString());
+
         /*set line values*/
         fillCircleLine(circleMatrix[currentLineToPrint], newLine.getChromosome().getSequence());
-        System.out.println("Set Feedback to GUI: ");
-        System.out.println("Red: "+newLine.getRed()+", White: "+newLine.getWhite());
+        System.out.println("    Set Feedback to GUI:");
+        System.out.println("    SimulationController: position = "+currentLineToPrint+", red = "+newLine.getRed()+", white = "+newLine.getWhite()+", sequence = "+newLine.getChromosome().toString());
         tRedFeedback[currentLineToPrint].setText("" + newLine.getRed());
         tWhiteFeedback[currentLineToPrint].setText("" + newLine.getWhite());
         /*increment counter*/
@@ -273,18 +273,16 @@ public class SimulationController implements Initializable {
                     System.out.println("runSimulationAutomated: Thread Exception");
                     e.printStackTrace();
                 }
+                System.out.println();
             }
         }
-    }
-
-    public void informLineAvailable() {
-        lineAvailable = true;
     }
 
     @FXML
     private void onclickStartSimulation() {
         System.out.println("SimulationController - onclickStartSimulation");
         gameIsRunning = true;
+        gameIsPaused = !gameIsPaused;
         bStartSimulation.setVisible(false);
         bPauseSimulation.setVisible(rbRunAutomated.isSelected());
         bNextStep.setVisible(!rbRunAutomated.isSelected());
@@ -320,6 +318,7 @@ public class SimulationController implements Initializable {
     @FXML
     private void onclickNextStep() {
         System.out.println("SimulationController - onclickNextStep");
+        System.out.println();
         if (currentLineToPrint < numberOfTries) {
             requestNewSubmission();
         }

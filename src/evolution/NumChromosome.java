@@ -88,19 +88,23 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     @Override
     public int[] getSequenceSorted() {
         System.out.println("NumChromosome - getSequenceSorted");
-        int[] copyOfSequence = sequence;
+        int[] copyOfSequence = Arrays.copyOf(sequence, sequence.length);
         Arrays.sort(copyOfSequence);
         return copyOfSequence;
     }
 
     @Override
     public String toString() {
-        String array = "";
-        for (int elem : sequence) {
-            array += elem + ", ";
+        StringBuffer array = new StringBuffer();
+        int lastElem = sequence.length-1;
+        for (int i = 0; i < sequence.length; i++) {
+            array.append(sequence[i]);
+            if(i != lastElem);
+            array.append(", ");
         }
-        return array;
+        return array.toString();
     }
+    
     @Override
     public int compareTo(NumChromosome other) {
         /*<0 -> less than other; =0 -> equals; >0 -> greater than other*/

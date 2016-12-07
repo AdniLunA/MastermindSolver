@@ -2,38 +2,38 @@ package engine;
 
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.Submission;
-import gui.GUIManager;
-
-import java.util.ArrayList;
 
 public class CodeSolver {
-    /***constructor***/
+    /***
+     * constructor
+     ***/
     public CodeSolver() {
-        newSequence = new NumChromosome(engine.getCodeLength(),engine.getNumColors());
+        newSequence = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
     }
-    /***attributes***/
+
+    /***
+     * attributes
+     ***/
     private IChromosome newSequence;
     GameEngine engine = GameEngine.getInstance();
 
-    /***functions***/
-    public void run(int requestCounter){
-        System.out.println("CodeSolver - run");
+    /***
+     * functions
+     ***/
+    public void solve(int requestCounter) {
+        System.out.println("CodeSolver - solve");
         /*first submission random*/
-        if(requestCounter == 0) {
+        if (requestCounter == 0) {
             newSequence.generateRandom();
         } else { /*other submission via evolution*/
             /*todo*/
             newSequence.generateRandom();
         }
-        System.out.println("request #"+requestCounter);
-        submitSequence();
+        System.out.println("CodeSolver: request #" + requestCounter);
+        System.out.println("    CodeSolver: next sequence = " + newSequence.toString());
+        engine.resolveSubmission(newSequence, requestCounter);
     }
 
-    private void submitSequence(){
-        System.out.println("CodeSolver - submitSequence");
-        engine.resolveSubmission(newSequence);
-    }
 
     /*public void handleResponse(int[] response) {
         System.out.println("CodeSolver - handleResponse");

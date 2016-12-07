@@ -46,4 +46,16 @@ public class Submission {
     public void setWhite(int white) {
         this.white = white;
     }
+
+    @Override
+    public String toString(){
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("red = ");
+        buffer.append(red);
+        buffer.append(", white = ");
+        buffer.append(white);
+        buffer.append(", sequence = ");
+        buffer.append(submittedChromosome);
+        return buffer.toString();
+    }
 }

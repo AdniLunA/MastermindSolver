@@ -25,7 +25,7 @@ public class FitnessCalculator {
     }
 
     public void addSubmission(Submission newSubmission) {
-        System.out.println("FitnessCalculator - addSubmission: " + newSubmission.getChromosome().getSequence());
+        System.out.println("FitnessCalculator - addSubmission: " + newSubmission.getChromosome().toString());
         this.submissions.add(newSubmission);
     }
 

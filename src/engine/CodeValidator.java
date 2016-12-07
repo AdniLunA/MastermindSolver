@@ -8,12 +8,13 @@ public class CodeValidator {
      ***/
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
+        System.out.println("CodeValidator - initialized with "+secretCode.toString());
     }
 
     /***
      * attributes
      ***/
-    private IChromosome secretCode;
+    private final IChromosome secretCode;
 
     /***
      * functions
@@ -22,6 +23,7 @@ public class CodeValidator {
         int redResponse = 0;
         int whiteResponse = 0;
         System.out.println("CodeValidator - calculateResponse");
+        System.out.println("    Secret code: "+secretCode.toString());
         for (int i = 0; i < secretCode.getSequence().length; i++) {
             if (secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]) {
                 redResponse++;
@@ -43,6 +45,7 @@ public class CodeValidator {
         whiteResponse -= redResponse;
 
         int[] response = {redResponse, whiteResponse};
+        System.out.println("    CodeValidator: red = "+redResponse+", white = "+whiteResponse+", code = "+sequenceToCheck.toString());
         return response;
     }
 

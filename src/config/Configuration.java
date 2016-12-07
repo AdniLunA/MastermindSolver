@@ -17,7 +17,7 @@ public enum Configuration {
 
 	/*game engine settings*/
 	public final int DEFAULT_LENGTH_OF_CODE = 2;
-	public final int DEFAULT_NUMBER_OF_COLORS = 3;
+	public final int DEFAULT_NUMBER_OF_COLORS = 5;
 	public final int DEFAULT_NUMBER_OF_TRIES = 20;
 
 	public final int MAX_LENGTH_OF_CODE = 10;
@@ -30,7 +30,7 @@ public enum Configuration {
 	/*gui settings*/
 	public final boolean TRACK_CODE_SETTING = false;
 	public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
-	public final boolean DEFAULT_RUN_AUTOMATED = true;
+	public final boolean DEFAULT_RUN_AUTOMATED = false;
 	public final int DEFAULT_SIMULATION_SPEED = 5000; /*between 100 and 5000*/
 
 	public final Color[] COLORS = new Color[]{
