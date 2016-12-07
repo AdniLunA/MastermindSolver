@@ -49,12 +49,12 @@
                         </Label>
                         <Group layoutX="-14.0" layoutY="-118.0">
                            <children>
-                              <RadioButton fx:id="rbRunAutomated" layoutX="53.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunAutomated" selected="true" text="Automated">
+                              <RadioButton fx:id="rbRunAutomated" disable="true" layoutX="53.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunAutomated" text="Automated">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </RadioButton>
-                              <RadioButton fx:id="rbRunManually" layoutX="180.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunManually" text="Manually">
+                              <RadioButton fx:id="rbRunManually" disable="true" layoutX="180.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunManually" selected="true" text="Manually">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

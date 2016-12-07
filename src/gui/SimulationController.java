@@ -237,11 +237,15 @@ public class SimulationController implements Initializable {
     }
 
     private void requestNewSubmission() {
-        System.out.println("*****************SimulationController - requestNewSubmission");
-        GUIManager manager = GUIManager.getInstance();
-        manager.handleSubmissionRequest(currentLineToPrint);
-        System.out.println();
-        System.out.println();
+        if (currentLineToPrint >= numberOfTries) {
+            gameIsRunning = false;
+        } else {
+            System.out.println("*****************SimulationController - requestNewSubmission");
+            GUIManager manager = GUIManager.getInstance();
+            manager.handleSubmissionRequest(currentLineToPrint);
+            System.out.println();
+            System.out.println();
+        }
     }
 
     public void setNextSubmission(Submission newLine) {
@@ -326,6 +330,7 @@ public class SimulationController implements Initializable {
         }
         if (currentLineToPrint == numberOfTries) {
             bNextStep.setVisible(false);
+            gameIsRunning = false;
         }
     }
 
