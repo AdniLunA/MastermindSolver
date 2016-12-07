@@ -246,8 +246,11 @@ public class SimulationController implements Initializable {
     }
 
     public void setNewSubmission(Submission newLine) {
+        System.out.println("SimulationController - setNewSubmission");
         /*set line values*/
         fillCircleLine(circleMatrix[currentLineToPrint], newLine.getChromosome().getSequence());
+        System.out.println("Set Feedback to GUI: ");
+        System.out.println("Red: "+newLine.getRed()+", White: "+newLine.getWhite());
         tRedFeedback[currentLineToPrint].setText("" + newLine.getRed());
         tWhiteFeedback[currentLineToPrint].setText("" + newLine.getWhite());
         /*increment counter*/
