@@ -7,7 +7,7 @@ import evolution.ArrayBuilder;
 
 import java.util.Arrays;
 
-public class onePointCrossover implements ICrossover{
+public class OnePointCrossover implements ICrossover{
     /***attributes***/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;

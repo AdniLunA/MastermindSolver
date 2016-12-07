@@ -5,6 +5,8 @@ public interface IChromosome {
 
     public int getFitness();
 
+    void incrementGeneration();
+
     public int[] getSequence();
 
     public int getGeneration();

@@ -29,7 +29,6 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         boolean validSequence = false;
         int numOfTries = 0;
         while(!validSequence){
-            /*TODO FIX!!!*/
             sequence = new int[lengthOfCode];
             int[] numberPool = new int[numberOfColors];
             for (int i = 0; i < numberOfColors; i++) {
@@ -116,6 +115,12 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
             return 0;
         }
     }
+
+    @Override
+    public void incrementGeneration(){
+        generation++;
+    }
+
     /*getters + setters*/
     @Override
     public int[] getSequence() {

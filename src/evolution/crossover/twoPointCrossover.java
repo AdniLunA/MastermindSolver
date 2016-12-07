@@ -7,7 +7,7 @@ import evolution.ArrayBuilder;
 
 import java.util.Arrays;
 
-public class twoPointCrossover implements ICrossover {
+public class TwoPointCrossover implements ICrossover {
     /***attributes***/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
@@ -67,7 +67,7 @@ public class twoPointCrossover implements ICrossover {
                 }
             } while (invalid);
         } catch (RuntimeException r){
-            System.out.printf("twoPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos+"/n"+r);
+            System.out.printf("TwoPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos+"/n"+r);
         }
 
         return pos;

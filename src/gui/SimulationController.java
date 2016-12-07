@@ -369,7 +369,7 @@ public class SimulationController implements Initializable {
         refreshDependencies();
 
         /*initialize speed*/
-        int defaultSpeed = Configuration.INSTANCE.DEFAULT_SIMULATION_SPEED;
+        int defaultSpeed = Configuration.INSTANCE.DEFAULT_SIMULATION_SPEED_MS;
         int min = (int) spd_slider.getMin();
         int max = (int) spd_slider.getMax();
         if (defaultSpeed < min || defaultSpeed > max) {

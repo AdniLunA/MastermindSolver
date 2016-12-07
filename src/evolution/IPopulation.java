@@ -1,13 +1,21 @@
 package evolution;
 
+import config.CrossoverEnum;
+import config.MutationEnum;
+import config.SelectionEnum;
+
 public interface IPopulation {
+    IChromosome[] getSortedPopulation();
+
     IChromosome getFittest();
 
     void evolve();
 
+    void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation);
+
     IChromosome[] getPopulationSorted();
 
-    IChromosome[] getPopulation();
+    IChromosome[] getGenePool();
 
     int getSumPopulationFitness();
 }

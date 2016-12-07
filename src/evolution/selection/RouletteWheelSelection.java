@@ -27,10 +27,10 @@ public class RouletteWheelSelection implements ISelection {
     private void splitPopulation(IPopulation population) {
         System.out.println("TournamentSelection - splitPopulation");
         /*copyOfRange: original [], inclusive from, exclusive to*/
-        fatherPool = new Population(Arrays.copyOfRange(population.getPopulation(),
-                0, population.getPopulation().length / 2));
-        motherPool = new Population(Arrays.copyOfRange(population.getPopulation(),
-                population.getPopulation().length / 2, population.getPopulation().length));
+        fatherPool = new Population(Arrays.copyOfRange(population.getGenePool(),
+                0, population.getGenePool().length / 2));
+        motherPool = new Population(Arrays.copyOfRange(population.getGenePool(),
+                population.getGenePool().length / 2, population.getGenePool().length));
     }
 
     private IChromosome selectParents(IPopulation populationPool) {
@@ -40,7 +40,7 @@ public class RouletteWheelSelection implements ISelection {
         double bottomBoundary = 0.0;
         double topBoundary;
 
-        for (IChromosome chromosome : populationPool.getPopulation()) {
+        for (IChromosome chromosome : populationPool.getGenePool()) {
             topBoundary = bottomBoundary + (chromosome.getFitness() / totalPopulationFitness);
             if (bottomBoundary <= roulettePointer && roulettePointer < topBoundary) {
                 return chromosome;

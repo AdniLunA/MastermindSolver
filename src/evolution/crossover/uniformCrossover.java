@@ -9,7 +9,7 @@ import evolution.crossover.ICrossover;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
-public class uniformCrossover implements ICrossover {
+public class UniformCrossover implements ICrossover {
     /***attributes***/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;

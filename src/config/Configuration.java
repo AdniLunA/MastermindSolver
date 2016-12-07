@@ -5,7 +5,9 @@ import javafx.scene.paint.Color;
 public enum Configuration {
 
 	INSTANCE;
-	/*evolution settings*/
+	/***evolution settings***/
+	public final int SIZE_OF_POPULATION = 50;
+	public final int NUMBER_OF_EVOLVEMENTS_FOR_NEW_SUBMISSION = 10;
 	public final SelectionEnum SELECTION_TYPE = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
 	public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.TWO_POINT;
 	/*Must be greater than length of code (always < 20!):*/
@@ -13,9 +15,9 @@ public enum Configuration {
 	public final float MIXING_RATIO = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
 	public final MutationEnum MUTATION_TYPE = MutationEnum.SCRAMBLE; /*best results with SCRAMBLE*/
 	public final double MUTATION_RATIO = 0.0005;
-	public final int SIZE_OF_POPULATION = 50;
+	public final int MUTATION_MAX_TRY_AGAIN = 10;
 
-	/*game engine settings*/
+	/***game engine settings***/
 	public final int DEFAULT_LENGTH_OF_CODE = 2;
 	public final int DEFAULT_NUMBER_OF_COLORS = 5;
 	public final int DEFAULT_NUMBER_OF_TRIES = 20;
@@ -27,11 +29,11 @@ public enum Configuration {
 	public final int WEIGHT_OF_WHITE_DIFFERENCE = 1;
 	public final int WEIGHT_OF_RED_DIFFERENCE = 2;
 
-	/*gui settings*/
+	/***gui settings***/
 	public final boolean TRACK_CODE_SETTING = false;
 	public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
 	public final boolean DEFAULT_RUN_AUTOMATED = false;
-	public final int DEFAULT_SIMULATION_SPEED = 5000; /*between 100 and 5000*/
+	public final int DEFAULT_SIMULATION_SPEED_MS = 5000; /*between 100 and 5000*/
 
 	public final Color[] COLORS = new Color[]{
 		Color.web("0xFFFFFF"), Color.web("0xC0C0C0"), Color.web("0x000000"), Color.web("0xFFE800"),

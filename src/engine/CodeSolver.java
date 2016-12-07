@@ -1,20 +1,20 @@
 package engine;
 
 import evolution.IChromosome;
+import evolution.IPopulation;
 import evolution.NumChromosome;
+import evolution.Population;
+import evolution.crossover.ICrossover;
+import evolution.mutation.IMutation;
+import evolution.selection.ISelection;
+import evolution.selection.RouletteWheelSelection;
+import evolution.selection.TournamentSelection;
 
 public class CodeSolver {
     /***
-     * constructor
-     ***/
-    public CodeSolver() {
-
-    }
-
-    /***
      * attributes
      ***/
-    GameEngine engine = GameEngine.getInstance();
+    private GameEngine engine = GameEngine.getInstance();
 
     /***
      * functions
@@ -26,12 +26,20 @@ public class CodeSolver {
         if (requestCounter == 0) {
             newSequence.generateRandom();
         } else { /*other submission via evolution*/
-            /*todo*/
-            newSequence.generateRandom();
+            newSequence = solveViaEvolutionaryAlgorithms();
         }
         System.out.println("CodeSolver: request #" + requestCounter);
         System.out.println("    CodeSolver: next sequence = " + newSequence.toString());
         engine.resolveSubmission(newSequence, requestCounter);
+    }
+
+    private IChromosome solveViaEvolutionaryAlgorithms() {
+        /*random gene pool -> population*/
+        IPopulation population = new Population();
+        /*evolve*/
+        population.evolve();
+        /*get fittest*/
+        return population.getFittest();
     }
 
 
