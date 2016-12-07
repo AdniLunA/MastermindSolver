@@ -25,7 +25,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /***functions***/
     @Override
     public void generateRandom() {
-        System.out.println("NumChromosome - generateRandom");
+        /*System.out.println("NumChromosome - generateRandom");*/
         boolean validSequence = false;
         int numOfTries = 0;
         while(!validSequence){
@@ -44,7 +44,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
             numOfTries++;
             validSequence = checkValidity();
         }
-        System.out.println("NumChromosome - generateRandom: Number of tries to find random code: "+numOfTries);
+        /*System.out.println("NumChromosome - generateRandom: Number of tries to find random code: "+numOfTries);*/
     }
 
     private int[] removeItemOfArray(int[] numberPool, int numberPosition) {
@@ -58,7 +58,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public boolean checkValidity() {
-        System.out.println("NumChromosome - checkValidity");
+        /*System.out.println("NumChromosome - checkValidity");*/
         /*every color should occur max. 1 time*/
         int[] colorCounter = new int[numberOfColors];
         for (int i = 0; i < lengthOfCode; i++) {
@@ -80,13 +80,13 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public int getFitness() {
-        System.out.println("NumChromosome - getFitness");
+        /*System.out.println("NumChromosome - getFitness");*/
         return FitnessCalculator.getInstance().calculateFitness(this);
     }
 
     @Override
     public int[] getSequenceSorted() {
-        System.out.println("NumChromosome - getSequenceSorted");
+        /*System.out.println("NumChromosome - getSequenceSorted");*/
         int[] copyOfSequence = Arrays.copyOf(sequence, sequence.length);
         Arrays.sort(copyOfSequence);
         return copyOfSequence;

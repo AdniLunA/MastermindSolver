@@ -32,6 +32,7 @@ public class UniformCrossover implements ICrossover {
 
     @Override
     public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
+        System.out.println("KPointCrossover - crossover:");
         this.parent1 = parent1;
         this.parent2 = parent2;
         sequenceLength = parent1.getLength();
@@ -47,6 +48,8 @@ public class UniformCrossover implements ICrossover {
                 numberOfHealthyChildren++;
             }
         }
+        System.out.println("    Children: " + children[0].toString() + " and " + children[1].toString());
+        System.out.println("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
         return children;
     }
 

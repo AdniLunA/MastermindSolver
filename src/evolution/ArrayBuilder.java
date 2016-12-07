@@ -1,5 +1,6 @@
 package evolution;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -18,6 +19,22 @@ public class ArrayBuilder {
 
     public void addToQueue(int[] numbersToAdd) {
         addToQueue(1,numbersToAdd);
+    }
+
+    public int getLength(){
+        return transformSequence(child1Q).length;
+    }
+
+    public int[] insert(int position, int[] toInsert){
+        int[] sequence = getChild1Sequence();
+        if(position < getLength() && position > -1){
+            addToQueue(2, Arrays.copyOfRange(sequence, 0, position));
+            addToQueue(2, toInsert);
+            addToQueue(2, Arrays.copyOfRange(sequence, position, sequence.length));
+        } else {
+            System.out.println("ArrayBuilder - insert: ERROR, given position "+position+" must be between 0 and "+ sequence.length);
+        }
+        return sequence;
     }
 
     public int[] getSequence(){

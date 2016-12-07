@@ -1,4 +1,7 @@
 package evolution.mutation;
 
-public class ScrambleMutation implements IMutation {
+public class ScrambleMutation extends MutatorBasics {
+    /**TODO
+     * @Override public IChromosome[] mutateGenes(IChromosome[] genePool) {
+     */
 }

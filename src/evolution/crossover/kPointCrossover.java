@@ -8,8 +8,10 @@ import evolution.ArrayBuilder;
 
 import java.util.Arrays;
 
-public class KPointCrossover implements ICrossover{
-    /***attributes***/
+public class KPointCrossover implements ICrossover {
+    /***
+     * attributes
+     ***/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
     private IChromosome parent2;
@@ -17,41 +19,46 @@ public class KPointCrossover implements ICrossover{
     private IChromosome[] children = new IChromosome[2];
     private int[] splits;
 
-    /***functions***/
+    /***
+     * functions
+     ***/
     @Override
     public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
+        System.out.println("KPointCrossover - crossover:");
         this.parent1 = parent1;
         this.parent2 = parent2;
         sequenceLength = parent1.getLength();
 
         int numberOfHealthyChildren = 0;
 
-        while(numberOfHealthyChildren < 2){
+        while (numberOfHealthyChildren < 2) {
             generateRandomSplitPos();
 
             children = breedChildren();
-            if(children[0].checkValidity()){
+            if (children[0].checkValidity()) {
                 numberOfHealthyChildren++;
             }
-            if(children[1].checkValidity()){
+            if (children[1].checkValidity()) {
                 numberOfHealthyChildren++;
             }
         }
+        System.out.println("    Children: " + children[0].toString() + " and " + children[1].toString());
+        System.out.println("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
         return children;
     }
 
     private void generateRandomSplitPos() {
         int kForKPointC = Configuration.INSTANCE.K_FOR_CROSS_OVER;
-        splits = new int[kForKPointC +2];
+        splits = new int[kForKPointC + 2];
         splits[0] = 0;
         splits[1] = sequenceLength;
-        for (int i = 2; i < kForKPointC +2; i++) {
+        for (int i = 2; i < kForKPointC + 2; i++) {
             splits[i] = createValidRandomSplitPos(i);
         }
         Arrays.sort(splits);
     }
 
-    private int createValidRandomSplitPos(int currentPos){
+    private int createValidRandomSplitPos(int currentPos) {
         int pos = 0;
         boolean invalid = false;
         try {
@@ -70,8 +77,8 @@ public class KPointCrossover implements ICrossover{
                     }
                 }
             } while (invalid);
-        } catch (RuntimeException r){
-            System.out.printf("KPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: "+pos+"\n"+r);
+        } catch (RuntimeException r) {
+            System.out.printf("KPointCrossover - createValidRandomSplitPos - cannot resolve new position, last value: " + pos + "\n" + r);
         }
 
         return pos;

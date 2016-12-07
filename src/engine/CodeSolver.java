@@ -1,5 +1,6 @@
 package engine;
 
+import config.Configuration;
 import evolution.IChromosome;
 import evolution.IPopulation;
 import evolution.NumChromosome;
@@ -34,6 +35,7 @@ public class CodeSolver {
     }
 
     private IChromosome solveViaEvolutionaryAlgorithms() {
+        //Configuration.INSTANCE.REPEAT_EVOLUTION_N_TIMES
         /*random gene pool -> population*/
         IPopulation population = new Population();
         /*evolve*/

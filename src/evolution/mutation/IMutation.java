@@ -5,5 +5,7 @@ import evolution.IPopulation;
 
 public interface IMutation {
 
-    IChromosome[] getParents(IPopulation population);
+    IChromosome[] mutateGenes(IChromosome[] genePool);
+
+    int[] generateTwoSplitPositions(int max);
 }

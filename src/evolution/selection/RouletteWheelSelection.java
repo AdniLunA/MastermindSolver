@@ -13,24 +13,25 @@ public class RouletteWheelSelection implements ISelection {
 
     /***functions***/
     @Override
-    public IChromosome[] getParents(IPopulation population) {
+    public IChromosome[] getParents(IChromosome[] genePool) {
         System.out.println("TournamentSelection - getParents");
-        splitPopulation(population);
+        splitPopulation(genePool);
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(fatherPool);
         parents[1] = selectParents(motherPool);
-        System.out.println("father: " + parents[0].toString() + ", mother: " + parents[1].toString());
-        System.out.println("fitness of father: " + parents[0].getFitness() + ", fitness of mother: " + parents[1].getFitness());
+        System.out.println("Tournament Selection - getParents: ");
+        System.out.println("    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
+        System.out.println("    Fitness of father: " + parents[0].getFitness() + ", fitness of mother: " + parents[1].getFitness());
         return parents;
     }
 
-    private void splitPopulation(IPopulation population) {
+    private void splitPopulation(IChromosome[] genePool) {
         System.out.println("TournamentSelection - splitPopulation");
         /*copyOfRange: original [], inclusive from, exclusive to*/
-        fatherPool = new Population(Arrays.copyOfRange(population.getGenePool(),
-                0, population.getGenePool().length / 2));
-        motherPool = new Population(Arrays.copyOfRange(population.getGenePool(),
-                population.getGenePool().length / 2, population.getGenePool().length));
+        fatherPool = new Population(Arrays.copyOfRange(genePool,
+                0, genePool.length / 2));
+        motherPool = new Population(Arrays.copyOfRange(genePool,
+                genePool.length / 2, genePool.length));
     }
 
     private IChromosome selectParents(IPopulation populationPool) {

@@ -1,4 +1,7 @@
 package evolution.mutation;
 
-public class InsertionMutation implements IMutation {
+public class InsertionMutation extends MutatorBasics {
+    /**TODO
+     * @Override public IChromosome[] mutateGenes(IChromosome[] genePool) {
+     */
 }

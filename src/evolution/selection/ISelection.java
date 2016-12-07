@@ -5,6 +5,6 @@ import evolution.IChromosome;
 import evolution.IPopulation;
 
 public interface ISelection {
-    public IChromosome[] getParents(IPopulation population);
+    public IChromosome[] getParents(IChromosome[] genePool);
 
 }

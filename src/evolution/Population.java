@@ -49,21 +49,23 @@ public class Population implements IPopulation {
         maxGenerationCounter++;
         instantiateHelpers(chooseSelection,chooseCrossover,chooseMutation);
         /*selection*/
-        IChromosome[] parents = selector.getParents(new Population(Arrays.copyOf(genePool, genePool.length)));
+        System.out.println("Population - evolve: Start selection");
+        IChromosome[] parents = selector.getParents(Arrays.copyOf(genePool, genePool.length));
 
         /*crossover*/
+        System.out.println("Population - evolve: Start crossover");
         IChromosome[] newGeneration = crosser.crossover(parents[0], parents[1]);
+        newGeneration[0].setGeneration(maxGenerationCounter+1);
+        newGeneration[1].setGeneration(maxGenerationCounter+1);
+        replaceWeakestWithNewGenes(newGeneration);
 
         /*mutation*/
-        boolean mutationPossible = (GameEngine.getInstance().getNumColors() > GameEngine.getInstance().getCodeLength());
+        System.out.println("Population - evolve: Start mutation");
         IChromosome[] mutatedGeneration = newGeneration;
-        if(mutationPossible){
-            mutatedGeneration = mutator.getParents(new Population(Arrays.copyOf(newGeneration, genePool.length)));
-        }
+        mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(genePool, genePool.length));
+        this.genePool = mutatedGeneration;
 
         System.out.println("- Population - evolve: A new generation has been born! #" + maxGenerationCounter);
-
-        this.genePool = mutatedGeneration;
     }
 
     @Override
@@ -100,6 +102,14 @@ public class Population implements IPopulation {
         System.out.println("*****Fitness of expected weakest: " + getSortedPopulation()[0].getFitness());
 
         return fittest;
+    }
+
+    private void replaceWeakestWithNewGenes(IChromosome[] newGenes){
+        IChromosome[] improvedGenePool = getSortedPopulation();
+        int lastPos = improvedGenePool.length-1;
+        improvedGenePool[lastPos-1] = newGenes[0];
+        improvedGenePool[lastPos] = newGenes[1];
+        this.genePool = improvedGenePool;
     }
 
     private IChromosome[] breedRandomPopulation(int size) {
@@ -141,10 +151,10 @@ public class Population implements IPopulation {
 
         switch (chooseMutation){
             case DISPLACEMENT:
-                mutator = new DisplacementMutation();
+                mutator = new ExchangeMutation();
                 break;
             case EXCHANGE:
-                mutator = new ExchangeMutation();
+                mutator = new DisplacementMutation();
                 break;
             case INSERTION:
                 mutator = new InsertionMutation();
@@ -169,6 +179,7 @@ public class Population implements IPopulation {
         this.maxGenerationCounter = maxGenerationCounter;
     }
 
+    @Override
     public IChromosome[] getGenePool() {
         return genePool;
     }

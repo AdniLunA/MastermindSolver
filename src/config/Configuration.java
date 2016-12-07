@@ -7,14 +7,14 @@ public enum Configuration {
 	INSTANCE;
 	/***evolution settings***/
 	public final int SIZE_OF_POPULATION = 50;
-	public final int NUMBER_OF_EVOLVEMENTS_FOR_NEW_SUBMISSION = 10;
+	public final int REPEAT_EVOLUTION_N_TIMES = 10;
 	public final SelectionEnum SELECTION_TYPE = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
-	public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.TWO_POINT;
+	public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.UNIFORM;
 	/*Must be greater than length of code (always < 20!):*/
 	public final int K_FOR_CROSS_OVER = 3; /* for kPoint crossover*/
 	public final float MIXING_RATIO = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
-	public final MutationEnum MUTATION_TYPE = MutationEnum.SCRAMBLE; /*best results with SCRAMBLE*/
-	public final double MUTATION_RATIO = 0.0005;
+	public final MutationEnum MUTATION_TYPE = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
+	public final double MUTATION_RATIO = 0.005;
 	public final int MUTATION_MAX_TRY_AGAIN = 10;
 
 	/***game engine settings***/
@@ -36,9 +36,9 @@ public enum Configuration {
 	public final int DEFAULT_SIMULATION_SPEED_MS = 5000; /*between 100 and 5000*/
 
 	public final Color[] COLORS = new Color[]{
-		Color.web("0xFFFFFF"), Color.web("0xC0C0C0"), Color.web("0x000000"), Color.web("0xFFE800"),
+		Color.WHITE, Color.BLACK, Color.web("0x00FF59"), Color.web("0xFFE800"),
 		Color.web("0xFF7B00"), Color.web("0xFF0000"), Color.web("0xFF00DC"), Color.web("0x872BFF"),
-		Color.web("0x0026FF"), Color.web("0x00FFFF"), Color.web("0x00FF59"), Color.web("0xC7FF47"),
+		Color.web("0x0026FF"), Color.web("0x00FFFF"), Color.web("0xC0C0C0"), Color.web("0xC7FF47"),
 		Color.web("0xE0A674"), Color.web("0x7F0037"), Color.web("0xFF9E9E"), Color.web("0xFFC4F0"),
 		Color.web("0xB57FFF"), Color.web("0xB2C4FF"), Color.web("0x3FBDC6"), Color.web("0x007F0E")
 	};
