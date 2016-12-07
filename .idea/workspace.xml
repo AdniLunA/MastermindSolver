@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/bin/test/PopulationTest.class" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/mutation/ScrambleMutation.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/PopulationTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/test/xConfigurationTester.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/test/xConfigurationTester.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/CodeSolver.class" afterPath="$PROJECT_DIR$/bin/engine/CodeSolver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/GameEngine.class" afterPath="$PROJECT_DIR$/bin/engine/GameEngine.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/IPopulation.class" afterPath="$PROJECT_DIR$/bin/evolution/IPopulation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" afterPath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/Population.class" afterPath="$PROJECT_DIR$/bin/evolution/Population.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/Configuration.java" afterPath="$PROJECT_DIR$/src/config/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/CodeSolver.java" afterPath="$PROJECT_DIR$/src/engine/CodeSolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameEngine.java" afterPath="$PROJECT_DIR$/src/engine/GameEngine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/IChromosome.java" afterPath="$PROJECT_DIR$/src/evolution/IChromosome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/IPopulation.java" afterPath="$PROJECT_DIR$/src/evolution/IPopulation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/NumChromosome.java" afterPath="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/Population.java" afterPath="$PROJECT_DIR$/src/evolution/Population.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/IMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/IMutation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" afterPath="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" afterPath="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/SimulationController.java" afterPath="$PROJECT_DIR$/src/gui/SimulationController.java" />
-    </list>
+    <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="" />
     <ignored path="MastermindSolver.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -882,10 +851,6 @@
       <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager>
-      <configuration name="JUnit">
-        <watch expression="breeder.getSequence()" language="JAVA" custom="" />
-        <watch expression="engine.getCodeLength()" language="JAVA" custom="" />
-      </configuration>
       <configuration name="Application">
         <watch expression="secretCode.getSequence()[i]" language="JAVA" custom="" />
         <watch expression="sequenceToCheck.getSequence()[i]" language="JAVA" custom="" />
