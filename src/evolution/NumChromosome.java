@@ -104,7 +104,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         }
         return array.toString();
     }
-    
+
     @Override
     public int compareTo(NumChromosome other) {
         /*<0 -> less than other; =0 -> equals; >0 -> greater than other*/

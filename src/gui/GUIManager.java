@@ -17,7 +17,9 @@ public class GUIManager {
         guiManager = this; /*Singleton Pattern*/
     }
 
-    /***attributes***/
+    /***
+     * attributes
+     ***/
     private static GUIManager guiManager; /*Singleton Pattern*/
 
     private ConfigurationController configPg = new ConfigurationController();
@@ -35,7 +37,9 @@ public class GUIManager {
 
     private SimulationController subscriber;
 
-    /***functions***/
+    /***
+     * functions
+     ***/
     public static final GUIManager getInstance() { /*Singleton Pattern*/
         System.out.println("GUIManager - getInstance");
         if (guiManager == null) {
@@ -62,7 +66,7 @@ public class GUIManager {
         }
     }
 
-    protected void returnToConfigurationPage(){
+    protected void returnToConfigurationPage() {
         System.out.println("GUIManager - returnToConfigurationPage");
         openConfigurationPage(primaryStage);
     }
@@ -72,7 +76,6 @@ public class GUIManager {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
-        this.submissions = new Submission[numberOfTries];
         this.code = new NumChromosome(secretCode, numberOfColors);
 
         System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: " + lengthOfCode
@@ -86,7 +89,6 @@ public class GUIManager {
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
-        this.submissions = new Submission[numberOfTries];
         this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
 
         System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: " + lengthOfCode
@@ -96,6 +98,8 @@ public class GUIManager {
     }
 
     private void openSimulationPage() {
+        this.submissions = new Submission[numberOfTries];
+
         System.out.println("GUIManager - openSimulationPage");
         //only accept valid code
         if (!code.checkValidity()) {
@@ -114,27 +118,32 @@ public class GUIManager {
         }
     }
 
-    public void handleSubmission(Submission submission, int position){
+    public void handleSubmission(Submission submission, int position) {
         System.out.println("GUIManager - handleSubmission");
         submissions[position] = submission;
-        System.out.println("    GUIManager: position = "+position+", red = "+submission.getRed()+", white = "+submission.getWhite()+", sequence = "+submission.getChromosome().toString());
+        System.out.println("    GUIManager: position = " + position + ", " + submission.toString());
     }
 
     public void handleSubmissionRequest(int requestCounter) {
         System.out.println("GUIManager - handleSubmissionRequest");
-        if(requestCounter < numberOfTries) {
+        if (requestCounter < numberOfTries) {
             Submission currentLine = submissions[requestCounter];
-            System.out.println("    GUIManager: position = "+requestCounter+", red = "+currentLine.getRed()+", white = "+currentLine.getWhite()+", sequence = "+currentLine.getChromosome().toString());
-            System.out.println("    calculate submission #"+requestCounter+1);
-            gameEngine.calculateNextSubmission(requestCounter+1);
+            System.out.println("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
+            int nextCounter = requestCounter + 1;
+            if(nextCounter < numberOfTries) {
+                System.out.println("    calculate submission #" + nextCounter);
+                gameEngine.calculateNextSubmission(nextCounter);
+            }
             System.out.println("    After calculating next submission: ");
-            System.out.println("    GUIManager: position = "+requestCounter+", red = "+currentLine.getRed()+", white = "+currentLine.getWhite()+", sequence = "+currentLine.getChromosome().toString());
+            System.out.println("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
 
-            subscriber.setNewSubmission(currentLine);
+            subscriber.setNextSubmission(currentLine);
         }
     }
 
-    /***getter + setter***/
+    /***
+     * getter + setter
+     ***/
     public ConfigurationController getConfigPg() {
         return configPg;
     }
@@ -175,7 +184,7 @@ public class GUIManager {
         return code.getSequence();
     }
 
-    public void setSubscriber(SimulationController subscriber){
+    public void setSubscriber(SimulationController subscriber) {
         this.subscriber = subscriber;
     }
 }

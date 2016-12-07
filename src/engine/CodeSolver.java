@@ -8,13 +8,12 @@ public class CodeSolver {
      * constructor
      ***/
     public CodeSolver() {
-        newSequence = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
+
     }
 
     /***
      * attributes
      ***/
-    private IChromosome newSequence;
     GameEngine engine = GameEngine.getInstance();
 
     /***
@@ -22,6 +21,7 @@ public class CodeSolver {
      ***/
     public void solve(int requestCounter) {
         System.out.println("CodeSolver - solve");
+        IChromosome newSequence = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
         /*first submission random*/
         if (requestCounter == 0) {
             newSequence.generateRandom();

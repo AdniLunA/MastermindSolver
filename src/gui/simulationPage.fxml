@@ -100,9 +100,9 @@
             </Text>
          </children>
       </Pane>
-      <Pane layoutX="442.0" layoutY="112.0" prefHeight="60.0" prefWidth="500.0" style="-fx-background-color: black; -fx-border-color: gray;">
+      <Pane layoutX="424.0" layoutY="112.0" prefHeight="60.0" prefWidth="520.0" style="-fx-background-color: black; -fx-border-color: gray;">
          <children>
-            <Pane fx:id="pBlackBox" layoutY="15.0" prefHeight="30.0" prefWidth="500.0" />
+            <Pane fx:id="pBlackBox" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: whitesmoke;" />
          </children>
       </Pane>
       <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">

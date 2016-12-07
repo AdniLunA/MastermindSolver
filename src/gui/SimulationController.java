@@ -109,7 +109,7 @@ public class SimulationController implements Initializable {
         blackBox = new Circle[lengthOfCode];
         for (int i = 0; i < lengthOfCode; i++) {
             blackBox[i] = new Circle(15, Color.BLACK);
-            blackBox[i].relocate(circleXPositions[i] - 100, 0.0);
+            blackBox[i].relocate(circleXPositions[i] - 100, 5.0);
         }
         pBlackBox.getChildren().addAll(blackBox);
 
@@ -159,7 +159,7 @@ public class SimulationController implements Initializable {
         pGameArea.getChildren().addAll(lines);
     }
 
-    private TextField getFormattedTextField(){
+    private TextField getFormattedTextField() {
         TextField textField = new TextField();
         textField.setPrefWidth(60.0);
         textField.setPrefHeight(40.0);
@@ -184,6 +184,7 @@ public class SimulationController implements Initializable {
         /*show secret code?*/
         for (Circle circle : blackBox) {
             circle.setVisible(cbShowSecretCode.isSelected());
+            pBlackBox.setVisible(cbShowSecretCode.isSelected());
         }
 
         /*solve simulation automated or manually?*/
@@ -230,6 +231,7 @@ public class SimulationController implements Initializable {
         for (int i = 0; i < circles.length; i++) {
             System.out.printf(colors[i] + " ");
             circles[i].fillProperty().set(getCircleGradient(colors[i]));
+            circles[i].setStroke(Color.DARKGRAY);
         }
         System.out.println();
     }
@@ -242,21 +244,21 @@ public class SimulationController implements Initializable {
         System.out.println();
     }
 
-    public void setNewSubmission(Submission newLine) {
-        System.out.println("SimulationController - setNewSubmission");
+    public void setNextSubmission(Submission newLine) {
+        System.out.println("SimulationController - setNextSubmission");
         System.out.println("    Got information:");
-        System.out.println("    SimulationController: position = "+currentLineToPrint+", red = "+newLine.getRed()+", white = "+newLine.getWhite()+", sequence = "+newLine.getChromosome().toString());
+        System.out.println("    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
 
         /*set line values*/
         fillCircleLine(circleMatrix[currentLineToPrint], newLine.getChromosome().getSequence());
         System.out.println("    Set Feedback to GUI:");
-        System.out.println("    SimulationController: position = "+currentLineToPrint+", red = "+newLine.getRed()+", white = "+newLine.getWhite()+", sequence = "+newLine.getChromosome().toString());
+        System.out.println("    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
         tRedFeedback[currentLineToPrint].setText("" + newLine.getRed());
         tWhiteFeedback[currentLineToPrint].setText("" + newLine.getWhite());
         /*increment counter*/
         currentLineToPrint++;
         /*if solution is found, break loop by setting currentLine to max*/
-        if(newLine.getRed() == lengthOfCode){
+        if (newLine.getRed() == lengthOfCode) {
             System.out.println("SimulationController - setNextSubmission: secret code found!!!");
             currentLineToPrint = numberOfTries;
         }
