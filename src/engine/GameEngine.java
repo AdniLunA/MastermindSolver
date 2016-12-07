@@ -4,6 +4,8 @@ import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.Submission;
+import gui.GUIManager;
+import gui.SimulationController;
 
 public class GameEngine {
     /***attributes***/
@@ -38,16 +40,29 @@ public class GameEngine {
 
     public void startGame(int codeLength, int numColors, int numTries, IChromosome code){
         System.out.println("GameEngine - startGame");
+        this.codeLength = codeLength;
+        this.numColors = numColors;
+        this.numTries = numTries;
+
         validator = new CodeValidator(code);
+        /*initialize solver*/
         solver = new CodeSolver();
-        solver.run();
+        solver.run(0);
     }
 
     public void resolveSubmission(IChromosome chromosome) {
         System.out.println("GameEngine - resolve Submission");
         int[] response = validator.calculateResponse(chromosome);
+        Submission submission = new Submission(chromosome, response[0], response[1]);
 
-        FitnessCalculator.getInstance().addSubmission(new Submission(chromosome, response[0], response[1]));
+        FitnessCalculator.getInstance().addSubmission(submission);
+
+        GUIManager.getInstance().handleSubmission(submission);
+    }
+
+    public void calculateNextSubmission(int requestCounter) {
+        System.out.println("GameEngine - calculateNextSubmission");
+        solver.run(requestCounter);
     }
 
     /***getter + setter***/

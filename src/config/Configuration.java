@@ -16,9 +16,10 @@ public enum Configuration {
 	public final int SIZE_OF_POPULATION = 50;
 
 	/*game engine settings*/
-	public final int DEFAULT_LENGTH_OF_CODE = 5;
-	public final int DEFAULT_NUMBER_OF_COLORS = 10;
-	public final int DEFAULT_NUMBER_OF_TRIES = 10;
+	public final int DEFAULT_LENGTH_OF_CODE = 2;
+	public final int DEFAULT_NUMBER_OF_COLORS = 3;
+	public final int DEFAULT_NUMBER_OF_TRIES = 20;
+
 	public final int MAX_LENGTH_OF_CODE = 10;
 	public final int MAX_NUMBER_OF_COLORS = 20;
 	public final int MAX_NUMBER_OF_TRIES = 20;
@@ -30,7 +31,7 @@ public enum Configuration {
 	public final boolean TRACK_CODE_SETTING = false;
 	public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
 	public final boolean DEFAULT_RUN_AUTOMATED = true;
-	public final int DEFAULT_SIMULATION_SPEED = 50;
+	public final int DEFAULT_SIMULATION_SPEED = 5000; /*between 100 and 5000*/
 
 	public final Color[] COLORS = new Color[]{
 		Color.web("0xFFFFFF"), Color.web("0xC0C0C0"), Color.web("0x000000"), Color.web("0xFFE800"),

@@ -17,13 +17,13 @@
                <children>
                   <Group fx:id="gRunAutomatedSettings" layoutX="-36.0" layoutY="165.0">
                      <children>
-                        <Label layoutX="56.0" layoutY="166.0" text="Slow simulation">
+                        <Label layoutX="204.0" layoutY="166.0" text="Slow simulation">
                            <font>
                               <Font size="14.0" />
                            </font>
                         </Label>
                         <Slider fx:id="spd_slider" blockIncrement="100.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" max="5000.0" min="100.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="1000.0" />
-                        <Label layoutX="213.0" layoutY="166.0" text="Fast simulation">
+                        <Label layoutX="57.0" layoutY="166.0" text="Fast simulation">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -93,7 +93,7 @@
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Text layoutX="-1.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Settings" textAlignment="CENTER" wrappingWidth="279.0">
+            <Text layoutX="-1.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Settings" textAlignment="CENTER" wrappingWidth="279.0">
                <font>
                   <Font name="System Bold" size="25.0" />
                </font>
@@ -114,7 +114,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Text layoutX="292.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind Simulation" textAlignment="CENTER" wrappingWidth="800.0">
+      <Text layoutX="292.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind Simulation" textAlignment="CENTER" wrappingWidth="800.0">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>

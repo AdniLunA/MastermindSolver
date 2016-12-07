@@ -7,6 +7,7 @@ import evolution.NumChromosome;
 import evolution.crossover.ICrossover;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class uniformCrossover implements ICrossover {
     /***attributes***/
@@ -24,7 +25,7 @@ public class uniformCrossover implements ICrossover {
         float ratio = 100 * Configuration.INSTANCE.MIXING_RATIO; /*transform to percent
         /*no 0 or 100 allowed*/
         if (ratio <= 0 || ratio >= 100) {
-            throw new IllegalArgumentException("The mixing ratio in the configuration must be a value between 0 and 1.");
+            throw new InputMismatchException("ERROR: The mixing ratio in the configuration must be a value between 0 and 1.");
         }
         return ratio;
     }

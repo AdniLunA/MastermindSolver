@@ -1,16 +1,6 @@
 --- must haves ---
 
 
-* simulation settings *
-- set c0 - c9: code colors
-
-- get spd_slider event
-    set simulationSpeed (local variable)
-
-* simulation page generate simulation *
-- adapt cGamefield + apScrollableField height to needed space
-
-- generate matrix of circles / rectangles
 
 
 

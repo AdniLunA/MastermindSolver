@@ -280,7 +280,8 @@ public class ConfigurationController implements Initializable {
                         new Stop(1, Color.web("#ffffff")));
                 rectangles[i].fillProperty().set(gradient);
             } catch (IllegalArgumentException e) {
-                System.out.println("ConfigurationController - exception" + e);
+                System.out.println("ConfigurationController - exception");
+                e.printStackTrace();
             }
         }
     }
@@ -295,6 +296,13 @@ public class ConfigurationController implements Initializable {
 
         loc_slider.setMin(locMinLength);
         noc_slider.setMin((double) lengthOfCode);
+
+        loc_slider.setValue(lengthOfCode);
+        loc_textfield.setText(""+lengthOfCode);
+        noc_slider.setValue(numberOfColors);
+        noc_textfield.setText(""+numberOfColors);
+        not_slider.setValue(numberOfTries);
+        not_textfield.setText(""+numberOfTries);
     }
 
     private void initializeCodeSettingArea() {

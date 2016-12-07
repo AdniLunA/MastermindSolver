@@ -25,11 +25,15 @@ public class GUIManager {
     private GameEngine gameEngine = GameEngine.getInstance();
     private IChromosome code;
 
+    private Submission nextLine;
+
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
 
     private Stage primaryStage;
+
+    private SimulationController subscriber;
 
     /***functions***/
     public static final GUIManager getInstance() { /*Singleton Pattern*/
@@ -95,9 +99,6 @@ public class GUIManager {
         if (!code.checkValidity()) {
             /*todo: error message */
         } else {
-            /*todo: redirect page*/
-
-
             try {
                 Pane simulationPage = (Pane) FXMLLoader.load(getClass().getResource("simulationPage.fxml"));
                 Scene scene = new Scene(simulationPage);
@@ -113,10 +114,17 @@ public class GUIManager {
 
     public void handleSubmission(Submission submission){
         System.out.println("GUIManager - handleSubmission");
+        nextLine = submission;
+        subscriber.informLineAvailable();
     }
 
-    protected void requestSubmission(){
-        System.out.println("GUIManager - requestSubmission");
+    public void handleSubmissionRequest(int requestCounter) {
+        System.out.println("GUIManager - handleSubmissionRequest");
+        if(requestCounter < numberOfTries) {
+            Submission currentLine = nextLine;
+            gameEngine.calculateNextSubmission(requestCounter);
+            subscriber.setNewSubmission(currentLine);
+        }
     }
 
     /***getter + setter***/
@@ -154,5 +162,9 @@ public class GUIManager {
 
     protected int[] getSecretCode() {
         return code.getSequence();
+    }
+
+    public void setSubscriber(SimulationController subscriber){
+        this.subscriber = subscriber;
     }
 }

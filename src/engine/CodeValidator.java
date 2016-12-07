@@ -3,21 +3,27 @@ package engine;
 import evolution.IChromosome;
 
 public class CodeValidator {
-    /*constructor*/
+    /***
+     * constructor
+     ***/
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
     }
 
-    /***attributes***/
+    /***
+     * attributes
+     ***/
     private IChromosome secretCode;
 
-    /***functions***/
-    public int[] calculateResponse(IChromosome sequenceToCheck){
+    /***
+     * functions
+     ***/
+    public int[] calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
         System.out.println("CodeValidator - calculateResponse");
-        for(int i = 0; i < secretCode.getSequence().length; i++){
-            if(secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]){
+        for (int i = 0; i < secretCode.getSequence().length; i++) {
+            if (secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]) {
                 redResponse++;
             }
         }
@@ -25,12 +31,12 @@ public class CodeValidator {
         int[] sortedSecretCode = secretCode.getSequenceSorted();
         int[] sortedSequenceToCheck = sequenceToCheck.getSequenceSorted();
         int[] colorCounter = new int[secretCode.getNumberOfColors()];
-        for(int i = 0; i < sortedSecretCode.length; i++){
+        for (int i = 0; i < sortedSecretCode.length; i++) {
             colorCounter[sortedSecretCode[i]]++;
             colorCounter[sortedSequenceToCheck[i]]++;
         }
-        for(int colorCount : colorCounter){
-            if (colorCount == 2){
+        for (int colorCount : colorCounter) {
+            if (colorCount == 2) {
                 whiteResponse++;
             }
         }

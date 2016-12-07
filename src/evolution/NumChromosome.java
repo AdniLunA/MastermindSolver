@@ -37,7 +37,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
             }
             /*reduce available numbers after one was picked*/
             for (int i = 0; i < sequence.length; i++) {
-                int randomPointer = (int) Math.floor((Math.random() * numberPool.length));
+                int randomPointer = (int) Math.floor((Math.random() * numberPool.length)); /*todo improve with mersenne twister*/
                 int randomNumber = numberPool[randomPointer];
                 numberPool = removeItemOfArray(numberPool, randomPointer);
                 sequence[i] = randomNumber;
