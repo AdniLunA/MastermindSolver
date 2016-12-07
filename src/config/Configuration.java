@@ -9,7 +9,7 @@ public enum Configuration {
 	public final int SIZE_OF_POPULATION = 50;
 	public final int REPEAT_EVOLUTION_N_TIMES = 10;
 	public final SelectionEnum SELECTION_TYPE = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
-	public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.UNIFORM;
+	public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.ONE_POINT;
 	/*Must be greater than length of code (always < 20!):*/
 	public final int K_FOR_CROSS_OVER = 3; /* for kPoint crossover*/
 	public final float MIXING_RATIO = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
