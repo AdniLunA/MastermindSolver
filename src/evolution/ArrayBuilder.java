@@ -17,30 +17,6 @@ public class ArrayBuilder {
         }
     }
 
-    public void addToQueue(int[] numbersToAdd) {
-        addToQueue(1,numbersToAdd);
-    }
-
-    public int getLength(){
-        return transformSequence(child1Q).length;
-    }
-
-    public int[] insert(int position, int[] toInsert){
-        int[] sequence = getChild1Sequence();
-        if(position < getLength() && position > -1){
-            addToQueue(2, Arrays.copyOfRange(sequence, 0, position));
-            addToQueue(2, toInsert);
-            addToQueue(2, Arrays.copyOfRange(sequence, position, sequence.length));
-        } else {
-            System.out.println("ArrayBuilder - insert: ERROR, given position "+position+" must be between 0 and "+ sequence.length);
-        }
-        return sequence;
-    }
-
-    public int[] getSequence(){
-        return getChild1Sequence();
-    }
-
     public int[] getChild1Sequence(){
         return transformSequence(child1Q);
     }
@@ -50,11 +26,15 @@ public class ArrayBuilder {
     }
 
     private int[] transformSequence(Queue<Integer> queue){
-        int size = queue.size();
-        int[] array = new int[size];
-        for(int i = 0; i < size; i++){
-            array[i] = queue.poll();
+        if (queue.isEmpty()) {
+            throw new NullPointerException("ArrayBuilder - transformSequence ERROR: Array is empty.");
+        } else {
+            int size = queue.size();
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++) {
+                array[i] = queue.poll();
+            }
+            return array;
         }
-        return array;
     }
 }

@@ -12,6 +12,7 @@ import evolution.selection.RouletteWheelSelection;
 import evolution.selection.TournamentSelection;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class Population implements IPopulation {
     /***
@@ -54,15 +55,21 @@ public class Population implements IPopulation {
 
         /*crossover*/
         System.out.println("Population - evolve: Start crossover");
-        IChromosome[] newGeneration = crosser.crossover(parents[0], parents[1]);
+        IChromosome[] newGeneration = crosser.crossover(parents);
+        for (int i = 0; i < 2; i++) {
+            System.out.println("    -- Child #"+i+" is valid: " +newGeneration[i].checkValidity());
+            if(!newGeneration[i].checkValidity()){
+                throw new InputMismatchException("Population evolve crossover: ERROR - got invalid child "+newGeneration[i].toString());
+            }
+        }
         newGeneration[0].setGeneration(maxGenerationCounter+1);
         newGeneration[1].setGeneration(maxGenerationCounter+1);
         replaceWeakestWithNewGenes(newGeneration);
 
         /*mutation*/
-        System.out.println("Population - evolve: Start mutation");
+        //System.out.println("Population - evolve: Start mutation");
         IChromosome[] mutatedGeneration = newGeneration;
-        mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(genePool, genePool.length));
+        //mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(genePool, genePool.length));
         this.genePool = mutatedGeneration;
 
         System.out.println("- Population - evolve: A new generation has been born! #" + maxGenerationCounter);
@@ -151,10 +158,10 @@ public class Population implements IPopulation {
 
         switch (chooseMutation){
             case DISPLACEMENT:
-                mutator = new ExchangeMutation();
+                mutator = new DisplacementMutation();
                 break;
             case EXCHANGE:
-                mutator = new DisplacementMutation();
+                mutator = new ExchangeMutation();
                 break;
             case INSERTION:
                 mutator = new InsertionMutation();

@@ -3,7 +3,6 @@ package engine;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.Submission;
 import gui.GUIManager;
 
 public class GameEngine {

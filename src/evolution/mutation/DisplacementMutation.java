@@ -2,9 +2,9 @@ package evolution.mutation;
 
 import config.Configuration;
 import engine.GameEngine;
-import evolution.ArrayBuilder;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import evolution.SingleArrayBuilder;
 
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public class DisplacementMutation extends MutatorBasics {
                     int[] splitPos = super.generateTwoSplitPositions(genePool.length);
                     int illegalPos = splitPos[0];
 
-                    ArrayBuilder builder = new ArrayBuilder();
+                    SingleArrayBuilder builder = new SingleArrayBuilder();
                     int[] sequence = genePool[chromosomeCount].getSequence();
                     builder.addToQueue(Arrays.copyOf(sequence, splitPos[0]));
                     builder.addToQueue(Arrays.copyOfRange(sequence, splitPos[1], genePool.length));

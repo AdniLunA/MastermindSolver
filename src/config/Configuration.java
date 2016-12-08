@@ -12,13 +12,14 @@ public enum Configuration {
 	public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.ONE_POINT;
 	/*Must be greater than length of code (always < 20!):*/
 	public final int K_FOR_CROSS_OVER = 3; /* for kPoint crossover*/
+	public final int CROSSOVER_MAX_TRY_AGAIN = 10;
 	public final float MIXING_RATIO = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
 	public final MutationEnum MUTATION_TYPE = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
 	public final double MUTATION_RATIO = 0.005;
 	public final int MUTATION_MAX_TRY_AGAIN = 10;
 
 	/***game engine settings***/
-	public final int DEFAULT_LENGTH_OF_CODE = 2;
+	public final int DEFAULT_LENGTH_OF_CODE = 3;
 	public final int DEFAULT_NUMBER_OF_COLORS = 5;
 	public final int DEFAULT_NUMBER_OF_TRIES = 20;
 

@@ -23,15 +23,17 @@ public class KPointCrossover implements ICrossover {
      * functions
      ***/
     @Override
-    public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
+    public IChromosome[] crossover(IChromosome[] parents) {
         System.out.println("KPointCrossover - crossover:");
-        this.parent1 = parent1;
-        this.parent2 = parent2;
+        this.parent1 = parents[0];
+        this.parent2 = parents[1];
         sequenceLength = parent1.getLength();
 
         int numberOfHealthyChildren = 0;
+        int tryCounter = 0;
+        int maxTries = Configuration.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
 
-        while (numberOfHealthyChildren < 2) {
+        while(numberOfHealthyChildren < 2 && tryCounter < maxTries){
             generateRandomSplitPos();
 
             children = breedChildren();
@@ -41,6 +43,10 @@ public class KPointCrossover implements ICrossover {
             if (children[1].checkValidity()) {
                 numberOfHealthyChildren++;
             }
+            tryCounter++;
+        }
+        if(tryCounter == maxTries){
+            return parents;
         }
         System.out.println("    Children: " + children[0].toString() + " and " + children[1].toString());
         System.out.println("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());

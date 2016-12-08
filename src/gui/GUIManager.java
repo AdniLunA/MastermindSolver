@@ -3,7 +3,7 @@ package gui;
 import engine.GameEngine;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.Submission;
+import engine.Submission;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;

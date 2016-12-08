@@ -1,14 +1,9 @@
 package evolution.mutation;
 
 import config.Configuration;
-import config.MersenneTwisterFast;
 import engine.GameEngine;
-import evolution.ArrayBuilder;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ExchangeMutation extends MutatorBasics {
     /***
@@ -30,7 +25,7 @@ public class ExchangeMutation extends MutatorBasics {
                 int countTries = 0;
                 do {
                     int[] mutatedSequence =  genePool[chromosomeCount].getSequence();
-                    int[] splitPos = super.generateTwoSplitPositions(genePool.length - 1);
+                    int[] splitPos = super.generateTwoSplitPositions(genePool[chromosomeCount].getLength() - 1);
 
                     int[] saveSwapValues = new int[2];
                     saveSwapValues[0] = mutatedSequence[splitPos[0]];

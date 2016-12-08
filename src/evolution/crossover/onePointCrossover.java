@@ -1,5 +1,6 @@
 package evolution.crossover;
 
+import config.Configuration;
 import config.MersenneTwisterFast;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -18,15 +19,18 @@ public class OnePointCrossover implements ICrossover{
 
     /***functions***/
     @Override
-    public IChromosome[] crossover(IChromosome parent1, IChromosome parent2) {
-        System.out.println("KPointCrossover - crossover:");
-        this.parent1 = parent1;
-        this.parent2 = parent2;
+    public IChromosome[] crossover(IChromosome[] parents) {
+        System.out.println("OnePointCrossover - crossover:");
+        this.parent1 = parents[0];
+        this.parent2 = parents[1];
         sequenceLength = parent1.getLength();
 
         int numberOfHealthyChildren = 0;
+        int tryCounter = 0;
+        int maxTries = Configuration.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
 
-        while(numberOfHealthyChildren < 2){
+        while(numberOfHealthyChildren < 2 && tryCounter < maxTries){
+            numberOfHealthyChildren = 0;
             generateRandomSplitPos();
 
             children = breedChildren();
@@ -36,6 +40,21 @@ public class OnePointCrossover implements ICrossover{
             if(children[1].checkValidity()){
                 numberOfHealthyChildren++;
             }
+            tryCounter++;
+        }
+        if(tryCounter == maxTries){
+            IChromosome[] returnValid = new IChromosome[2];
+            if(children[0].checkValidity()){
+                returnValid[0] = children[0];
+            } else {
+                returnValid[1] = parents[0];
+            }
+            if(children[1].checkValidity()){
+                returnValid[1] = children[1];
+            } else {
+                returnValid[1] = parents[1];
+            }
+            return parents;
         }
         System.out.println("    Children: " + children[0].toString() + " and " + children[1].toString());
         System.out.println("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
@@ -49,24 +68,24 @@ public class OnePointCrossover implements ICrossover{
 
     private IChromosome[] breedChildren() {
         ArrayBuilder builder = new ArrayBuilder();
-        IChromosome dnaForC1;
-        IChromosome dnaForC2;
+        int[] dnaForC1;
+        int[] dnaForC2;
         IChromosome child1;
         IChromosome child2;
 
         /*first part*/
-        dnaForC1 = parent1;
-        dnaForC2 = parent2;
+        dnaForC1 = parent1.getSequence();
+        dnaForC2 = parent2.getSequence();
         /*copyOfRange: from incl., to excl.*/
-        builder.addToQueue(1, Arrays.copyOfRange(dnaForC1.getSequence(), 0, splitPos));
-        builder.addToQueue(2, Arrays.copyOfRange(dnaForC2.getSequence(), 0, splitPos));
+        builder.addToQueue(1, Arrays.copyOfRange(dnaForC1, 0, splitPos));
+        builder.addToQueue(2, Arrays.copyOfRange(dnaForC2, 0, splitPos));
 
         /*second part*/
-        dnaForC1 = parent2;
-        dnaForC2 = parent1;
+        dnaForC1 = parent2.getSequence();
+        dnaForC2 = parent1.getSequence();
         /*copyOfRange: from incl., to excl.*/
-        builder.addToQueue(1, Arrays.copyOfRange(dnaForC1.getSequence(), splitPos, sequenceLength));
-        builder.addToQueue(2, Arrays.copyOfRange(dnaForC2.getSequence(), splitPos, sequenceLength));
+        builder.addToQueue(1, Arrays.copyOfRange(dnaForC1, splitPos, sequenceLength));
+        builder.addToQueue(2, Arrays.copyOfRange(dnaForC2, splitPos, sequenceLength));
 
         child1 = new NumChromosome(builder.getChild1Sequence(), parent1.getNumberOfColors());
         child2 = new NumChromosome(builder.getChild2Sequence(), parent1.getNumberOfColors());

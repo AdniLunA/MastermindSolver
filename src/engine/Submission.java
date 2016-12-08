@@ -1,4 +1,6 @@
-package evolution;
+package engine;
+
+import evolution.IChromosome;
 
 public class Submission {
     /*constructor*/

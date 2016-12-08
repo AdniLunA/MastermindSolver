@@ -48,12 +48,18 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     private int[] removeItemOfArray(int[] numberPool, int numberPosition) {
-        ArrayBuilder builder = new ArrayBuilder();
+        SingleArrayBuilder builder = new SingleArrayBuilder();
         /*from inclusive, to exclusive*/
         builder.addToQueue(Arrays.copyOfRange(numberPool, 0, numberPosition));
         builder.addToQueue(Arrays.copyOfRange(numberPool, numberPosition+1, numberPool.length));
 
-        return builder.getSequence();
+        try {
+            return builder.getSequence();
+        } catch(NullPointerException n){
+            System.out.println("NumChromosome - removeItemOfArray: ERROR - empty numberPool "+numberPool);
+            n.printStackTrace();
+            return null;
+        }
     }
 
     @Override

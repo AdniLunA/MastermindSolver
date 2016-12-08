@@ -2,7 +2,7 @@ package test;
 
 import engine.CodeValidator;
 import evolution.NumChromosome;
-import evolution.Submission;
+import engine.Submission;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

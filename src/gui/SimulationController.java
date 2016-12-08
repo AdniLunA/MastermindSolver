@@ -1,7 +1,7 @@
 package gui;
 
 import config.Configuration;
-import evolution.Submission;
+import engine.Submission;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;

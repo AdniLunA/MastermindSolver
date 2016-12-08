@@ -1,8 +1,10 @@
 package evolution;
 
 import config.Configuration;
+import engine.Submission;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class FitnessCalculator {
     /***
@@ -59,6 +61,11 @@ public class FitnessCalculator {
                 int[] sortedSubmission = submission.getChromosome().getSequenceSorted();
                 int[] colorCounter = new int[chromosomeToCheck.getNumberOfColors()];
                 for (int i = 0; i < sortedSequence.length; i++) {
+                    if(sortedSequence.length != sortedSubmission.length){
+                        String errormessage = "FitnessCalculator - calculateFitness ERROR: sequence length differs.\n" +
+                                "Tried to compare sequence "+chromosomeToCheck.toString()+" with "+submission.getChromosome().toString();
+                        throw new InputMismatchException(errormessage);
+                    }
                     colorCounter[sortedSequence[i]]++;
                     colorCounter[sortedSubmission[i]]++;
                 }
