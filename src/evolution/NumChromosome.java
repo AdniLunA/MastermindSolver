@@ -1,14 +1,23 @@
 package evolution;
 
 import config.Configuration;
+import engine.GameEngine;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
-    /***constructors***/
+    /***
+     * constructors
+     ***/
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
-        this.numberOfColors = numberOfColors;
+        if (numberOfColors > 0 && numberOfColors <= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS) {
+            this.numberOfColors = numberOfColors;
+        } else {
+            throw new InputMismatchException("Num Chromosome: ERROR - tried to initialize with numColors " +
+                    numberOfColors + ", should be a value between 1 and " + Configuration.INSTANCE.MAX_NUMBER_OF_COLORS);
+        }
     }
 
     public NumChromosome(int[] sequence, int numberOfColors) {
@@ -16,19 +25,28 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         this.sequence = sequence;
     }
 
-    /***attributes***/
+    public NumChromosome(int[] sequence) {
+        this(sequence.length, GameEngine.getInstance().getNumColors());
+        this.sequence = sequence;
+    }
+
+    /***
+     * attributes
+     ***/
     private int lengthOfCode;
     private int numberOfColors;
     private int[] sequence;
     private int generation = 0;
 
-    /***functions***/
+    /***
+     * functions
+     ***/
     @Override
     public void generateRandom() {
         /*System.out.println("NumChromosome - generateRandom");*/
         boolean validSequence = false;
         int numOfTries = 0;
-        while(!validSequence){
+        while (!validSequence) {
             sequence = new int[lengthOfCode];
             int[] numberPool = new int[numberOfColors];
             for (int i = 0; i < numberOfColors; i++) {
@@ -51,12 +69,12 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         SingleArrayBuilder builder = new SingleArrayBuilder();
         /*from inclusive, to exclusive*/
         builder.addToQueue(Arrays.copyOfRange(numberPool, 0, numberPosition));
-        builder.addToQueue(Arrays.copyOfRange(numberPool, numberPosition+1, numberPool.length));
+        builder.addToQueue(Arrays.copyOfRange(numberPool, numberPosition + 1, numberPool.length));
 
         try {
             return builder.getSequence();
-        } catch(NullPointerException n){
-            System.out.println("NumChromosome - removeItemOfArray: ERROR - empty numberPool "+numberPool);
+        } catch (NullPointerException n) {
+            System.out.println("NumChromosome - removeItemOfArray: ERROR - empty numberPool " + numberPool);
             n.printStackTrace();
             return null;
         }
@@ -69,7 +87,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         int[] colorCounter = new int[numberOfColors];
         for (int i = 0; i < lengthOfCode; i++) {
             /*a color has to be set at each position*/
-            if(sequence[i] >= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS){
+            if (sequence[i] >= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS) {
                 return false;
             }
             /*count color occurrences*/
@@ -77,7 +95,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         }
         /*check double occurrences*/
         for (int count : colorCounter) {
-            if(count > 1){
+            if (count > 1) {
                 return false;
             }
         }
@@ -87,7 +105,13 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     @Override
     public int getFitness() {
         /*System.out.println("NumChromosome - getFitness");*/
-        return FitnessCalculator.getInstance().calculateFitness(this);
+        try {
+            return FitnessCalculator.getInstance().calculateFitness(this);
+        } catch (ArrayIndexOutOfBoundsException a) {
+            System.out.println("NumChromosome - get Fitness: ERROR while trying to calculate fitness of chromosome " + toString());
+            a.printStackTrace();
+            return 0;
+        }
     }
 
     @Override
@@ -101,10 +125,10 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     @Override
     public String toString() {
         StringBuffer array = new StringBuffer();
-        int lastElem = sequence.length-1;
+        int lastElem = sequence.length - 1;
         for (int i = 0; i < sequence.length; i++) {
             array.append(sequence[i]);
-            if(i != lastElem);
+            if (i != lastElem) ;
             array.append(", ");
         }
         return array.toString();
@@ -123,7 +147,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public void incrementGeneration(){
+    public void incrementGeneration() {
         generation++;
     }
 

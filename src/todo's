@@ -6,6 +6,9 @@
 * CodeSolver *
 - don't submit the same sequence two times!
 
+* OnePoint Mutator *
+- fix it -> doesn't do anything currently
+
 
 --- nice to haves ---
 * Configuration Page *

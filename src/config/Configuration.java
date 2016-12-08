@@ -15,7 +15,7 @@ public enum Configuration {
 	public final int CROSSOVER_MAX_TRY_AGAIN = 10;
 	public final float MIXING_RATIO = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
 	public final MutationEnum MUTATION_TYPE = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
-	public final double MUTATION_RATIO = 0.005;
+	public final double MUTATION_RATIO = 0.505;
 	public final int MUTATION_MAX_TRY_AGAIN = 10;
 
 	/***game engine settings***/

@@ -90,8 +90,8 @@ public class UniformCrossover implements ICrossover {
             childSequence1[i] = (choose1to1 ? parentSequence2[i] : parentSequence1[i]);
         }
 
-        child1 = new NumChromosome(childSequence1, parent1.getNumberOfColors());
-        child2 = new NumChromosome(childSequence2, parent1.getNumberOfColors());
+        child1 = new NumChromosome(childSequence1);
+        child2 = new NumChromosome(childSequence2);
         return new IChromosome[]{child1, child2};
     }
 

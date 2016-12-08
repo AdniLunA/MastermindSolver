@@ -10,6 +10,8 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 public class GUIManager {
     /*constructor*/
@@ -27,7 +29,7 @@ public class GUIManager {
     private GameEngine gameEngine = GameEngine.getInstance();
     private IChromosome code;
 
-    private Submission[] submissions;
+    private LinkedBlockingQueue<Submission> submissions;
 
     private int lengthOfCode;
     private int numberOfColors;
@@ -98,7 +100,7 @@ public class GUIManager {
     }
 
     private void openSimulationPage() {
-        this.submissions = new Submission[numberOfTries];
+        this.submissions = new LinkedBlockingQueue<Submission>();
 
         System.out.println("GUIManager - openSimulationPage");
         //only accept valid code
@@ -120,14 +122,25 @@ public class GUIManager {
 
     public void handleSubmission(Submission submission, int position) {
         System.out.println("GUIManager - handleSubmission");
-        submissions[position] = submission;
+        try {
+            submissions.put(submission);
+        } catch (InterruptedException e) {
+            System.out.println("    ERROR: Adding of submission "+submission.toString()+" failed.");
+            e.printStackTrace();
+        }
         System.out.println("    GUIManager: position = " + position + ", " + submission.toString());
     }
 
     public void handleSubmissionRequest(int requestCounter) {
         System.out.println("GUIManager - handleSubmissionRequest");
         if (requestCounter < numberOfTries) {
-            Submission currentLine = submissions[requestCounter];
+            Submission currentLine = null;
+            try {
+                currentLine = submissions.take();
+            } catch (InterruptedException e) {
+                System.out.println("    ERROR: reading of submission #"+requestCounter+" failed.");
+                e.printStackTrace();
+            }
             System.out.println("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
             int nextCounter = requestCounter + 1;
             if(nextCounter < numberOfTries) {
@@ -166,10 +179,6 @@ public class GUIManager {
 
     public void setGameEngine(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
-    }
-
-    public Submission[] getSubmissions() {
-        return submissions;
     }
 
     protected int getLengthOfCode() {

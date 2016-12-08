@@ -67,9 +67,9 @@ public class Population implements IPopulation {
         replaceWeakestWithNewGenes(newGeneration);
 
         /*mutation*/
-        //System.out.println("Population - evolve: Start mutation");
+        System.out.println("Population - evolve: Start mutation");
         IChromosome[] mutatedGeneration = newGeneration;
-        //mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(genePool, genePool.length));
+        mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(genePool, genePool.length));
         this.genePool = mutatedGeneration;
 
         System.out.println("- Population - evolve: A new generation has been born! #" + maxGenerationCounter);
@@ -125,7 +125,7 @@ public class Population implements IPopulation {
         NumChromosome breeder = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
         for (int i = 0; i < randomPopulationPool.length; i++) {
             breeder.generateRandom();
-            randomPopulationPool[i] = new NumChromosome(Arrays.copyOf(breeder.getSequence(), engine.getCodeLength()), engine.getNumColors());
+            randomPopulationPool[i] = new NumChromosome(Arrays.copyOf(breeder.getSequence(), engine.getCodeLength()));
             randomPopulationPool[i].setGeneration(0);
         }
         return randomPopulationPool;

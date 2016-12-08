@@ -87,8 +87,8 @@ public class OnePointCrossover implements ICrossover{
         builder.addToQueue(1, Arrays.copyOfRange(dnaForC1, splitPos, sequenceLength));
         builder.addToQueue(2, Arrays.copyOfRange(dnaForC2, splitPos, sequenceLength));
 
-        child1 = new NumChromosome(builder.getChild1Sequence(), parent1.getNumberOfColors());
-        child2 = new NumChromosome(builder.getChild2Sequence(), parent1.getNumberOfColors());
+        child1 = new NumChromosome(builder.getChild1Sequence());
+        child2 = new NumChromosome(builder.getChild2Sequence());
         return new IChromosome[]{child1, child2};
     }
 

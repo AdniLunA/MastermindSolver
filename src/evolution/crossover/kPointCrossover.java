@@ -104,8 +104,8 @@ public class KPointCrossover implements ICrossover {
             builder.addToQueue(1, Arrays.copyOfRange(dnaForC1.getSequence(), splits[i - 1], splits[i]));
             builder.addToQueue(2, Arrays.copyOfRange(dnaForC2.getSequence(), splits[i - 1], splits[i]));
         }
-        child1 = new NumChromosome(builder.getChild1Sequence(), parent1.getNumberOfColors());
-        child2 = new NumChromosome(builder.getChild2Sequence(), parent1.getNumberOfColors());
+        child1 = new NumChromosome(builder.getChild1Sequence());
+        child2 = new NumChromosome(builder.getChild2Sequence());
         return new IChromosome[]{child1, child2};
     }
 

@@ -35,7 +35,7 @@ public class ExchangeMutation extends MutatorBasics {
                     genePool[chromosomeCount].getSequence()[splitPos[0]] = saveSwapValues[1];
                     genePool[chromosomeCount].getSequence()[splitPos[1]] = saveSwapValues[0];
 
-                    mutatedChromosome = new NumChromosome(mutatedSequence, GameEngine.getInstance().getNumColors());
+                    mutatedChromosome = new NumChromosome(mutatedSequence);
                     validGeneFound = mutatedChromosome.checkValidity();
 
                     if(validGeneFound){

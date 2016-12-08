@@ -35,7 +35,7 @@ public class DisplacementMutation extends MutatorBasics {
 
                     int[] mutatedSequence = builder.insert(insertionPos, Arrays.copyOfRange(sequence, splitPos[0], splitPos[1]));
 
-                    mutatedChromosome = new NumChromosome(mutatedSequence, GameEngine.getInstance().getNumColors());
+                    mutatedChromosome = new NumChromosome(mutatedSequence);
                     validGeneFound = mutatedChromosome.checkValidity();
 
                     if(validGeneFound){
