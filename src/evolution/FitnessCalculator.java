@@ -105,6 +105,10 @@ public class FitnessCalculator {
         return submissions.size() * maxDifference * (Configuration.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + Configuration.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
     }
 
+    public void dropForNextGame(){
+        submissions.removeAll(submissions);
+    }
+
     /***
      * getter + setter
      ***/

@@ -19,5 +19,5 @@ public interface IPopulation {
 
     int getSumPopulationFitness();
 
-    void removeFittest();
+    void replaceGene(IChromosome geneToRemove);
 }

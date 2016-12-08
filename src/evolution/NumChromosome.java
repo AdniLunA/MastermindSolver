@@ -178,13 +178,4 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         return lengthOfCode;
     }
 
-    @Override
-    public void setIdInPopulation(int position) {
-        this.idInPopulation = position;
-    }
-
-    @Override
-    public int getIdInPopulation() {
-        return idInPopulation;
-    }
 }

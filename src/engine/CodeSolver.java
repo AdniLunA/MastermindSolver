@@ -2,11 +2,6 @@ package engine;
 
 import config.Configuration;
 import evolution.*;
-import evolution.crossover.ICrossover;
-import evolution.mutation.IMutation;
-import evolution.selection.ISelection;
-import evolution.selection.RouletteWheelSelection;
-import evolution.selection.TournamentSelection;
 
 import java.util.ArrayList;
 
@@ -41,6 +36,7 @@ public class CodeSolver {
         /*todo: find an intelligent way to choose mutation methods*/
         for (int i = 0; i < Configuration.INSTANCE.REPEAT_EVOLUTION_N_TIMES; i++) {
             population.evolve();
+            System.out.println("    Code Solver - population fitness at round #"+i+": "+population.getSumPopulationFitness());
         }
         /*get fittest*/
         IChromosome nextRequest;
@@ -52,12 +48,13 @@ public class CodeSolver {
             for (Submission postedSubmission : postedSubmissions) {
                 if(postedSubmission == postedSubmission.getChromosome()){
                     alreadyPosted = true;
-                    population.removeFittest();
+                    population.replaceGene(nextRequest);
                     break;
                 }
             }
         }
         while (alreadyPosted);
+        System.out.println("New request has fitness "+nextRequest.getFitness());
         return nextRequest;
     }
 

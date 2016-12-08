@@ -11,6 +11,7 @@ import evolution.selection.ISelection;
 import evolution.selection.RouletteWheelSelection;
 import evolution.selection.TournamentSelection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
@@ -19,21 +20,23 @@ public class Population implements IPopulation {
      * constructors
      ***/
     public Population() {
-        this.genePool = breedRandomPopulation(Configuration.INSTANCE.SIZE_OF_POPULATION);
+        IChromosome[] populationArray = breedRandomPopulation(Configuration.INSTANCE.SIZE_OF_POPULATION);
+        genePool = transformToList(populationArray);
     }
 
     public Population(IChromosome[] genePool) {
-        this.genePool = genePool;
+        this.genePool = transformToList(genePool);
     }
 
     /***
      * attributes
      ***/
     private int maxGenerationCounter = 0;
-    private IChromosome[] genePool = new IChromosome[Configuration.INSTANCE.SIZE_OF_POPULATION];
+    private ArrayList<IChromosome> genePool = new ArrayList<IChromosome>();
     private ISelection selector;
     private ICrossover crosser;
     private IMutation mutator;
+    private int idCounter = 0;
 
     /***
      * functions
@@ -51,7 +54,7 @@ public class Population implements IPopulation {
         instantiateHelpers(chooseSelection,chooseCrossover,chooseMutation);
         /*selection*/
         System.out.println("Population - evolve: Start selection");
-        IChromosome[] parents = selector.getParents(Arrays.copyOf(genePool, genePool.length));
+        IChromosome[] parents = selector.getParents(Arrays.copyOf(transformToArray(genePool), genePool.size()));
 
         /*crossover*/
         System.out.println("Population - evolve: Start crossover");
@@ -69,8 +72,8 @@ public class Population implements IPopulation {
         /*mutation*/
         System.out.println("Population - evolve: Start mutation");
         IChromosome[] mutatedGeneration = newGeneration;
-        mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(genePool, genePool.length));
-        this.genePool = mutatedGeneration;
+        mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(transformToArray(genePool), genePool.size()));
+        this.genePool = transformToList(mutatedGeneration);
 
         System.out.println("- Population - evolve: A new generation has been born! #" + maxGenerationCounter);
     }
@@ -78,7 +81,7 @@ public class Population implements IPopulation {
     @Override
     public IChromosome[] getPopulationSorted() {
         System.out.println("Population - getPopulationSorted");
-        IChromosome[] sortedPopulation = Arrays.copyOf(genePool, genePool.length);
+        IChromosome[] sortedPopulation = Arrays.copyOf(transformToArray(genePool), genePool.size());
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
     }
@@ -94,13 +97,17 @@ public class Population implements IPopulation {
     }
 
     @Override
-    public void removeFittest() {
-
+    public void replaceGene(IChromosome geneToReplace) {
+        genePool.remove(geneToReplace);
+        GameEngine engine = GameEngine.getInstance();
+        IChromosome replacer = new NumChromosome(engine.getCodeLength(),engine.getNumColors());
+        replacer.generateRandom();
+        genePool.add(replacer);
     }
 
     @Override
     public IChromosome[] getSortedPopulation() {
-        IChromosome[] sortedPopulation = Arrays.copyOf(genePool, genePool.length);
+        IChromosome[] sortedPopulation = Arrays.copyOf(transformToArray(genePool), genePool.size());
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
     }
@@ -108,10 +115,10 @@ public class Population implements IPopulation {
     @Override
     public IChromosome getFittest() {
         System.out.println("Population - getFittest");
-        IChromosome fittest = getSortedPopulation()[genePool.length - 1];
+        IChromosome fittest = getSortedPopulation()[genePool.size() - 1];
         /*todo check*/
-        System.out.println("*****Fitness of expected fittest: " + fittest.getFitness());
-        System.out.println("*****Fitness of expected weakest: " + getSortedPopulation()[0].getFitness());
+        System.out.println("*****Fitness of fittest: " + fittest.getFitness());
+        System.out.println("*****Fitness of weakest: " + getSortedPopulation()[0].getFitness());
 
         return fittest;
     }
@@ -121,7 +128,7 @@ public class Population implements IPopulation {
         int lastPos = improvedGenePool.length-1;
         improvedGenePool[lastPos-1] = newGenes[0];
         improvedGenePool[lastPos] = newGenes[1];
-        this.genePool = improvedGenePool;
+        this.genePool = transformToList(improvedGenePool);
     }
 
     private IChromosome[] breedRandomPopulation(int size) {
@@ -180,6 +187,22 @@ public class Population implements IPopulation {
         }
     }
 
+    private IChromosome[] transformToArray(ArrayList<IChromosome> list){
+        IChromosome[] geneArray = new IChromosome[list.size()];
+        for (int i = 0; i < list.size(); i++) {
+            geneArray[i] = list.get(i);
+        }
+        return geneArray;
+    }
+
+    private ArrayList<IChromosome> transformToList(IChromosome[] array){
+        ArrayList<IChromosome> list = new ArrayList<IChromosome>();
+        for (int i = 0; i < array.length; i++) {
+            list.add(array[i]);
+        }
+        return list;
+    }
+
     /***
      * getter + setter
      ***/
@@ -193,11 +216,11 @@ public class Population implements IPopulation {
 
     @Override
     public IChromosome[] getGenePool() {
-        return genePool;
+        return transformToArray(genePool);
     }
 
     public void setGenePool(IChromosome[] genePool) {
-        this.genePool = genePool;
+        this.genePool = transformToList(genePool);
     }
 
 

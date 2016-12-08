@@ -1,6 +1,7 @@
 package gui;
 
 import engine.GameEngine;
+import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import engine.Submission;
@@ -116,6 +117,7 @@ public class GUIManager {
                 System.out.println("GUIManager - openSimulationPage: errors in \"simulationPage.fxml\" or the corresponding controller");
                 e.printStackTrace();
             }
+            FitnessCalculator.getInstance().dropForNextGame();
             gameEngine.startGame(lengthOfCode, numberOfColors, numberOfTries, code);
         }
     }
