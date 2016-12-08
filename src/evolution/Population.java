@@ -94,6 +94,11 @@ public class Population implements IPopulation {
     }
 
     @Override
+    public void removeFittest() {
+
+    }
+
+    @Override
     public IChromosome[] getSortedPopulation() {
         IChromosome[] sortedPopulation = Arrays.copyOf(genePool, genePool.length);
         Arrays.sort(sortedPopulation);

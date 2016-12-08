@@ -2,31 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/config/Configuration.class" afterPath="$PROJECT_DIR$/bin/config/Configuration.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/FitnessCalculator.class" afterPath="$PROJECT_DIR$/bin/evolution/FitnessCalculator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" afterPath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/Population.class" afterPath="$PROJECT_DIR$/bin/evolution/Population.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/kPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/kPointCrossover.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/onePointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/onePointCrossover.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/twoPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/twoPointCrossover.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/uniformCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/uniformCrossover.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/DisplacementMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/DisplacementMutation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/CodeSolver.class" afterPath="$PROJECT_DIR$/bin/engine/CodeSolver.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/ExchangeMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/ExchangeMutation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/GUIManager.class" afterPath="$PROJECT_DIR$/bin/gui/GUIManager.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/todo's" afterPath="$PROJECT_DIR$/bin/todo's" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/Configuration.java" afterPath="$PROJECT_DIR$/src/config/Configuration.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" afterPath="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/CodeSolver.java" afterPath="$PROJECT_DIR$/src/engine/CodeSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/IChromosome.java" afterPath="$PROJECT_DIR$/src/evolution/IChromosome.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/IPopulation.java" afterPath="$PROJECT_DIR$/src/evolution/IPopulation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/NumChromosome.java" afterPath="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/Population.java" afterPath="$PROJECT_DIR$/src/evolution/Population.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/GUIManager.java" afterPath="$PROJECT_DIR$/src/gui/GUIManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/todo's" afterPath="$PROJECT_DIR$/src/todo's" />
     </list>
     <ignored path="MastermindSolver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,11 +32,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="GUIManager.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/GUIManager.java">
+      <file leaf-file-name="CodeSolver.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/CodeSolver.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="80" column="24" selection-start-line="80" selection-start-column="24" selection-end-line="80" selection-end-column="24" />
+              <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IPopulation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/evolution/IPopulation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -62,20 +56,32 @@
         <entry file="file://$PROJECT_DIR$/src/evolution/Population.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="127" column="116" selection-start-line="127" selection-start-column="116" selection-end-line="127" selection-end-column="116" />
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FitnessCalculator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/evolution/FitnessCalculator.java">
+      <file leaf-file-name="IChromosome.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/evolution/IChromosome.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
+              <caret line="24" column="26" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FitnessCalculator.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/evolution/FitnessCalculator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.8656716">
+              <caret line="110" column="33" selection-start-line="110" selection-start-column="33" selection-end-line="110" selection-end-column="33" />
               <folding>
-                <marker date="1481205182892" expanded="true" signature="234:238" placeholder="/**...*/" />
-                <marker date="1481205182892" expanded="true" signature="4744:4748" placeholder="/**...*/" />
+                <element signature="e#4799#4800#0" expanded="true" />
+                <element signature="e#4833#4834#0" expanded="true" />
+                <marker date="1481207249183" expanded="true" signature="234:238" placeholder="/**...*/" />
+                <marker date="1481207249183" expanded="true" signature="4744:4748" placeholder="/**...*/" />
               </folding>
             </state>
           </provider>
@@ -101,23 +107,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NumChromosome.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="NumChromosome.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/evolution/NumChromosome.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7719298">
-              <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="187" column="29" selection-start-line="187" selection-start-column="29" selection-end-line="187" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#5776#5777#0" expanded="true" />
+                <element signature="e#5822#5823#0" expanded="true" />
+                <element signature="e#5874#5875#0" expanded="true" />
+                <element signature="e#5911#5912#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OnePointCrossover.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java">
+      <file leaf-file-name="ExchangeMutation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="90" column="62" selection-start-line="90" selection-start-column="62" selection-end-line="90" selection-end-column="62" />
+              <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -155,7 +165,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/evolution/IChromosome.java" />
         <option value="$PROJECT_DIR$/src/gui/ShadesCircle.java" />
         <option value="$PROJECT_DIR$/src/gui/ShadedCircle.java" />
         <option value="$PROJECT_DIR$/src/gui/simulationPage.fxml" />
@@ -175,7 +184,6 @@
         <option value="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" />
-        <option value="$PROJECT_DIR$/src/evolution/IPopulation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/IMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/EdxchangeMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" />
@@ -184,7 +192,6 @@
         <option value="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" />
         <option value="$PROJECT_DIR$/src/gui/SimulationController.java" />
         <option value="$PROJECT_DIR$/src/gui/ConfigurationController.java" />
-        <option value="$PROJECT_DIR$/src/engine/CodeSolver.java" />
         <option value="$PROJECT_DIR$/src/evolution/selection/ISelection.java" />
         <option value="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" />
         <option value="$PROJECT_DIR$/src/evolution/SingleArrayBuilder.java" />
@@ -197,14 +204,17 @@
         <option value="$PROJECT_DIR$/src/gui/GUIManager.java" />
         <option value="$PROJECT_DIR$/src/test/CodeValidatorTest.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
-        <option value="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java" />
-        <option value="$PROJECT_DIR$/src/evolution/Population.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java" />
         <option value="$PROJECT_DIR$/src/todo's" />
+        <option value="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" />
+        <option value="$PROJECT_DIR$/src/engine/CodeSolver.java" />
+        <option value="$PROJECT_DIR$/src/evolution/IPopulation.java" />
+        <option value="$PROJECT_DIR$/src/evolution/Population.java" />
+        <option value="$PROJECT_DIR$/src/evolution/IChromosome.java" />
         <option value="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
       </list>
     </option>
@@ -314,6 +324,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="evolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MastermindSolver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MastermindSolver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="evolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mutation" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -818,7 +850,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3242938" sideWeight="0.50572914" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5039548" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5039548" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23697917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -827,7 +859,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5717514" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3898305" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -865,7 +897,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/evolution/NumChromosome.java</url>
-          <line>76</line>
+          <line>77</line>
           <properties />
           <option name="timeStamp" value="111" />
         </line-breakpoint>
@@ -955,7 +987,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/evolution/NumChromosome.java</url>
-          <line>110</line>
+          <line>111</line>
           <properties />
           <option name="timeStamp" value="127" />
         </line-breakpoint>
@@ -969,7 +1001,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="130" />
+      <option name="time" value="132" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1107,16 +1139,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/IPopulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.37988827">
@@ -1220,22 +1242,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/CodeSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/IChromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/ConfigurationController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1308,14 +1314,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="37" column="73" selection-start-line="37" selection-start-column="73" selection-end-line="37" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6462264">
@@ -1332,14 +1330,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/Population.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="127" column="116" selection-start-line="127" selection-start-column="116" selection-end-line="127" selection-end-column="116" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1348,26 +1338,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="100" column="62" selection-start-line="100" selection-start-column="62" selection-end-line="100" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33254716">
           <caret line="92" column="49" selection-start-line="92" selection-start-column="49" selection-end-line="92" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/SimulationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7727273">
-          <caret line="373" column="44" selection-start-line="373" selection-start-column="44" selection-end-line="373" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1388,23 +1362,85 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/FitnessCalculator.java">
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="74" column="49" selection-start-line="74" selection-start-column="49" selection-end-line="74" selection-end-column="49" />
-          <folding>
-            <marker date="1481205182892" expanded="true" signature="234:238" placeholder="/**...*/" />
-            <marker date="1481205182892" expanded="true" signature="4744:4748" placeholder="/**...*/" />
-          </folding>
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/CodeSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="41" selection-start-line="54" selection-start-column="41" selection-end-line="54" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/IPopulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/Population.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/IChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="24" column="26" selection-start-line="24" selection-start-column="12" selection-end-line="24" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/SimulationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.7727273">
+          <caret line="373" column="44" selection-start-line="373" selection-start-column="44" selection-end-line="373" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="100" column="62" selection-start-line="100" selection-start-column="62" selection-end-line="100" selection-end-column="62" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/NumChromosome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7719298">
-          <caret line="23" column="46" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="187" column="29" selection-start-line="187" selection-start-column="29" selection-end-line="187" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5776#5777#0" expanded="true" />
+            <element signature="e#5822#5823#0" expanded="true" />
+            <element signature="e#5874#5875#0" expanded="true" />
+            <element signature="e#5911#5912#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/FitnessCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.8656716">
+          <caret line="110" column="33" selection-start-line="110" selection-start-column="33" selection-end-line="110" selection-end-column="33" />
+          <folding>
+            <element signature="e#4799#4800#0" expanded="true" />
+            <element signature="e#4833#4834#0" expanded="true" />
+            <marker date="1481207249183" expanded="true" signature="234:238" placeholder="/**...*/" />
+            <marker date="1481207249183" expanded="true" signature="4744:4748" placeholder="/**...*/" />
           </folding>
         </state>
       </provider>

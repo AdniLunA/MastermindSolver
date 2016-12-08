@@ -18,4 +18,6 @@ public interface IPopulation {
     IChromosome[] getGenePool();
 
     int getSumPopulationFitness();
+
+    void removeFittest();
 }

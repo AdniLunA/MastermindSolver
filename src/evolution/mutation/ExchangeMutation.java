@@ -23,6 +23,7 @@ public class ExchangeMutation extends MutatorBasics {
             if (generator.nextFloat() <= Configuration.INSTANCE.MUTATION_RATIO) {
                 boolean validGeneFound = false;
                 int countTries = 0;
+                String mutatedMsg = "DisplaceMutation: mutated " + genePool[chromosomeCount].toString();
                 do {
                     int[] mutatedSequence =  genePool[chromosomeCount].getSequence();
                     int[] splitPos = super.generateTwoSplitPositions(genePool[chromosomeCount].getLength() - 1);
@@ -32,8 +33,8 @@ public class ExchangeMutation extends MutatorBasics {
                     saveSwapValues[1] = mutatedSequence[splitPos[1]];
 
                     /*swap*/
-                    genePool[chromosomeCount].getSequence()[splitPos[0]] = saveSwapValues[1];
-                    genePool[chromosomeCount].getSequence()[splitPos[1]] = saveSwapValues[0];
+                    mutatedSequence[splitPos[0]] = saveSwapValues[1];
+                    mutatedSequence[splitPos[1]] = saveSwapValues[0];
 
                     mutatedChromosome = new NumChromosome(mutatedSequence);
                     validGeneFound = mutatedChromosome.checkValidity();
@@ -48,7 +49,8 @@ public class ExchangeMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                System.out.println("DisplaceMutation: mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
+                System.out.println(mutatedMsg + " to " + mutatedChromosome);
+
                 genePool[chromosomeCount] = mutatedChromosome;
             }
         }

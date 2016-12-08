@@ -21,4 +21,8 @@ public interface IChromosome {
     void setGeneration(int generation);
 
     int getLength();
+
+    void setIdInPopulation(int position);
+
+    int getIdInPopulation();
 }

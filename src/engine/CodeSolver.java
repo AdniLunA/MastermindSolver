@@ -1,15 +1,14 @@
 package engine;
 
 import config.Configuration;
-import evolution.IChromosome;
-import evolution.IPopulation;
-import evolution.NumChromosome;
-import evolution.Population;
+import evolution.*;
 import evolution.crossover.ICrossover;
 import evolution.mutation.IMutation;
 import evolution.selection.ISelection;
 import evolution.selection.RouletteWheelSelection;
 import evolution.selection.TournamentSelection;
+
+import java.util.ArrayList;
 
 public class CodeSolver {
     /***
@@ -38,10 +37,28 @@ public class CodeSolver {
         //Configuration.INSTANCE.REPEAT_EVOLUTION_N_TIMES
         /*random gene pool -> population*/
         IPopulation population = new Population();
-        /*evolve*/
-        population.evolve();
+        /*evolve n times*/
+        /*todo: find an intelligent way to choose mutation methods*/
+        for (int i = 0; i < Configuration.INSTANCE.REPEAT_EVOLUTION_N_TIMES; i++) {
+            population.evolve();
+        }
         /*get fittest*/
-        return population.getFittest();
+        IChromosome nextRequest;
+        FitnessCalculator checkSubmissions = FitnessCalculator.getInstance();
+        boolean alreadyPosted = false;
+        do {
+            nextRequest = population.getFittest();
+            ArrayList<Submission> postedSubmissions = checkSubmissions.getSubmissions();
+            for (Submission postedSubmission : postedSubmissions) {
+                if(postedSubmission == postedSubmission.getChromosome()){
+                    alreadyPosted = true;
+                    population.removeFittest();
+                    break;
+                }
+            }
+        }
+        while (alreadyPosted);
+        return nextRequest;
     }
 
 

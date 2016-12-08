@@ -37,6 +37,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     private int numberOfColors;
     private int[] sequence;
     private int generation = 0;
+    private int idInPopulation;
 
     /***
      * functions
@@ -175,5 +176,15 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     @Override
     public int getLength() {
         return lengthOfCode;
+    }
+
+    @Override
+    public void setIdInPopulation(int position) {
+        this.idInPopulation = position;
+    }
+
+    @Override
+    public int getIdInPopulation() {
+        return idInPopulation;
     }
 }
