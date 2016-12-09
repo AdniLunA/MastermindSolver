@@ -357,6 +357,16 @@ public class SimulationController implements Initializable {
         /*subscribe manager*/
         manager.setSubscriber(this);
 
+        /*initialize speed*/
+        int defaultSpeed = Configuration.INSTANCE.DEFAULT_SIMULATION_SPEED_MS;
+        int min = (int) spd_slider.getMin();
+        int max = (int) spd_slider.getMax();
+        if (defaultSpeed < min || defaultSpeed > max) {
+            throw new InputMismatchException("ERROR: The default speed in the configuration must be a value between " + min + " and " + max + ".");
+        } else {
+            simulationSpeed = defaultSpeed;
+        }
+
         /***initialize page settings*/
         generateGameMatrix();
         cbShowSecretCode.setSelected(showBlackboxContent);
@@ -367,16 +377,6 @@ public class SimulationController implements Initializable {
         fillCircleLine(blackBox, manager.getSecretCode());
 
         refreshDependencies();
-
-        /*initialize speed*/
-        int defaultSpeed = Configuration.INSTANCE.DEFAULT_SIMULATION_SPEED_MS;
-        int min = (int) spd_slider.getMin();
-        int max = (int) spd_slider.getMax();
-        if (defaultSpeed < min || defaultSpeed > max) {
-            throw new InputMismatchException("ERROR: The default speed in the configuration must be a value between " + min + " and " + max + ".");
-        } else {
-            simulationSpeed = defaultSpeed;
-        }
 
         /*event listeners*/
         this.spd_slider.valueProperty().addListener(

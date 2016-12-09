@@ -42,14 +42,14 @@ public class OnePointCrossover implements ICrossover{
             }
             tryCounter++;
         }
-        if(tryCounter == maxTries){
+        if (tryCounter == maxTries) {
             IChromosome[] returnValid = new IChromosome[2];
-            if(children[0].checkValidity()){
+            if (children[0].checkValidity()) {
                 returnValid[0] = children[0];
             } else {
                 returnValid[1] = parents[0];
             }
-            if(children[1].checkValidity()){
+            if (children[1].checkValidity()) {
                 returnValid[1] = children[1];
             } else {
                 returnValid[1] = parents[1];

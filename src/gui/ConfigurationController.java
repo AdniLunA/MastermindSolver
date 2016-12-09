@@ -294,6 +294,8 @@ public class ConfigurationController implements Initializable {
         numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
         colors = Configuration.INSTANCE.COLORS;
 
+        not_slider.setMax(Configuration.INSTANCE.MAX_NUMBER_OF_TRIES);
+
         loc_slider.setMin(locMinLength);
         noc_slider.setMin((double) lengthOfCode);
 

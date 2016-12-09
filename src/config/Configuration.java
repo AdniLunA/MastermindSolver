@@ -11,7 +11,7 @@ public enum Configuration {
     public final int SIZE_OF_POPULATION = 100;
     public final int REPEAT_EVOLUTION_N_TIMES = 5;
     public final SelectionEnum SELECTION_TYPE = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
-    public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.ONE_POINT;
+    public final CrossoverEnum CROSSOVER_TYPE = CrossoverEnum.TWO_POINT;
     /*Must be greater than length of code (always < 20!):*/
     public final int K_FOR_CROSS_OVER = 3; /* for kPoint crossover*/
     public final int CROSSOVER_MAX_TRY_AGAIN = 10;
@@ -23,13 +23,13 @@ public enum Configuration {
     /***
      * game engine settings
      ***/
-    public final int DEFAULT_LENGTH_OF_CODE = 4;
-    public final int DEFAULT_NUMBER_OF_COLORS = 8;
-    public final int DEFAULT_NUMBER_OF_TRIES = 20;
+    public final int DEFAULT_LENGTH_OF_CODE = 3;
+    public final int DEFAULT_NUMBER_OF_COLORS = 5;
+    public final int DEFAULT_NUMBER_OF_TRIES = 35;
 
     public final int MAX_LENGTH_OF_CODE = 10;
     public final int MAX_NUMBER_OF_COLORS = 20;
-    public final int MAX_NUMBER_OF_TRIES = 20;
+    public final int MAX_NUMBER_OF_TRIES = 35;
 
     public final int WEIGHT_OF_WHITE_DIFFERENCE = 3;
     public final int WEIGHT_OF_RED_DIFFERENCE = 10;

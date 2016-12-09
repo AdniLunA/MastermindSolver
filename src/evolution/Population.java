@@ -42,7 +42,7 @@ public class Population implements IPopulation {
      * functions
      ***/
     @Override
-    public void evolve(){
+    public void evolve() {
         evolve(Configuration.INSTANCE.SELECTION_TYPE, Configuration.INSTANCE.CROSSOVER_TYPE, Configuration.INSTANCE.MUTATION_TYPE);
     }
 
@@ -51,7 +51,7 @@ public class Population implements IPopulation {
         System.out.println();
         System.out.println("Population - evolve");
         maxGenerationCounter++;
-        instantiateHelpers(chooseSelection,chooseCrossover,chooseMutation);
+        instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
         System.out.println("Population - evolve: Start selection");
         IChromosome[] parents = selector.getParents(Arrays.copyOf(transformToArray(genePool), genePool.size()));
@@ -60,13 +60,13 @@ public class Population implements IPopulation {
         System.out.println("Population - evolve: Start crossover");
         IChromosome[] newGeneration = crosser.crossover(parents);
         for (int i = 0; i < 2; i++) {
-            System.out.println("    -- Child #"+i+" is valid: " +newGeneration[i].checkValidity());
-            if(!newGeneration[i].checkValidity()){
-                throw new InputMismatchException("Population evolve crossover: ERROR - got invalid child "+newGeneration[i].toString());
+            System.out.println("    -- Child #" + i + " is valid: " + newGeneration[i].checkValidity());
+            if (!newGeneration[i].checkValidity()) {
+                throw new InputMismatchException("Population evolve crossover: ERROR - got invalid child " + newGeneration[i].toString());
             }
         }
-        newGeneration[0].setGeneration(maxGenerationCounter+1);
-        newGeneration[1].setGeneration(maxGenerationCounter+1);
+        newGeneration[0].setGeneration(maxGenerationCounter + 1);
+        newGeneration[1].setGeneration(maxGenerationCounter + 1);
         replaceWeakestWithNewGenes(newGeneration);
 
         /*mutation*/
@@ -100,7 +100,7 @@ public class Population implements IPopulation {
     public void replaceGene(IChromosome geneToReplace) {
         genePool.remove(geneToReplace);
         GameEngine engine = GameEngine.getInstance();
-        IChromosome replacer = new NumChromosome(engine.getCodeLength(),engine.getNumColors());
+        IChromosome replacer = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
         replacer.generateRandom();
         genePool.add(replacer);
     }
@@ -123,10 +123,10 @@ public class Population implements IPopulation {
         return fittest;
     }
 
-    private void replaceWeakestWithNewGenes(IChromosome[] newGenes){
+    private void replaceWeakestWithNewGenes(IChromosome[] newGenes) {
         IChromosome[] improvedGenePool = getSortedPopulation();
-        int lastPos = improvedGenePool.length-1;
-        improvedGenePool[lastPos-1] = newGenes[0];
+        int lastPos = improvedGenePool.length - 1;
+        improvedGenePool[lastPos - 1] = newGenes[0];
         improvedGenePool[lastPos] = newGenes[1];
         this.genePool = transformToList(improvedGenePool);
     }
@@ -144,31 +144,44 @@ public class Population implements IPopulation {
     }
 
     private void instantiateHelpers(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
-        switch (chooseSelection){
+        switch (chooseSelection) {
             case ROULETTE_WHEEL:
                 selector = new RouletteWheelSelection();
                 break;
-            case TOURNAMENT :
+            case TOURNAMENT:
                 selector = new TournamentSelection();
                 break;
         }
 
-        switch (chooseCrossover){
-            case K_POINT :
+        switch (chooseCrossover) {
+            case K_POINT:
+                if (Configuration.INSTANCE.K_FOR_CROSS_OVER > GameEngine.getInstance().getCodeLength()) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: configured k ="
+                            + Configuration.INSTANCE.K_FOR_CROSS_OVER + " while code length is " + GameEngine.getInstance().getCodeLength();
+                    throw new IndexOutOfBoundsException(errorMessage);
+                }
                 crosser = new KPointCrossover();
                 break;
             case ONE_POINT:
+                if (GameEngine.getInstance().getCodeLength() < 2) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: one-point crossover while code length is " + GameEngine.getInstance().getCodeLength();
+                    throw new IndexOutOfBoundsException(errorMessage);
+                }
                 crosser = new OnePointCrossover();
                 break;
-            case TWO_POINT :
+            case TWO_POINT:
+                if (GameEngine.getInstance().getCodeLength() < 3) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: two-point crossover while code length is " + GameEngine.getInstance().getCodeLength();
+                    throw new IndexOutOfBoundsException(errorMessage);
+                }
                 crosser = new TwoPointCrossover();
                 break;
-            case UNIFORM :
+            case UNIFORM:
                 crosser = new UniformCrossover();
                 break;
         }
 
-        switch (chooseMutation){
+        switch (chooseMutation) {
             case DISPLACEMENT:
                 mutator = new DisplacementMutation();
                 break;
@@ -187,7 +200,7 @@ public class Population implements IPopulation {
         }
     }
 
-    private IChromosome[] transformToArray(ArrayList<IChromosome> list){
+    private IChromosome[] transformToArray(ArrayList<IChromosome> list) {
         IChromosome[] geneArray = new IChromosome[list.size()];
         for (int i = 0; i < list.size(); i++) {
             geneArray[i] = list.get(i);
@@ -195,7 +208,7 @@ public class Population implements IPopulation {
         return geneArray;
     }
 
-    private ArrayList<IChromosome> transformToList(IChromosome[] array){
+    private ArrayList<IChromosome> transformToList(IChromosome[] array) {
         ArrayList<IChromosome> list = new ArrayList<IChromosome>();
         for (int i = 0; i < array.length; i++) {
             list.add(array[i]);
