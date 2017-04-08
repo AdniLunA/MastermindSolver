@@ -1,6 +1,6 @@
 package evolution.crossover;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import config.MersenneTwisterFast;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -9,7 +9,7 @@ import evolution.ArrayBuilder;
 import java.util.Arrays;
 
 public class OnePointCrossover implements ICrossover{
-    /***attributes***/
+    /*--attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
     private IChromosome parent2;
@@ -17,7 +17,7 @@ public class OnePointCrossover implements ICrossover{
     private IChromosome[] children = new IChromosome[2];
     private int splitPos;
 
-    /***functions***/
+    /*--functions*/
     @Override
     public IChromosome[] crossover(IChromosome[] parents) {
         System.out.println("OnePointCrossover - crossover:");
@@ -27,7 +27,7 @@ public class OnePointCrossover implements ICrossover{
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;
-        int maxTries = Configuration.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
+        int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
 
         while(numberOfHealthyChildren < 2 && tryCounter < maxTries){
             numberOfHealthyChildren = 0;
@@ -92,5 +92,5 @@ public class OnePointCrossover implements ICrossover{
         return new IChromosome[]{child1, child2};
     }
 
-    /***getter + setter***/
+    /*--getter + setter*/
 }

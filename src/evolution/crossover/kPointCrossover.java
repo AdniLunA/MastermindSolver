@@ -1,6 +1,6 @@
 package evolution.crossover;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import config.MersenneTwisterFast;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -9,9 +9,9 @@ import evolution.ArrayBuilder;
 import java.util.Arrays;
 
 public class KPointCrossover implements ICrossover {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
     private IChromosome parent2;
@@ -19,9 +19,9 @@ public class KPointCrossover implements ICrossover {
     private IChromosome[] children = new IChromosome[2];
     private int[] splitPos;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     @Override
     public IChromosome[] crossover(IChromosome[] parents) {
         System.out.println("KPointCrossover - crossover:");
@@ -31,7 +31,7 @@ public class KPointCrossover implements ICrossover {
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;
-        int maxTries = Configuration.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
+        int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
 
         while (numberOfHealthyChildren < 2 && tryCounter < maxTries) {
             numberOfHealthyChildren = 0;
@@ -66,7 +66,7 @@ public class KPointCrossover implements ICrossover {
     }
 
     private void generateRandomSplitPos() {
-        int kForKPointC = Configuration.INSTANCE.K_FOR_CROSS_OVER;
+        int kForKPointC = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
         splitPos = new int[kForKPointC + 2];
         splitPos[0] = 0;
         splitPos[1] = sequenceLength;
@@ -121,5 +121,5 @@ public class KPointCrossover implements ICrossover {
         return new IChromosome[]{child1, child2};
     }
 
-    /***getter + setter***/
+    /*--getter + setter*/
 }
