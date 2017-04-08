@@ -106,25 +106,18 @@ public class Population implements IPopulation {
     }
 
     @Override
-    public IChromosome[] getSortedPopulation() {
-        IChromosome[] sortedPopulation = Arrays.copyOf(transformToArray(genePool), genePool.size());
-        Arrays.sort(sortedPopulation);
-        return sortedPopulation;
-    }
-
-    @Override
     public IChromosome getFittest() {
         System.out.println("Population - getFittest");
-        IChromosome fittest = getSortedPopulation()[genePool.size() - 1];
+        IChromosome fittest = getPopulationSorted()[genePool.size() - 1];
         /*todo check*/
         System.out.println("*****Fitness of fittest: " + fittest.getFitness());
-        System.out.println("*****Fitness of weakest: " + getSortedPopulation()[0].getFitness());
+        System.out.println("*****Fitness of weakest: " + getPopulationSorted()[0].getFitness());
 
         return fittest;
     }
 
     private void replaceWeakestWithNewGenes(IChromosome[] newGenes) {
-        IChromosome[] improvedGenePool = getSortedPopulation();
+        IChromosome[] improvedGenePool = getPopulationSorted();
         int lastPos = improvedGenePool.length - 1;
         improvedGenePool[lastPos - 1] = newGenes[0];
         improvedGenePool[lastPos] = newGenes[1];

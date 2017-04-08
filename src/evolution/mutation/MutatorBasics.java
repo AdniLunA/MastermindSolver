@@ -10,7 +10,7 @@ public class MutatorBasics implements IMutation {
     /***
      * attributes
      ***/
-    MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
+    private MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
 
     /***
      * functions

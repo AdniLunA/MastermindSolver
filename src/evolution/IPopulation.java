@@ -5,7 +5,6 @@ import config.MutationEnum;
 import config.SelectionEnum;
 
 public interface IPopulation {
-    IChromosome[] getSortedPopulation();
 
     IChromosome getFittest();
 
