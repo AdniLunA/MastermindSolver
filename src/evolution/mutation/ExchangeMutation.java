@@ -1,18 +1,17 @@
 package evolution.mutation;
 
-import config.Configuration;
-import engine.GameEngine;
+import config.ConfigurationManager;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 
 public class ExchangeMutation extends MutatorBasics {
-    /***
+    /*--
      * attributes
-     ***/
+     */
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool) {
         System.out.println("ExchangeMutation - mutateGenes");
@@ -20,7 +19,7 @@ public class ExchangeMutation extends MutatorBasics {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
             /*test if current chromosomeCount should be manipulated*/
-            if (generator.nextFloat() <= Configuration.INSTANCE.MUTATION_RATIO) {
+            if (generator.nextFloat() <= ConfigurationManager.INSTANCE.MUTATION_RATIO) {
                 boolean validGeneFound = false;
                 int countTries = 0;
                 String mutatedMsg = "DisplaceMutation: mutated " + genePool[chromosomeCount].toString();
@@ -43,7 +42,7 @@ public class ExchangeMutation extends MutatorBasics {
                         mutatedChromosome.incrementGeneration();
                     }
                     countTries++;
-                    if (countTries >= Configuration.INSTANCE.MUTATION_MAX_TRY_AGAIN) {
+                    if (countTries >= ConfigurationManager.INSTANCE.MUTATION_MAX_TRY_AGAIN) {
                         /*give up*/
                         validGeneFound = true;
                     }

@@ -5,15 +5,15 @@ import evolution.*;
 import java.util.Arrays;
 
 public class TournamentSelection implements ISelection {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private IPopulation fatherPool;
     private IPopulation motherPool;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     @Override
     public IChromosome[] getParents(IChromosome[] genePool) {
         System.out.println("TournamentSelection - getParents");

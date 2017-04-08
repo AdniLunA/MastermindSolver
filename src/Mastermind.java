@@ -1,6 +1,5 @@
-import config.Configuration;
+import config.ConfigurationManager;
 import config.CrossoverEnum;
-import engine.GameEngine;
 import gui.GUIManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -9,15 +8,13 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class Mastermind extends Application {
-    /***attributes***/
 
-    /***functions***/
-
+    /*--functions*/
     @Override
     public void start(Stage primaryStage) throws IOException {
         System.out.println("Mastermind - start");
 
-        GameEngine gameEngine = GameEngine.getInstance();
+        /*GameEngine gameEngine = GameEngine.getInstance();*/
         GUIManager gui = GUIManager.getInstance();
         gui.openConfigurationPage(primaryStage);
 
@@ -30,14 +27,15 @@ public class Mastermind extends Application {
         */
     }
 
-
     /*MAIN*/
     public static void main(String... args) throws IOException {
         System.out.println("Mastermind - main");
 
-        int k = Configuration.INSTANCE.K_FOR_CROSS_OVER;
-        if (Configuration.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT && k > Configuration.INSTANCE.MAX_LENGTH_OF_CODE - 1) {
-            throw new InputMismatchException("ERROR: K-Point Crossover selected. K has to be < 20. K is set to: " + k);
+        int k = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
+        int kMax = ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE - 1;
+        if (ConfigurationManager.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT && k > kMax) {
+            throw new InputMismatchException("ERROR: K-Point Crossover selected in \"Configuratoin\" file. K has to be < "
+                    + kMax + ". K is set to: " + k);
         }
 
         launch(args);

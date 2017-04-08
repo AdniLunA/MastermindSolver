@@ -6,9 +6,9 @@ import evolution.NumChromosome;
 import gui.GUIManager;
 
 public class GameEngine {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private static GameEngine gameEngine; /*Singleton Pattern*/
 
     private NumChromosome codeGenerator;
@@ -18,9 +18,9 @@ public class GameEngine {
     private int numColors;
     private int numTries;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     public static final GameEngine getInstance() { /*Singleton Pattern*/
         if (gameEngine == null) {
             return new GameEngine();
@@ -68,9 +68,9 @@ public class GameEngine {
         solver.solve(requestCounter);
     }
 
-    /***
+    /*--
      * getter + setter
-     ***/
+     */
     public int getNumTries() {
         return numTries;
     }

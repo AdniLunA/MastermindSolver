@@ -1,17 +1,15 @@
 package evolution;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import engine.GameEngine;
 import engine.Submission;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
 
 public class FitnessCalculator {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private static FitnessCalculator fitnessCalculator; /*Singleton Pattern*/
 
     private ArrayList<Submission> submissions = new ArrayList<Submission>();
@@ -20,9 +18,9 @@ public class FitnessCalculator {
         fitnessCalculator = this; /*Singleton Pattern*/
     }
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     public static final FitnessCalculator getInstance() { /*Singleton Pattern*/
         /*System.out.println("FitnessCalculator - getInstance");*/
         if (fitnessCalculator == null) {
@@ -90,8 +88,8 @@ public class FitnessCalculator {
 
                 int whiteDifference = Math.abs(submission.getWhite() - whiteFit);
 
-                illness += (Configuration.INSTANCE.WEIGHT_OF_RED_DIFFERENCE * redDifference
-                        + Configuration.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE * whiteDifference);
+                illness += (ConfigurationManager.INSTANCE.WEIGHT_OF_RED_DIFFERENCE * redDifference
+                        + ConfigurationManager.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE * whiteDifference);
             }
             return getMaxFitness(chromosomeToCheck) - illness;
         } else {
@@ -102,16 +100,16 @@ public class FitnessCalculator {
 
     private int getMaxFitness(IChromosome chromosomeToCheck) {
         int maxDifference = chromosomeToCheck.getNumberOfColors();
-        return submissions.size() * maxDifference * (Configuration.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + Configuration.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
+        return submissions.size() * maxDifference * (ConfigurationManager.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + ConfigurationManager.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
     }
 
     public void dropForNextGame(){
         submissions.removeAll(submissions);
     }
 
-    /***
+    /*--
      * getter + setter
-     ***/
+     */
     public ArrayList<Submission> getSubmissions() {
         return submissions;
     }

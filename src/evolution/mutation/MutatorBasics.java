@@ -7,14 +7,14 @@ import evolution.IChromosome;
 import java.util.Arrays;
 
 public class MutatorBasics implements IMutation {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     protected MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool) {
         return genePool;

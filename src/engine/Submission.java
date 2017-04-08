@@ -11,12 +11,12 @@ public class Submission {
         setAttributes(submittedChromosome, red, white);
     }
 
-    /***attributes***/
+    /*--attributes*/
     private IChromosome submittedChromosome;
     private int red;
     private int white;
 
-    /***functions***/
+    /*--functions*/
     public void setAttributes(IChromosome submittedChromosome, int red, int white) {
         System.out.println("Submission - setAttributes");
         this.submittedChromosome = submittedChromosome;
@@ -24,7 +24,7 @@ public class Submission {
         this.white = white;
     }
 
-    /***getter + setter***/
+    /*--getter + setter*/
     public IChromosome getChromosome() {
         return submittedChromosome;
     }

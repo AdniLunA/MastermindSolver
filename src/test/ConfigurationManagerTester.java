@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class ConfigurationTester {
+public class ConfigurationManagerTester {
     @Test
     public void sampleTestMethod(){
         /*todo create assert checks*/

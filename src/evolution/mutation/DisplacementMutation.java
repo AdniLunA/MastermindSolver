@@ -1,7 +1,6 @@
 package evolution.mutation;
 
-import config.Configuration;
-import engine.GameEngine;
+import config.ConfigurationManager;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.SingleArrayBuilder;
@@ -16,7 +15,7 @@ public class DisplacementMutation extends MutatorBasics {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
             /*test if current chromosomeCount should be manipulated*/
-            if (generator.nextFloat() <= Configuration.INSTANCE.MUTATION_RATIO) {
+            if (generator.nextFloat() <= ConfigurationManager.INSTANCE.MUTATION_RATIO) {
                 boolean validGeneFound = false;
                 int countTries = 0;
                 do {
@@ -42,7 +41,7 @@ public class DisplacementMutation extends MutatorBasics {
                         mutatedChromosome.incrementGeneration();
                     }
                     countTries++;
-                    if (countTries >= Configuration.INSTANCE.MUTATION_MAX_TRY_AGAIN) {
+                    if (countTries >= ConfigurationManager.INSTANCE.MUTATION_MAX_TRY_AGAIN) {
                         /*give up*/
                         validGeneFound = true;
                     }

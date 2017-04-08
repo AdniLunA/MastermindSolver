@@ -1,22 +1,22 @@
 package evolution;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import engine.GameEngine;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
-    /***
+    /*--
      * constructors
-     ***/
+     */
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
-        if (numberOfColors > 0 && numberOfColors <= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS) {
+        if (numberOfColors > 0 && numberOfColors <= ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS) {
             this.numberOfColors = numberOfColors;
         } else {
             throw new InputMismatchException("Num Chromosome: ERROR - tried to initialize with numColors " +
-                    numberOfColors + ", should be a value between 1 and " + Configuration.INSTANCE.MAX_NUMBER_OF_COLORS);
+                    numberOfColors + ", should be a value between 1 and " + ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS);
         }
     }
 
@@ -30,18 +30,18 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         this.sequence = sequence;
     }
 
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private int lengthOfCode;
     private int numberOfColors;
     private int[] sequence;
     private int generation = 0;
     private int idInPopulation;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     @Override
     public void generateRandom() {
         /*System.out.println("NumChromosome - generateRandom");*/
@@ -88,7 +88,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         int[] colorCounter = new int[numberOfColors];
         for (int i = 0; i < lengthOfCode; i++) {
             /*a color has to be set at each position*/
-            if (sequence[i] >= Configuration.INSTANCE.MAX_NUMBER_OF_COLORS) {
+            if (sequence[i] >= ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS) {
                 return false;
             }
             /*count color occurrences*/

@@ -3,22 +3,22 @@ package engine;
 import evolution.IChromosome;
 
 public class CodeValidator {
-    /***
+    /*--
      * constructor
-     ***/
+     */
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
         System.out.println("CodeValidator - initialized with "+secretCode.toString());
     }
 
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private final IChromosome secretCode;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     public int[] calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
@@ -49,5 +49,5 @@ public class CodeValidator {
         return response;
     }
 
-    /***getter + setter***/
+    /*--getter + setter*/
 }

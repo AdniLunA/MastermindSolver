@@ -2,11 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/evolution/Chromosome.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/MutatorBasics.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/MutatorBasics.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config/ConfigType.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config/DefaultConfig.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/config/IConfigurationFile.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/config/Configuration.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/test/ConfigurationTester.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/Mastermind.class" afterPath="$PROJECT_DIR$/bin/Mastermind.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/CodeSolver.class" afterPath="$PROJECT_DIR$/bin/engine/CodeSolver.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/FitnessCalculator.class" afterPath="$PROJECT_DIR$/bin/evolution/FitnessCalculator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" afterPath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/Population.class" afterPath="$PROJECT_DIR$/bin/evolution/Population.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/kPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/kPointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/onePointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/onePointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/twoPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/twoPointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/uniformCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/uniformCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/DisplacementMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/DisplacementMutation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/ExchangeMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/ExchangeMutation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$1.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$10.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$10.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$11.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$11.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$12.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$12.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$13.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$13.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$2.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$3.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$4.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$5.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$6.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$7.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$8.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController$9.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/ConfigurationController.class" afterPath="$PROJECT_DIR$/bin/gui/ConfigurationController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/gui/SimulationController.class" afterPath="$PROJECT_DIR$/bin/gui/SimulationController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/test/NumChromosomeTest.class" afterPath="$PROJECT_DIR$/bin/test/NumChromosomeTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/test/PopulationTest.class" afterPath="$PROJECT_DIR$/bin/test/PopulationTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Mastermind.java" afterPath="$PROJECT_DIR$/src/Mastermind.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/CodeSolver.java" afterPath="$PROJECT_DIR$/src/engine/CodeSolver.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/CodeValidator.java" afterPath="$PROJECT_DIR$/src/engine/CodeValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameEngine.java" afterPath="$PROJECT_DIR$/src/engine/GameEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/Submission.java" afterPath="$PROJECT_DIR$/src/engine/Submission.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" afterPath="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/NumChromosome.java" afterPath="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/Population.java" afterPath="$PROJECT_DIR$/src/evolution/Population.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" afterPath="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" afterPath="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ConfigurationController.java" afterPath="$PROJECT_DIR$/src/gui/ConfigurationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/GUIManager.java" afterPath="$PROJECT_DIR$/src/gui/GUIManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/SimulationController.java" afterPath="$PROJECT_DIR$/src/gui/SimulationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/NumChromosomeTest.java" afterPath="$PROJECT_DIR$/src/test/NumChromosomeTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/PopulationTest.java" afterPath="$PROJECT_DIR$/src/test/PopulationTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/config/Configuration.java" afterPath="$PROJECT_DIR$/src/config/ConfigurationManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/test/ConfigurationTester.java" afterPath="$PROJECT_DIR$/src/test/ConfigurationManagerTester.java" />
     </list>
     <ignored path="MastermindSolver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,21 +80,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="CodeValidatorTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/CodeValidatorTest.java">
+      <file leaf-file-name="ConfigurationManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/ConfigurationManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-              <folding />
+            <state relative-caret-position="408">
+              <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Mastermind.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Mastermind.java">
+      <file leaf-file-name="ConfigType.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/config/ConfigType.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+            <state relative-caret-position="85">
+              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -52,10 +107,34 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>loc</find>
+      <find>/***</find>
+      <find>***</find>
+      <find>-</find>
+      <find>--</find>
+      <find>--*(</find>
+      <find>--*</find>
+      <find>--*/</find>
+      <find>**/</find>
+      <find>***/</find>
+      <find>public</find>
+      <find>kforc</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>/*--</replace>
+      <replace>--*/</replace>
+      <replace>***/</replace>
+      <replace>*/</replace>
+      <replace>private</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
@@ -69,14 +148,7 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/gui/ShadesCircle.java" />
-        <option value="$PROJECT_DIR$/src/gui/ShadedCircle.java" />
-        <option value="$PROJECT_DIR$/src/gui/simulationPage.fxml" />
-        <option value="$PROJECT_DIR$/src/evolution/crossover/BackupOnePointCrossover.java" />
-        <option value="$PROJECT_DIR$/src/evolution/crossover/QueueBuilder.java" />
-        <option value="$PROJECT_DIR$/src/evolution/QueueBuilder.java" />
         <option value="$PROJECT_DIR$/src/engine/CodeGenerator.java" />
-        <option value="$PROJECT_DIR$/src/Mastermind.java" />
         <option value="$PROJECT_DIR$/src/gui/style.css" />
         <option value="$PROJECT_DIR$/src/test/SubmissionTest.java" />
         <option value="$PROJECT_DIR$/src/test/xConfigurationTester.java" />
@@ -106,34 +178,37 @@
         <option value="$PROJECT_DIR$/src/evolution/IChromosome.java" />
         <option value="$PROJECT_DIR$/src/evolution/FitnessCalculator.java" />
         <option value="$PROJECT_DIR$/src/gui/GUIManager.java" />
-        <option value="$PROJECT_DIR$/src/engine/CodeSolver.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java" />
-        <option value="$PROJECT_DIR$/src/config/Configuration.java" />
         <option value="$PROJECT_DIR$/src/gui/SimulationController.java" />
-        <option value="$PROJECT_DIR$/src/gui/ConfigurationController.java" />
         <option value="$PROJECT_DIR$/src/evolution/Population.java" />
         <option value="$PROJECT_DIR$/src/evolution/IPopulation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" />
+        <option value="$PROJECT_DIR$/src/gui/ConfigurationController.java" />
+        <option value="$PROJECT_DIR$/src/engine/CodeSolver.java" />
+        <option value="$PROJECT_DIR$/src/Mastermind.java" />
+        <option value="$PROJECT_DIR$/src/config/ConfigurationFile.java" />
+        <option value="$PROJECT_DIR$/src/config/Configuration.java" />
+        <option value="$PROJECT_DIR$/src/config/IConfigurationFile.java" />
+        <option value="$PROJECT_DIR$/src/config/DefaultConfig.java" />
+        <option value="$PROJECT_DIR$/src/config/TestCase1Config.java" />
+        <option value="$PROJECT_DIR$/src/config/ConfigurationManager.java" />
+        <option value="$PROJECT_DIR$/src/config/ConfigType.java" />
       </list>
-    </option>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHome" value="Bundled (Maven 3)" />
-      </MavenGeneralSettings>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="width" value="1932" />
     <option name="height" value="1047" />
+  </component>
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -150,8 +225,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -314,13 +390,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
-    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
-    <property name="SearchEverywhereHistoryKey" value="copyOfRange&#9;PSI&#9;JAVA://java.util.Arrays#copyOfRange" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="SearchEverywhereHistoryKey" value="/***&#9;null&#9;null&#10;copyOfRange&#9;PSI&#9;JAVA://java.util.Arrays#copyOfRange" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -339,7 +414,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CodeValidatorTest">
+  <component name="RunManager" selected="Application.Mastermind">
     <configuration default="false" name="Mastermind" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="Mastermind" />
@@ -672,8 +747,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.CodeValidatorTest" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Mastermind" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Mastermind" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.CodeValidatorTest" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.NumChromosomeTest" />
         <item index="3" class="java.lang.String" itemvalue="JUnit.PopulationTest" />
         <item index="4" class="java.lang.String" itemvalue="JUnit.CodeValidatorTest.validate3" />
@@ -763,32 +838,32 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3621444" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3242938" sideWeight="0.50572914" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28884026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28884026" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27297008" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2761752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3238512" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38894907" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32394367" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -830,12 +905,6 @@
           <option name="timeStamp" value="114" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/gui/ConfigurationController.java</url>
-          <line>283</line>
-          <properties />
-          <option name="timeStamp" value="115" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/gui/GUIManager.java</url>
           <line>157</line>
           <properties />
@@ -861,7 +930,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java</url>
-          <line>27</line>
+          <line>25</line>
           <properties />
           <option name="timeStamp" value="124" />
         </line-breakpoint>
@@ -879,7 +948,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/evolution/FitnessCalculator.java</url>
-          <line>67</line>
+          <line>65</line>
           <properties />
           <option name="timeStamp" value="129" />
         </line-breakpoint>
@@ -903,7 +972,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/evolution/FitnessCalculator.java</url>
-          <line>75</line>
+          <line>73</line>
           <properties />
           <option name="timeStamp" value="138" />
         </line-breakpoint>
@@ -937,11 +1006,17 @@
           <properties />
           <option name="timeStamp" value="144" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/gui/ConfigurationController.java</url>
+          <line>360</line>
+          <properties />
+          <option name="timeStamp" value="145" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="145" />
+      <option name="time" value="146" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -956,37 +1031,7 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/engine/CodeSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/Submission.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/Configuration.java">
+    <entry file="file://$PROJECT_DIR$/src/config/ConfigurationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
@@ -1004,7 +1049,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/Configuration.java">
+    <entry file="file://$PROJECT_DIR$/src/config/ConfigurationManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1019,13 +1064,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="86" column="47" lean-forward="false" selection-start-line="86" selection-start-column="47" selection-end-line="86" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/CrossoverEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -1188,20 +1226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/CodeSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="38" column="82" lean-forward="false" selection-start-line="38" selection-start-column="82" selection-end-line="38" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="31" column="68" lean-forward="false" selection-start-line="31" selection-start-column="68" selection-end-line="32" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1222,14 +1246,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="44" column="40" lean-forward="false" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/GUIManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1260,14 +1276,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/ConfigurationController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="299" column="40" lean-forward="false" selection-start-line="299" selection-start-column="40" selection-end-line="299" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/IPopulation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1282,26 +1290,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/Population.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/NumChromosomeTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1322,7 +1314,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ConfigurationTester.java">
+    <entry file="file://$PROJECT_DIR$/src/test/ConfigurationManagerTester.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
@@ -1330,18 +1322,119 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="7" lean-forward="false" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/CodeValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="11" column="19" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
+          <caret line="11" column="29" lean-forward="true" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/ConfigurationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="292" column="57" lean-forward="false" selection-start-line="292" selection-start-column="57" selection-end-line="292" selection-end-column="57" />
+          <folding>
+            <marker date="1491688508495" expanded="true" signature="763:779" ph="/**...*/" />
+            <marker date="1491688508495" expanded="true" signature="2515:2530" ph="/**...*/" />
+            <marker date="1491688508495" expanded="true" signature="10621:10642" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/CodeSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="8" column="4" lean-forward="false" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="4" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Mastermind.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="43" column="5" lean-forward="false" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+        <state relative-caret-position="282">
+          <caret line="17" column="12" lean-forward="true" selection-start-line="17" selection-start-column="12" selection-end-line="17" selection-end-column="12" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/GUIManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="16" column="25" lean-forward="true" selection-start-line="16" selection-start-column="25" selection-end-line="16" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/Population.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="22" column="85" lean-forward="false" selection-start-line="22" selection-start-column="85" selection-end-line="22" selection-end-column="85" />
+          <folding>
+            <marker date="1491688508583" expanded="true" signature="514:546" ph="/**...*/" />
+            <marker date="1491688508583" expanded="true" signature="856:886" ph="/**...*/" />
+            <marker date="1491688508583" expanded="true" signature="1137:1166" ph="/**...*/" />
+            <marker date="1491688508583" expanded="true" signature="8418:8453" ph="/**...*/" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/CrossoverEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/IConfigurationFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/TestCase1Config.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1751">
+          <caret line="145" column="4" lean-forward="false" selection-start-line="145" selection-start-column="4" selection-end-line="145" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/DefaultConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="724">
+          <caret line="144" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ConfigurationManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="24" column="25" lean-forward="false" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/ConfigType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>

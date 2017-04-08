@@ -1,19 +1,19 @@
 package engine;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import evolution.*;
 
 import java.util.ArrayList;
 
 public class CodeSolver {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private GameEngine engine = GameEngine.getInstance();
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     public void solve(int requestCounter) {
         System.out.println("CodeSolver - solve");
         IChromosome newSequence = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
@@ -29,12 +29,12 @@ public class CodeSolver {
     }
 
     private IChromosome solveViaEvolutionaryAlgorithms() {
-        //Configuration.INSTANCE.REPEAT_EVOLUTION_N_TIMES
+        //ConfigurationManager.INSTANCE.REPEAT_EVOLUTION_N_TIMES
         /*random gene pool -> population*/
         IPopulation population = new Population();
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
-        for (int i = 0; i < Configuration.INSTANCE.REPEAT_EVOLUTION_N_TIMES; i++) {
+        for (int i = 0; i < ConfigurationManager.INSTANCE.REPEAT_EVOLUTION_N_TIMES; i++) {
             population.evolve();
             System.out.println("    Code Solver - population fitness at round #"+i+": "+population.getSumPopulationFitness());
         }
@@ -63,5 +63,5 @@ public class CodeSolver {
         System.out.println("CodeSolver - handleResponse");
     }*/
 
-    /***getter + setter***/
+    /*--getter + setter*/
 }

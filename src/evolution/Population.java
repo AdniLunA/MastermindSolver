@@ -1,6 +1,6 @@
 package evolution;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import config.CrossoverEnum;
 import config.MutationEnum;
 import config.SelectionEnum;
@@ -16,11 +16,11 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class Population implements IPopulation {
-    /***
+    /*--
      * constructors
-     ***/
+     */
     public Population() {
-        IChromosome[] populationArray = breedRandomPopulation(Configuration.INSTANCE.SIZE_OF_POPULATION);
+        IChromosome[] populationArray = breedRandomPopulation(ConfigurationManager.INSTANCE.SIZE_OF_POPULATION);
         genePool = transformToList(populationArray);
     }
 
@@ -28,9 +28,9 @@ public class Population implements IPopulation {
         this.genePool = transformToList(genePool);
     }
 
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private int maxGenerationCounter = 0;
     private ArrayList<IChromosome> genePool = new ArrayList<IChromosome>();
     private ISelection selector;
@@ -38,12 +38,12 @@ public class Population implements IPopulation {
     private IMutation mutator;
     private int idCounter = 0;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     @Override
     public void evolve() {
-        evolve(Configuration.INSTANCE.SELECTION_TYPE, Configuration.INSTANCE.CROSSOVER_TYPE, Configuration.INSTANCE.MUTATION_TYPE);
+        evolve(ConfigurationManager.INSTANCE.SELECTION_TYPE, ConfigurationManager.INSTANCE.CROSSOVER_TYPE, ConfigurationManager.INSTANCE.MUTATION_TYPE);
     }
 
     @Override
@@ -148,9 +148,9 @@ public class Population implements IPopulation {
 
         switch (chooseCrossover) {
             case K_POINT:
-                if (Configuration.INSTANCE.K_FOR_CROSS_OVER > GameEngine.getInstance().getCodeLength()) {
+                if (ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER > GameEngine.getInstance().getCodeLength()) {
                     String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: configured k ="
-                            + Configuration.INSTANCE.K_FOR_CROSS_OVER + " while code length is " + GameEngine.getInstance().getCodeLength();
+                            + ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER + " while code length is " + GameEngine.getInstance().getCodeLength();
                     throw new IndexOutOfBoundsException(errorMessage);
                 }
                 crosser = new KPointCrossover();
@@ -209,9 +209,9 @@ public class Population implements IPopulation {
         return list;
     }
 
-    /***
+    /*--
      * getter + setter
-     ***/
+     */
     public int getMaxGenerationCounter() {
         return maxGenerationCounter;
     }

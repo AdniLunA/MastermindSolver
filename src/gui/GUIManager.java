@@ -20,9 +20,9 @@ public class GUIManager {
         guiManager = this; /*Singleton Pattern*/
     }
 
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private static GUIManager guiManager; /*Singleton Pattern*/
 
     private ConfigurationController configPg = new ConfigurationController();
@@ -40,9 +40,9 @@ public class GUIManager {
 
     private SimulationController subscriber;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     public static final GUIManager getInstance() { /*Singleton Pattern*/
         System.out.println("GUIManager - getInstance");
         if (guiManager == null) {
@@ -156,9 +156,9 @@ public class GUIManager {
         }
     }
 
-    /***
+    /*--
      * getter + setter
-     ***/
+     */
     public ConfigurationController getConfigPg() {
         return configPg;
     }

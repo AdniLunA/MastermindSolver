@@ -1,6 +1,6 @@
 package gui;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import engine.Submission;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,9 +23,9 @@ import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 public class SimulationController implements Initializable {
-    /***
+    /*--
      * attributes
-     ***/
+     */
     private int lengthOfCode;
     private int numberOfTries;
 
@@ -35,8 +35,8 @@ public class SimulationController implements Initializable {
     private int currentLineToPrint = 0;
 
     /*default values*/
-    private boolean showBlackboxContent = Configuration.INSTANCE.DEFAULT_SHOW_BLACKBOX_CONTENT;
-    private boolean runAutomated = Configuration.INSTANCE.DEFAULT_RUN_AUTOMATED;
+    private boolean showBlackboxContent = ConfigurationManager.INSTANCE.DEFAULT_SHOW_BLACKBOX_CONTENT;
+    private boolean runAutomated = ConfigurationManager.INSTANCE.DEFAULT_RUN_AUTOMATED;
     private int simulationSpeed;
 
     @FXML
@@ -74,9 +74,9 @@ public class SimulationController implements Initializable {
     private TextField[] tRedFeedback;
     private TextField[] tWhiteFeedback;
 
-    /***
+    /*--
      * functions
-     ***/
+     */
     private void addNewLine(Submission lineInfo) {
         System.out.println("SimulationController - addNewLine");
     }
@@ -220,7 +220,7 @@ public class SimulationController implements Initializable {
     private LinearGradient getCircleGradient(int color) {
         //System.out.println("SimulationController - getCircleGradient");
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-                new Stop(0, Configuration.INSTANCE.COLORS[color]),
+                new Stop(0, ConfigurationManager.INSTANCE.COLORS[color]),
                 new Stop(1, Color.web("#ffffff")));
         /*this.fillProperty().set(gradient);*/
         return gradient;
@@ -349,7 +349,7 @@ public class SimulationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("SimulationController - initialize");
-        /***initialize variables*/
+        /*--initialize variables*/
         GUIManager manager = GUIManager.getInstance();
         lengthOfCode = manager.getLengthOfCode();
         numberOfTries = manager.getNumberOfTries();
@@ -358,7 +358,7 @@ public class SimulationController implements Initializable {
         manager.setSubscriber(this);
 
         /*initialize speed*/
-        int defaultSpeed = Configuration.INSTANCE.DEFAULT_SIMULATION_SPEED_MS;
+        int defaultSpeed = ConfigurationManager.INSTANCE.DEFAULT_SIMULATION_SPEED_MS;
         int min = (int) spd_slider.getMin();
         int max = (int) spd_slider.getMax();
         if (defaultSpeed < min || defaultSpeed > max) {
@@ -367,7 +367,7 @@ public class SimulationController implements Initializable {
             simulationSpeed = defaultSpeed;
         }
 
-        /***initialize page settings*/
+        /*--initialize page settings*/
         generateGameMatrix();
         cbShowSecretCode.setSelected(showBlackboxContent);
         rbRunAutomated.setSelected(runAutomated);
@@ -391,6 +391,6 @@ public class SimulationController implements Initializable {
     }
 
 
-    /***getter + setter***/
+    /*--getter + setter*/
 
 }

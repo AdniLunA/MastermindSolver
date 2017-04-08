@@ -1,6 +1,6 @@
 package gui;
 
-import config.Configuration;
+import config.ConfigurationManager;
 import config.CrossoverEnum;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,7 +23,7 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ConfigurationController implements Initializable {
-    /***attributes***/
+    /*--attributes*/
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
@@ -108,10 +108,10 @@ public class ConfigurationController implements Initializable {
 
     private Rectangle[] rectangles;
     private Circle[] circles;
-    private int[] circleState = new int[Configuration.INSTANCE.MAX_LENGTH_OF_CODE];
+    private int[] circleState = new int[ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE];
     private Color[] colors;
 
-    /***functions***/
+    /*--functions*/
     private int checkBoundaries(String sValue, int maxValue) {
         System.out.println("ConfigurationController - checkBoundaries");
         try {
@@ -134,7 +134,7 @@ public class ConfigurationController implements Initializable {
     private void onchangeLOCTextfield() {
         System.out.println("ConfigurationController - onchangeLOCTextfield");
 
-        int newValue = checkBoundaries(loc_textfield.getText(), Configuration.INSTANCE.MAX_LENGTH_OF_CODE);
+        int newValue = checkBoundaries(loc_textfield.getText(), ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE);
         if (newValue != 0) {
             loc_textfield.setStyle("-fx-text-inner-color: black;");
             lengthOfCode = newValue;
@@ -149,7 +149,7 @@ public class ConfigurationController implements Initializable {
     private void onchangeNOCTextfield() {
         System.out.println("ConfigurationController - onchangNOCTextfield");
 
-        int newValue = checkBoundaries(noc_textfield.getText(), Configuration.INSTANCE.MAX_NUMBER_OF_COLORS);
+        int newValue = checkBoundaries(noc_textfield.getText(), ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS);
         if (newValue != 0) {
             noc_textfield.setStyle("-fx-text-inner-color: black;");
             numberOfColors = newValue;
@@ -164,7 +164,7 @@ public class ConfigurationController implements Initializable {
     private void onchangeNOTTextfield() {
         System.out.println("ConfigurationController - onchangeNOTTextfield");
 
-        int newValue = checkBoundaries(not_textfield.getText(), Configuration.INSTANCE.MAX_NUMBER_OF_TRIES);
+        int newValue = checkBoundaries(not_textfield.getText(), ConfigurationManager.INSTANCE.MAX_NUMBER_OF_TRIES);
         if (newValue != 0) {
             not_textfield.setStyle("-fx-text-inner-color: black;");
             numberOfTries = newValue;
@@ -252,7 +252,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private void incrColor(int pos) {
-        if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+        if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
             System.out.println("ConfigurationController - incrColor");
         }
         Circle circle = circles[pos];
@@ -265,7 +265,7 @@ public class ConfigurationController implements Initializable {
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, nextColor),
                 new Stop(1, Color.web("#ffffff")));
-        if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+        if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
             System.out.println("new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
         }
         circle.fillProperty().set(gradient);
@@ -273,7 +273,7 @@ public class ConfigurationController implements Initializable {
 
     private void initializeColors() {
         System.out.println("ConfigurationController - initializeColors");
-        for (int i = 0; i < Configuration.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
+        for (int i = 0; i < ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             try {
                 LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                         new Stop(0, colors[i]),
@@ -289,12 +289,14 @@ public class ConfigurationController implements Initializable {
     private void initializeParamSettingArea(int locMinLength) {
         System.out.println("ConfigurationController - initializeParamSettingArea");
 
-        lengthOfCode = Configuration.INSTANCE.DEFAULT_LENGTH_OF_CODE;
-        numberOfColors = Configuration.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
-        numberOfTries = Configuration.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
-        colors = Configuration.INSTANCE.COLORS;
+        lengthOfCode = ConfigurationManager.INSTANCE.DEFAULT_LENGTH_OF_CODE;
+        /*override Config setting if its below minimum)*/
+        lengthOfCode = (lengthOfCode < locMinLength ) ? locMinLength : lengthOfCode;
+        numberOfColors = ConfigurationManager.INSTANCE.DEFAULT_NUMBER_OF_COLORS;
+        numberOfTries = ConfigurationManager.INSTANCE.DEFAULT_NUMBER_OF_TRIES;
+        colors = ConfigurationManager.INSTANCE.COLORS;
 
-        not_slider.setMax(Configuration.INSTANCE.MAX_NUMBER_OF_TRIES);
+        not_slider.setMax(ConfigurationManager.INSTANCE.MAX_NUMBER_OF_TRIES);
 
         loc_slider.setMin(locMinLength);
         noc_slider.setMin((double) lengthOfCode);
@@ -310,22 +312,22 @@ public class ConfigurationController implements Initializable {
     private void initializeCodeSettingArea() {
         System.out.println("ConfigurationController - initializeCodeSettingArea");
 
-        for (int i = 0; i < Configuration.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
+        for (int i = 0; i < ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
             circles[i].setVisible(true);
         }
-        for (int i = Configuration.INSTANCE.MAX_LENGTH_OF_CODE - 1; i >= lengthOfCode; i--) {
+        for (int i = ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE - 1; i >= lengthOfCode; i--) {
             circles[i].setVisible(false);
         }
 
-        for (int i = 0; i < Configuration.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
+        for (int i = 0; i < ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             rectangles[i].setVisible(true);
         }
-        for (int i = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS - 1; i >= numberOfColors; i--) {
+        for (int i = ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS - 1; i >= numberOfColors; i--) {
             rectangles[i].setVisible(false);
         }
     }
 
-    /***getter + setter***/
+    /*--getter + setter*/
     public int getLengthOfCode() {
         return lengthOfCode;
     }
@@ -353,12 +355,12 @@ public class ConfigurationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("ConfigurationController - initialize");
-        /***attributes***/
+        /*--attributes*/
         guiManager = GUIManager.getInstance();
 
-        int k = Configuration.INSTANCE.K_FOR_CROSS_OVER;
+        int k = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
         int minValue;
-        if (Configuration.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT) {
+        if (ConfigurationManager.INSTANCE.CROSSOVER_TYPE == CrossoverEnum.K_POINT) {
             minValue = k + 1;
         } else {
             minValue = 1;
@@ -368,10 +370,10 @@ public class ConfigurationController implements Initializable {
         rectangles = new Rectangle[]{r0, r1, r2, r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, r13, r14, r15, r16, r17, r18, r19};
         circles = new Circle[]{c0, c1, c2, c3, c4, c5, c6, c7, c8, c9};
         for (int i = 0; i < circleState.length; i++) {
-            circleState[i] = Configuration.INSTANCE.MAX_NUMBER_OF_COLORS;
+            circleState[i] = ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS;
         }
 
-        /***functions***/
+        /*--functions*/
         initializeParamSettingArea(LOC_MIN_VALUE);
         initializeColors();
         initializeCodeSettingArea();
@@ -411,7 +413,7 @@ public class ConfigurationController implements Initializable {
         c0.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(0);
@@ -420,7 +422,7 @@ public class ConfigurationController implements Initializable {
         c1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(1);
@@ -429,7 +431,7 @@ public class ConfigurationController implements Initializable {
         c2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(2);
@@ -438,7 +440,7 @@ public class ConfigurationController implements Initializable {
         c3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(3);
@@ -447,7 +449,7 @@ public class ConfigurationController implements Initializable {
         c4.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(4);
@@ -456,7 +458,7 @@ public class ConfigurationController implements Initializable {
         c5.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(5);
@@ -465,7 +467,7 @@ public class ConfigurationController implements Initializable {
         c6.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(6);
@@ -474,7 +476,7 @@ public class ConfigurationController implements Initializable {
         c7.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(7);
@@ -483,7 +485,7 @@ public class ConfigurationController implements Initializable {
         c8.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(8);
@@ -492,7 +494,7 @@ public class ConfigurationController implements Initializable {
         c9.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if(Configuration.INSTANCE.TRACK_CODE_SETTING) {
+                if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
                     System.out.println("ConfigurationController - onclickToggleColor");
                 }
                 incrColor(9);
