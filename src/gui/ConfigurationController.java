@@ -2,6 +2,7 @@ package gui;
 
 import config.ConfigurationManager;
 import config.CrossoverEnum;
+import de.bean900.logger.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
@@ -23,6 +24,11 @@ import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ConfigurationController implements Initializable {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--attributes*/
     private int lengthOfCode;
     private int numberOfColors;
@@ -113,7 +119,7 @@ public class ConfigurationController implements Initializable {
 
     /*--functions*/
     private int checkBoundaries(String sValue, int maxValue) {
-        System.out.println("ConfigurationController - checkBoundaries");
+        logger.info("checkBoundaries", "");
         try {
             int value = Integer.parseInt(sValue);
             if (value < 1) {
@@ -125,14 +131,14 @@ public class ConfigurationController implements Initializable {
                 return value;
             }
         } catch (NumberFormatException e) {
-            System.out.println("Invalid entry.");
+            logger.error("checkBoundaries: Invalid entry.", e);
             return 0;
         }
     }
 
     @FXML
     private void onchangeLOCTextfield() {
-        System.out.println("ConfigurationController - onchangeLOCTextfield");
+        logger.info("onchangeLOCTextfield", "");
 
         int newValue = checkBoundaries(loc_textfield.getText(), ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE);
         if (newValue != 0) {
@@ -147,7 +153,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeNOCTextfield() {
-        System.out.println("ConfigurationController - onchangNOCTextfield");
+        logger.info("onchangNOCTextfield", "");
 
         int newValue = checkBoundaries(noc_textfield.getText(), ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS);
         if (newValue != 0) {
@@ -162,7 +168,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeNOTTextfield() {
-        System.out.println("ConfigurationController - onchangeNOTTextfield");
+        logger.info("onchangeNOTTextfield", "");
 
         int newValue = checkBoundaries(not_textfield.getText(), ConfigurationManager.INSTANCE.MAX_NUMBER_OF_TRIES);
         if (newValue != 0) {
@@ -177,7 +183,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickNextStep() {
-        System.out.println("ConfigurationController - onclickNextStep");
+        logger.info("onclickNextStep", "");
 
         paramSettingArea.setDisable(true);
         initializeCodeSettingArea();
@@ -187,13 +193,13 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickGenerateRandom() {
-        System.out.println("ConfigurationController - onclickGenerateRandom");
+        logger.info("onclickGenerateRandom", "");
         guiManager.startWithRandomCode(lengthOfCode, numberOfColors, numberOfTries);
     }
 
     @FXML
     private void onclickLastStep() {
-        System.out.println("ConfigurationController - onclickLastStep");
+        logger.info("onclickLastStep", "");
 
         paramSettingArea.setDisable(false);
         codeSettingArea.setDisable(true);
@@ -202,7 +208,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickStartSimulation() {
-        System.out.println("ConfigurationController - onclickStartSimulation");
+        logger.info("onclickStartSimulation", "");
 
         boolean[] accepted = checkCodeAcceptance();
 
@@ -211,17 +217,17 @@ public class ConfigurationController implements Initializable {
             guiManager.startWithPresetCode(lengthOfCode, numberOfColors, numberOfTries, secretCode);
         }
         if (!accepted[0]) {
-            /*todo show empty hole message*/
-            System.out.println("code not accepted due to empty hole(s)");
+            /*todo gui show empty hole message*/
+            logger.error("onclickStartSimulation","code not accepted due to empty hole(s)");
         }
         if (!accepted[1]) {
-            /*todo show duplicate color message*/
-            System.out.println("code not accepted due to duplicate colors");
+            /*todo gui show duplicate color message*/
+            logger.error("onclickStartSimulation","code not accepted due to duplicate colors");
         }
     }
 
     private boolean[] checkCodeAcceptance() {
-        System.out.println("ConfigurationController - checkCodeAcceptance");
+        logger.info("checkCodeAcceptance", "");
 
         /*test if a hole is not filled*/
         int i = 0;
@@ -229,7 +235,7 @@ public class ConfigurationController implements Initializable {
         while (i < lengthOfCode && !emptyHoleFound) {
             if (circleState[i] >= numberOfColors) {
                 emptyHoleFound = true;
-                System.out.println("found empty hole at pos " + i);
+                logger.error("checkCodeAccepptance", "found empty hole at pos " + i);
             }
             i++;
         }
@@ -242,7 +248,7 @@ public class ConfigurationController implements Initializable {
         while (j < lengthOfCode && !duplicateFound) {
             if (sortedCode[j] == sortedCode[j - 1]) {
                 duplicateFound = true;
-                System.out.println("found duplicate color number " + sortedCode[j]);
+                logger.error("checkCodeAccepptance", "found duplicate color number " + sortedCode[j]);
             }
             j++;
         }
@@ -253,7 +259,7 @@ public class ConfigurationController implements Initializable {
 
     private void incrColor(int pos) {
         if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-            System.out.println("ConfigurationController - incrColor");
+            logger.info("incrColor", "");
         }
         Circle circle = circles[pos];
         int nextState = circleState[pos] + 1;
@@ -266,13 +272,13 @@ public class ConfigurationController implements Initializable {
                 new Stop(0, nextColor),
                 new Stop(1, Color.web("#ffffff")));
         if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-            System.out.println("new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
+            logger.info("incrColor", "new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
         }
         circle.fillProperty().set(gradient);
     }
 
     private void initializeColors() {
-        System.out.println("ConfigurationController - initializeColors");
+        logger.info("initializeColors", "");
         for (int i = 0; i < ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             try {
                 LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
@@ -280,14 +286,14 @@ public class ConfigurationController implements Initializable {
                         new Stop(1, Color.web("#ffffff")));
                 rectangles[i].fillProperty().set(gradient);
             } catch (IllegalArgumentException e) {
-                System.out.println("ConfigurationController - exception");
+                logger.error("exception", e);
                 e.printStackTrace();
             }
         }
     }
 
     private void initializeParamSettingArea(int locMinLength) {
-        System.out.println("ConfigurationController - initializeParamSettingArea");
+        logger.info("initializeParamSettingArea", "");
 
         lengthOfCode = ConfigurationManager.INSTANCE.DEFAULT_LENGTH_OF_CODE;
         /*override Config setting if its below minimum)*/
@@ -310,7 +316,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private void initializeCodeSettingArea() {
-        System.out.println("ConfigurationController - initializeCodeSettingArea");
+        logger.info("initializeCodeSettingArea", "");
 
         for (int i = 0; i < ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
             circles[i].setVisible(true);
@@ -354,7 +360,7 @@ public class ConfigurationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("ConfigurationController - initialize");
+        logger.info("initialize", "");
         /*--attributes*/
         guiManager = GUIManager.getInstance();
 
@@ -414,7 +420,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(0);
             }
@@ -423,7 +429,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(1);
             }
@@ -432,7 +438,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(2);
             }
@@ -441,7 +447,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(3);
             }
@@ -450,7 +456,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(4);
             }
@@ -459,7 +465,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(5);
             }
@@ -468,7 +474,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(6);
             }
@@ -477,7 +483,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(7);
             }
@@ -486,7 +492,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(8);
             }
@@ -495,7 +501,7 @@ public class ConfigurationController implements Initializable {
             @Override
             public void handle(MouseEvent t) {
                 if(ConfigurationManager.INSTANCE.TRACK_CODE_SETTING) {
-                    System.out.println("ConfigurationController - onclickToggleColor");
+                    logger.info("onclickToggleColor", "");
                 }
                 incrColor(9);
             }

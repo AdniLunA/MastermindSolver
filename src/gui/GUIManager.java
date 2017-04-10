@@ -1,20 +1,23 @@
 package gui;
 
+import de.bean900.logger.Logger;
 import engine.GameEngine;
+import engine.Submission;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import engine.Submission;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public class GUIManager {
+    /*for debugging*/
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*constructor*/
     private GUIManager() {
         guiManager = this; /*Singleton Pattern*/

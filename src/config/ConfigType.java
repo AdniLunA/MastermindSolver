@@ -1,5 +1,5 @@
 package config;
 
 public enum ConfigType {
-    DEFAULT;
+    DEFAULT, VARIABLE;
 }

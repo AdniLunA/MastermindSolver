@@ -1,35 +1,35 @@
 package config;
 
 
-public class DefaultConfig implements IConfigurationFile {
+public class VariableConfig implements IConfigurationFile {
 
     /*--
      * evolution settings
      */
-    private final int sizeOfPopulation = 100;
-    private final int repeatEvolutionNTimes = 5;
-    private final SelectionEnum selectionType = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
-    private final CrossoverEnum crossoverType = CrossoverEnum.ONE_POINT;
+    private int sizeOfPopulation = 100;
+    private int repeatEvolutionNTimes = 5;
+    private SelectionEnum selectionType = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
+    private CrossoverEnum crossoverType = CrossoverEnum.ONE_POINT;
     /*Must be greater than length of code (always < 20!):*/
     private final int kForCrossover = 3; /*for kPoint crossover*/
-    private final int crossoverMaxTryAgain = 10;
-    private final float mixingRatio = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
-    private final MutationEnum mutationType = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
-    private final double mutationRatio = 0.005;
-    private final int mutationMaxTryAgain = 10;
+    private int crossoverMaxTryAgain = 10;
+    private float mixingRatio = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
+    private MutationEnum mutationType = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
+    private double mutationRatio = 0.005;
+    private int mutationMaxTryAgain = 10;
 
     /*--
      * game engine settings
      */
-    private final int defaultLengthOfCode = 3;
-    private final int defaultNumberOfColors = 5;
-    private final int defaultNumberOfTries = 35;
+    private int defaultLengthOfCode = 3;
+    private int defaultNumberOfColors = 5;
+    private int defaultNumberOfTries = 35;
 
     private final int maxLengthOfCode = 10;
-    private final int maxNumberOfTries = 35;
+    private final int maxNumberOfTries = 25;
 
-    private final int weightOfWhiteDifference = 3;
-    private final int weightOfRedDifference = 10;
+    private int weightOfWhiteDifference = 3;
+    private int weightOfRedDifference = 10;
 
     /*--
      * gui settings
@@ -41,6 +41,70 @@ public class DefaultConfig implements IConfigurationFile {
 
 	/*assumption: sequences set by the solver fulfill the unique color criteria.
      * -> must be validated by all classes that manipulate chromosomes*/
+
+	/*--
+	 * Setter
+	 */
+
+    public void setSizeOfPopulation(int sizeOfPopulation) {
+        this.sizeOfPopulation = sizeOfPopulation;
+    }
+
+    public void setRepeatEvolutionNTimes(int repeatEvolutionNTimes) {
+        this.repeatEvolutionNTimes = repeatEvolutionNTimes;
+    }
+
+    public void setSelectionType(SelectionEnum selectionType) {
+        this.selectionType = selectionType;
+    }
+
+    public void setCrossoverType(CrossoverEnum crossoverType) {
+        this.crossoverType = crossoverType;
+    }
+
+    public void setCrossoverMaxTryAgain(int crossoverMaxTryAgain) {
+        this.crossoverMaxTryAgain = crossoverMaxTryAgain;
+    }
+
+    public void setMixingRatio(float mixingRatio) {
+        this.mixingRatio = mixingRatio;
+    }
+
+    public void setMutationType(MutationEnum mutationType) {
+        this.mutationType = mutationType;
+    }
+
+    public void setMutationRatio(double mutationRatio) {
+        this.mutationRatio = mutationRatio;
+    }
+
+    public void setMutationMaxTryAgain(int mutationMaxTryAgain) {
+        this.mutationMaxTryAgain = mutationMaxTryAgain;
+    }
+
+    public void setDefaultLengthOfCode(int defaultLengthOfCode) {
+        this.defaultLengthOfCode = defaultLengthOfCode;
+    }
+
+    public void setDefaultNumberOfColors(int defaultNumberOfColors) {
+        this.defaultNumberOfColors = defaultNumberOfColors;
+    }
+
+    public void setDefaultNumberOfTries(int defaultNumberOfTries) {
+        this.defaultNumberOfTries = defaultNumberOfTries;
+    }
+
+    public void setWeightOfWhiteDifference(int weightOfWhiteDifference) {
+        this.weightOfWhiteDifference = weightOfWhiteDifference;
+    }
+
+    public void setWeightOfRedDifference(int weightOfRedDifference) {
+        this.weightOfRedDifference = weightOfRedDifference;
+    }
+
+    /*--
+     * Getter
+     */
 
     @Override
     public int getSizeOfPopulation() {

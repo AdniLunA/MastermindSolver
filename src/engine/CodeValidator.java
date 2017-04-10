@@ -1,14 +1,24 @@
 package engine;
 
+import de.bean900.logger.Logger;
 import evolution.IChromosome;
 
+/**
+ * calculates red + white response
+ * - knows the secret code
+ */
 public class CodeValidator {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * constructor
      */
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
-        System.out.println("CodeValidator - initialized with "+secretCode.toString());
+        this.logger.info("CodeValidator", "- initialized with "+secretCode.toString());
     }
 
     /*--
@@ -22,8 +32,7 @@ public class CodeValidator {
     public int[] calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
-        System.out.println("CodeValidator - calculateResponse");
-        System.out.println("    Secret code: "+secretCode.toString());
+        this.logger.info("calculateResponse", "    Secret code: "+secretCode.toString());
         for (int i = 0; i < secretCode.getSequence().length; i++) {
             if (secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]) {
                 redResponse++;
@@ -45,7 +54,7 @@ public class CodeValidator {
         whiteResponse -= redResponse;
 
         int[] response = {redResponse, whiteResponse};
-        System.out.println("    CodeValidator: red = "+redResponse+", white = "+whiteResponse+", code = "+sequenceToCheck.toString());
+        this.logger.info("calculateResponse", "    CodeValidator: red = "+redResponse+", white = "+whiteResponse+", code = "+sequenceToCheck.toString());
         return response;
     }
 

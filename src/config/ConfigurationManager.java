@@ -2,8 +2,6 @@ package config;
 
 import javafx.scene.paint.Color;
 
-import static config.ConfigType.*;
-
 public enum ConfigurationManager {
 
     INSTANCE;
@@ -12,6 +10,9 @@ public enum ConfigurationManager {
 
     public void setConfigType(ConfigType type) {
         switch (type) {
+            case VARIABLE:
+                configFile = new VariableConfig();
+                break;
             /*
             case TESTCASE1:
                 configFile = new TestCase1Config();
@@ -51,7 +52,7 @@ public enum ConfigurationManager {
     public final int WEIGHT_OF_RED_DIFFERENCE = configFile.getWeightOfRedDifference();
 
     /*--
-     * gui settings
+     * gui tracking event tracking/settings
      */
     public final boolean TRACK_CODE_SETTING = configFile.getTrackCodeSetting();
     public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = configFile.getDefaultShowBlackboxContent();

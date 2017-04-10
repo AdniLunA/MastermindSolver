@@ -1,8 +1,17 @@
 package engine;
 
+import de.bean900.logger.Logger;
 import evolution.IChromosome;
 
+/**
+ *
+ */
 public class Submission {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*constructor*/
     public Submission() {
     }
@@ -18,7 +27,7 @@ public class Submission {
 
     /*--functions*/
     public void setAttributes(IChromosome submittedChromosome, int red, int white) {
-        System.out.println("Submission - setAttributes");
+        this.logger.info("setAttributes", "");
         this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;

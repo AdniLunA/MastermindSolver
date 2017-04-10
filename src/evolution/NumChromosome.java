@@ -1,12 +1,18 @@
 package evolution;
 
 import config.ConfigurationManager;
+import de.bean900.logger.Logger;
 import engine.GameEngine;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * constructors
      */
@@ -75,7 +81,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         try {
             return builder.getSequence();
         } catch (NullPointerException n) {
-            System.out.println("NumChromosome - removeItemOfArray: ERROR - empty numberPool " + numberPool);
+            logger.info("removeItemOfArray", "ERROR - empty numberPool " + numberPool);
             n.printStackTrace();
             return null;
         }
@@ -109,7 +115,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         try {
             return FitnessCalculator.getInstance().calculateFitness(this);
         } catch (ArrayIndexOutOfBoundsException a) {
-            System.out.println("NumChromosome - get Fitness: ERROR while trying to calculate fitness of chromosome " + toString());
+            logger.info("getFitness", "ERROR while trying to calculate fitness of chromosome " + toString());
             a.printStackTrace();
             return 0;
         }

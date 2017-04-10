@@ -4,6 +4,7 @@ import config.ConfigurationManager;
 import config.CrossoverEnum;
 import config.MutationEnum;
 import config.SelectionEnum;
+import de.bean900.logger.Logger;
 import engine.GameEngine;
 import evolution.crossover.*;
 import evolution.mutation.*;
@@ -16,6 +17,11 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class Population implements IPopulation {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * constructors
      */
@@ -48,19 +54,19 @@ public class Population implements IPopulation {
 
     @Override
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
-        System.out.println();
-        System.out.println("Population - evolve");
+        logger.info("","");
+        logger.info("evolve", "");
         maxGenerationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
-        System.out.println("Population - evolve: Start selection");
+        logger.info("evolve", "Start selection");
         IChromosome[] parents = selector.getParents(Arrays.copyOf(transformToArray(genePool), genePool.size()));
 
         /*crossover*/
-        System.out.println("Population - evolve: Start crossover");
+        logger.info("evolve", "Start crossover");
         IChromosome[] newGeneration = crosser.crossover(parents);
         for (int i = 0; i < 2; i++) {
-            System.out.println("    -- Child #" + i + " is valid: " + newGeneration[i].checkValidity());
+            logger.info("evolve", "    -- Child #" + i + " is valid: " + newGeneration[i].checkValidity());
             if (!newGeneration[i].checkValidity()) {
                 throw new InputMismatchException("Population evolve crossover: ERROR - got invalid child " + newGeneration[i].toString());
             }
@@ -70,17 +76,17 @@ public class Population implements IPopulation {
         replaceWeakestWithNewGenes(newGeneration);
 
         /*mutation*/
-        System.out.println("Population - evolve: Start mutation");
+        logger.info("evolve", "Start mutation");
         IChromosome[] mutatedGeneration = newGeneration;
         mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(transformToArray(genePool), genePool.size()));
         this.genePool = transformToList(mutatedGeneration);
 
-        System.out.println("- Population - evolve: A new generation has been born! #" + maxGenerationCounter);
+        logger.info("evolve", "A new generation has been born! #" + maxGenerationCounter);
     }
 
     @Override
     public IChromosome[] getPopulationSorted() {
-        System.out.println("Population - getPopulationSorted");
+        logger.info("getPopulationSorted", "");
         IChromosome[] sortedPopulation = Arrays.copyOf(transformToArray(genePool), genePool.size());
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
@@ -88,7 +94,7 @@ public class Population implements IPopulation {
 
     @Override
     public int getSumPopulationFitness() {
-        System.out.println("Population - getSumPopulationFitness");
+        logger.info("getSumPopulationFitness", "");
         int sum = 0;
         for (IChromosome chromosome : genePool) {
             sum += chromosome.getFitness();
@@ -107,11 +113,11 @@ public class Population implements IPopulation {
 
     @Override
     public IChromosome getFittest() {
-        System.out.println("Population - getFittest");
+        logger.info("getFittest", "");
         IChromosome fittest = getPopulationSorted()[genePool.size() - 1];
         /*todo check*/
-        System.out.println("*****Fitness of fittest: " + fittest.getFitness());
-        System.out.println("*****Fitness of weakest: " + getPopulationSorted()[0].getFitness());
+        logger.info("getFittest", "*****Fitness of fittest: " + fittest.getFitness());
+        logger.info("getFittest", "*****Fitness of weakest: " + getPopulationSorted()[0].getFitness());
 
         return fittest;
     }

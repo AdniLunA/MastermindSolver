@@ -1,12 +1,18 @@
 package evolution;
 
 import config.ConfigurationManager;
+import de.bean900.logger.Logger;
 import engine.GameEngine;
 import engine.Submission;
 
 import java.util.ArrayList;
 
 public class FitnessCalculator {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * attributes
      */
@@ -31,7 +37,7 @@ public class FitnessCalculator {
     }
 
     public void addSubmission(Submission newSubmission) {
-        System.out.println("FitnessCalculator - addSubmission: " + newSubmission.getChromosome().toString());
+        logger.info("addSubmission", newSubmission.getChromosome().toString());
         this.submissions.add(newSubmission);
     }
 

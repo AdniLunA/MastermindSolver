@@ -1,14 +1,21 @@
 package evolution;
 
+import de.bean900.logger.Logger;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class SingleArrayBuilder {
-    //attributes
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
+    /*attributes*/
     Queue<Integer> arrayToBuild = new LinkedList<Integer>();
 
-    //functions
+    /*functions*/
     public void addToQueue(int[] numbersToAdd) {
         for(int number : numbersToAdd) {
             arrayToBuild.add(number);
@@ -26,7 +33,7 @@ public class SingleArrayBuilder {
             addToQueue(toInsert);
             addToQueue(Arrays.copyOfRange(sequence, position, sequence.length));
         } else {
-            System.out.println("SingleArrayBuilder - insert: ERROR, given position "+position+" must be between 0 and "+ sequence.length);
+            logger.info("insert", "ERROR, given position "+position+" must be between 0 and "+ sequence.length);
         }
         return sequence;
     }

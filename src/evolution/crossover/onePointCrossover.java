@@ -2,6 +2,7 @@ package evolution.crossover;
 
 import config.ConfigurationManager;
 import config.MersenneTwisterFast;
+import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.ArrayBuilder;
@@ -9,6 +10,11 @@ import evolution.ArrayBuilder;
 import java.util.Arrays;
 
 public class OnePointCrossover implements ICrossover{
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
     private IChromosome parent1;
@@ -20,7 +26,7 @@ public class OnePointCrossover implements ICrossover{
     /*--functions*/
     @Override
     public IChromosome[] crossover(IChromosome[] parents) {
-        System.out.println("OnePointCrossover - crossover:");
+        logger.info("crossover", "");
         this.parent1 = parents[0];
         this.parent2 = parents[1];
         sequenceLength = parent1.getLength();
@@ -56,8 +62,8 @@ public class OnePointCrossover implements ICrossover{
             }
             return parents;
         }
-        System.out.println("    Children: " + children[0].toString() + " and " + children[1].toString());
-        System.out.println("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
+        logger.info("crossover", "    Children: " + children[0].toString() + " and " + children[1].toString());
+        logger.info("crossover", "    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
         return children;
     }
 

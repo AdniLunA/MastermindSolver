@@ -1,6 +1,7 @@
 package gui;
 
 import config.ConfigurationManager;
+import de.bean900.logger.Logger;
 import engine.Submission;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -23,6 +24,11 @@ import java.util.InputMismatchException;
 import java.util.ResourceBundle;
 
 public class SimulationController implements Initializable {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * attributes
      */
@@ -78,11 +84,11 @@ public class SimulationController implements Initializable {
      * functions
      */
     private void addNewLine(Submission lineInfo) {
-        System.out.println("SimulationController - addNewLine");
+        logger.info("addNewLine", "");
     }
 
     private void generateGameMatrix() {
-        System.out.println("SimulationController - generateGameMatrix");
+        logger.info("generateGameMatrix", "");
         int x = lengthOfCode;
         int y = numberOfTries;
 
@@ -170,17 +176,17 @@ public class SimulationController implements Initializable {
     }
 
     private void onclickChangeSimulationSpeed(int newSpeed) {
-        System.out.println("SimulationController - onclickChangeSimulationSpeed from " + simulationSpeed + " to " + newSpeed);
+        logger.info("onclickChangeSimulationSpeed", "from " + simulationSpeed + " to " + newSpeed);
         simulationSpeed = newSpeed;
     }
 
     private void onclickChangeBlackBoxState(boolean newState) {
-        System.out.println("SimulationController - onclickChangeBlackBoxState from " + showBlackboxContent + " to " + newState);
+        logger.info("onclickChangeBlackBoxState", "from " + showBlackboxContent + " to " + newState);
         showBlackboxContent = newState;
     }
 
     private void refreshDependencies() {
-        System.out.println("SimulationController - refreshDependencies");
+        logger.info("refreshDependencies", "");
         /*show secret code?*/
         for (Circle circle : blackBox) {
             circle.setVisible(cbShowSecretCode.isSelected());
@@ -200,7 +206,7 @@ public class SimulationController implements Initializable {
     }
 
     private void switchSimulationMode() {
-        System.out.println("SimulationController - switchSimulationMode");
+        logger.info("switchSimulationMode", "");
         runAutomated = !runAutomated;
 
         rbRunAutomated.setSelected(runAutomated);
@@ -227,66 +233,64 @@ public class SimulationController implements Initializable {
     }
 
     private void fillCircleLine(Circle[] circles, int colors[]) {
-        System.out.printf("SimulationController - fillCircleLine: ");
+        logger.info("fillCircleLine", "");
         for (int i = 0; i < circles.length; i++) {
-            System.out.printf(colors[i] + " ");
+            logger.info("fillCircleLine", colors[i] + " ");
             circles[i].fillProperty().set(getCircleGradient(colors[i]));
             circles[i].setStroke(Color.DARKGRAY);
         }
-        System.out.println();
+        logger.info("","");
     }
 
     private void requestNewSubmission() {
         if (currentLineToPrint >= numberOfTries) {
             gameIsRunning = false;
         } else {
-            System.out.println("*****************SimulationController - requestNewSubmission");
+            logger.info("requestNewSubmission", "");
             GUIManager manager = GUIManager.getInstance();
             manager.handleSubmissionRequest(currentLineToPrint);
-            System.out.println();
-            System.out.println();
+            logger.info("","");
         }
     }
 
     public void setNextSubmission(Submission newLine) {
-        System.out.println("SimulationController - setNextSubmission");
-        System.out.println("    Got information:");
-        System.out.println("    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
+        logger.info("setNextSubmission", "    Got information:");
+        logger.info("setNextSubmission", "    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
 
         /*set line values*/
         fillCircleLine(circleMatrix[currentLineToPrint], newLine.getChromosome().getSequence());
-        System.out.println("    Set Feedback to GUI:");
-        System.out.println("    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
+        logger.info("setNextSubmission", "    Set Feedback to GUI:");
+        logger.info("setNextSubmission", "    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
         tRedFeedback[currentLineToPrint].setText("" + newLine.getRed());
         tWhiteFeedback[currentLineToPrint].setText("" + newLine.getWhite());
         /*increment counter*/
         currentLineToPrint++;
         /*if solution is found, break loop by setting currentLine to max*/
         if (newLine.getRed() == lengthOfCode) {
-            System.out.println("SimulationController - setNextSubmission: secret code found!!!");
+            logger.info("setNextSubmission", "secret code found!!!");
             currentLineToPrint = numberOfTries;
         }
     }
 
     private void runSimulationAutomated() {
-        System.out.println("SimulationController - runSimulationAutomated");
+        logger.info("runSimulationAutomated", "");
         if (runAutomated) {
             while (currentLineToPrint < numberOfTries) {
                 try {
                     Thread.sleep(simulationSpeed);
                     requestNewSubmission();
                 } catch (InterruptedException e) {
-                    System.out.println("runSimulationAutomated: Thread Exception");
+                    logger.error("runSimulationAutomated: Thread Exception", e);
                     e.printStackTrace();
                 }
-                System.out.println();
+                logger.info("","");
             }
         }
     }
 
     @FXML
     private void onclickStartSimulation() {
-        System.out.println("SimulationController - onclickStartSimulation");
+        logger.info("onclickStartSimulation", "");
         gameIsRunning = true;
         gameIsPaused = !gameIsPaused;
         bStartSimulation.setVisible(false);
@@ -307,7 +311,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickPauseSimulation() {
-        System.out.println("SimulationController - onclickPauseSimulation");
+        logger.info("onclickPauseSimulation", "");
         bContinueSimulation.setVisible(true);
         bPauseSimulation.setVisible(false);
         gameIsPaused = true;
@@ -315,7 +319,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickContinueSimulation() {
-        System.out.println("SimulationController - onclickContinueSimulation");
+        logger.info("onclickContinueSimulation", "");
         bPauseSimulation.setVisible(true);
         bContinueSimulation.setVisible(false);
         gameIsPaused = false;
@@ -323,8 +327,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickNextStep() {
-        System.out.println("SimulationController - onclickNextStep");
-        System.out.println();
+        logger.info("onclickNextStep", "");
         if (currentLineToPrint < numberOfTries) {
             requestNewSubmission();
         }
@@ -336,19 +339,19 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickReturnToConfigPg() {
-        System.out.println("SimulationController - onclickReturnToConfigPg");
+        logger.info("onclickReturnToConfigPg", "");
         GUIManager.getInstance().returnToConfigurationPage();
     }
 
     @FXML
     private void onclickShowSecretCode() {
-        System.out.println("SimulationController - onclickShowSecretCode");
+        logger.info("onclickShowSecretCode", "");
         refreshDependencies();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        System.out.println("SimulationController - initialize");
+        logger.info("initialize", "");
         /*--initialize variables*/
         GUIManager manager = GUIManager.getInstance();
         lengthOfCode = manager.getLengthOfCode();

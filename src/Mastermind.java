@@ -1,5 +1,6 @@
 import config.ConfigurationManager;
 import config.CrossoverEnum;
+import de.bean900.logger.Logger;
 import gui.GUIManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -8,11 +9,15 @@ import java.io.IOException;
 import java.util.InputMismatchException;
 
 public class Mastermind extends Application {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
 
     /*--functions*/
     @Override
     public void start(Stage primaryStage) throws IOException {
-        System.out.println("Mastermind - start");
+        logger.info("start", "");
 
         /*GameEngine gameEngine = GameEngine.getInstance();*/
         GUIManager gui = GUIManager.getInstance();
@@ -29,7 +34,7 @@ public class Mastermind extends Application {
 
     /*MAIN*/
     public static void main(String... args) throws IOException {
-        System.out.println("Mastermind - main");
+        Logger.getLogger("Mastermind").info("main", "");
 
         int k = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
         int kMax = ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE - 1;

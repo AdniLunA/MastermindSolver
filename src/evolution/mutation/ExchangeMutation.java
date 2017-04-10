@@ -1,10 +1,16 @@
 package evolution.mutation;
 
 import config.ConfigurationManager;
+import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 
 public class ExchangeMutation extends MutatorBasics {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * attributes
      */
@@ -14,7 +20,7 @@ public class ExchangeMutation extends MutatorBasics {
      */
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool) {
-        System.out.println("ExchangeMutation - mutateGenes");
+        logger.info("mutateGenes", "");
         for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
@@ -22,7 +28,7 @@ public class ExchangeMutation extends MutatorBasics {
             if (generator.nextFloat() <= ConfigurationManager.INSTANCE.MUTATION_RATIO) {
                 boolean validGeneFound = false;
                 int countTries = 0;
-                String mutatedMsg = "DisplaceMutation: mutated " + genePool[chromosomeCount].toString();
+                String mutatedMsg = "Mutated " + genePool[chromosomeCount].toString();
                 do {
                     int[] mutatedSequence =  genePool[chromosomeCount].getSequence();
                     int[] splitPos = super.generateTwoSplitPositions(genePool[chromosomeCount].getLength() - 1);
@@ -48,7 +54,7 @@ public class ExchangeMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                System.out.println(mutatedMsg + " to " + mutatedChromosome);
+                logger.info("mutateGenes", mutatedMsg + " to " + mutatedChromosome);
 
                 genePool[chromosomeCount] = mutatedChromosome;
             }

@@ -2,11 +2,17 @@ package evolution.mutation;
 
 
 import config.MersenneTwisterFast;
+import de.bean900.logger.Logger;
 import evolution.IChromosome;
 
 import java.util.Arrays;
 
 public class MutatorBasics implements IMutation {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * attributes
      */
@@ -22,7 +28,7 @@ public class MutatorBasics implements IMutation {
 
     @Override
     public int[] generateTwoSplitPositions(int max) {
-        System.out.println("MutatorBasics - generateTwoSplitPositions");
+        logger.info("generateTwoSplitPositions", "");
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         int[] splitPos = new int[2];
         splitPos[0] = generator.nextInt(0, max);

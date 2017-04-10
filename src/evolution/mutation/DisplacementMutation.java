@@ -1,6 +1,7 @@
 package evolution.mutation;
 
 import config.ConfigurationManager;
+import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.SingleArrayBuilder;
@@ -8,9 +9,14 @@ import evolution.SingleArrayBuilder;
 import java.util.Arrays;
 
 public class DisplacementMutation extends MutatorBasics {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool){
-        System.out.println("DisplacementMutation - mutateGenes");
+        logger.info("mutateGenes", "");
         for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
@@ -47,7 +53,7 @@ public class DisplacementMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                System.out.println("DisplaceMutation: mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
+                logger.info("mutateGenes", "Mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
                 genePool[chromosomeCount] = mutatedChromosome;
             }
         }
