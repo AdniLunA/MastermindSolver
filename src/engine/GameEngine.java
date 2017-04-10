@@ -1,11 +1,17 @@
 package engine;
 
+import de.bean900.logger.Logger;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import gui.GUIManager;
 
 public class GameEngine {
+    /*--
+     * debugging
+     */
+    private final Logger logger = Logger.getLogger(this.getClass().getName());
+
     /*--
      * attributes
      */
@@ -34,14 +40,14 @@ public class GameEngine {
     }
 
     public IChromosome getRandomCode(int codeLength, int numColors) {
-        System.out.println("GameEngine - getRandomCode");
+        logger.info("getRandomCode", "");
         codeGenerator = new NumChromosome(codeLength, numColors);
         codeGenerator.generateRandom();
         return codeGenerator;
     }
 
     public void startGame(int codeLength, int numColors, int numTries, IChromosome code) {
-        System.out.println("GameEngine - startGame");
+        logger.info("startGame", "");
         this.codeLength = codeLength;
         this.numColors = numColors;
         this.numTries = numTries;
@@ -53,9 +59,10 @@ public class GameEngine {
     }
 
     public void resolveSubmission(IChromosome chromosome, int position) {
-        System.out.println("GameEngine - resolve Submission");
+        logger.info("resolveSubmission", "");
         int[] response = validator.calculateResponse(chromosome);
-        System.out.println("    GameEngine: position = " + position + ", red = " + response[0] + ", white = " + response[1] + ", sequence = " + chromosome.toString());
+        logger.info("resolveSubmission", "    GameEngine: position = " + position + ", red = " + response[0]
+                + ", white = " + response[1] + ", sequence = " + chromosome.toString());
         Submission submission = new Submission(chromosome, response[0], response[1]);
 
         FitnessCalculator.getInstance().addSubmission(submission);
@@ -64,7 +71,7 @@ public class GameEngine {
     }
 
     public void calculateNextSubmission(int requestCounter) {
-        System.out.println("GameEngine - calculateNextSubmission");
+        logger.info("calculateNextSubmission", "");
         solver.solve(requestCounter);
     }
 

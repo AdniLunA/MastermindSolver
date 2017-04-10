@@ -99,7 +99,7 @@ public class TwoPointCrossover implements ICrossover {
                 }
             } while (invalid);
         } catch (RuntimeException r) {
-            logger.info("createValidRandomSplitPos", "- cannot resolve new position, last value: " + pos + "/n" + r);
+            logger.error("createValidRandomSplitPos - cannot resolve new position, last value: " + pos, r);
         }
 
         return pos;

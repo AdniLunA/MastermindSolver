@@ -33,7 +33,7 @@ public class SingleArrayBuilder {
             addToQueue(toInsert);
             addToQueue(Arrays.copyOfRange(sequence, position, sequence.length));
         } else {
-            logger.info("insert", "ERROR, given position "+position+" must be between 0 and "+ sequence.length);
+            logger.error("insert", "ERROR, given position "+position+" must be between 0 and "+ sequence.length);
         }
         return sequence;
     }

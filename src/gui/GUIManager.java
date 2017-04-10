@@ -47,7 +47,7 @@ public class GUIManager {
      * functions
      */
     public static final GUIManager getInstance() { /*Singleton Pattern*/
-        System.out.println("GUIManager - getInstance");
+        Logger.getLogger("GUIManager").info("getInstance", "");
         if (guiManager == null) {
             return new GUIManager();
         } else {
@@ -56,7 +56,7 @@ public class GUIManager {
     }
 
     public void openConfigurationPage(Stage primaryStage) {
-        System.out.println("GUIManager - openConfigurationPage");
+        logger.info("openConfigurationPage", "");
 
         this.primaryStage = primaryStage;
 
@@ -67,37 +67,35 @@ public class GUIManager {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
-            System.out.println("GUIManager - openSimulationPage: errors in \"configurationPage.fxml\" or corresponding controller");
+            logger.error("GUIManager - openSimulationPage: errors in \"configurationPage.fxml\" or corresponding controller", e);
             e.printStackTrace();
         }
     }
 
     protected void returnToConfigurationPage() {
-        System.out.println("GUIManager - returnToConfigurationPage");
+        logger.info("returnToConfigurationPage", "");
         openConfigurationPage(primaryStage);
     }
 
     public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
-        System.out.println("GUIManager - startWithPresetCode");
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
         this.code = new NumChromosome(secretCode, numberOfColors);
 
-        System.out.println("GUIManager - startWithPresetCode - starting simulation with values LOC: " + lengthOfCode
+        logger.info("startWithPresetCode", " - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
 
         openSimulationPage();
     }
 
     public void startWithRandomCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
-        System.out.println("GUIManager - startWithRandomCode");
         this.lengthOfCode = lengthOfCode;
         this.numberOfColors = numberOfColors;
         this.numberOfTries = numberOfTries;
         this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
 
-        System.out.println("GUIManager - startWithRandomCode - starting simulation with values LOC: " + lengthOfCode
+        logger.info("startWithRandomCode", " - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
 
         openSimulationPage();
@@ -106,10 +104,10 @@ public class GUIManager {
     private void openSimulationPage() {
         this.submissions = new LinkedBlockingQueue<Submission>();
 
-        System.out.println("GUIManager - openSimulationPage");
+        logger.info("openSimulationPage", "");
         //only accept valid code
         if (!code.checkValidity()) {
-            /*todo: error message */
+            /*todo: GUI error message invalid code*/
         } else {
             try {
                 Pane simulationPage = (Pane) FXMLLoader.load(getClass().getResource("simulationPage.fxml"));
@@ -117,7 +115,7 @@ public class GUIManager {
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (IOException e) {
-                System.out.println("GUIManager - openSimulationPage: errors in \"simulationPage.fxml\" or the corresponding controller");
+                logger.error("GUIManager - openSimulationPage: errors in \"simulationPage.fxml\" or the corresponding controller", e);
                 e.printStackTrace();
             }
             FitnessCalculator.getInstance().dropForNextGame();
@@ -126,34 +124,34 @@ public class GUIManager {
     }
 
     public void handleSubmission(Submission submission, int position) {
-        System.out.println("GUIManager - handleSubmission");
+        logger.info("handleSubmission", "");
         try {
             submissions.put(submission);
         } catch (InterruptedException e) {
-            System.out.println("    ERROR: Adding of submission "+submission.toString()+" failed.");
+            logger.error("    ERROR: Adding of submission "+submission.toString()+" failed.", e);
             e.printStackTrace();
         }
-        System.out.println("    GUIManager: position = " + position + ", " + submission.toString());
+        logger.info("handleSubmission", "    GUIManager: position = " + position + ", " + submission.toString());
     }
 
     public void handleSubmissionRequest(int requestCounter) {
-        System.out.println("GUIManager - handleSubmissionRequest");
+        logger.info("handleSubmissionRequest", "");
         if (requestCounter < numberOfTries) {
             Submission currentLine = null;
             try {
                 currentLine = submissions.take();
             } catch (InterruptedException e) {
-                System.out.println("    ERROR: reading of submission #"+requestCounter+" failed.");
+                logger.error("    ERROR: reading of submission #"+requestCounter+" failed.", e);
                 e.printStackTrace();
             }
-            System.out.println("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
+            logger.info("handleSubmissionRequest", "    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
             int nextCounter = requestCounter + 1;
             if(nextCounter < numberOfTries) {
                 System.out.println("    calculate submission #" + nextCounter);
                 gameEngine.calculateNextSubmission(nextCounter);
             }
-            System.out.println("    After calculating next submission: ");
-            System.out.println("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
+            logger.info("handleSubmissionRequest", "    After calculating next submission: ");
+            logger.info("handleSubmissionRequest", "    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
 
             subscriber.setNextSubmission(currentLine);
         }

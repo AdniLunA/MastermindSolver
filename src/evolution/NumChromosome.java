@@ -81,7 +81,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         try {
             return builder.getSequence();
         } catch (NullPointerException n) {
-            logger.info("removeItemOfArray", "ERROR - empty numberPool " + numberPool);
+            logger.error("removeItemOfArray: ERROR - empty numberPool " + numberPool, n);
             n.printStackTrace();
             return null;
         }
@@ -115,7 +115,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         try {
             return FitnessCalculator.getInstance().calculateFitness(this);
         } catch (ArrayIndexOutOfBoundsException a) {
-            logger.info("getFitness", "ERROR while trying to calculate fitness of chromosome " + toString());
+            logger.error("getFitness: ERROR while trying to calculate fitness of chromosome " + toString(), a);
             a.printStackTrace();
             return 0;
         }
