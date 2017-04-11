@@ -1,8 +1,8 @@
 package engine;
 
 import config.ConfigurationManager;
-import de.bean900.logger.Logger;
 import evolution.*;
+import de.bean900.logger.Logger;
 
 import java.util.ArrayList;
 

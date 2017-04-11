@@ -52,7 +52,7 @@ public enum ConfigurationManager {
     public final int WEIGHT_OF_RED_DIFFERENCE = configFile.getWeightOfRedDifference();
 
     /*--
-     * gui tracking event tracking/settings
+     * presentation tracking event tracking/settings
      */
     public final boolean TRACK_CODE_SETTING = configFile.getTrackCodeSetting();
     public final boolean DEFAULT_SHOW_BLACKBOX_CONTENT = configFile.getDefaultShowBlackboxContent();

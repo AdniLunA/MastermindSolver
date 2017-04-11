@@ -81,7 +81,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         try {
             return builder.getSequence();
         } catch (NullPointerException n) {
-            logger.error("removeItemOfArray: ERROR - empty numberPool " + numberPool, n);
+            System.out.println("removeItemOfArray: ERROR - empty numberPool " + numberPool);
             n.printStackTrace();
             return null;
         }
@@ -115,7 +115,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         try {
             return FitnessCalculator.getInstance().calculateFitness(this);
         } catch (ArrayIndexOutOfBoundsException a) {
-            logger.error("getFitness: ERROR while trying to calculate fitness of chromosome " + toString(), a);
+            System.out.println("getFitness: ERROR while trying to calculate fitness of chromosome " + toString());
             a.printStackTrace();
             return 0;
         }
@@ -131,14 +131,16 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public String toString() {
-        StringBuffer array = new StringBuffer();
+        StringBuffer buffer = new StringBuffer();
         int lastElem = sequence.length - 1;
         for (int i = 0; i < sequence.length; i++) {
-            array.append(sequence[i]);
-            if (i != lastElem) ;
-            array.append(", ");
+            /*always with 2 digits*/
+            buffer.append((sequence[i] < 10) ? "0" + sequence[i] : sequence[i]);
+            if (i != lastElem) {
+                buffer.append(" ");
+            }
         }
-        return array.toString();
+        return buffer.toString();
     }
 
     @Override

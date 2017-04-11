@@ -32,7 +32,7 @@ public class VariableConfig implements IConfigurationFile {
     private int weightOfRedDifference = 10;
 
     /*--
-     * gui settings
+     * presentation settings
      */
     private final boolean trackCodeSetting = false;
     private final boolean defaultShowBlackboxContent = true;

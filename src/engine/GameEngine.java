@@ -4,7 +4,7 @@ import de.bean900.logger.Logger;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import gui.GUIManager;
+import presentation.GUIManager;
 
 public class GameEngine {
     /*--
@@ -63,6 +63,8 @@ public class GameEngine {
         int[] response = validator.calculateResponse(chromosome);
         logger.info("resolveSubmission", "    GameEngine: position = " + position + ", red = " + response[0]
                 + ", white = " + response[1] + ", sequence = " + chromosome.toString());
+        System.out.printf("  " +chromosome.toString()+"  => sequence #" + position  + ", red = " + response[0]
+                + ", white = " + response[1] + ". @GameEngine - resolveSubmission." + "\n");
         Submission submission = new Submission(chromosome, response[0], response[1]);
 
         FitnessCalculator.getInstance().addSubmission(submission);

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.SimulationController">
+   <children>
+      <Pane prefHeight="800.0" prefWidth="279.0" style="-fx-background-color: snow; -fx-border-color: gainsboro;">
+         <children>
+            <Group layoutX="-3.0" layoutY="14.0">
+               <children>
+                  <Group fx:id="gRunAutomatedSettings" layoutX="-36.0" layoutY="165.0">
+                     <children>
+                        <Label layoutX="204.0" layoutY="166.0" text="Slow simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Slider fx:id="spd_slider" blockIncrement="100.0" layoutX="50.0" layoutY="191.0" majorTickUnit="1.0" max="5000.0" min="100.0" minorTickCount="0" prefHeight="21.0" prefWidth="256.0" snapToTicks="true" value="1000.0" />
+                        <Label layoutX="57.0" layoutY="166.0" text="Fast simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="bPauseSimulation" layoutX="103.0" layoutY="234.0" mnemonicParsing="false" onAction="#onclickPauseSimulation" prefHeight="30.0" prefWidth="150.0" text="Pause simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="bContinueSimulation" layoutX="103.0" layoutY="234.0" mnemonicParsing="false" onAction="#onclickContinueSimulation" prefHeight="25.0" prefWidth="150.0" text="Continue simulation">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </Group>
+                  <Group layoutY="116.0">
+                     <children>
+                        <Label layoutX="20.0" layoutY="87.0" text="Run simulation automated or manually?">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Group layoutX="-14.0" layoutY="-118.0">
+                           <children>
+                              <RadioButton fx:id="rbRunAutomated" disable="true" layoutX="53.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunAutomated" text="Automated">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                              <RadioButton fx:id="rbRunManually" disable="true" layoutX="180.0" layoutY="251.0" mnemonicParsing="false" onAction="#onclickRunManually" selected="true" text="Manually">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </RadioButton>
+                           </children>
+                        </Group>
+                     </children>
+                  </Group>
+                  <Button fx:id="bNextStep" layoutX="67.0" layoutY="430.0" mnemonicParsing="false" onAction="#onclickNextStep" prefHeight="30.0" prefWidth="150.0" text="Next Step">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Group>
+            <Group layoutX="-140.0" layoutY="-61.0">
+               <children>
+                  <CheckBox fx:id="cbShowSecretCode" layoutX="328.0" layoutY="197.0" mnemonicParsing="false" onAction="#onclickShowSecretCode" selected="true" text="Yes">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </CheckBox>
+                  <Label layoutX="188.0" layoutY="193.0" prefHeight="32.0" prefWidth="120.0" text="Show secret code?">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Group>
+            <Button layoutX="29.0" layoutY="738.0" mnemonicParsing="false" onAction="#onclickReturnToConfigPg" text="&lt;&lt; Return to Configuration Page">
+               <font>
+                  <Font size="14.0" />
+               </font></Button>
+            <Button fx:id="bStartSimulation" layoutX="66.0" layoutY="557.0" mnemonicParsing="false" onAction="#onclickStartSimulation" prefHeight="58.0" prefWidth="150.0" style="-fx-background-color: lightgreen; -fx-border-color: limegreen; -fx-border-width: 3px; -fx-border-radius: 3px;" text="Start simulation" textFill="#276f27">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+            <Text layoutX="-1.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Simulation Settings" textAlignment="CENTER" wrappingWidth="279.0">
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="424.0" layoutY="112.0" prefHeight="60.0" prefWidth="520.0" style="-fx-background-color: black; -fx-border-color: gray;">
+         <children>
+            <Pane fx:id="pBlackBox" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="500.0" style="-fx-background-color: whitesmoke;" />
+         </children>
+      </Pane>
+      <ScrollPane layoutX="292.0" layoutY="189.0" prefHeight="600.0" prefWidth="800.0">
+        <content>
+          <AnchorPane fx:id="apScrollableField" layoutX="50.0" minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="780.0">
+               <children>
+                  <Pane fx:id="pGameArea" layoutX="40.0" prefHeight="600.0" prefWidth="700.0" />
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <Text layoutX="292.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind_gui Simulation" textAlignment="CENTER" wrappingWidth="800.0">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Text>
+   </children>
+</Pane>

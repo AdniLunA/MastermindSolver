@@ -34,7 +34,7 @@ public interface IConfigurationFile {
         public int getWeightOfRedDifference();
 
         /*--
-         * gui settings
+         * presentation settings
          */
         public boolean getTrackCodeSetting();
         public boolean getDefaultShowBlackboxContent();

@@ -102,7 +102,8 @@ public class KPointCrossover implements ICrossover {
                 }
             } while (invalid);
         } catch (RuntimeException r) {
-            logger.error("createValidRandomSplitPos: - cannot resolve new position, last value: " + pos, r);
+            System.out.println("KPointCrossover - createValidRandomSplitPos: - cannot resolve new position, last value: " + pos);
+            r.printStackTrace();
         }
 
         return pos;
