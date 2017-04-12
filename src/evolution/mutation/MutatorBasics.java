@@ -2,8 +2,9 @@ package evolution.mutation;
 
 
 import config.MersenneTwisterFast;
-import de.bean900.logger.Logger;
 import evolution.IChromosome;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -11,7 +12,7 @@ public class MutatorBasics implements IMutation {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -28,7 +29,7 @@ public class MutatorBasics implements IMutation {
 
     @Override
     public int[] generateTwoSplitPositions(int max) {
-        logger.info("generateTwoSplitPositions", "");
+        logger.info("");
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         int[] splitPos = new int[2];
         splitPos[0] = generator.nextInt(0, max);

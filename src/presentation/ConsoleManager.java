@@ -1,22 +1,17 @@
 package presentation;
 
-import de.bean900.logger.Logger;
 import engine.GameEngine;
 import engine.Submission;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
-import evolution.NumChromosome;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class ConsoleManager implements  IPresentationManager{
+public class ConsoleManager implements IPresentationManager {
     /*for debugging*/
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -41,10 +36,10 @@ public class ConsoleManager implements  IPresentationManager{
         this.numberOfTries = numberOfTries;
         this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
 
-        logger.info("startWithRandomCode", " - starting simulation with values LOC: " + lengthOfCode
+        logger.info(" - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
         System.out.printf("GUIManager startWithRandomCode - starting simulation with values LOC: " + lengthOfCode
-                + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: \n* " + code.toString()+" *\n");
+                + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: \n* " + code.toString() + " *\n");
 
         FitnessCalculator.getInstance().dropForNextGame();
         gameEngine.startGame(lengthOfCode, numberOfColors, numberOfTries, code);
@@ -52,38 +47,38 @@ public class ConsoleManager implements  IPresentationManager{
 
     @Override
     public void handleSubmission(Submission submission, int position) {
-        logger.info("handleSubmission", "");
+        logger.info("");
         try {
             submissions.put(submission);
         } catch (InterruptedException e) {
-            System.out.println("    ERROR: Adding of submission "+submission.toString()+" failed.");
+            System.out.println("    ERROR: Adding of submission " + submission.toString() + " failed.");
             e.printStackTrace();
         }
-        logger.info("handleSubmission", "    GUIManager: position = " + position + ", " + submission.toString());
+        logger.info("    GUIManager: position = " + position + ", " + submission.toString());
     }
 
     @Override
     public void handleSubmissionRequest(int requestCounter) {
-        logger.info("handleSubmissionRequest", "");
+        logger.info("");
         if (requestCounter < numberOfTries) {
             Submission currentLine = null;
             try {
                 currentLine = submissions.take();
             } catch (InterruptedException e) {
-                System.out.println("    ERROR: reading of submission #"+requestCounter+" failed.");
+                System.out.println("    ERROR: reading of submission #" + requestCounter + " failed.");
                 e.printStackTrace();
             }
-            logger.info("handleSubmissionRequest", "    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
+            logger.info("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
             int nextCounter = requestCounter + 1;
-            if(nextCounter < numberOfTries) {
+            if (nextCounter < numberOfTries) {
                 logger.info("handleSubmissionRequest", "    calculate submission #" + nextCounter);
                 gameEngine.calculateNextSubmission(nextCounter);
             }
-            logger.info("handleSubmissionRequest", "    After calculating next submission: ");
-            logger.info("handleSubmissionRequest", "    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
+            logger.info("    After calculating next submission: ");
+            logger.info("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
 
             if (currentLine.getRed() == lengthOfCode) {
-                logger.info("setNextSubmission", "secret code found!!!");
+                logger.info("secret code found!!!");
             }
         }
     }

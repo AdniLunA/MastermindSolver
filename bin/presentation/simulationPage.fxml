@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.SimulationController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.SimulationController">
    <children>
       <Pane prefHeight="800.0" prefWidth="279.0" style="-fx-background-color: snow; -fx-border-color: gainsboro;">
          <children>
@@ -114,7 +114,7 @@
             </AnchorPane>
         </content>
       </ScrollPane>
-      <Text layoutX="292.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind Simulation" textAlignment="CENTER" wrappingWidth="800.0">
+      <Text layoutX="292.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mastermind_gui Simulation" textAlignment="CENTER" wrappingWidth="800.0">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>

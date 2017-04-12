@@ -1,10 +1,11 @@
 package evolution.mutation;
 
 import config.ConfigurationManager;
-import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.SingleArrayBuilder;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Arrays;
 
@@ -12,11 +13,11 @@ public class DisplacementMutation extends MutatorBasics {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     @Override
-    public IChromosome[] mutateGenes(IChromosome[] genePool){
-        logger.info("mutateGenes", "");
+    public IChromosome[] mutateGenes(IChromosome[] genePool) {
+        logger.info("");
         for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
@@ -43,7 +44,7 @@ public class DisplacementMutation extends MutatorBasics {
                     mutatedChromosome = new NumChromosome(mutatedSequence);
                     validGeneFound = mutatedChromosome.checkValidity();
 
-                    if(validGeneFound){
+                    if (validGeneFound) {
                         mutatedChromosome.incrementGeneration();
                     }
                     countTries++;
@@ -53,7 +54,7 @@ public class DisplacementMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                logger.info("mutateGenes", "Mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
+                logger.info("Mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
                 genePool[chromosomeCount] = mutatedChromosome;
             }
         }

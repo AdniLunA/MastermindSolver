@@ -1,9 +1,10 @@
 package evolution;
 
 import config.ConfigurationManager;
-import de.bean900.logger.Logger;
 import engine.GameEngine;
 import engine.Submission;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ public class FitnessCalculator {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -37,7 +38,7 @@ public class FitnessCalculator {
     }
 
     public void addSubmission(Submission newSubmission) {
-        logger.info("addSubmission", newSubmission.getChromosome().toString());
+        logger.info( newSubmission.getChromosome().toString());
         this.submissions.add(newSubmission);
     }
 
@@ -55,10 +56,10 @@ public class FitnessCalculator {
                 int[] originalSubmission = submission.getChromosome().getSequence();
 
                 for (int i = 0; i < originalSubmission.length; i++) {
-                    if(originalSequence[i] > GameEngine.getInstance().getNumColors() ||
-                            originalSubmission[i] >= GameEngine.getInstance().getNumColors()){
+                    if (originalSequence[i] > GameEngine.getInstance().getNumColors() ||
+                            originalSubmission[i] >= GameEngine.getInstance().getNumColors()) {
                         String errormessage = "FitnessCalculator - calculateFitness ERROR: color > number of Colors.\n" +
-                                "Tried to compare sequence "+chromosomeToCheck.toString()+" with submission "+submission.getChromosome().toString();
+                                "Tried to compare sequence " + chromosomeToCheck.toString() + " with submission " + submission.getChromosome().toString();
                         throw new IndexOutOfBoundsException(errormessage);
                     } else {
                         if (originalSubmission[i] == originalSequence[i]) {
@@ -75,10 +76,10 @@ public class FitnessCalculator {
                 int[] sortedSubmission = submission.getChromosome().getSequenceSorted();
                 int[] colorCounter = new int[GameEngine.getInstance().getNumColors()];
                 for (int i = 0; i < sortedSequence.length; i++) {
-                    if(sortedSequence[i] >= GameEngine.getInstance().getNumColors() ||
-                            sortedSubmission[i] > GameEngine.getInstance().getNumColors()){
+                    if (sortedSequence[i] >= GameEngine.getInstance().getNumColors() ||
+                            sortedSubmission[i] > GameEngine.getInstance().getNumColors()) {
                         String errormessage = "FitnessCalculator - calculateFitness ERROR: color > number of Colors.\n" +
-                                "Tried to compare sequence "+chromosomeToCheck.toString()+" with submission "+submission.getChromosome().toString();
+                                "Tried to compare sequence " + chromosomeToCheck.toString() + " with submission " + submission.getChromosome().toString();
                         throw new IndexOutOfBoundsException(errormessage);
                     } else {
                         colorCounter[sortedSequence[i]]++;
@@ -109,7 +110,7 @@ public class FitnessCalculator {
         return submissions.size() * maxDifference * (ConfigurationManager.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + ConfigurationManager.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
     }
 
-    public void dropForNextGame(){
+    public void dropForNextGame() {
         submissions.removeAll(submissions);
     }
 

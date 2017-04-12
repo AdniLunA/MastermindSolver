@@ -2,18 +2,19 @@ package evolution.crossover;
 
 import config.ConfigurationManager;
 import config.MersenneTwisterFast;
-import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.ArrayBuilder;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Arrays;
 
-public class OnePointCrossover implements ICrossover{
+public class OnePointCrossover implements ICrossover {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
@@ -26,7 +27,7 @@ public class OnePointCrossover implements ICrossover{
     /*--functions*/
     @Override
     public IChromosome[] crossover(IChromosome[] parents) {
-        logger.info("crossover", "");
+        logger.info("");
         this.parent1 = parents[0];
         this.parent2 = parents[1];
         sequenceLength = parent1.getLength();
@@ -35,15 +36,15 @@ public class OnePointCrossover implements ICrossover{
         int tryCounter = 0;
         int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
 
-        while(numberOfHealthyChildren < 2 && tryCounter < maxTries){
+        while (numberOfHealthyChildren < 2 && tryCounter < maxTries) {
             numberOfHealthyChildren = 0;
             generateRandomSplitPos();
 
             children = breedChildren();
-            if(children[0].checkValidity()){
+            if (children[0].checkValidity()) {
                 numberOfHealthyChildren++;
             }
-            if(children[1].checkValidity()){
+            if (children[1].checkValidity()) {
                 numberOfHealthyChildren++;
             }
             tryCounter++;
@@ -62,8 +63,8 @@ public class OnePointCrossover implements ICrossover{
             }
             return parents;
         }
-        logger.info("crossover", "    Children: " + children[0].toString() + " and " + children[1].toString());
-        logger.info("crossover", "    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
+        logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
+        logger.info("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
         return children;
     }
 

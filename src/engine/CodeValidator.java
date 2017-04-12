@@ -1,7 +1,8 @@
 package engine;
 
-import de.bean900.logger.Logger;
 import evolution.IChromosome;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 /**
  * calculates red + white response
@@ -11,14 +12,14 @@ public class CodeValidator {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * constructor
      */
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
-        this.logger.info("CodeValidator", "- initialized with "+secretCode.toString());
+        this.logger.info("- initialized with " + secretCode.toString());
     }
 
     /*--
@@ -32,7 +33,7 @@ public class CodeValidator {
     public int[] calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
-        this.logger.info("calculateResponse", "    Secret code: "+secretCode.toString());
+        this.logger.info("    Secret code: " + secretCode.toString());
         for (int i = 0; i < secretCode.getSequence().length; i++) {
             if (secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]) {
                 redResponse++;
@@ -54,7 +55,7 @@ public class CodeValidator {
         whiteResponse -= redResponse;
 
         int[] response = {redResponse, whiteResponse};
-        this.logger.info("calculateResponse", "    CodeValidator: red = "+redResponse+", white = "+whiteResponse+", code = "+sequenceToCheck.toString());
+        this.logger.info("    CodeValidator: red = " + redResponse + ", white = " + whiteResponse + ", code = " + sequenceToCheck.toString());
         return response;
     }
 

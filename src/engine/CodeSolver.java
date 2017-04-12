@@ -2,7 +2,8 @@ package engine;
 
 import config.ConfigurationManager;
 import evolution.*;
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,7 @@ public class CodeSolver {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -26,7 +27,7 @@ public class CodeSolver {
      * functions
      */
     public void solve(int requestCounter) {
-        this.logger.info("solve", "");
+        this.logger.info("");
         IChromosome newSequence = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
         /*first submission random*/
         if (requestCounter == 0) {
@@ -34,8 +35,8 @@ public class CodeSolver {
         } else { /*other submission via evolution*/
             newSequence = solveViaEvolutionaryAlgorithms();
         }
-        this.logger.info("solve", "CodeSolver: request #" + requestCounter);
-        this.logger.info("solve", "    CodeSolver: next sequence = " + newSequence.toString());
+        this.logger.info("CodeSolver: request #" + requestCounter);
+        this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
         engine.resolveSubmission(newSequence, requestCounter);
     }
 
@@ -46,7 +47,7 @@ public class CodeSolver {
         /*todo: find an intelligent way to choose mutation methods*/
         for (int i = 0; i < ConfigurationManager.INSTANCE.REPEAT_EVOLUTION_N_TIMES; i++) {
             population.evolve();
-            this.logger.info("solveViaEvolutionaryAlgorithms", "    Code Solver - population fitness at round #"+i+": "+population.getSumPopulationFitness());
+            this.logger.info("    Code Solver - population fitness at round #" + i + ": " + population.getSumPopulationFitness());
         }
         /*get fittest*/
         IChromosome nextRequest;
@@ -59,7 +60,7 @@ public class CodeSolver {
             nextRequest = population.getFittest();
             ArrayList<Submission> postedSubmissions = checkSubmissions.getSubmissions();
             for (Submission postedSubmission : postedSubmissions) {
-                if(postedSubmission == postedSubmission.getChromosome()){
+                if (postedSubmission == postedSubmission.getChromosome()) {
                     alreadyPosted = true;
                     population.replaceGene(nextRequest);
                     break;
@@ -67,7 +68,7 @@ public class CodeSolver {
             }
         }
         while (alreadyPosted);
-        this.logger.info("solveViaEvolutionaryAlgorithms", "New request has fitness "+nextRequest.getFitness());
+        this.logger.info("New request has fitness " + nextRequest.getFitness());
         return nextRequest;
     }
 

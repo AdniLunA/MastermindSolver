@@ -1,8 +1,9 @@
 package evolution;
 
 import config.ConfigurationManager;
-import de.bean900.logger.Logger;
 import engine.GameEngine;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -11,7 +12,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * constructors

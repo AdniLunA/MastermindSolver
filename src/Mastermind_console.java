@@ -1,6 +1,7 @@
 import config.ConfigurationManager;
 import config.CrossoverEnum;
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -9,12 +10,12 @@ public class Mastermind_console {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
 
     /*MAIN*/
     public static void main(String... args) throws IOException {
-        Logger.getLogger("Mastermind_console").info("main", "");
+        LogManager.getLogger(Mastermind_console.class).info("");
 
         int k = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
         int kMax = ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE - 1;

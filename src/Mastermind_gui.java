@@ -1,6 +1,7 @@
 import config.ConfigurationManager;
 import config.CrossoverEnum;
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import presentation.GUIManager;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -12,12 +13,12 @@ public class Mastermind_gui extends Application {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--functions*/
     @Override
     public void start(Stage primaryStage) throws IOException {
-        logger.info("start", "");
+        logger.info("");
 
         /*GameEngine gameEngine = GameEngine.getInstance();*/
         GUIManager gui = GUIManager.getInstance();
@@ -34,7 +35,7 @@ public class Mastermind_gui extends Application {
 
     /*MAIN*/
     public static void main(String... args) throws IOException {
-        Logger.getLogger("Mastermind_gui").info("main", "");
+        LogManager.getLogger(Mastermind_gui.class).info("");
 
         int k = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
         int kMax = ConfigurationManager.INSTANCE.MAX_LENGTH_OF_CODE - 1;

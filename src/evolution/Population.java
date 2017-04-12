@@ -4,13 +4,14 @@ import config.ConfigurationManager;
 import config.CrossoverEnum;
 import config.MutationEnum;
 import config.SelectionEnum;
-import de.bean900.logger.Logger;
 import engine.GameEngine;
 import evolution.crossover.*;
 import evolution.mutation.*;
 import evolution.selection.ISelection;
 import evolution.selection.RouletteWheelSelection;
 import evolution.selection.TournamentSelection;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,7 +21,7 @@ public class Population implements IPopulation {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * constructors
@@ -54,19 +55,18 @@ public class Population implements IPopulation {
 
     @Override
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
-        logger.info("","");
-        logger.info("evolve", "");
+        logger.info("");
         maxGenerationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
-        logger.info("evolve", "Start selection");
+        logger.info("Start selection");
         IChromosome[] parents = selector.getParents(Arrays.copyOf(transformToArray(genePool), genePool.size()));
 
         /*crossover*/
-        logger.info("evolve", "Start crossover");
+        logger.info("Start crossover");
         IChromosome[] newGeneration = crosser.crossover(parents);
         for (int i = 0; i < 2; i++) {
-            logger.info("evolve", "    -- Child #" + i + " is valid: " + newGeneration[i].checkValidity());
+            logger.info("    -- Child #" + i + " is valid: " + newGeneration[i].checkValidity());
             if (!newGeneration[i].checkValidity()) {
                 throw new InputMismatchException("Population evolve crossover: ERROR - got invalid child " + newGeneration[i].toString());
             }
@@ -76,17 +76,17 @@ public class Population implements IPopulation {
         replaceWeakestWithNewGenes(newGeneration);
 
         /*mutation*/
-        logger.info("evolve", "Start mutation");
+        logger.info("Start mutation");
         IChromosome[] mutatedGeneration = newGeneration;
         mutatedGeneration = mutator.mutateGenes(Arrays.copyOf(transformToArray(genePool), genePool.size()));
         this.genePool = transformToList(mutatedGeneration);
 
-        logger.info("evolve", "A new generation has been born! #" + maxGenerationCounter);
+        logger.info("A new generation has been born! #" + maxGenerationCounter);
     }
 
     @Override
     public IChromosome[] getPopulationSorted() {
-        logger.info("getPopulationSorted", "");
+        logger.info( "");
         IChromosome[] sortedPopulation = Arrays.copyOf(transformToArray(genePool), genePool.size());
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
@@ -94,7 +94,7 @@ public class Population implements IPopulation {
 
     @Override
     public int getSumPopulationFitness() {
-        logger.info("getSumPopulationFitness", "");
+        logger.info("");
         int sum = 0;
         for (IChromosome chromosome : genePool) {
             sum += chromosome.getFitness();
@@ -113,11 +113,11 @@ public class Population implements IPopulation {
 
     @Override
     public IChromosome getFittest() {
-        logger.info("getFittest", "");
+        logger.info("");
         IChromosome fittest = getPopulationSorted()[genePool.size() - 1];
         /*todo check*/
-        logger.info("getFittest", "*****Fitness of fittest: " + fittest.getFitness());
-        logger.info("getFittest", "*****Fitness of weakest: " + getPopulationSorted()[0].getFitness());
+        logger.info("*****Fitness of fittest: " + fittest.getFitness());
+        logger.info("*****Fitness of weakest: " + getPopulationSorted()[0].getFitness());
 
         return fittest;
     }

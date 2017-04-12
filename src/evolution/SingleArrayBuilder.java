@@ -1,6 +1,7 @@
 package evolution;
 
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -10,35 +11,35 @@ public class SingleArrayBuilder {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*attributes*/
     Queue<Integer> arrayToBuild = new LinkedList<Integer>();
 
     /*functions*/
     public void addToQueue(int[] numbersToAdd) {
-        for(int number : numbersToAdd) {
+        for (int number : numbersToAdd) {
             arrayToBuild.add(number);
         }
     }
 
-    public int getLength(){
+    public int getLength() {
         return arrayToBuild.size();
     }
 
-    public int[] insert(int position, int[] toInsert){
+    public int[] insert(int position, int[] toInsert) {
         int[] sequence = getSequence();
-        if(position < getLength() && position > -1){
+        if (position < getLength() && position > -1) {
             addToQueue(Arrays.copyOfRange(sequence, 0, position));
             addToQueue(toInsert);
             addToQueue(Arrays.copyOfRange(sequence, position, sequence.length));
         } else {
-            System.out.println("SingleArrayBuilder - insert - ERROR, given position "+position+" must be between 0 and "+ sequence.length);
+            System.out.println("SingleArrayBuilder - insert - ERROR, given position " + position + " must be between 0 and " + sequence.length);
         }
         return sequence;
     }
 
-    public int[] getSequence(){
+    public int[] getSequence() {
         return transformSequence(arrayToBuild);
     }
 

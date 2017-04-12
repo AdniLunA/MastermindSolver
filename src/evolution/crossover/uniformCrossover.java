@@ -2,9 +2,10 @@ package evolution.crossover;
 
 import config.ConfigurationManager;
 import config.MersenneTwisterFast;
-import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import java.util.InputMismatchException;
 
@@ -12,7 +13,7 @@ public class UniformCrossover implements ICrossover {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
@@ -36,7 +37,7 @@ public class UniformCrossover implements ICrossover {
 
     @Override
     public IChromosome[] crossover(IChromosome[] parents) {
-        logger.info("crossover", "");
+        logger.info("");
         this.parent1 = parents[0];
         this.parent2 = parents[1];
         sequenceLength = parent1.getLength();
@@ -45,18 +46,18 @@ public class UniformCrossover implements ICrossover {
         int tryCounter = 0;
         int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
 
-        while(numberOfHealthyChildren < 2 && tryCounter < maxTries){
+        while (numberOfHealthyChildren < 2 && tryCounter < maxTries) {
             numberOfHealthyChildren = 0;
             children = breedChildren();
-            if(children[0].checkValidity()){
+            if (children[0].checkValidity()) {
                 numberOfHealthyChildren++;
             }
-            if(children[1].checkValidity()){
+            if (children[1].checkValidity()) {
                 numberOfHealthyChildren++;
             }
             tryCounter++;
         }
-        if(tryCounter == maxTries) {
+        if (tryCounter == maxTries) {
             IChromosome[] returnValid = new IChromosome[2];
             if (children[0].checkValidity()) {
                 returnValid[0] = children[0];
@@ -70,8 +71,8 @@ public class UniformCrossover implements ICrossover {
             }
             return parents;
         }
-        logger.info("crossover", "    Children: " + children[0].toString() + " and " + children[1].toString());
-        logger.info("crossover", "    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
+        logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
+        logger.info("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
         return children;
     }
 
@@ -88,16 +89,16 @@ public class UniformCrossover implements ICrossover {
         boolean chooseRandom = true;
         boolean choose1to1;
 
-        for(int i = 0; i < sequenceLength; i++) {
+        for (int i = 0; i < sequenceLength; i++) {
 
             /*choose parent gene*/
-            chooseRandom = (countP1 < p1Capacity) && (countP2 < p2Capacity) ;
+            chooseRandom = (countP1 < p1Capacity) && (countP2 < p2Capacity);
             /*if capacity is reached by one p, only take gene of the other*/
-            if (!chooseRandom){
+            if (!chooseRandom) {
                 choose1to1 = countP1 < p1Capacity;
             } else { /*if capacity is not reached by p1 or p2, choose gene randomized.*/
                 /*choose gene random*/
-                int randomPointer = randomGenerator.nextInt(0,101);/*incl. 0, excl. 101*/
+                int randomPointer = randomGenerator.nextInt(0, 101);/*incl. 0, excl. 101*/
                 choose1to1 = (randomPointer <= mixingRatio);
             }
 
@@ -111,12 +112,12 @@ public class UniformCrossover implements ICrossover {
         return new IChromosome[]{child1, child2};
     }
 
-    private void calculateCapacity(){
+    private void calculateCapacity() {
         p1Capacity = (int) (mixingRatio * sequenceLength);
-        if(p1Capacity < 1){
+        if (p1Capacity < 1) {
             p1Capacity = 1;
         }
-        if(p1Capacity > 99){
+        if (p1Capacity > 99) {
             p1Capacity = 99;
         }
         p2Capacity = sequenceLength - p1Capacity;

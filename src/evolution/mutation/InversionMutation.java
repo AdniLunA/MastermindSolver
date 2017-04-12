@@ -1,12 +1,13 @@
 package evolution.mutation;
 
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class InversionMutation extends MutatorBasics {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
 /**TODO
  * @Override public IChromosome[] mutateGenes(IChromosome[] genePool) {

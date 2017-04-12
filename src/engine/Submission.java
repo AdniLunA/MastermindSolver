@@ -1,7 +1,8 @@
 package engine;
 
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.Logger;
 import evolution.IChromosome;
+import org.apache.logging.log4j.LogManager;
 
 /**
  *
@@ -10,7 +11,7 @@ public class Submission {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*constructor*/
     public Submission() {
@@ -27,7 +28,7 @@ public class Submission {
 
     /*--functions*/
     public void setAttributes(IChromosome submittedChromosome, int red, int white) {
-        this.logger.info("setAttributes", "");
+        this.logger.info("");
         this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;
@@ -59,7 +60,7 @@ public class Submission {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuffer buffer = new StringBuffer();
         buffer.append("red = ");
         buffer.append(red);

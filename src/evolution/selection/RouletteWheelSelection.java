@@ -1,8 +1,9 @@
 package evolution.selection;
 
 import config.MersenneTwisterFast;
-import de.bean900.logger.Logger;
 import evolution.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -10,7 +11,7 @@ public class RouletteWheelSelection implements ISelection {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--attributes*/
     private IPopulation fatherPool;
@@ -20,18 +21,18 @@ public class RouletteWheelSelection implements ISelection {
     /*--functions*/
     @Override
     public IChromosome[] getParents(IChromosome[] genePool) {
-        logger.info("getParents", "");
+        logger.info("");
         splitPopulation(genePool);
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(fatherPool);
         parents[1] = selectParents(motherPool);
-        logger.info("getParents", "    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
-        logger.info("getParents", "    Fitness of father: " + parents[0].getFitness() + ", fitness of mother: " + parents[1].getFitness());
+        logger.info("    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
+        logger.info("    Fitness of father: " + parents[0].getFitness() + ", fitness of mother: " + parents[1].getFitness());
         return parents;
     }
 
     private void splitPopulation(IChromosome[] genePool) {
-        logger.info("splitPopulation", "");
+        logger.info("");
         /*copyOfRange: original [], inclusive from, exclusive to*/
         fatherPool = new Population(Arrays.copyOfRange(genePool,
                 0, genePool.length / 2));
@@ -40,7 +41,7 @@ public class RouletteWheelSelection implements ISelection {
     }
 
     private IChromosome selectParents(IPopulation populationPool) {
-        logger.info("selectParents", "");
+        logger.info("");
         double totalPopulationFitness = (double) populationPool.getSumPopulationFitness();
         double roulettePointer = randomGenerator.nextDouble(true, false); /*incl. 0, excl. 1*/
         double bottomBoundary = 0.0;

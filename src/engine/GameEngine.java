@@ -1,16 +1,17 @@
 package engine;
 
-import de.bean900.logger.Logger;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 import presentation.GUIManager;
 
 public class GameEngine {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -40,14 +41,14 @@ public class GameEngine {
     }
 
     public IChromosome getRandomCode(int codeLength, int numColors) {
-        logger.info("getRandomCode", "");
+        logger.info("");
         codeGenerator = new NumChromosome(codeLength, numColors);
         codeGenerator.generateRandom();
         return codeGenerator;
     }
 
     public void startGame(int codeLength, int numColors, int numTries, IChromosome code) {
-        logger.info("startGame", "");
+        logger.info("");
         this.codeLength = codeLength;
         this.numColors = numColors;
         this.numTries = numTries;
@@ -59,11 +60,11 @@ public class GameEngine {
     }
 
     public void resolveSubmission(IChromosome chromosome, int position) {
-        logger.info("resolveSubmission", "");
+        logger.info("");
         int[] response = validator.calculateResponse(chromosome);
-        logger.info("resolveSubmission", "    GameEngine: position = " + position + ", red = " + response[0]
+        logger.info("    GameEngine: position = " + position + ", red = " + response[0]
                 + ", white = " + response[1] + ", sequence = " + chromosome.toString());
-        System.out.printf("  " +chromosome.toString()+"  => sequence #" + position  + ", red = " + response[0]
+        System.out.printf("  " + chromosome.toString() + "  => sequence #" + position + ", red = " + response[0]
                 + ", white = " + response[1] + ". @GameEngine - resolveSubmission." + "\n");
         Submission submission = new Submission(chromosome, response[0], response[1]);
 
@@ -73,7 +74,7 @@ public class GameEngine {
     }
 
     public void calculateNextSubmission(int requestCounter) {
-        logger.info("calculateNextSubmission", "");
+        logger.info("");
         solver.solve(requestCounter);
     }
 

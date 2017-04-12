@@ -1,12 +1,13 @@
 package evolution;
 
-import de.bean900.logger.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class Submission {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*constructor*/
     public Submission() {
@@ -23,7 +24,7 @@ public class Submission {
 
     /*functions*/
     public void setAttributes(IChromosome submittedChromosome, int red, int white) {
-        logger.info("setAttributes", "");
+        logger.info("");
         this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;

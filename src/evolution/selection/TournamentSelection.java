@@ -1,7 +1,8 @@
 package evolution.selection;
 
-import de.bean900.logger.Logger;
 import evolution.*;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -9,7 +10,7 @@ public class TournamentSelection implements ISelection {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -22,7 +23,7 @@ public class TournamentSelection implements ISelection {
      */
     @Override
     public IChromosome[] getParents(IChromosome[] genePool) {
-        logger.info("getParents", "");
+        logger.info("");
         splitPopulation(genePool);
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(fatherPool);
@@ -31,7 +32,7 @@ public class TournamentSelection implements ISelection {
     }
 
     private void splitPopulation(IChromosome[] genePool) {
-        logger.info("splitPopulation", "");
+        logger.info("");
         /*copyOfRange: original [], inclusive from, exclusive to*/
         fatherPool = new Population(Arrays.copyOfRange(genePool,
                 0, genePool.length / 2));

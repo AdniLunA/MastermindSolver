@@ -1,15 +1,16 @@
 package evolution.mutation;
 
 import config.ConfigurationManager;
-import de.bean900.logger.Logger;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 public class ExchangeMutation extends MutatorBasics {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -20,7 +21,7 @@ public class ExchangeMutation extends MutatorBasics {
      */
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool) {
-        logger.info("mutateGenes", "");
+        logger.info("");
         for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
@@ -30,7 +31,7 @@ public class ExchangeMutation extends MutatorBasics {
                 int countTries = 0;
                 String mutatedMsg = "Mutated " + genePool[chromosomeCount].toString();
                 do {
-                    int[] mutatedSequence =  genePool[chromosomeCount].getSequence();
+                    int[] mutatedSequence = genePool[chromosomeCount].getSequence();
                     int[] splitPos = super.generateTwoSplitPositions(genePool[chromosomeCount].getLength() - 1);
 
                     int[] saveSwapValues = new int[2];
@@ -44,7 +45,7 @@ public class ExchangeMutation extends MutatorBasics {
                     mutatedChromosome = new NumChromosome(mutatedSequence);
                     validGeneFound = mutatedChromosome.checkValidity();
 
-                    if(validGeneFound){
+                    if (validGeneFound) {
                         mutatedChromosome.incrementGeneration();
                     }
                     countTries++;
@@ -54,7 +55,7 @@ public class ExchangeMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                logger.info("mutateGenes", mutatedMsg + " to " + mutatedChromosome);
+                logger.info(mutatedMsg + " to " + mutatedChromosome);
 
                 genePool[chromosomeCount] = mutatedChromosome;
             }

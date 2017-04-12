@@ -1,7 +1,6 @@
 package presentation;
 
 import config.ConfigurationManager;
-import de.bean900.logger.Logger;
 import engine.Submission;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -18,6 +17,8 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 import java.util.InputMismatchException;
@@ -27,7 +28,7 @@ public class SimulationController implements Initializable {
     /*--
      * debugging
      */
-    private final Logger logger = Logger.getLogger(this.getClass().getName());
+    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * attributes
@@ -84,11 +85,11 @@ public class SimulationController implements Initializable {
      * functions
      */
     private void addNewLine(Submission lineInfo) {
-        logger.info("addNewLine", "");
+        logger.info("");
     }
 
     private void generateGameMatrix() {
-        logger.info("generateGameMatrix", "");
+        logger.info("");
         int x = lengthOfCode;
         int y = numberOfTries;
 
@@ -176,17 +177,17 @@ public class SimulationController implements Initializable {
     }
 
     private void onclickChangeSimulationSpeed(int newSpeed) {
-        logger.info("onclickChangeSimulationSpeed", "from " + simulationSpeed + " to " + newSpeed);
+        logger.info("from " + simulationSpeed + " to " + newSpeed);
         simulationSpeed = newSpeed;
     }
 
     private void onclickChangeBlackBoxState(boolean newState) {
-        logger.info("onclickChangeBlackBoxState", "from " + showBlackboxContent + " to " + newState);
+        logger.info("from " + showBlackboxContent + " to " + newState);
         showBlackboxContent = newState;
     }
 
     private void refreshDependencies() {
-        logger.info("refreshDependencies", "");
+        logger.info("");
         /*show secret code?*/
         for (Circle circle : blackBox) {
             circle.setVisible(cbShowSecretCode.isSelected());
@@ -206,7 +207,7 @@ public class SimulationController implements Initializable {
     }
 
     private void switchSimulationMode() {
-        logger.info("switchSimulationMode", "");
+        logger.info("");
         runAutomated = !runAutomated;
 
         rbRunAutomated.setSelected(runAutomated);
@@ -233,47 +234,47 @@ public class SimulationController implements Initializable {
     }
 
     private void fillCircleLine(Circle[] circles, int colors[]) {
-        logger.info("fillCircleLine", "");
+        logger.info("");
         for (int i = 0; i < circles.length; i++) {
-            logger.info("fillCircleLine", colors[i] + " ");
+            logger.info(colors[i] + " ");
             circles[i].fillProperty().set(getCircleGradient(colors[i]));
             circles[i].setStroke(Color.DARKGRAY);
         }
-        logger.info("","");
+        logger.info("");
     }
 
     private void requestNewSubmission() {
         if (currentLineToPrint >= numberOfTries) {
             gameIsRunning = false;
         } else {
-            logger.info("requestNewSubmission", "");
+            logger.info("");
             GUIManager manager = GUIManager.getInstance();
             manager.handleSubmissionRequest(currentLineToPrint);
-            logger.info("","");
+            logger.info("");
         }
     }
 
     public void setNextSubmission(Submission newLine) {
-        logger.info("setNextSubmission", "    Got information:");
-        logger.info("setNextSubmission", "    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
+        logger.info("    Got information:");
+        logger.info("    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
 
         /*set line values*/
         fillCircleLine(circleMatrix[currentLineToPrint], newLine.getChromosome().getSequence());
-        logger.info("setNextSubmission", "    Set Feedback to GUI:");
-        logger.info("setNextSubmission", "    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
+        logger.info("    Set Feedback to GUI:");
+        logger.info("    SimulationController: position = " + currentLineToPrint + ", " + newLine.toString());
         tRedFeedback[currentLineToPrint].setText("" + newLine.getRed());
         tWhiteFeedback[currentLineToPrint].setText("" + newLine.getWhite());
         /*increment counter*/
         currentLineToPrint++;
         /*if solution is found, break loop by setting currentLine to max*/
         if (newLine.getRed() == lengthOfCode) {
-            logger.info("setNextSubmission", "secret code found!!!");
+            logger.info("secret code found!!!");
             currentLineToPrint = numberOfTries;
         }
     }
 
     private void runSimulationAutomated() {
-        logger.info("runSimulationAutomated", "");
+        logger.info("");
         if (runAutomated) {
             while (currentLineToPrint < numberOfTries) {
                 try {
@@ -283,14 +284,14 @@ public class SimulationController implements Initializable {
                     System.out.println("runSimulationAutomated: Thread Exception");
                     e.printStackTrace();
                 }
-                logger.info("","");
+                logger.info("");
             }
         }
     }
 
     @FXML
     private void onclickStartSimulation() {
-        logger.info("onclickStartSimulation", "");
+        logger.info("");
         gameIsRunning = true;
         gameIsPaused = !gameIsPaused;
         bStartSimulation.setVisible(false);
@@ -311,7 +312,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickPauseSimulation() {
-        logger.info("onclickPauseSimulation", "");
+        logger.info("");
         bContinueSimulation.setVisible(true);
         bPauseSimulation.setVisible(false);
         gameIsPaused = true;
@@ -319,7 +320,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickContinueSimulation() {
-        logger.info("onclickContinueSimulation", "");
+        logger.info("");
         bPauseSimulation.setVisible(true);
         bContinueSimulation.setVisible(false);
         gameIsPaused = false;
@@ -327,7 +328,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickNextStep() {
-        logger.info("onclickNextStep", "");
+        logger.info("");
         if (currentLineToPrint < numberOfTries) {
             requestNewSubmission();
         }
@@ -339,19 +340,19 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickReturnToConfigPg() {
-        logger.info("onclickReturnToConfigPg", "");
+        logger.info("");
         GUIManager.getInstance().returnToConfigurationPage();
     }
 
     @FXML
     private void onclickShowSecretCode() {
-        logger.info("onclickShowSecretCode", "");
+        logger.info("");
         refreshDependencies();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        logger.info("initialize", "");
+        logger.info("");
         /*--initialize variables*/
         GUIManager manager = GUIManager.getInstance();
         lengthOfCode = manager.getLengthOfCode();
