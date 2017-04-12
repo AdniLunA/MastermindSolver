@@ -64,7 +64,7 @@ public class GUIManager implements IPresentationManager {
         try {
             Pane configPage = (Pane) FXMLLoader.load(getClass().getResource("configurationPage.fxml"));
             Scene scene = new Scene(configPage);
-            primaryStage.setTitle("Mastermind_gui Simulation");
+            primaryStage.setTitle("application.Mastermind_gui Simulation");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {

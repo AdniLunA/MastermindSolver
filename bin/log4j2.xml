@@ -4,7 +4,7 @@
         <File name="MyFile" fileName="logs\logfiles.log" immediateFlush="true"
               append="false">
             <!-- logger{x} -> x = precision: how many parts of file should be displayed? -->
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} %-5level %-24logger{1} %-15method: %message %n"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} %-5level %-24logger{1} %-30method: %msg %n"/>
         </File>
     </Appenders>
     <Loggers>

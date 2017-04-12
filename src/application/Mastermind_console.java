@@ -1,3 +1,5 @@
+package application;
+
 import config.ConfigurationManager;
 import config.CrossoverEnum;
 import org.apache.logging.log4j.LogManager;

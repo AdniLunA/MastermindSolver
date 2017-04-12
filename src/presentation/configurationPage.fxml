@@ -14,7 +14,7 @@
             <Font name="System Bold" size="40.0" />
          </font>
       </Text>
-      <Button layoutX="862.0" layoutY="14.0" mnemonicParsing="false" text="(i) How does Mastermind_gui work?" visible="false">
+      <Button layoutX="862.0" layoutY="14.0" mnemonicParsing="false" text="(i) How does application.Mastermind_gui work?" visible="false">
          <font>
             <Font name="System Italic" size="15.0" />
          </font>
