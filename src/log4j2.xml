@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <Appenders>
-        <File name="MyFile" fileName="logs\exec_${date:yy-mm-dd_hh-mm-ss}.log"
+        <File name="MyFile" fileName="logs\exec_${date:yy-MM-dd_HH-mm-ss}.log"
               append="false">
             <!-- logger{x} -> x = precision: how many parts of file should be displayed? -->
             <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} %-5level %-24logger{1} %-31method/ %msg %n"/>
