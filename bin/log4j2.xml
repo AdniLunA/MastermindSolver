@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="INFO">
     <Appenders>
-        <File name="MyFile" fileName="logs\logfiles.log" immediateFlush="true"
+        <File name="MyFile" fileName="logs\exec_${date:yy-mm-dd_hh-mm-ss}.log"
               append="false">
             <!-- logger{x} -> x = precision: how many parts of file should be displayed? -->
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} %-5level %-24logger{1} %-30method: %msg %n"/>
+            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss} %-5level %-24logger{1} %-31method/ %msg %n"/>
         </File>
     </Appenders>
     <Loggers>
