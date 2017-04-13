@@ -1,9 +1,10 @@
-package engine;
+package engine.helper;
 
-import config.ConfigurationManager;
+import engine.GameEngine;
+import engine.GameSettings;
 import evolution.*;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
@@ -45,7 +46,7 @@ public class CodeSolver {
         IPopulation population = new Population();
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
-        for (int i = 0; i < ConfigurationManager.INSTANCE.REPEAT_EVOLUTION_N_TIMES; i++) {
+        for (int i = 0; i < GameSettings.INSTANCE.repeatEvolutionNTimes; i++) {
             population.evolve();
             this.logger.info("    Code Solver - population fitness at round #" + i + ": " + population.getSumPopulationFitness());
         }

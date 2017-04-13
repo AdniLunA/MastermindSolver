@@ -1,7 +1,7 @@
 package presentation;
 
 import engine.GameEngine;
-import engine.Submission;
+import engine.helper.Submission;
 
 public interface IPresentationManager {
     /*--
@@ -16,10 +16,6 @@ public interface IPresentationManager {
     /*--
      * getter + setter
      */
-    ConfigurationController getConfigPg();
-
-    void setConfigPg(ConfigurationController configPg);
-
     GameEngine getGameEngine();
 
     void setGameEngine(GameEngine gameEngine);

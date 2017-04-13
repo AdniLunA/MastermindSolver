@@ -1,7 +1,6 @@
 package test;
 
-import engine.CodeValidator;
-import evolution.IChromosome;
+import engine.helper.CodeValidator;
 import evolution.NumChromosome;
 import org.junit.Test;
 
@@ -36,7 +35,7 @@ public class CodeValidatorTest {
     }
 
     @Test
-    public void validate2(){
+    public void validate2() {
         int sampleNOC = 4;
         int[] sampleSequence = {0, 1};
         CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence, sampleNOC));

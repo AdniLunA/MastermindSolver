@@ -43,7 +43,7 @@ public class VariableConfig implements IConfigurationFile {
      * -> must be validated by all classes that manipulate chromosomes*/
 
 	/*--
-	 * Setter
+     * Setter
 	 */
 
     public void setSizeOfPopulation(int sizeOfPopulation) {

@@ -1,15 +1,15 @@
 package test;
 
-import engine.CodeValidator;
+import engine.helper.CodeValidator;
+import engine.helper.Submission;
 import evolution.NumChromosome;
-import engine.Submission;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
 public class SubmissionTest {
     @Test
-    public void generateSubmission(){
+    public void generateSubmission() {
         int sampleNOC = 4;
         int[] sampleSequence = {0, 1};
         CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence, sampleNOC));

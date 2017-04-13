@@ -1,10 +1,10 @@
 package evolution;
 
-import config.ConfigurationManager;
 import config.CrossoverEnum;
 import config.MutationEnum;
 import config.SelectionEnum;
 import engine.GameEngine;
+import engine.GameSettings;
 import evolution.crossover.*;
 import evolution.mutation.*;
 import evolution.selection.ISelection;
@@ -27,7 +27,7 @@ public class Population implements IPopulation {
      * constructors
      */
     public Population() {
-        IChromosome[] populationArray = breedRandomPopulation(ConfigurationManager.INSTANCE.SIZE_OF_POPULATION);
+        IChromosome[] populationArray = breedRandomPopulation(GameSettings.INSTANCE.sizeOfPopulation);
         genePool = transformToList(populationArray);
     }
 
@@ -50,7 +50,7 @@ public class Population implements IPopulation {
      */
     @Override
     public void evolve() {
-        evolve(ConfigurationManager.INSTANCE.SELECTION_TYPE, ConfigurationManager.INSTANCE.CROSSOVER_TYPE, ConfigurationManager.INSTANCE.MUTATION_TYPE);
+        evolve(GameSettings.INSTANCE.selectionType, GameSettings.INSTANCE.crossoverType, GameSettings.INSTANCE.mutationType);
     }
 
     @Override
@@ -86,7 +86,7 @@ public class Population implements IPopulation {
 
     @Override
     public IChromosome[] getPopulationSorted() {
-        logger.info( "");
+        logger.info("");
         IChromosome[] sortedPopulation = Arrays.copyOf(transformToArray(genePool), genePool.size());
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
@@ -154,9 +154,9 @@ public class Population implements IPopulation {
 
         switch (chooseCrossover) {
             case K_POINT:
-                if (ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER > GameEngine.getInstance().getCodeLength()) {
+                if (GameSettings.INSTANCE.kForCrossover > GameEngine.getInstance().getCodeLength()) {
                     String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: configured k ="
-                            + ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER + " while code length is " + GameEngine.getInstance().getCodeLength();
+                            + GameSettings.INSTANCE.kForCrossover + " while code length is " + GameEngine.getInstance().getCodeLength();
                     throw new IndexOutOfBoundsException(errorMessage);
                 }
                 crosser = new KPointCrossover();

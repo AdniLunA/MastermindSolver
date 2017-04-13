@@ -1,11 +1,11 @@
 package evolution.crossover;
 
-import config.ConfigurationManager;
 import config.MersenneTwisterFast;
+import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
 
@@ -27,7 +27,7 @@ public class UniformCrossover implements ICrossover {
 
     /*--functions*/
     private float readValidMixingRatio() {
-        float ratio = 100 * ConfigurationManager.INSTANCE.MIXING_RATIO; /*transform to percent
+        float ratio = 100 * GameSettings.INSTANCE.mixingRatio; /*transform to percent
         /*no 0 or 100 allowed*/
         if (ratio <= 0 || ratio >= 100) {
             throw new InputMismatchException("ERROR: The mixing ratio in the configuration must be a value between 0 and 1.");
@@ -44,7 +44,7 @@ public class UniformCrossover implements ICrossover {
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;
-        int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
+        int maxTries = GameSettings.INSTANCE.crossoverMaxTryAgain;
 
         while (numberOfHealthyChildren < 2 && tryCounter < maxTries) {
             numberOfHealthyChildren = 0;

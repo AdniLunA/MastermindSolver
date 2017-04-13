@@ -1,12 +1,12 @@
 package evolution.crossover;
 
-import config.ConfigurationManager;
 import config.MersenneTwisterFast;
+import engine.GameSettings;
+import evolution.ArrayBuilder;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.ArrayBuilder;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -38,7 +38,7 @@ public class KPointCrossover implements ICrossover {
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;
-        int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
+        int maxTries = GameSettings.INSTANCE.crossoverMaxTryAgain;
 
         while (numberOfHealthyChildren < 2 && tryCounter < maxTries) {
             numberOfHealthyChildren = 0;
@@ -73,7 +73,7 @@ public class KPointCrossover implements ICrossover {
     }
 
     private void generateRandomSplitPos() {
-        int kForKPointC = ConfigurationManager.INSTANCE.K_FOR_CROSS_OVER;
+        int kForKPointC = GameSettings.INSTANCE.kForCrossover;
         splitPos = new int[kForKPointC + 2];
         splitPos[0] = 0;
         splitPos[1] = sequenceLength;

@@ -1,12 +1,12 @@
 package evolution.crossover;
 
-import config.ConfigurationManager;
 import config.MersenneTwisterFast;
+import engine.GameSettings;
+import evolution.ArrayBuilder;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.ArrayBuilder;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -38,7 +38,7 @@ public class TwoPointCrossover implements ICrossover {
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;
-        int maxTries = ConfigurationManager.INSTANCE.CROSSOVER_MAX_TRY_AGAIN;
+        int maxTries = GameSettings.INSTANCE.crossoverMaxTryAgain;
 
         while (numberOfHealthyChildren < 2 && tryCounter < maxTries) {
             numberOfHealthyChildren = 0;

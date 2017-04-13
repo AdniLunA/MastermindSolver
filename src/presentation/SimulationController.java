@@ -1,7 +1,7 @@
 package presentation;
 
-import config.ConfigurationManager;
-import engine.Submission;
+import engine.GameSettings;
+import engine.helper.Submission;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -31,8 +31,16 @@ public class SimulationController implements Initializable {
     private final Logger logger = LogManager.getLogger(this);
 
     /*--
+     * constructor
+     */
+    public SimulationController(GUIManager guiManager) {
+        this.gui = guiManager;
+    }
+
+    /*--
      * attributes
      */
+    private GUIManager gui;
     private int lengthOfCode;
     private int numberOfTries;
 
@@ -42,8 +50,8 @@ public class SimulationController implements Initializable {
     private int currentLineToPrint = 0;
 
     /*default values*/
-    private boolean showBlackboxContent = ConfigurationManager.INSTANCE.DEFAULT_SHOW_BLACKBOX_CONTENT;
-    private boolean runAutomated = ConfigurationManager.INSTANCE.DEFAULT_RUN_AUTOMATED;
+    private boolean showBlackboxContent = gui.DEFAULT_SHOW_BLACKBOX_CONTENT;
+    private boolean runAutomated = gui.DEFAULT_RUN_AUTOMATED;
     private int simulationSpeed;
 
     @FXML
@@ -227,7 +235,7 @@ public class SimulationController implements Initializable {
     private LinearGradient getCircleGradient(int color) {
         //System.out.println("SimulationController - getCircleGradient");
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-                new Stop(0, ConfigurationManager.INSTANCE.COLORS[color]),
+                new Stop(0, GameSettings.INSTANCE.COLORS[color]),
                 new Stop(1, Color.web("#ffffff")));
         /*this.fillProperty().set(gradient);*/
         return gradient;
@@ -248,8 +256,7 @@ public class SimulationController implements Initializable {
             gameIsRunning = false;
         } else {
             logger.info("");
-            GUIManager manager = GUIManager.getInstance();
-            manager.handleSubmissionRequest(currentLineToPrint);
+            gui.handleSubmissionRequest(currentLineToPrint);
             logger.info("");
         }
     }
@@ -341,7 +348,7 @@ public class SimulationController implements Initializable {
     @FXML
     private void onclickReturnToConfigPg() {
         logger.info("");
-        GUIManager.getInstance().returnToConfigurationPage();
+        gui.returnToConfigurationPage();
     }
 
     @FXML
@@ -354,15 +361,11 @@ public class SimulationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         logger.info("");
         /*--initialize variables*/
-        GUIManager manager = GUIManager.getInstance();
-        lengthOfCode = manager.getLengthOfCode();
-        numberOfTries = manager.getNumberOfTries();
-
-        /*subscribe manager*/
-        manager.setSubscriber(this);
+        lengthOfCode = gui.getLengthOfCode();
+        numberOfTries = gui.getNumberOfTries();
 
         /*initialize speed*/
-        int defaultSpeed = ConfigurationManager.INSTANCE.DEFAULT_SIMULATION_SPEED_MS;
+        int defaultSpeed = gui.DEFAULT_SIMULATION_SPEED_MS;
         int min = (int) spd_slider.getMin();
         int max = (int) spd_slider.getMax();
         if (defaultSpeed < min || defaultSpeed > max) {
@@ -378,7 +381,7 @@ public class SimulationController implements Initializable {
         rbRunManually.setSelected(!runAutomated);
         spd_slider.setValue(simulationSpeed);
         /*set blackBox colors*/
-        fillCircleLine(blackBox, manager.getSecretCode());
+        fillCircleLine(blackBox, gui.getSecretCode());
 
         refreshDependencies();
 

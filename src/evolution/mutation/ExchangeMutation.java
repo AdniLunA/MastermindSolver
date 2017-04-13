@@ -1,10 +1,10 @@
 package evolution.mutation;
 
-import config.ConfigurationManager;
+import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class ExchangeMutation extends MutatorBasics {
     /*--
@@ -26,7 +26,7 @@ public class ExchangeMutation extends MutatorBasics {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
             /*test if current chromosomeCount should be manipulated*/
-            if (generator.nextFloat() <= ConfigurationManager.INSTANCE.MUTATION_RATIO) {
+            if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
                 boolean validGeneFound = false;
                 int countTries = 0;
                 String mutatedMsg = "Mutated " + genePool[chromosomeCount].toString();
@@ -49,7 +49,7 @@ public class ExchangeMutation extends MutatorBasics {
                         mutatedChromosome.incrementGeneration();
                     }
                     countTries++;
-                    if (countTries >= ConfigurationManager.INSTANCE.MUTATION_MAX_TRY_AGAIN) {
+                    if (countTries >= GameSettings.INSTANCE.mutationMaxTryAgain) {
                         /*give up*/
                         validGeneFound = true;
                     }

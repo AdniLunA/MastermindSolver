@@ -1,7 +1,7 @@
 package presentation;
 
 import engine.GameEngine;
-import engine.Submission;
+import engine.helper.Submission;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -20,18 +20,18 @@ public class GUIManager implements IPresentationManager {
     private final Logger logger = LogManager.getLogger(this);
 
     /*constructor*/
-    private GUIManager() {
-        guiManager = this; /*Singleton Pattern*/
+    public GUIManager(GameEngine engine) {
+        this.gameEngine = engine;
     }
 
     /*--
      * attributes
      */
-    private static GUIManager guiManager; /*Singleton Pattern*/
+    private GameEngine gameEngine;
 
-    private ConfigurationController configPg = new ConfigurationController();
-    private SimulationController simulationPg = new SimulationController();
-    private GameEngine gameEngine = GameEngine.getInstance();
+
+    private ConfigurationController configPg = new ConfigurationController(this);
+    private SimulationController simulationPg = new SimulationController(this);
     private IChromosome code;
 
     private LinkedBlockingQueue<Submission> submissions;
@@ -42,20 +42,17 @@ public class GUIManager implements IPresentationManager {
 
     private Stage primaryStage;
 
-    private SimulationController subscriber;
+    /*--
+     * presentation event tracking/settings
+     */
+    public boolean TRACK_CODE_SETTING = false;
+    public boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
+    public boolean DEFAULT_RUN_AUTOMATED = false;
+    public int DEFAULT_SIMULATION_SPEED_MS = 5000; /*between 100 and 5000*/
 
     /*--
      * functions
      */
-    public static final GUIManager getInstance() { /*Singleton Pattern*/
-        LogManager.getLogger(GUIManager.class).info("getInstance", "");
-        if (guiManager == null) {
-            return new GUIManager();
-        } else {
-            return guiManager;
-        }
-    }
-
     public void openConfigurationPage(Stage primaryStage) {
         logger.info("");
 
@@ -64,7 +61,7 @@ public class GUIManager implements IPresentationManager {
         try {
             Pane configPage = (Pane) FXMLLoader.load(getClass().getResource("configurationPage.fxml"));
             Scene scene = new Scene(configPage);
-            primaryStage.setTitle("application.Mastermind_gui Simulation");
+            primaryStage.setTitle("application.InitializeGui Simulation");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
@@ -159,31 +156,13 @@ public class GUIManager implements IPresentationManager {
             logger.info("    After calculating next submission: ");
             logger.info("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
 
-            subscriber.setNextSubmission(currentLine);
+            simulationPg.setNextSubmission(currentLine);
         }
     }
 
     /*--
      * getter + setter
      */
-    @Override
-    public ConfigurationController getConfigPg() {
-        return configPg;
-    }
-
-    @Override
-    public void setConfigPg(ConfigurationController configPg) {
-        this.configPg = configPg;
-    }
-
-    public SimulationController getSimulationPg() {
-        return simulationPg;
-    }
-
-    public void setSimulationPg(SimulationController simulationPg) {
-        this.simulationPg = simulationPg;
-    }
-
     @Override
     public GameEngine getGameEngine() {
         return gameEngine;
@@ -206,7 +185,4 @@ public class GUIManager implements IPresentationManager {
         return code.getSequence();
     }
 
-    public void setSubscriber(SimulationController subscriber) {
-        this.subscriber = subscriber;
-    }
 }

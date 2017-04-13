@@ -1,8 +1,8 @@
 package evolution;
 
-import config.ConfigurationManager;
 import engine.GameEngine;
-import engine.Submission;
+import engine.GameSettings;
+import engine.helper.Submission;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,7 +38,7 @@ public class FitnessCalculator {
     }
 
     public void addSubmission(Submission newSubmission) {
-        logger.info( newSubmission.getChromosome().toString());
+        logger.info(newSubmission.getChromosome().toString());
         this.submissions.add(newSubmission);
     }
 
@@ -95,8 +95,8 @@ public class FitnessCalculator {
 
                 int whiteDifference = Math.abs(submission.getWhite() - whiteFit);
 
-                illness += (ConfigurationManager.INSTANCE.WEIGHT_OF_RED_DIFFERENCE * redDifference
-                        + ConfigurationManager.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE * whiteDifference);
+                illness += (GameSettings.INSTANCE.weightOfRedDifference * redDifference
+                        + GameSettings.INSTANCE.weightOfWhiteDifference * whiteDifference);
             }
             return getMaxFitness(chromosomeToCheck) - illness;
         } else {
@@ -107,7 +107,7 @@ public class FitnessCalculator {
 
     private int getMaxFitness(IChromosome chromosomeToCheck) {
         int maxDifference = chromosomeToCheck.getNumberOfColors();
-        return submissions.size() * maxDifference * (ConfigurationManager.INSTANCE.WEIGHT_OF_RED_DIFFERENCE + ConfigurationManager.INSTANCE.WEIGHT_OF_WHITE_DIFFERENCE);
+        return submissions.size() * maxDifference * (GameSettings.INSTANCE.weightOfRedDifference + GameSettings.INSTANCE.weightOfWhiteDifference);
     }
 
     public void dropForNextGame() {

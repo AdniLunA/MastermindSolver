@@ -5,39 +5,54 @@ package config;
  */
 public interface IConfigurationFile {
 
-        /*--
-         * evolution settings
-         */
-        public int getSizeOfPopulation();
-        public int getRepeatEvolutionNTimes();
-        public SelectionEnum getSelectionType();
-        public CrossoverEnum getCrossoverType();
+    /*--
+     * evolution settings
+     */
+    public int getSizeOfPopulation();
 
-        public int getKForCrossover();
-        public int getCrossoverMaxTryAgain();
-        public float getMixingRatio();
-        public MutationEnum getMutationType();
-        public double getMutationRatio();
-        public int getMutationMaxTryAgain();
+    public int getRepeatEvolutionNTimes();
 
-        /*--
-         * game engine settings
-         */
-        public int getDefaultLengthOfCode();
-        public int getDefaultNumberOfColors();
-        public int getDefaultNumberOfTries();
+    public SelectionEnum getSelectionType();
 
-        public int getMaxLengthOfCode();
-        public int getMaxNumberOfTries();
+    public CrossoverEnum getCrossoverType();
 
-        public int getWeightOfWhiteDifference();
-        public int getWeightOfRedDifference();
+    public int getKForCrossover();
 
-        /*--
-         * presentation settings
-         */
-        public boolean getTrackCodeSetting();
-        public boolean getDefaultShowBlackboxContent();
-        public boolean getDefaultRunAutomated();
-        public int getDefaultSimulationSpeedMs();
+    public int getCrossoverMaxTryAgain();
+
+    public float getMixingRatio();
+
+    public MutationEnum getMutationType();
+
+    public double getMutationRatio();
+
+    public int getMutationMaxTryAgain();
+
+    /*--
+     * game engine settings
+     */
+    public int getDefaultLengthOfCode();
+
+    public int getDefaultNumberOfColors();
+
+    public int getDefaultNumberOfTries();
+
+    public int getMaxLengthOfCode();
+
+    public int getMaxNumberOfTries();
+
+    public int getWeightOfWhiteDifference();
+
+    public int getWeightOfRedDifference();
+
+    /*--
+     * presentation settings
+     */
+    public boolean getTrackCodeSetting();
+
+    public boolean getDefaultShowBlackboxContent();
+
+    public boolean getDefaultRunAutomated();
+
+    public int getDefaultSimulationSpeedMs();
 }

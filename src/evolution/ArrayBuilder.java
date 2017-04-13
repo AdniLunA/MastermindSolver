@@ -1,6 +1,5 @@
 package evolution;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -12,20 +11,20 @@ public class ArrayBuilder {
     //functions
     public void addToQueue(int numberOfChild, int[] numbersToAdd) {
         Queue<Integer> chosenChild = ((numberOfChild == 1) ? child1Q : child2Q);
-        for(int number : numbersToAdd) {
+        for (int number : numbersToAdd) {
             chosenChild.add(number);
         }
     }
 
-    public int[] getChild1Sequence(){
+    public int[] getChild1Sequence() {
         return transformSequence(child1Q);
     }
 
-    public int[] getChild2Sequence(){
+    public int[] getChild2Sequence() {
         return transformSequence(child2Q);
     }
 
-    private int[] transformSequence(Queue<Integer> queue){
+    private int[] transformSequence(Queue<Integer> queue) {
         if (queue.isEmpty()) {
             throw new NullPointerException("ArrayBuilder - transformSequence ERROR: Array is empty.");
         } else {

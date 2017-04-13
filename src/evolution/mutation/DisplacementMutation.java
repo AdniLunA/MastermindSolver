@@ -1,11 +1,11 @@
 package evolution.mutation;
 
-import config.ConfigurationManager;
+import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import evolution.SingleArrayBuilder;
-import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
@@ -22,7 +22,7 @@ public class DisplacementMutation extends MutatorBasics {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
             /*test if current chromosomeCount should be manipulated*/
-            if (generator.nextFloat() <= ConfigurationManager.INSTANCE.MUTATION_RATIO) {
+            if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
                 boolean validGeneFound = false;
                 int countTries = 0;
                 do {
@@ -48,7 +48,7 @@ public class DisplacementMutation extends MutatorBasics {
                         mutatedChromosome.incrementGeneration();
                     }
                     countTries++;
-                    if (countTries >= ConfigurationManager.INSTANCE.MUTATION_MAX_TRY_AGAIN) {
+                    if (countTries >= GameSettings.INSTANCE.mutationMaxTryAgain) {
                         /*give up*/
                         validGeneFound = true;
                     }

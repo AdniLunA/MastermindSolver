@@ -1,7 +1,7 @@
 package presentation;
 
 import engine.GameEngine;
-import engine.Submission;
+import engine.helper.Submission;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +16,6 @@ public class ConsoleManager implements IPresentationManager {
     /*--
      * attributes
      */
-    private ConfigurationController configPg = new ConfigurationController();
     private GameEngine gameEngine = GameEngine.getInstance();
     private IChromosome code;
 
@@ -86,16 +85,6 @@ public class ConsoleManager implements IPresentationManager {
     /*--
      * getter + setter
      */
-    @Override
-    public ConfigurationController getConfigPg() {
-        return configPg;
-    }
-
-    @Override
-    public void setConfigPg(ConfigurationController configPg) {
-        this.configPg = configPg;
-    }
-
     @Override
     public GameEngine getGameEngine() {
         return gameEngine;

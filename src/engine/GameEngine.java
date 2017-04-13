@@ -1,11 +1,20 @@
 package engine;
 
+import config.CrossoverEnum;
+import engine.helper.CodeSolver;
+import engine.helper.CodeValidator;
+import engine.helper.Submission;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import org.apache.logging.log4j.Logger;
+import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import presentation.GUIManager;
+import presentation.IPresentationManager;
+
+import java.io.IOException;
+import java.util.InputMismatchException;
 
 public class GameEngine {
     /*--
@@ -14,9 +23,33 @@ public class GameEngine {
     private final Logger logger = LogManager.getLogger(this);
 
     /*--
+     * constructors
+     */
+
+    /* Basic settings */
+    public GameEngine() {
+        int k = GameSettings.INSTANCE.kForCrossover;
+        int kMax = GameSettings.INSTANCE.MAX_LENGTH_OF_CODE - 1;
+        if (GameSettings.INSTANCE.crossoverType == CrossoverEnum.K_POINT && k > kMax) {
+            throw new InputMismatchException("ERROR: K-Point Crossover selected in \"Configuratoin\" file. K has to be < "
+                    + kMax + ". K is set to: " + k);
+        }
+        GameSettings.INSTANCE.loadDefaultSettings();
+    }
+
+    /*Simulate Mastermind via GUI*/
+    public GameEngine(Stage primaryStage) throws IOException {
+        this();
+        logger.info("Mastermind with GUI");
+        GUIManager gui = new GUIManager(this);
+        gui.openConfigurationPage(primaryStage);
+    }
+
+    /*--
      * attributes
      */
-    private static GameEngine gameEngine; /*Singleton Pattern*/
+    //private static GameEngine gameEngine; /*Singleton Pattern*/
+    private static IPresentationManager presentationManager;
 
     private NumChromosome codeGenerator;
     private CodeValidator validator;
@@ -28,7 +61,8 @@ public class GameEngine {
     /*--
      * functions
      */
-    public static final GameEngine getInstance() { /*Singleton Pattern*/
+
+    /*public static final GameEngine getInstance() { /*Singleton Pattern/
         if (gameEngine == null) {
             return new GameEngine();
         } else {
@@ -37,8 +71,8 @@ public class GameEngine {
     }
 
     private GameEngine() {
-        gameEngine = this; /*Singleton Pattern*/
-    }
+        gameEngine = this; /*Singleton Pattern/
+    }*/
 
     public IChromosome getRandomCode(int codeLength, int numColors) {
         logger.info("");

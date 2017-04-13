@@ -1,9 +1,9 @@
 package evolution;
 
-import config.ConfigurationManager;
 import engine.GameEngine;
-import org.apache.logging.log4j.Logger;
+import engine.GameSettings;
 import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -19,11 +19,11 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
      */
     public NumChromosome(int lengthOfCode, int numberOfColors) {
         this.lengthOfCode = lengthOfCode;
-        if (numberOfColors > 0 && numberOfColors <= ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS) {
+        if (numberOfColors > 0 && numberOfColors <= GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
             this.numberOfColors = numberOfColors;
         } else {
             throw new InputMismatchException("Num Chromosome: ERROR - tried to initialize with numColors " +
-                    numberOfColors + ", should be a value between 1 and " + ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS);
+                    numberOfColors + ", should be a value between 1 and " + GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS);
         }
     }
 
@@ -95,7 +95,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         int[] colorCounter = new int[numberOfColors];
         for (int i = 0; i < lengthOfCode; i++) {
             /*a color has to be set at each position*/
-            if (sequence[i] >= ConfigurationManager.INSTANCE.MAX_NUMBER_OF_COLORS) {
+            if (sequence[i] >= GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
                 return false;
             }
             /*count color occurrences*/

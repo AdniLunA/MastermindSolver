@@ -1,7 +1,10 @@
 package evolution.selection;
 
 import config.MersenneTwisterFast;
-import evolution.*;
+import evolution.IChromosome;
+import evolution.IPopulation;
+import evolution.NumChromosome;
+import evolution.Population;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
