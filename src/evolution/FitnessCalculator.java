@@ -56,8 +56,8 @@ public class FitnessCalculator {
                 int[] originalSubmission = submission.getChromosome().getSequence();
 
                 for (int i = 0; i < originalSubmission.length; i++) {
-                    if (originalSequence[i] > GameEngine.getInstance().getNumColors() ||
-                            originalSubmission[i] >= GameEngine.getInstance().getNumColors()) {
+                    if (originalSequence[i] > GameSettings.INSTANCE.numberOfColors ||
+                            originalSubmission[i] >= GameSettings.INSTANCE.numberOfColors) {
                         String errormessage = "FitnessCalculator - calculateFitness ERROR: color > number of Colors.\n" +
                                 "Tried to compare sequence " + chromosomeToCheck.toString() + " with submission " + submission.getChromosome().toString();
                         throw new IndexOutOfBoundsException(errormessage);
@@ -74,10 +74,10 @@ public class FitnessCalculator {
                 int whiteFit = 0;
                 int[] sortedSequence = chromosomeToCheck.getSequenceSorted();
                 int[] sortedSubmission = submission.getChromosome().getSequenceSorted();
-                int[] colorCounter = new int[GameEngine.getInstance().getNumColors()];
+                int[] colorCounter = new int[GameSettings.INSTANCE.numberOfColors];
                 for (int i = 0; i < sortedSequence.length; i++) {
-                    if (sortedSequence[i] >= GameEngine.getInstance().getNumColors() ||
-                            sortedSubmission[i] > GameEngine.getInstance().getNumColors()) {
+                    if (sortedSequence[i] >= GameSettings.INSTANCE.numberOfColors ||
+                            sortedSubmission[i] > GameSettings.INSTANCE.numberOfColors) {
                         String errormessage = "FitnessCalculator - calculateFitness ERROR: color > number of Colors.\n" +
                                 "Tried to compare sequence " + chromosomeToCheck.toString() + " with submission " + submission.getChromosome().toString();
                         throw new IndexOutOfBoundsException(errormessage);
@@ -98,15 +98,15 @@ public class FitnessCalculator {
                 illness += (GameSettings.INSTANCE.weightOfRedDifference * redDifference
                         + GameSettings.INSTANCE.weightOfWhiteDifference * whiteDifference);
             }
-            return getMaxFitness(chromosomeToCheck) - illness;
+            return getMaxFitness() - illness;
         } else {
             /*if no submissions has been set, fitness can't be calculated.*/
             return 0;
         }
     }
 
-    private int getMaxFitness(IChromosome chromosomeToCheck) {
-        int maxDifference = chromosomeToCheck.getNumberOfColors();
+    private int getMaxFitness() {
+        int maxDifference = GameSettings.INSTANCE.numberOfColors;
         return submissions.size() * maxDifference * (GameSettings.INSTANCE.weightOfRedDifference + GameSettings.INSTANCE.weightOfWhiteDifference);
     }
 

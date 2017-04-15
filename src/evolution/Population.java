@@ -105,8 +105,7 @@ public class Population implements IPopulation {
     @Override
     public void replaceGene(IChromosome geneToReplace) {
         genePool.remove(geneToReplace);
-        GameEngine engine = GameEngine.getInstance();
-        IChromosome replacer = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
+        IChromosome replacer = new NumChromosome();
         replacer.generateRandom();
         genePool.add(replacer);
     }
@@ -132,11 +131,10 @@ public class Population implements IPopulation {
 
     private IChromosome[] breedRandomPopulation(int size) {
         IChromosome[] randomPopulationPool = new IChromosome[size];
-        GameEngine engine = GameEngine.getInstance();
-        NumChromosome breeder = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
+        NumChromosome breeder = new NumChromosome();
         for (int i = 0; i < randomPopulationPool.length; i++) {
             breeder.generateRandom();
-            randomPopulationPool[i] = new NumChromosome(Arrays.copyOf(breeder.getSequence(), engine.getCodeLength()));
+            randomPopulationPool[i] = new NumChromosome(Arrays.copyOf(breeder.getSequence(), breeder.getSequence().length));
             randomPopulationPool[i].setGeneration(0);
         }
         return randomPopulationPool;
@@ -154,23 +152,23 @@ public class Population implements IPopulation {
 
         switch (chooseCrossover) {
             case K_POINT:
-                if (GameSettings.INSTANCE.kForCrossover > GameEngine.getInstance().getCodeLength()) {
+                if (GameSettings.INSTANCE.kForCrossover > GameSettings.INSTANCE.lengthOfCode) {
                     String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: configured k ="
-                            + GameSettings.INSTANCE.kForCrossover + " while code length is " + GameEngine.getInstance().getCodeLength();
+                            + GameSettings.INSTANCE.kForCrossover + " while code length is " + GameSettings.INSTANCE.lengthOfCode;
                     throw new IndexOutOfBoundsException(errorMessage);
                 }
                 crosser = new KPointCrossover();
                 break;
             case ONE_POINT:
-                if (GameEngine.getInstance().getCodeLength() < 2) {
-                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: one-point crossover while code length is " + GameEngine.getInstance().getCodeLength();
+                if (GameSettings.INSTANCE.lengthOfCode < 2) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: one-point crossover while code length is " + GameSettings.INSTANCE.lengthOfCode;
                     throw new IndexOutOfBoundsException(errorMessage);
                 }
                 crosser = new OnePointCrossover();
                 break;
             case TWO_POINT:
-                if (GameEngine.getInstance().getCodeLength() < 3) {
-                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: two-point crossover while code length is " + GameEngine.getInstance().getCodeLength();
+                if (GameSettings.INSTANCE.lengthOfCode < 3) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: two-point crossover while code length is " + GameSettings.INSTANCE.lengthOfCode;
                     throw new IndexOutOfBoundsException(errorMessage);
                 }
                 crosser = new TwoPointCrossover();

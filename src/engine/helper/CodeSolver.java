@@ -20,16 +20,23 @@ public class CodeSolver {
     private final Logger logger = LogManager.getLogger(this);
 
     /*--
+     * console
+     */
+    public CodeSolver(GameEngine engine){
+        this.engine = engine;
+    }
+
+    /*--
      * attributes
      */
-    private GameEngine engine = GameEngine.getInstance();
+    private GameEngine engine;
 
     /*--
      * functions
      */
     public void solve(int requestCounter) {
         this.logger.info("");
-        IChromosome newSequence = new NumChromosome(engine.getCodeLength(), engine.getNumColors());
+        IChromosome newSequence = new NumChromosome();
         /*first submission random*/
         if (requestCounter == 0) {
             newSequence.generateRandom();

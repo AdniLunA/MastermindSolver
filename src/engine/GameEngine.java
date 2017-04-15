@@ -4,6 +4,7 @@ import config.CrossoverEnum;
 import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
+import engine.helper.SubmissionHandler;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -11,7 +12,6 @@ import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import presentation.GUIManager;
-import presentation.IPresentationManager;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
@@ -25,7 +25,6 @@ public class GameEngine {
     /*--
      * constructors
      */
-
     /* Basic settings */
     public GameEngine() {
         int k = GameSettings.INSTANCE.kForCrossover;
@@ -34,6 +33,7 @@ public class GameEngine {
             throw new InputMismatchException("ERROR: K-Point Crossover selected in \"Configuratoin\" file. K has to be < "
                     + kMax + ". K is set to: " + k);
         }
+        submissionHandler = new SubmissionHandler(this);
         GameSettings.INSTANCE.loadDefaultSettings();
     }
 
@@ -41,55 +41,34 @@ public class GameEngine {
     public GameEngine(Stage primaryStage) throws IOException {
         this();
         logger.info("Mastermind with GUI");
-        GUIManager gui = new GUIManager(this);
+        GUIManager gui = new GUIManager(this, submissionHandler);
         gui.openConfigurationPage(primaryStage);
     }
 
     /*--
      * attributes
      */
-    //private static GameEngine gameEngine; /*Singleton Pattern*/
-    private static IPresentationManager presentationManager;
-
     private NumChromosome codeGenerator;
     private CodeValidator validator;
     private CodeSolver solver;
-    private int codeLength;
-    private int numColors;
-    private int numTries;
+    private SubmissionHandler submissionHandler;
 
     /*--
      * functions
      */
 
-    /*public static final GameEngine getInstance() { /*Singleton Pattern/
-        if (gameEngine == null) {
-            return new GameEngine();
-        } else {
-            return gameEngine;
-        }
+    public void settingsSetLocNocNot(int lengthOfCode, int numberOfColors, int numberOfTries){
+        GameSettings.INSTANCE.setLengthOfCode(lengthOfCode);
+        GameSettings.INSTANCE.setNumberOfColors(numberOfColors);
+        GameSettings.INSTANCE.setNumberOfTries(numberOfTries);
     }
 
-    private GameEngine() {
-        gameEngine = this; /*Singleton Pattern/
-    }*/
-
-    public IChromosome getRandomCode(int codeLength, int numColors) {
+    public void startGame(IChromosome code) {
         logger.info("");
-        codeGenerator = new NumChromosome(codeLength, numColors);
-        codeGenerator.generateRandom();
-        return codeGenerator;
-    }
-
-    public void startGame(int codeLength, int numColors, int numTries, IChromosome code) {
-        logger.info("");
-        this.codeLength = codeLength;
-        this.numColors = numColors;
-        this.numTries = numTries;
 
         validator = new CodeValidator(code);
         /*initialize solver*/
-        solver = new CodeSolver();
+        solver = new CodeSolver(this);
         solver.solve(0);
     }
 
@@ -104,7 +83,7 @@ public class GameEngine {
 
         FitnessCalculator.getInstance().addSubmission(submission);
 
-        GUIManager.getInstance().handleSubmission(submission, position);
+        submissionHandler.handleSubmission(submission, position);
     }
 
     public void calculateNextSubmission(int requestCounter) {
@@ -112,18 +91,4 @@ public class GameEngine {
         solver.solve(requestCounter);
     }
 
-    /*--
-     * getter + setter
-     */
-    public int getNumTries() {
-        return numTries;
-    }
-
-    public int getNumColors() {
-        return numColors;
-    }
-
-    public int getCodeLength() {
-        return codeLength;
-    }
 }

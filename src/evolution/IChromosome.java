@@ -16,9 +16,5 @@ public interface IChromosome {
     /*Java.util.Arrays.sort(int[])*/
     int[] getSequenceSorted();
 
-    int getNumberOfColors();
-
     void setGeneration(int generation);
-
-    int getLength();
 }

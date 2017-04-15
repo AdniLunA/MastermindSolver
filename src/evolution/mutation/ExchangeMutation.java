@@ -32,7 +32,7 @@ public class ExchangeMutation extends MutatorBasics {
                 String mutatedMsg = "Mutated " + genePool[chromosomeCount].toString();
                 do {
                     int[] mutatedSequence = genePool[chromosomeCount].getSequence();
-                    int[] splitPos = super.generateTwoSplitPositions(genePool[chromosomeCount].getLength() - 1);
+                    int[] splitPos = super.generateTwoSplitPositions(GameSettings.INSTANCE.lengthOfCode - 1);
 
                     int[] saveSwapValues = new int[2];
                     saveSwapValues[0] = mutatedSequence[splitPos[0]];

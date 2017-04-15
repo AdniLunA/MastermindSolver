@@ -17,31 +17,17 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /*--
      * constructors
      */
-    public NumChromosome(int lengthOfCode, int numberOfColors) {
-        this.lengthOfCode = lengthOfCode;
-        if (numberOfColors > 0 && numberOfColors <= GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
-            this.numberOfColors = numberOfColors;
-        } else {
-            throw new InputMismatchException("Num Chromosome: ERROR - tried to initialize with numColors " +
-                    numberOfColors + ", should be a value between 1 and " + GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS);
-        }
-    }
-
-    public NumChromosome(int[] sequence, int numberOfColors) {
-        this(sequence.length, numberOfColors);
-        this.sequence = sequence;
+    public NumChromosome() {
+        generateRandom();
     }
 
     public NumChromosome(int[] sequence) {
-        this(sequence.length, GameEngine.getInstance().getNumColors());
         this.sequence = sequence;
     }
 
     /*--
      * attributes
      */
-    private int lengthOfCode;
-    private int numberOfColors;
     private int[] sequence;
     private int generation = 0;
     private int idInPopulation;
@@ -55,9 +41,9 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         boolean validSequence = false;
         int numOfTries = 0;
         while (!validSequence) {
-            sequence = new int[lengthOfCode];
-            int[] numberPool = new int[numberOfColors];
-            for (int i = 0; i < numberOfColors; i++) {
+            sequence = new int[GameSettings.INSTANCE.lengthOfCode];
+            int[] numberPool = new int[GameSettings.INSTANCE.numberOfColors];
+            for (int i = 0; i < GameSettings.INSTANCE.numberOfColors; i++) {
                 numberPool[i] = i;
             }
             /*reduce available numbers after one was picked*/
@@ -92,8 +78,8 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     public boolean checkValidity() {
         /*System.out.println("NumChromosome - checkValidity");*/
         /*every color should occur max. 1 time*/
-        int[] colorCounter = new int[numberOfColors];
-        for (int i = 0; i < lengthOfCode; i++) {
+        int[] colorCounter = new int[GameSettings.INSTANCE.numberOfColors];
+        for (int i = 0; i < GameSettings.INSTANCE.lengthOfCode; i++) {
             /*a color has to be set at each position*/
             if (sequence[i] >= GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
                 return false;
@@ -168,11 +154,6 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public int getNumberOfColors() {
-        return numberOfColors;
-    }
-
-    @Override
     public int getGeneration() {
         return generation;
     }
@@ -180,11 +161,6 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     @Override
     public void setGeneration(int generation) {
         this.generation = generation;
-    }
-
-    @Override
-    public int getLength() {
-        return lengthOfCode;
     }
 
 }

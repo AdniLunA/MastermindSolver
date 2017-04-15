@@ -2,6 +2,7 @@ package presentation;
 
 import engine.GameSettings;
 import engine.helper.Submission;
+import engine.helper.SubmissionHandler;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -33,16 +34,16 @@ public class SimulationController implements Initializable {
     /*--
      * constructor
      */
-    public SimulationController(GUIManager guiManager) {
+    public SimulationController(GUIManager guiManager, SubmissionHandler submissionHandler) {
         this.gui = guiManager;
+        this.submissionHandler = submissionHandler;
     }
 
     /*--
      * attributes
      */
     private GUIManager gui;
-    private int lengthOfCode;
-    private int numberOfTries;
+    private SubmissionHandler submissionHandler;
 
     private boolean gameIsRunning = false;
     private boolean gameIsPaused = false;
@@ -98,40 +99,40 @@ public class SimulationController implements Initializable {
 
     private void generateGameMatrix() {
         logger.info("");
-        int x = lengthOfCode;
-        int y = numberOfTries;
+        int x = GameSettings.INSTANCE.lengthOfCode;
+        int y = GameSettings.INSTANCE.numberOfTries;
 
         /*y positions for circles + text fields*/
-        int[] yPositions = new int[numberOfTries];
+        int[] yPositions = new int[GameSettings.INSTANCE.numberOfTries];
         int yDistance = 60;
         yPositions[0] = yDistance - 25;
-        for (int i = 1; i < numberOfTries; i++) {
+        for (int i = 1; i < GameSettings.INSTANCE.numberOfTries; i++) {
             yPositions[i] = yPositions[i - 1] + yDistance;
         }
 
         /*circle positions*/
-        float[] circleXPositions = new float[lengthOfCode];
-        float cXDistance = 500f / lengthOfCode;
+        float[] circleXPositions = new float[GameSettings.INSTANCE.lengthOfCode];
+        float cXDistance = 500f / GameSettings.INSTANCE.lengthOfCode;
         circleXPositions[0] = 100f + (cXDistance / 2f) - 15f;
-        for (int i = 1; i < lengthOfCode; i++) {
+        for (int i = 1; i < GameSettings.INSTANCE.lengthOfCode; i++) {
             circleXPositions[i] = circleXPositions[i - 1] + cXDistance;
         }
 
         /*gameFieldHeight*/
-        apScrollableField.setPrefHeight(yPositions[numberOfTries - 1] + yDistance);
+        apScrollableField.setPrefHeight(yPositions[GameSettings.INSTANCE.numberOfTries - 1] + yDistance);
 
         /*place blackBox circles*/
-        blackBox = new Circle[lengthOfCode];
-        for (int i = 0; i < lengthOfCode; i++) {
+        blackBox = new Circle[GameSettings.INSTANCE.lengthOfCode];
+        for (int i = 0; i < GameSettings.INSTANCE.lengthOfCode; i++) {
             blackBox[i] = new Circle(15, Color.BLACK);
             blackBox[i].relocate(circleXPositions[i] - 100, 5.0);
         }
         pBlackBox.getChildren().addAll(blackBox);
 
         /*place game circles*/
-        circleMatrix = new Circle[numberOfTries][lengthOfCode];
-        for (int col = 0; col < numberOfTries; col++) {
-            for (int row = 0; row < lengthOfCode; row++) {
+        circleMatrix = new Circle[GameSettings.INSTANCE.numberOfTries][GameSettings.INSTANCE.lengthOfCode];
+        for (int col = 0; col < GameSettings.INSTANCE.numberOfTries; col++) {
+            for (int row = 0; row < GameSettings.INSTANCE.lengthOfCode; row++) {
                 circleMatrix[col][row] = new Circle(15, Color.BLACK);
                 circleMatrix[col][row].relocate(circleXPositions[row], yPositions[col]);
             }
@@ -139,11 +140,11 @@ public class SimulationController implements Initializable {
         }
 
         /*place TextFields*/
-        tRedFeedback = new TextField[numberOfTries];
-        tWhiteFeedback = new TextField[numberOfTries];
+        tRedFeedback = new TextField[GameSettings.INSTANCE.numberOfTries];
+        tWhiteFeedback = new TextField[GameSettings.INSTANCE.numberOfTries];
         Background redBackground = new Background(new BackgroundFill(Color.PINK, CornerRadii.EMPTY, Insets.EMPTY));
         Background whiteBackground = new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
-        for (int i = 0; i < numberOfTries; i++) {
+        for (int i = 0; i < GameSettings.INSTANCE.numberOfTries; i++) {
             /*red*/
             tRedFeedback[i] = getFormattedTextField();
             tRedFeedback[i].setBackground(redBackground);
@@ -159,14 +160,14 @@ public class SimulationController implements Initializable {
         pGameArea.getChildren().addAll(tWhiteFeedback);
 
         /*place lines*/
-        int[] lineYPositions = new int[numberOfTries - 1];
+        int[] lineYPositions = new int[GameSettings.INSTANCE.numberOfTries - 1];
         lineYPositions[0] = 81;
         int lineYDistance = 60;
         for (int i = 1; i < lineYPositions.length; i++) {
             lineYPositions[i] = lineYPositions[i - 1] + lineYDistance;
         }
 
-        Line[] lines = new Line[numberOfTries - 1];
+        Line[] lines = new Line[GameSettings.INSTANCE.numberOfTries - 1];
         for (int i = 0; i < lines.length; i++) {
             lines[i] = new Line(0.0, lineYPositions[i], 700.0, lineYPositions[i]);
             lines[i].setStroke(Color.DARKGRAY);
@@ -252,11 +253,11 @@ public class SimulationController implements Initializable {
     }
 
     private void requestNewSubmission() {
-        if (currentLineToPrint >= numberOfTries) {
+        if (currentLineToPrint >= GameSettings.INSTANCE.numberOfTries) {
             gameIsRunning = false;
         } else {
             logger.info("");
-            gui.handleSubmissionRequest(currentLineToPrint);
+            submissionHandler.handleSubmissionRequest(currentLineToPrint);
             logger.info("");
         }
     }
@@ -274,16 +275,16 @@ public class SimulationController implements Initializable {
         /*increment counter*/
         currentLineToPrint++;
         /*if solution is found, break loop by setting currentLine to max*/
-        if (newLine.getRed() == lengthOfCode) {
+        if (newLine.getRed() == GameSettings.INSTANCE.lengthOfCode) {
             logger.info("secret code found!!!");
-            currentLineToPrint = numberOfTries;
+            currentLineToPrint = GameSettings.INSTANCE.numberOfTries;
         }
     }
 
     private void runSimulationAutomated() {
         logger.info("");
         if (runAutomated) {
-            while (currentLineToPrint < numberOfTries) {
+            while (currentLineToPrint < GameSettings.INSTANCE.numberOfTries) {
                 try {
                     Thread.sleep(simulationSpeed);
                     requestNewSubmission();
@@ -336,10 +337,10 @@ public class SimulationController implements Initializable {
     @FXML
     private void onclickNextStep() {
         logger.info("");
-        if (currentLineToPrint < numberOfTries) {
+        if (currentLineToPrint < GameSettings.INSTANCE.numberOfTries) {
             requestNewSubmission();
         }
-        if (currentLineToPrint == numberOfTries) {
+        if (currentLineToPrint == GameSettings.INSTANCE.numberOfTries) {
             bNextStep.setVisible(false);
             gameIsRunning = false;
         }
@@ -360,10 +361,6 @@ public class SimulationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         logger.info("");
-        /*--initialize variables*/
-        lengthOfCode = gui.getLengthOfCode();
-        numberOfTries = gui.getNumberOfTries();
-
         /*initialize speed*/
         int defaultSpeed = gui.DEFAULT_SIMULATION_SPEED_MS;
         int min = (int) spd_slider.getMin();
@@ -396,8 +393,4 @@ public class SimulationController implements Initializable {
         );
 
     }
-
-
-    /*--getter + setter*/
-
 }

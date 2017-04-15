@@ -37,7 +37,6 @@ public class ConfigurationController implements Initializable {
         this.gui = guiManager;
     }
 
-
     /*--attributes*/
     private GUIManager gui;
 
@@ -206,7 +205,7 @@ public class ConfigurationController implements Initializable {
     @FXML
     private void onclickGenerateRandom() {
         logger.info("");
-        guiManager.startWithRandomCode(lengthOfCode, numberOfColors, numberOfTries);
+        guiManager.setRandomSecretCode(lengthOfCode, numberOfColors, numberOfTries);
     }
 
     @FXML
@@ -226,7 +225,7 @@ public class ConfigurationController implements Initializable {
 
         if (accepted[0] && accepted[1]) {
             int[] secretCode = Arrays.copyOf(circleState, lengthOfCode);
-            guiManager.startWithPresetCode(lengthOfCode, numberOfColors, numberOfTries, secretCode);
+            guiManager.setSelectedSecretCode(lengthOfCode, numberOfColors, numberOfTries, secretCode);
         }
         if (!accepted[0]) {
             /*todo presentation show empty hole message*/
@@ -373,8 +372,6 @@ public class ConfigurationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         logger.info("");
         /*--attributes*/
-        guiManager = GUIManager.getInstance();
-
         int k = GameSettings.INSTANCE.kForCrossover;
         int minValue;
         if (GameSettings.INSTANCE.crossoverType == CrossoverEnum.K_POINT) {

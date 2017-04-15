@@ -40,7 +40,7 @@ public class UniformCrossover implements ICrossover {
         logger.info("");
         this.parent1 = parents[0];
         this.parent2 = parents[1];
-        sequenceLength = parent1.getLength();
+        sequenceLength = GameSettings.INSTANCE.lengthOfCode;
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;

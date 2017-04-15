@@ -104,7 +104,7 @@ public enum GameSettings {
     /*Must be smaller than length of code (always < 20!):*/
     protected void setKForCrossover(int kForCrossover) {
         if(kForCrossover >= lengthOfCode || kForCrossover >= MAX_LENGTH_OF_CODE){
-            throw new IndexOutOfBoundsException("kForCrossover has to be smaller than length of code.");
+            throw new IndexOutOfBoundsException("kForCrossover has to be < " + MAX_LENGTH_OF_CODE);
         }
         this.kForCrossover = kForCrossover;
     }
@@ -150,8 +150,8 @@ public enum GameSettings {
     }
 
     protected void setNumberOfColors(int numberOfColors) {
-        if(numberOfColors < 1) {
-            throw new IllegalArgumentException("numberOfColors has to be > 0");
+        if(numberOfColors < 1 || numberOfColors > MAX_NUMBER_OF_COLORS) {
+            throw new IllegalArgumentException("numberOfColors has to be > 0 and < " + MAX_NUMBER_OF_COLORS);
         }
         this.numberOfColors = numberOfColors;
     }

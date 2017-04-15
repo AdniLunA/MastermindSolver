@@ -12,14 +12,14 @@ public class SubmissionTest {
     public void generateSubmission() {
         int sampleNOC = 4;
         int[] sampleSequence = {0, 1};
-        CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence, sampleNOC));
+        CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence));
 
         int[] testSequence1 = {2, 3};
-        int[] testResponse1 = validator.calculateResponse(new NumChromosome(testSequence1, sampleNOC));
+        int[] testResponse1 = validator.calculateResponse(new NumChromosome(testSequence1));
         /*red 0, white 0*/
         assertTrue((testResponse1[0] == 0) && (testResponse1[1] == 0));
 
-        Submission submission = new Submission(new NumChromosome(testSequence1, sampleNOC), testResponse1[0], testResponse1[1]);
+        Submission submission = new Submission(new NumChromosome(testSequence1), testResponse1[0], testResponse1[1]);
 
         assertTrue(submission.getRed() == 0 && submission.getWhite() == 0);
 

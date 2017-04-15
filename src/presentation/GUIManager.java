@@ -1,7 +1,9 @@
 package presentation;
 
 import engine.GameEngine;
+import engine.GameSettings;
 import engine.helper.Submission;
+import engine.helper.SubmissionHandler;
 import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -15,13 +17,14 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class GUIManager implements IPresentationManager {
+public class GUIManager {
     /*for debugging*/
     private final Logger logger = LogManager.getLogger(this);
 
     /*constructor*/
-    public GUIManager(GameEngine engine) {
+    public GUIManager(GameEngine engine, SubmissionHandler submissionHandler) {
         this.gameEngine = engine;
+        simulationPg = new SimulationController(this, submissionHandler);
     }
 
     /*--
@@ -29,16 +32,9 @@ public class GUIManager implements IPresentationManager {
      */
     private GameEngine gameEngine;
 
-
-    private ConfigurationController configPg = new ConfigurationController(this);
-    private SimulationController simulationPg = new SimulationController(this);
+    private ConfigurationController configPg;
+    private SimulationController simulationPg;
     private IChromosome code;
-
-    private LinkedBlockingQueue<Submission> submissions;
-
-    private int lengthOfCode;
-    private int numberOfColors;
-    private int numberOfTries;
 
     private Stage primaryStage;
 
@@ -55,6 +51,8 @@ public class GUIManager implements IPresentationManager {
      */
     public void openConfigurationPage(Stage primaryStage) {
         logger.info("");
+
+        configPg = new ConfigurationController(this);
 
         this.primaryStage = primaryStage;
 
@@ -75,11 +73,9 @@ public class GUIManager implements IPresentationManager {
         openConfigurationPage(primaryStage);
     }
 
-    public void startWithPresetCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
-        this.lengthOfCode = lengthOfCode;
-        this.numberOfColors = numberOfColors;
-        this.numberOfTries = numberOfTries;
-        this.code = new NumChromosome(secretCode, numberOfColors);
+    public void setSelectedSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
+        gameEngine.settingsSetLocNocNot(lengthOfCode,numberOfColors,numberOfTries);
+        this.code = new NumChromosome(secretCode);
 
         logger.info(" - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
@@ -87,23 +83,19 @@ public class GUIManager implements IPresentationManager {
         openSimulationPage();
     }
 
-    @Override
-    public void startWithRandomCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
-        this.lengthOfCode = lengthOfCode;
-        this.numberOfColors = numberOfColors;
-        this.numberOfTries = numberOfTries;
-        this.code = gameEngine.getRandomCode(lengthOfCode, numberOfColors);
+    public void setRandomSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
+        gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
+        this.code = new NumChromosome();
 
         logger.info(" - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
-        System.out.printf("GUIManager startWithRandomCode - starting simulation with values LOC: " + lengthOfCode
+        System.out.printf("GUIManager setRandomSecretCode - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: \n* " + code.toString() + " *\n");
 
         openSimulationPage();
     }
 
     private void openSimulationPage() {
-        this.submissions = new LinkedBlockingQueue<Submission>();
 
         logger.info("");
         //only accept valid code
@@ -120,65 +112,15 @@ public class GUIManager implements IPresentationManager {
                 e.printStackTrace();
             }
             FitnessCalculator.getInstance().dropForNextGame();
-            gameEngine.startGame(lengthOfCode, numberOfColors, numberOfTries, code);
-        }
-    }
-
-    @Override
-    public void handleSubmission(Submission submission, int position) {
-        logger.info("");
-        try {
-            submissions.put(submission);
-        } catch (InterruptedException e) {
-            System.out.println("    ERROR: Adding of submission " + submission.toString() + " failed.");
-            e.printStackTrace();
-        }
-        logger.info("    GUIManager: position = " + position + ", " + submission.toString());
-    }
-
-    @Override
-    public void handleSubmissionRequest(int requestCounter) {
-        logger.info("");
-        if (requestCounter < numberOfTries) {
-            Submission currentLine = null;
-            try {
-                currentLine = submissions.take();
-            } catch (InterruptedException e) {
-                System.out.println("    ERROR: reading of submission #" + requestCounter + " failed.");
-                e.printStackTrace();
-            }
-            logger.info("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
-            int nextCounter = requestCounter + 1;
-            if (nextCounter < numberOfTries) {
-                logger.info("    calculate submission #" + nextCounter);
-                gameEngine.calculateNextSubmission(nextCounter);
-            }
-            logger.info("    After calculating next submission: ");
-            logger.info("    GUIManager: position = " + requestCounter + ", " + currentLine.toString());
-
-            simulationPg.setNextSubmission(currentLine);
+            gameEngine.startGame(code);
         }
     }
 
     /*--
      * getter + setter
      */
-    @Override
     public GameEngine getGameEngine() {
         return gameEngine;
-    }
-
-    @Override
-    public void setGameEngine(GameEngine gameEngine) {
-        this.gameEngine = gameEngine;
-    }
-
-    protected int getLengthOfCode() {
-        return lengthOfCode;
-    }
-
-    protected int getNumberOfTries() {
-        return numberOfTries;
     }
 
     protected int[] getSecretCode() {
