@@ -8,7 +8,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class FitnessCalculator {
+public enum FitnessCalculator {
+    INSTANCE;
+
     /*--
      * debugging
      */
@@ -17,33 +19,17 @@ public class FitnessCalculator {
     /*--
      * attributes
      */
-    private static FitnessCalculator fitnessCalculator; /*Singleton Pattern*/
-
-    private ArrayList<Submission> submissions = new ArrayList<Submission>();
-
-    private FitnessCalculator() {
-        fitnessCalculator = this; /*Singleton Pattern*/
-    }
+    private ArrayList<Submission> submissions = new ArrayList<>();
 
     /*--
      * functions
      */
-    public static final FitnessCalculator getInstance() { /*Singleton Pattern*/
-        /*System.out.println("FitnessCalculator - getInstance");*/
-        if (fitnessCalculator == null) {
-            return new FitnessCalculator();
-        } else {
-            return fitnessCalculator;
-        }
-    }
-
     public void addSubmission(Submission newSubmission) {
         logger.info(newSubmission.getChromosome().toString());
         this.submissions.add(newSubmission);
     }
 
     public int calculateFitness(IChromosome chromosomeToCheck) {
-        /*System.out.println("FitnessCalculator - calculateFitness of " + chromosomeToCheck.toString());*/
         /*smaller illness = better fitness*/
         int illness = 0;
         if (!submissions.isEmpty()) {

@@ -107,8 +107,8 @@ public enum GameSettings {
 
     /*Must be smaller than length of code (always < 20!):*/
     protected void setKForCrossover(int kForCrossover) {
-        if(kForCrossover >= lengthOfCode || kForCrossover >= MAX_LENGTH_OF_CODE){
-            throw new IndexOutOfBoundsException("kForCrossover has to be < " + MAX_LENGTH_OF_CODE);
+        if(kForCrossover < 1 || kForCrossover >= lengthOfCode || kForCrossover >= MAX_LENGTH_OF_CODE){
+            throw new IndexOutOfBoundsException("kForCrossover has to be > 0 and < " + MAX_LENGTH_OF_CODE);
         }
         this.kForCrossover = kForCrossover;
     }

@@ -1,0 +1,15 @@
+2017-04-16 22:34:28 INFO  Mastermind_console       main                           /  
+2017-04-16 22:34:28 INFO  GameEngine               startGame                      /  
+2017-04-16 22:34:28 INFO  CodeValidator            <init>                         / - initialized with 00 13 04 17 01 06 10 09 
+2017-04-16 22:34:28 INFO  GameEngine               calculateNextSubmission        /  
+2017-04-16 22:34:28 INFO  CodeSolver               solve                          /  
+2017-04-16 22:35:21 INFO  CodeSolver               solve                          / CodeSolver: request #0 
+2017-04-16 22:35:22 INFO  CodeSolver               solve                          /     CodeSolver: next sequence = 01 11 00 10 17 13 14 02 
+2017-04-16 22:35:51 INFO  GameEngine               resolveSubmission              /  
+2017-04-16 22:39:05 INFO  CodeValidator            calculateResponse              /     Secret code: 00 13 04 17 01 06 10 09 
+2017-04-16 22:46:08 INFO  CodeValidator            calculateResponse              /     CodeValidator: red = 0, white = 5, code = 01 11 00 10 17 13 14 02 
+2017-04-16 22:46:23 INFO  GameEngine               resolveSubmission              /     GameEngine: position = 0, red = 0, white = 5, sequence = 01 11 00 10 17 13 14 02 
+2017-04-16 22:49:55 INFO  Submission               setAttributes                  /  
+2017-04-16 22:49:55 INFO  FitnessCalculator        addSubmission                  / 01 11 00 10 17 13 14 02 
+2017-04-16 22:49:55 INFO  SubmissionHandler        handleSubmission               /  
+2017-04-16 22:49:55 INFO  SubmissionHandler        handleSubmission               /     position = 0, red = 0, white = 5, sequence = 01 11 00 10 17 13 14 02 

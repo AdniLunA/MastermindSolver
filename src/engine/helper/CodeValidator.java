@@ -34,7 +34,7 @@ public class CodeValidator {
     /*--
      * functions
      */
-    public int[] calculateResponse(IChromosome sequenceToCheck) {
+    public Submission calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
         this.logger.info("    Secret code: " + secretCode.toString());
@@ -58,9 +58,8 @@ public class CodeValidator {
         }
         whiteResponse -= redResponse;
 
-        int[] response = {redResponse, whiteResponse};
         this.logger.info("    CodeValidator: red = " + redResponse + ", white = " + whiteResponse + ", code = " + sequenceToCheck.toString());
-        return response;
+        return new Submission(sequenceToCheck, redResponse, whiteResponse);
     }
 
     /*--getter + setter*/

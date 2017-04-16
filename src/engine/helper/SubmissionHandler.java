@@ -24,7 +24,7 @@ public class SubmissionHandler {
     private GameEngine gameEngine;
     private LinkedBlockingQueue<Submission> submissions = new LinkedBlockingQueue<>();;
 
-    public void handleSubmission(Submission submission, int position) {
+    public void addSubmission(Submission submission) {
         logger.info("");
         try {
             submissions.put(submission);
@@ -32,7 +32,6 @@ public class SubmissionHandler {
             System.out.println("    ERROR: Adding of submission " + submission.toString() + " failed.");
             e.printStackTrace();
         }
-        logger.info("    position = " + position + ", " + submission.toString());
     }
 
     public void handleSubmissionRequest(int requestCounter) {

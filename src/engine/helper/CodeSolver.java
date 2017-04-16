@@ -43,16 +43,15 @@ public class CodeSolver {
             throw new IndexOutOfBoundsException("maxNumberOfTries reached. No further submissions are calculated.");
         }
         IChromosome newSequence = new NumChromosome();
-        /*first submission random*/
-        if (requestCounter == 0) {
-            newSequence.generateRandom();
-        } else { /*other submission via evolution*/
+        /*first submission random, others via EA*/
+        if (requestCounter != 0) {
             newSequence = solveViaEvolutionaryAlgorithms();
         }
         this.logger.info("CodeSolver: request #" + requestCounter);
         this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
         requestCounter++;
-        engine.resolveSubmission(newSequence, requestCounter-1);
+
+        engine.resolveSubmission(newSequence);
     }
 
     private IChromosome solveViaEvolutionaryAlgorithms() {
@@ -66,14 +65,13 @@ public class CodeSolver {
         }
         /*get fittest*/
         IChromosome nextRequest;
-        FitnessCalculator checkSubmissions = FitnessCalculator.getInstance();
         /*
         prevent duplicate submission
          */
         boolean alreadyPosted = false;
         do {
             nextRequest = population.getFittest();
-            ArrayList<Submission> postedSubmissions = checkSubmissions.getSubmissions();
+            ArrayList<Submission> postedSubmissions = FitnessCalculator.INSTANCE.getSubmissions();
             for (Submission postedSubmission : postedSubmissions) {
                 if (postedSubmission == postedSubmission.getChromosome()) {
                     alreadyPosted = true;

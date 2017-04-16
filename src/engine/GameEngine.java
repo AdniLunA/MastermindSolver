@@ -1,6 +1,5 @@
 package engine;
 
-import config.CrossoverEnum;
 import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
@@ -14,7 +13,6 @@ import org.apache.logging.log4j.Logger;
 import presentation.GUIManager;
 
 import java.io.IOException;
-import java.util.InputMismatchException;
 
 public class GameEngine {
     /*--
@@ -27,12 +25,6 @@ public class GameEngine {
      */
     /* Basic settings */
     public GameEngine() {
-        int k = GameSettings.INSTANCE.kForCrossover;
-        int kMax = GameSettings.INSTANCE.MAX_LENGTH_OF_CODE - 1;
-        if (GameSettings.INSTANCE.crossoverType == CrossoverEnum.K_POINT && k > kMax) {
-            throw new InputMismatchException("ERROR: K-Point Crossover selected in \"Configuratoin\" file. K has to be < "
-                    + kMax + ". K is set to: " + k);
-        }
         submissionHandler = new SubmissionHandler(this);
         GameSettings.INSTANCE.loadDefaultSettings();
     }
@@ -66,6 +58,7 @@ public class GameEngine {
     public void startGame(IChromosome code) {
         logger.info("");
 
+        FitnessCalculator.INSTANCE.dropForNextGame();
         validator = new CodeValidator(code);
         /*initialize solver*/
         solver = new CodeSolver(this);
@@ -87,18 +80,16 @@ public class GameEngine {
         }
     }
 
-    public void resolveSubmission(IChromosome chromosome, int position) {
+    public void resolveSubmission(IChromosome chromosome) {
         logger.info("");
-        int[] response = validator.calculateResponse(chromosome);
-        logger.info("    GameEngine: position = " + position + ", red = " + response[0]
-                + ", white = " + response[1] + ", sequence = " + chromosome.toString());
-        System.out.printf("  " + chromosome.toString() + "  => sequence #" + position + ", red = " + response[0]
-                + ", white = " + response[1] + ". @GameEngine - resolveSubmission." + "\n");
-        Submission submission = new Submission(chromosome, response[0], response[1]);
+        Submission newSubmission = validator.calculateResponse(chromosome);
+        System.out.printf("  " + chromosome.toString() + "  => sequence #" + (solver.getRequestCounter() - 1)
+                + ", red = " + newSubmission.getRed() + ", white = " + newSubmission.getWhite()
+                + ". @GameEngine - resolveSubmission." + "\n");
 
-        FitnessCalculator.getInstance().addSubmission(submission);
+        FitnessCalculator.INSTANCE.addSubmission(newSubmission);
 
-        submissionHandler.handleSubmission(submission, position);
+        submissionHandler.addSubmission(newSubmission);
     }
 
     public void calculateNextSubmission() {

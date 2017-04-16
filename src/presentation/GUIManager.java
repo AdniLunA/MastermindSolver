@@ -108,7 +108,6 @@ public class GUIManager {
                 System.out.println("GUIManager - openSimulationPage: errors in \"simulationPage.fxml\" or the corresponding controller");
                 e.printStackTrace();
             }
-            FitnessCalculator.getInstance().dropForNextGame();
             gameEngine.startGame(code);
         }
     }

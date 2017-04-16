@@ -100,7 +100,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     public int getFitness() {
         /*System.out.println("NumChromosome - getFitness");*/
         try {
-            return FitnessCalculator.getInstance().calculateFitness(this);
+            return FitnessCalculator.INSTANCE.calculateFitness(this);
         } catch (ArrayIndexOutOfBoundsException a) {
             System.out.println("getFitness: ERROR while trying to calculate fitness of chromosome " + toString());
             a.printStackTrace();
