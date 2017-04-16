@@ -24,18 +24,24 @@ public class CodeSolver {
      */
     public CodeSolver(GameEngine engine){
         this.engine = engine;
+        this.requestCounter = 0;
     }
 
     /*--
      * attributes
      */
     private GameEngine engine;
+    private int requestCounter;
 
     /*--
      * functions
      */
-    public void solve(int requestCounter) {
+    public void solve() {
         this.logger.info("");
+        if (requestCounter >= GameSettings.INSTANCE.maxNumberOfTries){
+            logger.error("maxNumberOfTries reached. No further submissions are calculated.");
+            throw new IndexOutOfBoundsException("maxNumberOfTries reached. No further submissions are calculated.");
+        }
         IChromosome newSequence = new NumChromosome();
         /*first submission random*/
         if (requestCounter == 0) {
@@ -45,7 +51,8 @@ public class CodeSolver {
         }
         this.logger.info("CodeSolver: request #" + requestCounter);
         this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
-        engine.resolveSubmission(newSequence, requestCounter);
+        requestCounter++;
+        engine.resolveSubmission(newSequence, requestCounter-1);
     }
 
     private IChromosome solveViaEvolutionaryAlgorithms() {
@@ -81,4 +88,8 @@ public class CodeSolver {
     }
 
     /*--getter + setter*/
+
+    public int getRequestCounter() {
+        return requestCounter;
+    }
 }

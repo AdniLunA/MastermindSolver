@@ -15,7 +15,7 @@ public class Mastermind_console {
         try{
             /*start application in console*/
             GameEngine engine = new GameEngine();
-            engine.startGame(new NumChromosome());
+            engine.runGame(new NumChromosome());
         } catch (Exception e) {
             LogManager.getLogger(Mastermind_gui.class).error("Exception : \n                        " + e.toString());
             e.printStackTrace();

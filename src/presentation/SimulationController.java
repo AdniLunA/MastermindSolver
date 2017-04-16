@@ -362,13 +362,13 @@ public class SimulationController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         logger.info("");
         /*initialize speed*/
-        int defaultSpeed = gui.DEFAULT_SIMULATION_SPEED_MS;
+        int simulationSpeed = GameSettings.INSTANCE.simulationSpeedInMs;
         int min = (int) spd_slider.getMin();
         int max = (int) spd_slider.getMax();
-        if (defaultSpeed < min || defaultSpeed > max) {
+        if (simulationSpeed < min || simulationSpeed > max) {
             throw new InputMismatchException("ERROR: The default speed in the configuration must be a value between " + min + " and " + max + ".");
         } else {
-            simulationSpeed = defaultSpeed;
+            this.simulationSpeed = simulationSpeed;
         }
 
         /*--initialize page settings*/
@@ -376,7 +376,7 @@ public class SimulationController implements Initializable {
         cbShowSecretCode.setSelected(showBlackboxContent);
         rbRunAutomated.setSelected(runAutomated);
         rbRunManually.setSelected(!runAutomated);
-        spd_slider.setValue(simulationSpeed);
+        spd_slider.setValue(this.simulationSpeed);
         /*set blackBox colors*/
         fillCircleLine(blackBox, gui.getSecretCode());
 
@@ -387,7 +387,7 @@ public class SimulationController implements Initializable {
                 new ChangeListener<Number>() {
                     @Override
                     public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                        simulationSpeed = newValue.intValue();
+                        SimulationController.this.simulationSpeed = newValue.intValue();
                     }
                 }
         );

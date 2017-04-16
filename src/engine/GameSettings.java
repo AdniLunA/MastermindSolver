@@ -34,6 +34,8 @@ public enum GameSettings {
     public final int MAX_NUMBER_OF_COLORS = 20;
     public int maxNumberOfTries;
 
+    public int simulationSpeedInMs;
+
     /*to calculate fitness*/
     public int weightOfWhiteDifference;
     public int weightOfRedDifference;
@@ -62,8 +64,10 @@ public enum GameSettings {
 
         setLengthOfCode(8);
         setNumberOfColors(18);
-        setNumberOfTries(25);
-        setMaxNumberOfTries(35);
+        setNumberOfTries(50);
+        setMaxNumberOfTries(50);
+
+        setSimulationSpeedInMs(100);
 
         setKForCrossover(3);
         setCrossoverMaxTryAgain(10);
@@ -168,6 +172,14 @@ public enum GameSettings {
             throw new IllegalArgumentException("maxNumberOfTries has to be > 0");
         }
         this.maxNumberOfTries = maxNumberOfTries;
+    }
+
+    /*between 10 and 5000*/
+    protected void setSimulationSpeedInMs(int simulationSpeedInMs){
+        if(simulationSpeedInMs < 10 || simulationSpeedInMs > 5000){
+            throw new IllegalArgumentException("simulationSpeedInMs as to be >= 10ms and <= 5000ms.");
+        }
+        this.simulationSpeedInMs = simulationSpeedInMs;
     }
 
     protected void setWeightOfWhiteDifference(int weightOfWhiteDifference) {

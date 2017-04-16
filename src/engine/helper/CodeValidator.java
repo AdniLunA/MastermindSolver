@@ -21,6 +21,9 @@ public class CodeValidator {
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
         this.logger.info("- initialized with " + secretCode.toString());
+        System.out.printf("CodeValidator - starting simulation with values LOC: "
+                + GameSettings.INSTANCE.lengthOfCode + ", NOC: " + GameSettings.INSTANCE.numberOfColors + ", NOT: "
+                + GameSettings.INSTANCE.numberOfTries + ", secret code: \n* " + secretCode.toString() + " *\n");
     }
 
     /*--

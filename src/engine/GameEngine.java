@@ -69,7 +69,22 @@ public class GameEngine {
         validator = new CodeValidator(code);
         /*initialize solver*/
         solver = new CodeSolver(this);
-        solver.solve(0);
+        calculateNextSubmission();
+    }
+
+    public void runGame(IChromosome code) {
+        startGame(code);
+
+        while (solver.getRequestCounter() < GameSettings.INSTANCE.numberOfTries) {
+            try {
+                Thread.sleep(GameSettings.INSTANCE.simulationSpeedInMs);
+                calculateNextSubmission();
+            } catch (InterruptedException e) {
+                System.out.println("GameEngine runGame: Thread Exception");
+                e.printStackTrace();
+            }
+            logger.info("");
+        }
     }
 
     public void resolveSubmission(IChromosome chromosome, int position) {
@@ -86,9 +101,9 @@ public class GameEngine {
         submissionHandler.handleSubmission(submission, position);
     }
 
-    public void calculateNextSubmission(int requestCounter) {
+    public void calculateNextSubmission() {
         logger.info("");
-        solver.solve(requestCounter);
+        solver.solve();
     }
 
 }

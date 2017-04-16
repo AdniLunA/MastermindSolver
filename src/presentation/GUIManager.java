@@ -44,7 +44,6 @@ public class GUIManager {
     public boolean TRACK_CODE_SETTING = false;
     public boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
     public boolean DEFAULT_RUN_AUTOMATED = false;
-    public int DEFAULT_SIMULATION_SPEED_MS = 5000; /*between 100 and 5000*/
 
     /*--
      * functions
@@ -89,8 +88,6 @@ public class GUIManager {
 
         logger.info(" - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());
-        System.out.printf("GUIManager setRandomSecretCode - starting simulation with values LOC: " + lengthOfCode
-                + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: \n* " + code.toString() + " *\n");
 
         openSimulationPage();
     }

@@ -49,7 +49,7 @@ public class SubmissionHandler {
             int nextCounter = requestCounter + 1;
             if (nextCounter < GameSettings.INSTANCE.numberOfTries) {
                 logger.info("    calculate submission #" + nextCounter);
-                gameEngine.calculateNextSubmission(nextCounter);
+                gameEngine.calculateNextSubmission();
             }
             logger.info("    After calculating next submission: ");
             logger.info("    position = " + requestCounter + ", " + currentLine.toString());

@@ -1,4 +1,0 @@
-2017-04-15 19:41:37 INFO  Mastermind_gui           main                           /  
-2017-04-15 19:41:37 INFO  Mastermind_gui           start                          /  
-2017-04-15 19:41:37 ERROR Mastermind_gui           main                           / Exception : 
-                        java.lang.RuntimeException: Exception in Application start method 
