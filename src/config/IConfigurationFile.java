@@ -8,51 +8,51 @@ public interface IConfigurationFile {
     /*--
      * evolution settings
      */
-    public int getSizeOfPopulation();
+    int getSizeOfPopulation();
 
-    public int getRepeatEvolutionNTimes();
+    int getRepeatEvolutionNTimes();
 
-    public SelectionEnum getSelectionType();
+    SelectionEnum getSelectionType();
 
-    public CrossoverEnum getCrossoverType();
+    CrossoverEnum getCrossoverType();
 
-    public int getKForCrossover();
+    int getKForCrossover();
 
-    public int getCrossoverMaxTryAgain();
+    int getCrossoverMaxTryAgain();
 
-    public float getMixingRatio();
+    float getMixingRatio();
 
-    public MutationEnum getMutationType();
+    MutationEnum getMutationType();
 
-    public double getMutationRatio();
+    double getMutationRatio();
 
-    public int getMutationMaxTryAgain();
+    int getMutationMaxTryAgain();
 
     /*--
      * game engine settings
      */
-    public int getDefaultLengthOfCode();
+    int getDefaultLengthOfCode();
 
-    public int getDefaultNumberOfColors();
+    int getDefaultNumberOfColors();
 
-    public int getDefaultNumberOfTries();
+    int getDefaultNumberOfTries();
 
-    public int getMaxLengthOfCode();
+    int getMaxLengthOfCode();
 
-    public int getMaxNumberOfTries();
+    int getMaxNumberOfTries();
 
-    public int getWeightOfWhiteDifference();
+    int getWeightOfWhiteDifference();
 
-    public int getWeightOfRedDifference();
+    int getWeightOfRedDifference();
 
     /*--
      * presentation settings
      */
-    public boolean getTrackCodeSetting();
+    boolean getTrackCodeSetting();
 
-    public boolean getDefaultShowBlackboxContent();
+    boolean getDefaultShowBlackboxContent();
 
-    public boolean getDefaultRunAutomated();
+    boolean getDefaultRunAutomated();
 
-    public int getDefaultSimulationSpeedMs();
+    int getDefaultSimulationSpeedMs();
 }

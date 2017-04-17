@@ -1,15 +1,15 @@
 package evolution;
 
 public interface IChromosome {
-    public void generateRandom();
+    void generateRandom();
 
-    public int getFitness();
+    int getFitness();
 
     void incrementGeneration();
 
-    public int[] getSequence();
+    int[] getSequence();
 
-    public int getGeneration();
+    int getGeneration();
 
     boolean checkValidity();
 
