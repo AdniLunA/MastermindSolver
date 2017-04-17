@@ -1,8 +1,6 @@
 package evolution;
 
 public interface IChromosome {
-    void generateRandom();
-
     int getFitness();
 
     void incrementGeneration();

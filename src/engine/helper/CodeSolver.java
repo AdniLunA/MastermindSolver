@@ -25,6 +25,7 @@ public class CodeSolver {
     public CodeSolver(GameEngine engine){
         this.engine = engine;
         this.requestCounter = 0;
+        this.population = new Population();
     }
 
     /*--
@@ -32,6 +33,7 @@ public class CodeSolver {
      */
     private GameEngine engine;
     private int requestCounter;
+    private Population population;
 
     /*--
      * functions
@@ -56,7 +58,6 @@ public class CodeSolver {
 
     private IChromosome solveViaEvolutionaryAlgorithms() {
         /*random gene pool -> population*/
-        IPopulation population = new Population();
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
         for (int i = 0; i < GameSettings.INSTANCE.repeatEvolutionNTimes; i++) {

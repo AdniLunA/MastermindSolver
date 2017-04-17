@@ -1,0 +1,241 @@
+2017-04-17 18:11:26 INFO  Mastermind_console       main                           /  
+2017-04-17 18:11:26 INFO  GameEngine               startGame                      /  
+2017-04-17 18:11:26 INFO  CodeValidator            <init>                         / - initialized with 10 03 12 05 04 16 17 00 
+2017-04-17 18:11:26 INFO  GameEngine               calculateNextSubmission        /  
+2017-04-17 18:11:26 INFO  CodeSolver               solve                          /  
+2017-04-17 18:11:26 INFO  CodeSolver               solve                          / CodeSolver: request #0 
+2017-04-17 18:11:26 INFO  CodeSolver               solve                          /     CodeSolver: next sequence = 03 08 14 04 02 11 01 10 
+2017-04-17 18:11:26 INFO  GameEngine               resolveSubmission              /  
+2017-04-17 18:11:26 INFO  CodeValidator            calculateResponse              /     Secret code: 10 03 12 05 04 16 17 00 
+2017-04-17 18:11:26 INFO  CodeValidator            calculateResponse              /     CodeValidator: red = 0, white = 3, code = 03 08 14 04 02 11 01 10 
+2017-04-17 18:11:26 INFO  Submission               setAttributes                  /  
+2017-04-17 18:11:26 INFO  FitnessCalculator        addSubmission                  / 03 08 14 04 02 11 01 10 
+2017-04-17 18:11:26 INFO  SubmissionHandler        addSubmission                  /  
+2017-04-17 18:11:26 INFO  GameEngine               calculateNextSubmission        /  
+2017-04-17 18:11:26 INFO  CodeSolver               solve                          /  
+2017-04-17 18:11:29 INFO  Population               evolve                         /  
+2017-04-17 18:11:29 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 05 00 04 13 15 17 08 16, mother: 12 06 08 15 17 13 07 11 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 231, fitness of mother: 231 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 05 00 08 15 17 13 07 11 and 12 06 04 13 15 17 08 16 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 231 and 231 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  ExchangeMutation         generateTwoSplitPositions      /  
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    / Mutated 12 06 04 13 15 17 08 16 to 08 06 04 13 15 17 12 16 
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #1 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #0: 22711 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 05 07 14 08 02 12 10 16, mother: 05 07 04 09 14 15 11 01 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 211, fitness of mother: 231 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 05 07 14 08 02 12 11 01 and 05 07 04 09 14 15 10 16 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 214 and 234 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #2 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #1: 22691 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 12 16 10 08 07 00 01 15, mother: 14 00 08 17 09 04 02 05 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 221, fitness of mother: 231 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 12 16 10 08 07 00 02 05 and 14 00 08 17 09 04 01 15 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 234 and 224 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #3 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #2: 22681 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 01 05 14 10 09 13 08 17, mother: 07 02 08 13 14 09 04 15 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 224, fitness of mother: 231 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #4 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #3: 22668 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 01 11 10 02 17 03 06 07, mother: 05 00 04 13 15 17 08 16 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 228, fitness of mother: 231 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 01 11 10 02 17 03 08 16 and 05 00 04 13 15 17 06 07 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 225 and 228 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #5 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #4: 22653 
+2017-04-17 18:11:48 INFO  Population               getFittest                     /  
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               getFittest                     / *****Fitness of fittest: 234 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               getFittest                     / *****Fitness of weakest: 208 
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms / New request has fitness 234 
+2017-04-17 18:11:48 INFO  CodeSolver               solve                          / CodeSolver: request #1 
+2017-04-17 18:11:48 INFO  CodeSolver               solve                          /     CodeSolver: next sequence = 05 17 12 10 04 00 02 07 
+2017-04-17 18:11:48 INFO  GameEngine               resolveSubmission              /  
+2017-04-17 18:11:48 INFO  CodeValidator            calculateResponse              /     Secret code: 10 03 12 05 04 16 17 00 
+2017-04-17 18:11:48 INFO  CodeValidator            calculateResponse              /     CodeValidator: red = 2, white = 4, code = 05 17 12 10 04 00 02 07 
+2017-04-17 18:11:48 INFO  Submission               setAttributes                  /  
+2017-04-17 18:11:48 INFO  FitnessCalculator        addSubmission                  / 05 17 12 10 04 00 02 07 
+2017-04-17 18:11:48 INFO  SubmissionHandler        addSubmission                  /  
+2017-04-17 18:11:48 INFO  GameEngine               runGame                        /  
+2017-04-17 18:11:48 INFO  GameEngine               calculateNextSubmission        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solve                          /  
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 11 05 15 10 02 06 13 08, mother: 14 00 08 17 09 04 02 05 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 442, fitness of mother: 455 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 11 00 08 17 09 04 02 05 and 14 05 15 10 02 06 13 08 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 455 and 442 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #6 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #0: 44117 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 16 12 06 01 00 11 03 09, mother: 11 12 06 00 04 14 03 02 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 429, fitness of mother: 449 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 16 12 06 01 00 11 03 02 and 11 12 06 00 04 14 03 09 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 435 and 449 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #7 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #1: 44083 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 05 07 14 08 02 12 11 01, mother: 06 03 00 17 15 10 05 16 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 435, fitness of mother: 445 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #8 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #2: 44048 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 04 14 00 13 03 15 08 06, mother: 06 03 00 17 15 10 05 16 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 439, fitness of mother: 445 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #1 is valid: true 
+2017-04-17 18:11:48 INFO  Population               getPopulationSorted            /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start mutation 
+2017-04-17 18:11:48 INFO  ExchangeMutation         mutateGenes                    /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / A new generation has been born! #9 
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  CodeSolver               solveViaEvolutionaryAlgorithms /     Code Solver - population fitness at round #3: 44022 
+2017-04-17 18:11:48 INFO  Population               evolve                         /  
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start selection 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   splitPopulation                /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   selectParents                  /  
+2017-04-17 18:11:48 INFO  Population               getSumPopulationFitness        /  
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Father: 06 00 01 11 10 17 03 14, mother: 05 07 04 09 14 15 11 01 
+2017-04-17 18:11:48 INFO  RouletteWheelSelection   getParents                     /     Fitness of father: 439, fitness of mother: 449 
+2017-04-17 18:11:48 INFO  Population               evolve                         / Start crossover 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /  
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Children: 06 07 04 09 14 15 11 01 and 05 00 01 11 10 17 03 14 
+2017-04-17 18:11:48 INFO  OnePointCrossover        crossover                      /     Fitness of children: 439 and 449 
+2017-04-17 18:11:48 INFO  Population               evolve                         /     -- Child #0 is valid: true 

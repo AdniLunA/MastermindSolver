@@ -26,7 +26,7 @@ public class OnePointCrossover implements ICrossover {
 
     /*--functions*/
     @Override
-    public IChromosome[] crossover(IChromosome[] parents) {
+    public IChromosome[] crossParents(IChromosome[] parents) {
         logger.info("");
         this.parent1 = parents[0];
         this.parent2 = parents[1];

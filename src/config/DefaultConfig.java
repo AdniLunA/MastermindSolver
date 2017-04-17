@@ -11,9 +11,9 @@ public class DefaultConfig implements IConfigurationFile {
     private final SelectionEnum selectionType = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
     private final CrossoverEnum crossoverType = CrossoverEnum.ONE_POINT;
     /*Must be greater than length of code (always < 20!):*/
-    private final int kForCrossover = 3; /*for kPoint crossover*/
+    private final int kForCrossover = 3; /*for kPoint crossParents*/
     private final int crossoverMaxTryAgain = 10;
-    private final float mixingRatio = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
+    private final float mixingRatio = 0.75f; /* for uniform crossParents; best results with values > 0.5 as 0.75*/
     private final MutationEnum mutationType = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
     private final double mutationRatio = 0.005;
     private final int mutationMaxTryAgain = 10;

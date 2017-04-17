@@ -50,7 +50,7 @@ public class RouletteWheelSelection implements ISelection {
         double bottomBoundary = 0.0;
         double topBoundary;
 
-        for (IChromosome chromosome : populationPool.getGenePool()) {
+        for (IChromosome chromosome : populationPool.getGenePoolArray()) {
             topBoundary = bottomBoundary + (chromosome.getFitness() / totalPopulationFitness);
             if (bottomBoundary <= roulettePointer && roulettePointer < topBoundary) {
                 return chromosome;

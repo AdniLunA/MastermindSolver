@@ -120,7 +120,7 @@ public enum GameSettings {
         this.crossoverMaxTryAgain = crossoverMaxTryAgain;
     }
 
-    /* for uniform crossover; best results with values > 0.5, like 0.75*/
+    /* for uniform crossParents; best results with values > 0.5, like 0.75*/
     protected void setMixingRatio(float mixingRatio) {
         if(mixingRatio <= 0 || mixingRatio >= 1){
             throw new IndexOutOfBoundsException("mixingRatio must be a value between 0 and 1.");

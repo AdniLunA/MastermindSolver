@@ -19,24 +19,28 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
      */
     public NumChromosome() {
         generateRandom();
+        this.generation = 0;
     }
 
     public NumChromosome(int[] sequence) {
+        this(sequence, 0);
+    }
+
+    public NumChromosome(int[] sequence, int generation){
         this.sequence = sequence;
+        this.generation = generation;
     }
 
     /*--
      * attributes
      */
     private int[] sequence;
-    private int generation = 0;
-    private int idInPopulation;
+    private int generation;
 
     /*--
      * functions
      */
-    @Override
-    public void generateRandom() {
+    private void generateRandom() {
         /*System.out.println("NumChromosome - generateRandom");*/
         boolean validSequence = false;
         int numOfTries = 0;

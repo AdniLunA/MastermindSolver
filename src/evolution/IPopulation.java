@@ -14,7 +14,7 @@ public interface IPopulation {
 
     IChromosome[] getPopulationSorted();
 
-    IChromosome[] getGenePool();
+    IChromosome[] getGenePoolArray();
 
     int getSumPopulationFitness();
 

@@ -11,9 +11,9 @@ public class VariableConfig implements IConfigurationFile {
     private SelectionEnum selectionType = SelectionEnum.ROULETTE_WHEEL; /*expecting better performance with tournament*/
     private CrossoverEnum crossoverType = CrossoverEnum.ONE_POINT;
     /*Must be greater than length of code (always < 20!):*/
-    private final int kForCrossover = 3; /*for kPoint crossover*/
+    private final int kForCrossover = 3; /*for kPoint crossParents*/
     private int crossoverMaxTryAgain = 10;
-    private float mixingRatio = 0.75f; /* for uniform crossover; best results with values > 0.5 as 0.75*/
+    private float mixingRatio = 0.75f; /* for uniform crossParents; best results with values > 0.5 as 0.75*/
     private MutationEnum mutationType = MutationEnum.EXCHANGE; /*best results with SCRAMBLE*/
     private double mutationRatio = 0.005;
     private int mutationMaxTryAgain = 10;
