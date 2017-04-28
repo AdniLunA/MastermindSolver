@@ -12,9 +12,7 @@ import evolution.selection.TournamentSelection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
+import java.util.*;
 
 public class Population implements IPopulation {
     /*--
@@ -120,21 +118,34 @@ public class Population implements IPopulation {
         return randomChromosome;
     }
 
-    @Override
-    public void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes){
-        removeAlreadyRequestedCodes(alreadyRequestedCodes, 0);
-    }
-
-    private void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes, int errorCounter){
-        if(errorCounter > GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS){
+    private IChromosome createNonDuplicateRandomChromosome(ArrayList<IChromosome> blacklist){
+        boolean foundNotListedChromosome = false;
+        IChromosome newRandomChromosome = new NumChromosome();
+        int decTriesCounter = GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS;
+        while (!foundNotListedChromosome && decTriesCounter > 0){
+            newRandomChromosome = createNonDuplicateRandomChromosome();
+            if(!genePool.contains(newRandomChromosome)){
+                foundNotListedChromosome = true;
+            }
+            decTriesCounter--;
+        }
+        if(decTriesCounter == 0){
             throw new RuntimeException("Population - removeAlreadyRequestedCodes: "+
                     "Tried to often to generate new code that hasn't been submitted yet. "+
                     "Stopped to prevent infinite loop.");
         }
+        return newRandomChromosome;
+    }
+
+    @Override
+    public void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes){
+        /*remove duplicates*/
+        Set<IChromosome> s = new HashSet<>(genePool);
+        genePool = new ArrayList<>(s);
         genePool.removeAll(alreadyRequestedCodes);
-        if(genePool.isEmpty()){
-            setGenePoolRandom(GameSettings.INSTANCE.sizeOfPopulation);
-            removeAlreadyRequestedCodes(alreadyRequestedCodes, errorCounter+1);
+        /*fill up holes in population*/
+        for(int i = genePool.size(); i < GameSettings.INSTANCE.sizeOfPopulation; i++){
+            genePool.add(createNonDuplicateRandomChromosome(alreadyRequestedCodes));
         }
     }
 
@@ -223,11 +234,7 @@ public class Population implements IPopulation {
 
     private ArrayList<IChromosome> transformToList(IChromosome[] array) {
         ArrayList<IChromosome> list = new ArrayList<>();
-        for (int i = 0; i < array.length; i++) {
-            if(!list.contains(array[i])) {
-                list.add(array[i]);
-            }
-        }
+        list.addAll(Arrays.asList(array));
         return list;
     }
 
