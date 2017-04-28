@@ -26,7 +26,7 @@ public class Population implements IPopulation {
      * constructors
      */
     public Population() {
-        genePool = generateRandomPopulation(GameSettings.INSTANCE.sizeOfPopulation);
+        setGenePoolRandom(GameSettings.INSTANCE.sizeOfPopulation);
     }
 
     public Population(IChromosome[] genePool) {
@@ -41,7 +41,6 @@ public class Population implements IPopulation {
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
-    private int idCounter = 0;
 
     /*--
      * functions
@@ -58,6 +57,7 @@ public class Population implements IPopulation {
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
         logger.info("Start selection");
+        /*todo: fortfahren mit error tracking*/
         IChromosome[] parents = select.getParents(getGenePoolArray());
 
         /*crossParents*/
@@ -90,11 +90,11 @@ public class Population implements IPopulation {
     }
 
     @Override
-    public int getSumPopulationFitness() {
+    public int getSumPopulationSickness() {
         logger.info("");
         int sum = 0;
         for (IChromosome chromosome : genePool) {
-            sum += chromosome.getFitness();
+            sum += chromosome.getSickness();
         }
         return sum;
     }
@@ -102,8 +102,40 @@ public class Population implements IPopulation {
     @Override
     public void replaceGene(IChromosome geneToReplace) {
         genePool.remove(geneToReplace);
-        IChromosome replacer = new NumChromosome();
-        genePool.add(replacer);
+        genePool.add(createNonDuplicateRandomChromosome());
+    }
+
+    private IChromosome createNonDuplicateRandomChromosome(){
+        NumChromosome randomChromosome;
+        int countTries = 0;
+        do {
+            if(countTries > GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS){
+                throw new RuntimeException("Population - removeAlreadyRequestedCodes: "+
+                        "Tried to often to generate new code that hasn't been submitted yet. "+
+                        "Stopped to prevent infinite loop.");
+            }
+            randomChromosome = new NumChromosome();
+            countTries++;
+        } while (genePool.contains(randomChromosome));
+        return randomChromosome;
+    }
+
+    @Override
+    public void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes){
+        removeAlreadyRequestedCodes(alreadyRequestedCodes, 0);
+    }
+
+    private void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes, int errorCounter){
+        if(errorCounter > GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS){
+            throw new RuntimeException("Population - removeAlreadyRequestedCodes: "+
+                    "Tried to often to generate new code that hasn't been submitted yet. "+
+                    "Stopped to prevent infinite loop.");
+        }
+        genePool.removeAll(alreadyRequestedCodes);
+        if(genePool.isEmpty()){
+            setGenePoolRandom(GameSettings.INSTANCE.sizeOfPopulation);
+            removeAlreadyRequestedCodes(alreadyRequestedCodes, errorCounter+1);
+        }
     }
 
     @Override
@@ -111,8 +143,8 @@ public class Population implements IPopulation {
         logger.info("");
         IChromosome fittest = getPopulationSorted()[genePool.size() - 1];
         /*todo check*/
-        logger.info("*****Fitness of fittest: " + fittest.getFitness());
-        logger.info("*****Fitness of weakest: " + getPopulationSorted()[0].getFitness());
+        logger.info("*****Sickness of fittest: " + fittest.getSickness());
+        logger.info("*****Sickness of weakest: " + getPopulationSorted()[0].getSickness());
 
         return fittest;
     }
@@ -125,12 +157,11 @@ public class Population implements IPopulation {
         this.genePool = transformToList(improvedGenePool);
     }
 
-    private ArrayList<IChromosome> generateRandomPopulation(int size) {
-        ArrayList<IChromosome> randomPopulationPool = new ArrayList<>();
+    private void setGenePoolRandom(int size) {
+        genePool = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            randomPopulationPool.add(new NumChromosome());
+            genePool.add(createNonDuplicateRandomChromosome());
         }
-        return randomPopulationPool;
     }
 
     private void instantiateHelpers(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
@@ -193,7 +224,9 @@ public class Population implements IPopulation {
     private ArrayList<IChromosome> transformToList(IChromosome[] array) {
         ArrayList<IChromosome> list = new ArrayList<>();
         for (int i = 0; i < array.length; i++) {
-            list.add(array[i]);
+            if(!list.contains(array[i])) {
+                list.add(array[i]);
+            }
         }
         return list;
     }

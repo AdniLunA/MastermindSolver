@@ -30,7 +30,7 @@ public class RouletteWheelSelection implements ISelection {
         parents[0] = selectParents(fatherPool);
         parents[1] = selectParents(motherPool);
         logger.info("    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
-        logger.info("    Fitness of father: " + parents[0].getFitness() + ", fitness of mother: " + parents[1].getFitness());
+        logger.info("    Fitness of father: " + parents[0].getSickness() + ", fitness of mother: " + parents[1].getSickness());
         return parents;
     }
 
@@ -45,13 +45,15 @@ public class RouletteWheelSelection implements ISelection {
 
     private IChromosome selectParents(IPopulation populationPool) {
         logger.info("");
-        double totalPopulationFitness = (double) populationPool.getSumPopulationFitness();
+        double totalPopulationSickness = (double) populationPool.getSumPopulationSickness();
         double roulettePointer = randomGenerator.nextDouble(true, false); /*incl. 0, excl. 1*/
         double bottomBoundary = 0.0;
         double topBoundary;
 
         for (IChromosome chromosome : populationPool.getGenePoolArray()) {
-            topBoundary = bottomBoundary + (chromosome.getFitness() / totalPopulationFitness);
+            topBoundary = bottomBoundary
+                    + ( (totalPopulationSickness - chromosome.getSickness())
+                    / totalPopulationSickness);
             if (bottomBoundary <= roulettePointer && roulettePointer < topBoundary) {
                 return chromosome;
             } else {

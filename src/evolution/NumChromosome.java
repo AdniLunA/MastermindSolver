@@ -1,12 +1,10 @@
 package evolution;
 
-import engine.GameEngine;
 import engine.GameSettings;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
-import java.util.InputMismatchException;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /*--
@@ -101,12 +99,12 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public int getFitness() {
-        /*System.out.println("NumChromosome - getFitness");*/
+    public int getSickness() {
+        /*System.out.println("NumChromosome - getSickness");*/
         try {
-            return FitnessCalculator.INSTANCE.calculateFitness(this);
+            return SicknessCalculator.INSTANCE.calculateSickness(this);
         } catch (ArrayIndexOutOfBoundsException a) {
-            System.out.println("getFitness: ERROR while trying to calculate fitness of chromosome " + toString());
+            System.out.println("getSickness: ERROR while trying to calculate sickness of chromosome " + toString());
             a.printStackTrace();
             return 0;
         }
@@ -135,15 +133,43 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public int compareTo(NumChromosome other) {
-        /*<0 -> less than other; =0 -> equals; >0 -> greater than other*/
-        if (this.getFitness() < other.getFitness()) {
+    public int compareTo(NumChromosome other) { //todo sickness min to max & vice versa
+        /*  < 0 -> more sick than other;
+            = 0 -> equally sick;
+            > 0 -> less sick than other*/
+        if (this.getSickness() > other.getSickness()) {
             return -1;
-        } else if (this.getFitness() > other.getFitness()) {
+        } else if (this.getSickness() < other.getSickness()) {
             return 1;
         } else {
             return 0;
         }
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if(o == this){
+            return true;
+        }
+        if(o == null || !(o instanceof IChromosome)){
+            return false;
+        }
+        IChromosome other = (IChromosome) o;
+        return(sequenceCompare(other.getSequence()));
+    }
+
+    private boolean sequenceCompare(int[] otherSequence){
+        for (int i = 0; i < GameSettings.INSTANCE.lengthOfCode; i++) {
+            if (sequence[i] != otherSequence[i]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    @Override
+    public int getChromosomeAtPos(int position){
+        return sequence[position];
     }
 
     @Override

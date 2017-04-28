@@ -1,7 +1,9 @@
 package evolution;
 
 public interface IChromosome {
-    int getFitness();
+    int getSickness();
+
+    int getChromosomeAtPos(int position);
 
     void incrementGeneration();
 

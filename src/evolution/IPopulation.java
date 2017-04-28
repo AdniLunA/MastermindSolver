@@ -4,6 +4,8 @@ import config.CrossoverEnum;
 import config.MutationEnum;
 import config.SelectionEnum;
 
+import java.util.ArrayList;
+
 public interface IPopulation {
 
     IChromosome getFittest();
@@ -12,11 +14,13 @@ public interface IPopulation {
 
     void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation);
 
+    void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes);
+
     IChromosome[] getPopulationSorted();
 
     IChromosome[] getGenePoolArray();
 
-    int getSumPopulationFitness();
+    int getSumPopulationSickness();
 
     void replaceGene(IChromosome geneToRemove);
 }

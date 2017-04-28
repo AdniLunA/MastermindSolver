@@ -4,7 +4,7 @@ import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
-import evolution.FitnessCalculator;
+import evolution.SicknessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import javafx.stage.Stage;
@@ -58,14 +58,17 @@ public class GameEngine {
     public void startGame(IChromosome code) {
         logger.info("");
 
-        FitnessCalculator.INSTANCE.dropForNextGame();
+        SicknessCalculator.INSTANCE.dropForNextGame();
         validator = new CodeValidator(code);
+        System.out.printf("starting simulation with values LOC: "
+                + GameSettings.INSTANCE.lengthOfCode + ", NOC: " + GameSettings.INSTANCE.numberOfColors + ", NOT: "
+                + GameSettings.INSTANCE.numberOfTries + ", secret code: \n* " + code.toString() + " *\n");
         /*initialize solver*/
         solver = new CodeSolver(this);
         calculateNextSubmission();
     }
 
-    public void runGame(IChromosome code) {
+    public void runGameAutomated(IChromosome code) {
         startGame(code);
 
         while (solver.getRequestCounter() < GameSettings.INSTANCE.numberOfTries) {
@@ -73,7 +76,7 @@ public class GameEngine {
                 Thread.sleep(GameSettings.INSTANCE.simulationSpeedInMs);
                 calculateNextSubmission();
             } catch (InterruptedException e) {
-                System.out.println("GameEngine runGame: Thread Exception");
+                System.out.println("GameEngine runGameAutomated: Thread Exception");
                 e.printStackTrace();
             }
             logger.info("");
@@ -83,11 +86,12 @@ public class GameEngine {
     public void resolveSubmission(IChromosome chromosome) {
         logger.info("");
         Submission newSubmission = validator.calculateResponse(chromosome);
-        System.out.printf("  " + chromosome.toString() + "  => sequence #" + (solver.getRequestCounter() - 1)
-                + ", red = " + newSubmission.getRed() + ", white = " + newSubmission.getWhite()
-                + ". @GameEngine - resolveSubmission." + "\n");
+        this.logger.info("red = " + newSubmission.getRed() + ", white = " + newSubmission.getWhite() + ", code = "
+                + chromosome.toString());
+        System.out.printf("  " + chromosome.toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %3d. @GameEngine - resolveSubmission.\n"
+                , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration());
 
-        FitnessCalculator.INSTANCE.addSubmission(newSubmission);
+        SicknessCalculator.INSTANCE.addSubmission(newSubmission);
 
         submissionHandler.addSubmission(newSubmission);
     }

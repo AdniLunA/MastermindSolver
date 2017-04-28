@@ -13,6 +13,6 @@ public class PopulationTest {
         IChromosome[] sortedGenePool = population.getPopulationSorted();
         IChromosome expectedFittest = sortedGenePool[sortedGenePool.length - 1];
         IChromosome expectedSickest = sortedGenePool[0];
-        assertTrue(expectedFittest.getFitness() > expectedSickest.getFitness());
+        assertTrue(expectedFittest.getSickness() > expectedSickest.getSickness());
     }
 }

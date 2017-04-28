@@ -1,10 +1,7 @@
 package presentation;
 
 import engine.GameEngine;
-import engine.GameSettings;
-import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
-import evolution.FitnessCalculator;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +12,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
-import java.util.concurrent.LinkedBlockingQueue;
 
 public class GUIManager {
     /*for debugging*/

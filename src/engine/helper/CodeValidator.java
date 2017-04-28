@@ -21,9 +21,6 @@ public class CodeValidator {
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
         this.logger.info("- initialized with " + secretCode.toString());
-        System.out.printf("CodeValidator - starting simulation with values LOC: "
-                + GameSettings.INSTANCE.lengthOfCode + ", NOC: " + GameSettings.INSTANCE.numberOfColors + ", NOT: "
-                + GameSettings.INSTANCE.numberOfTries + ", secret code: \n* " + secretCode.toString() + " *\n");
     }
 
     /*--
@@ -37,9 +34,8 @@ public class CodeValidator {
     public Submission calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
-        this.logger.info("    Secret code: " + secretCode.toString());
         for (int i = 0; i < secretCode.getSequence().length; i++) {
-            if (secretCode.getSequence()[i] == sequenceToCheck.getSequence()[i]) {
+            if (secretCode.getChromosomeAtPos(i) == sequenceToCheck.getChromosomeAtPos(i)) {
                 redResponse++;
             }
         }
@@ -58,7 +54,6 @@ public class CodeValidator {
         }
         whiteResponse -= redResponse;
 
-        this.logger.info("    CodeValidator: red = " + redResponse + ", white = " + whiteResponse + ", code = " + sequenceToCheck.toString());
         return new Submission(sequenceToCheck, redResponse, whiteResponse);
     }
 

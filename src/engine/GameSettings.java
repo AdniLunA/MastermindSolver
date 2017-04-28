@@ -22,6 +22,9 @@ public enum GameSettings {
     public MutationEnum mutationType;
     public double mutationRatio;
     public int mutationMaxTryAgain;
+    public final int MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS = 100;
+
+    public boolean trackSicknessByEvolving;
 
     /*--
      * game engine settings
@@ -53,19 +56,21 @@ public enum GameSettings {
      * -> must be validated by all classes that manipulate chromosomes
      */
 
-	/*--
-	 * functions
-	 */
-	protected void loadDefaultSettings(){
-	    setSizeOfPopulation(100);
-	    setRepeatEvolutionNTimes(5);
-	    setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
+    /*--
+     * functions
+     */
+    protected void loadDefaultSettings() {
+        setSizeOfPopulation(10);
+        setRepeatEvolutionNTimes(3);
+        setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
         setCrossoverType(CrossoverEnum.ONE_POINT);
 
-        setLengthOfCode(8);
-        setNumberOfColors(18);
-        setNumberOfTries(50);
+        setLengthOfCode(3);
+        setNumberOfColors(6);
+        setNumberOfTries(15);
         setMaxNumberOfTries(50);
+
+        setTrackSicknessByEvolving(false);
 
         setSimulationSpeedInMs(100);
 
@@ -76,22 +81,22 @@ public enum GameSettings {
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 
-        setWeightOfWhiteDifference(3);
-        setWeightOfRedDifference(10);
+        setWeightOfWhiteDifference(1);
+        setWeightOfRedDifference(7);
     }
 
     /*--
      * setter
      */
     protected void setSizeOfPopulation(int sizeOfPopulation) {
-        if(sizeOfPopulation < 1) {
+        if (sizeOfPopulation < 1) {
             throw new IllegalArgumentException("sizeOfPopulation has to be > 0");
         }
         this.sizeOfPopulation = sizeOfPopulation;
     }
 
     protected void setRepeatEvolutionNTimes(int repeatEvolutionNTimes) {
-        if(repeatEvolutionNTimes < 1) {
+        if (repeatEvolutionNTimes < 1) {
             throw new IllegalArgumentException("repeatEvolutionNTimes has to be > 0");
         }
         this.repeatEvolutionNTimes = repeatEvolutionNTimes;
@@ -107,14 +112,17 @@ public enum GameSettings {
 
     /*Must be smaller than length of code (always < 20!):*/
     protected void setKForCrossover(int kForCrossover) {
-        if(kForCrossover < 1 || kForCrossover >= lengthOfCode || kForCrossover >= MAX_LENGTH_OF_CODE){
-            throw new IndexOutOfBoundsException("kForCrossover has to be > 0 and < " + MAX_LENGTH_OF_CODE);
+        if (crossoverType == CrossoverEnum.K_POINT) {
+            if (kForCrossover < 1 || kForCrossover >= lengthOfCode || kForCrossover >= MAX_LENGTH_OF_CODE) {
+                int upperLimit = (MAX_LENGTH_OF_CODE > lengthOfCode) ? lengthOfCode : MAX_LENGTH_OF_CODE;
+                throw new IndexOutOfBoundsException("kForCrossover has to be > 0 and < " + upperLimit);
+            }
         }
         this.kForCrossover = kForCrossover;
     }
 
     protected void setCrossoverMaxTryAgain(int crossoverMaxTryAgain) {
-        if(crossoverMaxTryAgain < 1) {
+        if (crossoverMaxTryAgain < 1) {
             throw new IllegalArgumentException("crossoverMaxTryAgain has to be > 0");
         }
         this.crossoverMaxTryAgain = crossoverMaxTryAgain;
@@ -122,7 +130,7 @@ public enum GameSettings {
 
     /* for uniform crossParents; best results with values > 0.5, like 0.75*/
     protected void setMixingRatio(float mixingRatio) {
-        if(mixingRatio <= 0 || mixingRatio >= 1){
+        if (mixingRatio <= 0 || mixingRatio >= 1) {
             throw new IndexOutOfBoundsException("mixingRatio must be a value between 0 and 1.");
         }
         this.mixingRatio = mixingRatio;
@@ -133,50 +141,50 @@ public enum GameSettings {
     }
 
     protected void setMutationRatio(double mutationRatio) {
-        if(mutationRatio <= 0 || mutationRatio >= 1){
+        if (mutationRatio <= 0 || mutationRatio >= 1) {
             throw new IndexOutOfBoundsException("mutationRatio must be a value between 0 and 1.");
         }
         this.mutationRatio = mutationRatio;
     }
 
     protected void setMutationMaxTryAgain(int mutationMaxTryAgain) {
-        if(mutationMaxTryAgain < 1) {
+        if (mutationMaxTryAgain < 1) {
             throw new IllegalArgumentException("mutationMaxTryAgain has to be > 0");
         }
         this.mutationMaxTryAgain = mutationMaxTryAgain;
     }
 
     protected void setLengthOfCode(int lengthOfCode) {
-        if(lengthOfCode < 1) {
+        if (lengthOfCode < 1) {
             throw new IllegalArgumentException("lengthOfCode has to be > 0");
         }
         this.lengthOfCode = lengthOfCode;
     }
 
     protected void setNumberOfColors(int numberOfColors) {
-        if(numberOfColors < 1 || numberOfColors > MAX_NUMBER_OF_COLORS) {
+        if (numberOfColors < 1 || numberOfColors > MAX_NUMBER_OF_COLORS) {
             throw new IllegalArgumentException("numberOfColors has to be > 0 and < " + MAX_NUMBER_OF_COLORS);
         }
         this.numberOfColors = numberOfColors;
     }
 
     protected void setNumberOfTries(int numberOfTries) {
-        if(numberOfTries < 1) {
+        if (numberOfTries < 1) {
             throw new IllegalArgumentException("numberOfTries has to be > 0");
         }
         this.numberOfTries = numberOfTries;
     }
 
     protected void setMaxNumberOfTries(int maxNumberOfTries) {
-        if(maxNumberOfTries < 1) {
+        if (maxNumberOfTries < 1) {
             throw new IllegalArgumentException("maxNumberOfTries has to be > 0");
         }
         this.maxNumberOfTries = maxNumberOfTries;
     }
 
     /*between 10 and 5000*/
-    protected void setSimulationSpeedInMs(int simulationSpeedInMs){
-        if(simulationSpeedInMs < 10 || simulationSpeedInMs > 5000){
+    protected void setSimulationSpeedInMs(int simulationSpeedInMs) {
+        if (simulationSpeedInMs < 10 || simulationSpeedInMs > 5000) {
             throw new IllegalArgumentException("simulationSpeedInMs as to be >= 10ms and <= 5000ms.");
         }
         this.simulationSpeedInMs = simulationSpeedInMs;
@@ -188,5 +196,9 @@ public enum GameSettings {
 
     protected void setWeightOfRedDifference(int weightOfRedDifference) {
         this.weightOfRedDifference = weightOfRedDifference;
+    }
+
+    protected void setTrackSicknessByEvolving(boolean trackSicknessByEvolving) {
+        this.trackSicknessByEvolving = trackSicknessByEvolving;
     }
 }

@@ -72,7 +72,7 @@ public class UniformCrossover implements ICrossover {
             return parents;
         }
         logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
-        logger.info("    Fitness of children: " + children[0].getFitness() + " and " + children[1].getFitness());
+        logger.info("    Fitness of children: " + children[0].getSickness() + " and " + children[1].getSickness());
         return children;
     }
 

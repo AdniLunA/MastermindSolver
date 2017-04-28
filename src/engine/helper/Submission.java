@@ -28,7 +28,6 @@ public class Submission {
 
     /*--functions*/
     public void setAttributes(IChromosome submittedChromosome, int red, int white) {
-        this.logger.info("");
         this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;

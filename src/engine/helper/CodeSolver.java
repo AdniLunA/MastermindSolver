@@ -34,6 +34,7 @@ public class CodeSolver {
     private GameEngine engine;
     private int requestCounter;
     private Population population;
+    private ArrayList<IChromosome> alreadyPostedRequests = new ArrayList<>();
 
     /*--
      * functions
@@ -53,6 +54,7 @@ public class CodeSolver {
         this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
         requestCounter++;
 
+        alreadyPostedRequests.add(newSequence);
         engine.resolveSubmission(newSequence);
     }
 
@@ -60,19 +62,25 @@ public class CodeSolver {
         /*random gene pool -> population*/
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
+        /*todo: fortfahren mit error tracking*/
         for (int i = 0; i < GameSettings.INSTANCE.repeatEvolutionNTimes; i++) {
             population.evolve();
-            this.logger.info("    Code Solver - population fitness at round #" + i + ": " + population.getSumPopulationFitness());
+            if(GameSettings.INSTANCE.trackSicknessByEvolving){
+                System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
+            }
+            this.logger.info("    Code Solver - population fitness at round #" + i + ": " + population.getSumPopulationSickness());
         }
+        /*remove already posted sequences*/
+        population.removeAlreadyRequestedCodes(alreadyPostedRequests);
         /*get fittest*/
-        IChromosome nextRequest;
+        IChromosome nextRequest = population.getFittest();
         /*
-        prevent duplicate submission
-         */
+        prevent duplicate submission - old method
+        *//*
         boolean alreadyPosted = false;
         do {
             nextRequest = population.getFittest();
-            ArrayList<Submission> postedSubmissions = FitnessCalculator.INSTANCE.getSubmissions();
+            ArrayList<Submission> postedSubmissions = SicknessCalculator.INSTANCE.getSubmissions();
             for (Submission postedSubmission : postedSubmissions) {
                 if (postedSubmission == postedSubmission.getChromosome()) {
                     alreadyPosted = true;
@@ -82,7 +90,8 @@ public class CodeSolver {
             }
         }
         while (alreadyPosted);
-        this.logger.info("New request has fitness " + nextRequest.getFitness());
+        */
+        this.logger.info("New request has fitness " + nextRequest.getSickness());
         return nextRequest;
     }
 
