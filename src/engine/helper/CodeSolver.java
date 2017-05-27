@@ -63,21 +63,17 @@ public class CodeSolver {
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
         /*todo: fortfahren mit error tracking*/
-        //for (int count = 0; count < GameSettings.INSTANCE.repeatEvolutionNTimes; count++) {
-        int count = 0;
-        while(population.getFittest().getSickness()>1){
+        for (int i = 0; i < GameSettings.INSTANCE.repeatEvolutionNTimes; i++) {
             population.evolve();
             if(GameSettings.INSTANCE.trackSicknessByEvolving){
-                System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", count, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
+                System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
             }
-            /*remove already posted sequences*/
-            population.removeAlreadyRequestedCodes(alreadyPostedRequests);
-            this.logger.info("    Code Solver - population fitness at round #" + count + ": " + population.getSumPopulationSickness());
-            count++;
+            this.logger.info("    Code Solver - population fitness at round #" + i + ": " + population.getSumPopulationSickness());
         }
+        /*remove already posted sequences*/
+        population.removeAlreadyRequestedCodes(alreadyPostedRequests);
         /*get fittest*/
         IChromosome nextRequest = population.getFittest();
-        System.out.println("Set request after "+count+" evolutionary steps");
         /*
         prevent duplicate submission - old method
         *//*
@@ -103,5 +99,9 @@ public class CodeSolver {
 
     public int getRequestCounter() {
         return requestCounter;
+    }
+
+    public void setRequestCounter(int requestCounter) {
+        this.requestCounter = requestCounter;
     }
 }

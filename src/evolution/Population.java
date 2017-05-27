@@ -12,7 +12,9 @@ import evolution.selection.TournamentSelection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.InputMismatchException;
 
 public class Population implements IPopulation {
     /*--
@@ -24,11 +26,13 @@ public class Population implements IPopulation {
      * constructors
      */
     public Population() {
-        setGenePoolRandom(GameSettings.INSTANCE.sizeOfPopulation);
+        this.populationSize=GameSettings.INSTANCE.sizeOfPopulation;
+        setGenePoolRandom(populationSize);
     }
 
     public Population(IChromosome[] genePool) {
-        this.genePool = transformToList(genePool);
+        this.genePool = transformToNonDuplicateList(genePool);
+        this.populationSize=genePool.length;
     }
 
     /*--
@@ -39,6 +43,7 @@ public class Population implements IPopulation {
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
+    private int populationSize;
 
     /*--
      * functions
@@ -74,7 +79,7 @@ public class Population implements IPopulation {
         /*mutation*/
         logger.info("Start mutation");
         IChromosome[] mutatedGeneration = mutate.mutateGenes(getGenePoolArray());
-        this.genePool = transformToList(mutatedGeneration);
+        this.genePool = transformToNonDuplicateList(mutatedGeneration);
 
         logger.info("A new generation has been born! #" + maxGenerationCounter);
     }
@@ -118,34 +123,11 @@ public class Population implements IPopulation {
         return randomChromosome;
     }
 
-    private IChromosome createNonDuplicateRandomChromosome(ArrayList<IChromosome> blacklist){
-        boolean foundNotListedChromosome = false;
-        IChromosome newRandomChromosome = new NumChromosome();
-        int decTriesCounter = GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS;
-        while (!foundNotListedChromosome && decTriesCounter > 0){
-            newRandomChromosome = createNonDuplicateRandomChromosome();
-            if(!genePool.contains(newRandomChromosome)){
-                foundNotListedChromosome = true;
-            }
-            decTriesCounter--;
-        }
-        if(decTriesCounter == 0){
-            throw new RuntimeException("Population - removeAlreadyRequestedCodes: "+
-                    "Tried to often to generate new code that hasn't been submitted yet. "+
-                    "Stopped to prevent infinite loop.");
-        }
-        return newRandomChromosome;
-    }
-
     @Override
     public void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes){
-        /*remove duplicates*/
-        Set<IChromosome> s = new HashSet<>(genePool);
-        genePool = new ArrayList<>(s);
         genePool.removeAll(alreadyRequestedCodes);
-        /*fill up holes in population*/
-        for(int i = genePool.size(); i < GameSettings.INSTANCE.sizeOfPopulation; i++){
-            genePool.add(createNonDuplicateRandomChromosome(alreadyRequestedCodes));
+        while(genePool.size() < populationSize){
+            genePool.add(createNonDuplicateRandomChromosome());
         }
     }
 
@@ -165,7 +147,7 @@ public class Population implements IPopulation {
         int lastPos = improvedGenePool.length - 1;
         improvedGenePool[lastPos - 1] = newGenes[0];
         improvedGenePool[lastPos] = newGenes[1];
-        this.genePool = transformToList(improvedGenePool);
+        this.genePool = transformToNonDuplicateList(improvedGenePool);
     }
 
     private void setGenePoolRandom(int size) {
@@ -232,9 +214,15 @@ public class Population implements IPopulation {
         }
     }
 
-    private ArrayList<IChromosome> transformToList(IChromosome[] array) {
+    private ArrayList<IChromosome> transformToNonDuplicateList(IChromosome[] array) {
         ArrayList<IChromosome> list = new ArrayList<>();
-        list.addAll(Arrays.asList(array));
+        for (int i = 0; i < array.length; i++) {
+            if(!list.contains(array[i])) {
+                list.add(array[i]);
+            } else {
+                list.add(createNonDuplicateRandomChromosome());
+            }
+        }
         return list;
     }
 
@@ -255,7 +243,7 @@ public class Population implements IPopulation {
     }
 
     public void setGenePool(IChromosome[] genePool) {
-        this.genePool = transformToList(genePool);
+        this.genePool = transformToNonDuplicateList(genePool);
     }
 
 

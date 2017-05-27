@@ -40,7 +40,6 @@ public class GameEngine {
     /*--
      * attributes
      */
-    private NumChromosome codeGenerator;
     private CodeValidator validator;
     private CodeSolver solver;
     private SubmissionHandler submissionHandler;
@@ -90,6 +89,12 @@ public class GameEngine {
                 + chromosome.toString());
         System.out.printf("  " + chromosome.toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %3d. @GameEngine - resolveSubmission.\n"
                 , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration());
+
+        /*if solution is found, break loop by setting currentLine to max*/
+        if (newSubmission.getRed() == GameSettings.INSTANCE.lengthOfCode) {
+            System.out.println("secret code found!!!");
+            solver.setRequestCounter(GameSettings.INSTANCE.numberOfTries);
+        }
 
         SicknessCalculator.INSTANCE.addSubmission(newSubmission);
 

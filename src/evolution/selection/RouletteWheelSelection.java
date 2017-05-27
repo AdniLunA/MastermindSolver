@@ -61,6 +61,7 @@ public class RouletteWheelSelection implements ISelection {
             }
         }
         IChromosome[] sortedPopulation = populationPool.getPopulationSorted();
+        System.out.println("sorted population length: "+ sortedPopulation.length);
         return sortedPopulation[sortedPopulation.length - 1];
     }
 }

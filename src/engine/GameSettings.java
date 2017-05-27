@@ -60,13 +60,13 @@ public enum GameSettings {
      * functions
      */
     protected void loadDefaultSettings() {
-        setSizeOfPopulation(10);
+        setSizeOfPopulation(50);
         setRepeatEvolutionNTimes(3);
         setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
         setCrossoverType(CrossoverEnum.ONE_POINT);
 
-        setLengthOfCode(3);
-        setNumberOfColors(6);
+        setLengthOfCode(4);
+        setNumberOfColors(10);
         setNumberOfTries(15);
         setMaxNumberOfTries(50);
 
