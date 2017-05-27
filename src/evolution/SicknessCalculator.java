@@ -26,7 +26,9 @@ public enum SicknessCalculator {
      * functions
      */
     public void addSubmission(Submission newSubmission) {
-        logger.info(newSubmission.getChromosome().toString());
+        if(GameSettings.INSTANCE.loggingEnabled) {
+            logger.info(newSubmission.getChromosome().toString());
+        }
         this.submissions.add(newSubmission);
         this.submissionComparer.add(new CodeValidator(newSubmission.getChromosome()));
     }

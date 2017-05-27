@@ -2,7 +2,9 @@ package engine.helper;
 
 import engine.GameEngine;
 import engine.GameSettings;
-import evolution.*;
+import evolution.IChromosome;
+import evolution.NumChromosome;
+import evolution.Population;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +24,7 @@ public class CodeSolver {
     /*--
      * console
      */
-    public CodeSolver(GameEngine engine){
+    public CodeSolver(GameEngine engine) {
         this.engine = engine;
         this.requestCounter = 0;
         this.population = new Population();
@@ -40,8 +42,8 @@ public class CodeSolver {
      * functions
      */
     public void solve() {
-        this.logger.info("");
-        if (requestCounter >= GameSettings.INSTANCE.maxNumberOfTries){
+        //this.logger.info("");
+        if (requestCounter >= GameSettings.INSTANCE.maxNumberOfTries) {
             logger.error("maxNumberOfTries reached. No further submissions are calculated.");
             throw new IndexOutOfBoundsException("maxNumberOfTries reached. No further submissions are calculated.");
         }
@@ -50,8 +52,10 @@ public class CodeSolver {
         if (requestCounter != 0) {
             newSequence = solveViaEvolutionaryAlgorithms();
         }
-        this.logger.info("CodeSolver: request #" + requestCounter);
-        this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
+        if (GameSettings.INSTANCE.loggingEnabled) {
+            this.logger.info("CodeSolver: request #" + requestCounter);
+            this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
+        }
         requestCounter++;
 
         alreadyPostedRequests.add(newSequence);
@@ -63,35 +67,25 @@ public class CodeSolver {
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
         /*todo: fortfahren mit error tracking*/
-        for (int i = 0; i < GameSettings.INSTANCE.repeatEvolutionNTimes; i++) {
+        for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (population.getFittest().getSickness() > 0); i++) {
             population.evolve();
-            if(GameSettings.INSTANCE.trackSicknessByEvolving){
+            if (GameSettings.INSTANCE.trackSicknessByEvolving && !GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
                 System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
             }
-            this.logger.info("    Code Solver - population fitness at round #" + i + ": " + population.getSumPopulationSickness());
+            if (GameSettings.INSTANCE.loggingEnabled) {
+                this.logger.info("    Code Solver - population sickness at round #" + i + ": " + population.getSumPopulationSickness());
+            }
+
+            /*remove already posted sequences*/
+            population.removeAlreadyRequestedCodes(alreadyPostedRequests);
         }
-        /*remove already posted sequences*/
-        population.removeAlreadyRequestedCodes(alreadyPostedRequests);
+
         /*get fittest*/
         IChromosome nextRequest = population.getFittest();
-        /*
-        prevent duplicate submission - old method
-        *//*
-        boolean alreadyPosted = false;
-        do {
-            nextRequest = population.getFittest();
-            ArrayList<Submission> postedSubmissions = SicknessCalculator.INSTANCE.getSubmissions();
-            for (Submission postedSubmission : postedSubmissions) {
-                if (postedSubmission == postedSubmission.getChromosome()) {
-                    alreadyPosted = true;
-                    population.replaceGene(nextRequest);
-                    break;
-                }
-            }
+
+        if (GameSettings.INSTANCE.loggingEnabled) {
+            this.logger.info("New request has fitness " + nextRequest.getSickness());
         }
-        while (alreadyPosted);
-        */
-        this.logger.info("New request has fitness " + nextRequest.getSickness());
         return nextRequest;
     }
 

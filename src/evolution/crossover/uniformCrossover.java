@@ -37,7 +37,7 @@ public class UniformCrossover implements ICrossover {
 
     @Override
     public IChromosome[] crossParents(IChromosome[] parents) {
-        logger.info("");
+        //logger.info("");
         this.parent1 = parents[0];
         this.parent2 = parents[1];
         sequenceLength = GameSettings.INSTANCE.lengthOfCode;
@@ -71,8 +71,10 @@ public class UniformCrossover implements ICrossover {
             }
             return parents;
         }
-        logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
-        logger.info("    Fitness of children: " + children[0].getSickness() + " and " + children[1].getSickness());
+        if(GameSettings.INSTANCE.loggingEnabled) {
+            logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
+            logger.info("    Fitness of children: " + children[0].getSickness() + " and " + children[1].getSickness());
+        }
         return children;
     }
 

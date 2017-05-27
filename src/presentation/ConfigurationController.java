@@ -129,7 +129,7 @@ public class ConfigurationController implements Initializable {
 
     /*--functions*/
     private int checkBoundaries(String sValue, int maxValue) {
-        logger.info("");
+        //logger.info("");
         try {
             int value = Integer.parseInt(sValue);
             if (value < 1) {
@@ -149,7 +149,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeLOCTextfield() {
-        logger.info("");
+//        logger.info("");
 
         int newValue = checkBoundaries(loc_textfield.getText(), GameSettings.INSTANCE.MAX_LENGTH_OF_CODE);
         if (newValue != 0) {
@@ -164,7 +164,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeNOCTextfield() {
-        logger.info("");
+//        logger.info("");
 
         int newValue = checkBoundaries(noc_textfield.getText(), GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS);
         if (newValue != 0) {
@@ -179,7 +179,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeNOTTextfield() {
-        logger.info("");
+//        logger.info("");
 
         int newValue = checkBoundaries(not_textfield.getText(), GameSettings.INSTANCE.maxNumberOfTries);
         if (newValue != 0) {
@@ -194,7 +194,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickNextStep() {
-        logger.info("");
+//        logger.info("");
 
         paramSettingArea.setDisable(true);
         initializeCodeSettingArea();
@@ -204,13 +204,13 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickGenerateRandom() {
-        logger.info("");
+//        logger.info("");
         guiManager.setRandomSecretCode(lengthOfCode, numberOfColors, numberOfTries);
     }
 
     @FXML
     private void onclickLastStep() {
-        logger.info("");
+//        logger.info("");
 
         paramSettingArea.setDisable(false);
         codeSettingArea.setDisable(true);
@@ -219,7 +219,7 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickStartSimulation() {
-        logger.info("");
+//        logger.info("");
 
         boolean[] accepted = checkCodeAcceptance();
 
@@ -238,7 +238,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private boolean[] checkCodeAcceptance() {
-        logger.info("");
+        //logger.info("");
 
         /*test if a hole is not filled*/
         int i = 0;
@@ -289,7 +289,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private void initializeColors() {
-        logger.info("");
+//        logger.info("");
         for (int i = 0; i < GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             try {
                 LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
@@ -303,7 +303,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private void initializeParamSettingArea(int locMinLength) {
-        logger.info("");
+//        logger.info("");
 
         lengthOfCode = GameSettings.INSTANCE.lengthOfCode;
         /*override Config setting if its below minimum)*/
@@ -326,7 +326,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private void initializeCodeSettingArea() {
-        logger.info("");
+//        logger.info("");
 
         for (int i = 0; i < GameSettings.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
             circles[i].setVisible(true);
@@ -370,7 +370,7 @@ public class ConfigurationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        logger.info("");
+//        logger.info("");
         /*--attributes*/
         int k = GameSettings.INSTANCE.kForCrossover;
         int minValue;

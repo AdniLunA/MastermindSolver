@@ -55,19 +55,21 @@ public class Population implements IPopulation {
 
     @Override
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
-        logger.info("");
+        //logger.info("");
         maxGenerationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
-        logger.info("Start selection");
+        //logger.info("Start selection");
         /*todo: fortfahren mit error tracking*/
         IChromosome[] parents = select.getParents(getGenePoolArray());
 
         /*crossParents*/
-        logger.info("Start crossover");
+        //logger.info("Start crossover");
         IChromosome[] children = crossover.crossParents(parents);
         for (int i = 0; i < children.length; i++) {
-            logger.info("    -- Child #" + i + " is valid: " + children[i].checkValidity());
+            if(GameSettings.INSTANCE.loggingEnabled) {
+                logger.info("    -- Child #" + i + " is valid: " + children[i].checkValidity());
+            }
             if (!children[i].checkValidity()) {
                 throw new InputMismatchException("Population crossover: ERROR - got invalid child " + children[i].toString());
             }
@@ -77,16 +79,18 @@ public class Population implements IPopulation {
         replaceWeakestWithNewGenes(children);
 
         /*mutation*/
-        logger.info("Start mutation");
+        //logger.info("Start mutation");
         IChromosome[] mutatedGeneration = mutate.mutateGenes(getGenePoolArray());
         this.genePool = transformToNonDuplicateList(mutatedGeneration);
 
-        logger.info("A new generation has been born! #" + maxGenerationCounter);
+        if(GameSettings.INSTANCE.loggingEnabled) {
+            logger.info("A new generation was born! #" + maxGenerationCounter);
+        }
     }
 
     @Override
     public IChromosome[] getPopulationSorted() {
-        logger.info("");
+        //logger.info("");
         IChromosome[] sortedPopulation = getGenePoolArray();
         Arrays.sort(sortedPopulation);
         return sortedPopulation;
@@ -94,7 +98,7 @@ public class Population implements IPopulation {
 
     @Override
     public int getSumPopulationSickness() {
-        logger.info("");
+        //logger.info("");
         int sum = 0;
         for (IChromosome chromosome : genePool) {
             sum += chromosome.getSickness();
@@ -133,11 +137,13 @@ public class Population implements IPopulation {
 
     @Override
     public IChromosome getFittest() {
-        logger.info("");
+        //logger.info("");
         IChromosome fittest = getPopulationSorted()[genePool.size() - 1];
         /*todo check*/
-        logger.info("*****Sickness of fittest: " + fittest.getSickness());
-        logger.info("*****Sickness of weakest: " + getPopulationSorted()[0].getSickness());
+        if(GameSettings.INSTANCE.loggingEnabled) {
+            logger.info("*****Sickness of fittest: " + fittest.getSickness());
+            logger.info("*****Sickness of weakest: " + getPopulationSorted()[0].getSickness());
+        }
 
         return fittest;
     }

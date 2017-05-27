@@ -17,7 +17,7 @@ public class DisplacementMutation extends MutatorBasics {
 
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool) {
-        logger.info("");
+        //logger.info("");
         for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
@@ -54,7 +54,9 @@ public class DisplacementMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                logger.info("Mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
+                if(GameSettings.INSTANCE.loggingEnabled) {
+                    logger.info("Mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
+                }
                 genePool[chromosomeCount] = mutatedChromosome;
             }
         }

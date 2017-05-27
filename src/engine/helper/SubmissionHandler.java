@@ -25,7 +25,7 @@ public class SubmissionHandler {
     private LinkedBlockingQueue<Submission> submissions = new LinkedBlockingQueue<>();;
 
     public void addSubmission(Submission submission) {
-        logger.info("");
+        //logger.info("");
         try {
             submissions.put(submission);
         } catch (InterruptedException e) {
@@ -35,7 +35,7 @@ public class SubmissionHandler {
     }
 
     public void handleSubmissionRequest(int requestCounter) {
-        logger.info("");
+        //logger.info("");
         if (requestCounter < GameSettings.INSTANCE.numberOfTries) {
             Submission currentLine = null;
             try {
@@ -44,15 +44,21 @@ public class SubmissionHandler {
                 System.out.println("    ERROR: reading of submission #" + requestCounter + " failed.");
                 e.printStackTrace();
             }
-            logger.info("    position = " + requestCounter + ", " + currentLine.toString());
+
+            if(GameSettings.INSTANCE.loggingEnabled) {
+                logger.info("    position = " + requestCounter + ", " + currentLine.toString());
+            }
             int nextCounter = requestCounter + 1;
             if (nextCounter < GameSettings.INSTANCE.numberOfTries) {
-                logger.info("    calculate submission #" + nextCounter);
+                if(GameSettings.INSTANCE.loggingEnabled) {
+                    logger.info("    calculate submission #" + nextCounter);
+                }
                 gameEngine.calculateNextSubmission();
             }
-            logger.info("    After calculating next submission: ");
-            logger.info("    position = " + requestCounter + ", " + currentLine.toString());
-
+            if(GameSettings.INSTANCE.loggingEnabled) {
+                logger.info("    After calculating next submission: ");
+                logger.info("    position = " + requestCounter + ", " + currentLine.toString());
+            }
         }
     }
 }

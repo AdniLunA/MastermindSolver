@@ -15,14 +15,14 @@ public class Mastermind_gui extends Application {
     /*--functions*/
     @Override
     public void start(Stage primaryStage) throws IOException {
-        logger.info("");
+        //logger.info("");
 
         new GameEngine(primaryStage);
     }
 
     /*MAIN*/
     public static void main(String... args) {
-        LogManager.getLogger(Mastermind_gui.class).info("");
+        //LogManager.getLogger(Mastermind_gui.class).info("");
 
         try {
         /*start application in gui*/

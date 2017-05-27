@@ -20,7 +20,9 @@ public class CodeValidator {
      */
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
-        this.logger.info("- initialized with " + secretCode.toString());
+        if (GameSettings.INSTANCE.loggingEnabled) {
+            this.logger.info("- initialized with " + secretCode.toString());
+        }
     }
 
     /*--

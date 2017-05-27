@@ -8,17 +8,14 @@ import java.io.IOException;
 
 public class Mastermind_console {
 
-    /*MAIN*/
     public static void main(String... args) throws IOException {
-        LogManager.getLogger(Mastermind_console.class).info("");
+        //LogManager.getLogger(Mastermind_console.class).info("");
 
-        try{
-            /*start application in console*/
-            GameEngine engine = new GameEngine();
-            engine.runGameAutomated(new NumChromosome());
-        } catch (Exception e) {
-            LogManager.getLogger(Mastermind_gui.class).error("Exception : \n                        " + e.toString());
-            e.printStackTrace();
+        /*start application in console*/
+        GameEngine engine = new GameEngine();
+        boolean codeSolved = engine.runGameAutomated(new NumChromosome());
+        if(codeSolved){
+            System.out.println("secret code found!");
         }
     }
 }

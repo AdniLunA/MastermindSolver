@@ -45,7 +45,7 @@ public class GUIManager {
      * functions
      */
     public void openConfigurationPage(Stage primaryStage) {
-        logger.info("");
+//        logger.info("");
 
         configPg = new ConfigurationController(this);
 
@@ -64,7 +64,7 @@ public class GUIManager {
     }
 
     protected void returnToConfigurationPage() {
-        logger.info("");
+//        logger.info("");
         openConfigurationPage(primaryStage);
     }
 
@@ -90,7 +90,7 @@ public class GUIManager {
 
     private void openSimulationPage() {
 
-        logger.info("");
+//        logger.info("");
         //only accept valid code
         if (!code.checkValidity()) {
             /*todo: GUI error message invalid code*/

@@ -21,7 +21,7 @@ public class ExchangeMutation extends MutatorBasics {
      */
     @Override
     public IChromosome[] mutateGenes(IChromosome[] genePool) {
-        logger.info("");
+        //logger.info("");
         for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
             IChromosome mutatedChromosome = genePool[chromosomeCount];
 
@@ -55,7 +55,9 @@ public class ExchangeMutation extends MutatorBasics {
                     }
                 } while (!validGeneFound);
 
-                logger.info(mutatedMsg + " to " + mutatedChromosome);
+                if(GameSettings.INSTANCE.loggingEnabled) {
+                    logger.info(mutatedMsg + " to " + mutatedChromosome);
+                }
 
                 genePool[chromosomeCount] = mutatedChromosome;
             }

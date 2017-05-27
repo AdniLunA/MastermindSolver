@@ -24,7 +24,7 @@ public class Submission {
 
     /*functions*/
     public void setAttributes(IChromosome submittedChromosome, int red, int white) {
-        logger.info("");
+        //logger.info("");
         this.submittedChromosome = submittedChromosome;
         this.red = red;
         this.white = white;

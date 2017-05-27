@@ -234,7 +234,6 @@ public class SimulationController implements Initializable {
     }
 
     private LinearGradient getCircleGradient(int color) {
-        //System.out.println("SimulationController - getCircleGradient");
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, GameSettings.INSTANCE.COLORS[color]),
                 new Stop(1, Color.web("#ffffff")));

@@ -29,7 +29,7 @@ public class MutatorBasics implements IMutation {
 
     @Override
     public int[] generateTwoSplitPositions(int max) {
-        logger.info("");
+        //logger.info("");
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         int[] splitPos = new int[2];
         splitPos[0] = generator.nextInt(0, max);

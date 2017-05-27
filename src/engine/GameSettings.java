@@ -12,6 +12,8 @@ public enum GameSettings {
     /*--
      * evolution settings
      */
+    public boolean efficiencyAnalysisEnabled;
+    public boolean loggingEnabled;
     public int sizeOfPopulation;
     public int repeatEvolutionNTimes;
     public SelectionEnum selectionType;
@@ -22,7 +24,7 @@ public enum GameSettings {
     public MutationEnum mutationType;
     public double mutationRatio;
     public int mutationMaxTryAgain;
-    public final int MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS = 100;
+    public final int MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS = 50;
 
     public boolean trackSicknessByEvolving;
 
@@ -60,15 +62,18 @@ public enum GameSettings {
      * functions
      */
     protected void loadDefaultSettings() {
-        setSizeOfPopulation(50);
-        setRepeatEvolutionNTimes(3);
-        setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
-        setCrossoverType(CrossoverEnum.ONE_POINT);
+        setEfficiencyAnalysisEnabled(false);
+        setLoggingEnabled(true);
 
-        setLengthOfCode(4);
+        setSizeOfPopulation(250);
+        setRepeatEvolutionNTimes(2500);
+        setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
+        setCrossoverType(CrossoverEnum.UNIFORM);
+
+        setLengthOfCode(5);
         setNumberOfColors(10);
-        setNumberOfTries(15);
         setMaxNumberOfTries(50);
+        setNumberOfTries(20);
 
         setTrackSicknessByEvolving(false);
 
@@ -77,7 +82,7 @@ public enum GameSettings {
         setKForCrossover(3);
         setCrossoverMaxTryAgain(10);
         setMixingRatio(0.75f);
-        setMutationType(MutationEnum.EXCHANGE); /*best results with SCRAMBLE*/
+        setMutationType(MutationEnum.INSERTION); /*best results with SCRAMBLE*/
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 
@@ -88,6 +93,15 @@ public enum GameSettings {
     /*--
      * setter
      */
+
+    protected void setEfficiencyAnalysisEnabled(boolean efficiencyAnalysisEnabled) {
+        this.efficiencyAnalysisEnabled = efficiencyAnalysisEnabled;
+    }
+
+    public void setLoggingEnabled(boolean loggingEnabled) {
+        this.loggingEnabled = loggingEnabled;
+    }
+
     protected void setSizeOfPopulation(int sizeOfPopulation) {
         if (sizeOfPopulation < 1) {
             throw new IllegalArgumentException("sizeOfPopulation has to be > 0");
@@ -169,8 +183,8 @@ public enum GameSettings {
     }
 
     protected void setNumberOfTries(int numberOfTries) {
-        if (numberOfTries < 1) {
-            throw new IllegalArgumentException("numberOfTries has to be > 0");
+        if (numberOfTries < 1 || numberOfTries > maxNumberOfTries) {
+            throw new IllegalArgumentException("numberOfTries has to be between 0 and "+maxNumberOfTries);
         }
         this.numberOfTries = numberOfTries;
     }
@@ -184,8 +198,8 @@ public enum GameSettings {
 
     /*between 10 and 5000*/
     protected void setSimulationSpeedInMs(int simulationSpeedInMs) {
-        if (simulationSpeedInMs < 10 || simulationSpeedInMs > 5000) {
-            throw new IllegalArgumentException("simulationSpeedInMs as to be >= 10ms and <= 5000ms.");
+        if (simulationSpeedInMs > 5000) {
+            throw new IllegalArgumentException("simulationSpeedInMs has to be <= 5000ms.");
         }
         this.simulationSpeedInMs = simulationSpeedInMs;
     }

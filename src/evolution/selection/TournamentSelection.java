@@ -26,7 +26,7 @@ public class TournamentSelection implements ISelection {
      */
     @Override
     public IChromosome[] getParents(IChromosome[] genePool) {
-        logger.info("");
+        //logger.info("");
         splitPopulation(genePool);
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(fatherPool);
@@ -35,7 +35,7 @@ public class TournamentSelection implements ISelection {
     }
 
     private void splitPopulation(IChromosome[] genePool) {
-        logger.info("");
+        //logger.info("");
         /*copyOfRange: original [], inclusive from, exclusive to*/
         fatherPool = new Population(Arrays.copyOfRange(genePool,
                 0, genePool.length / 2));

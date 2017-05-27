@@ -1,6 +1,7 @@
 package evolution.selection;
 
 import config.MersenneTwisterFast;
+import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.IPopulation;
 import evolution.NumChromosome;
@@ -24,18 +25,20 @@ public class RouletteWheelSelection implements ISelection {
     /*--functions*/
     @Override
     public IChromosome[] getParents(IChromosome[] genePool) {
-        logger.info("");
+        //logger.info("");
         splitPopulation(genePool);
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(fatherPool);
         parents[1] = selectParents(motherPool);
-        logger.info("    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
-        logger.info("    Fitness of father: " + parents[0].getSickness() + ", fitness of mother: " + parents[1].getSickness());
+        if(GameSettings.INSTANCE.loggingEnabled) {
+            logger.info("    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
+            logger.info("    Fitness of father: " + parents[0].getSickness() + ", fitness of mother: " + parents[1].getSickness());
+        }
         return parents;
     }
 
     private void splitPopulation(IChromosome[] genePool) {
-        logger.info("");
+        //logger.info("");
         /*copyOfRange: original [], inclusive from, exclusive to*/
         fatherPool = new Population(Arrays.copyOfRange(genePool,
                 0, genePool.length / 2));
@@ -44,7 +47,7 @@ public class RouletteWheelSelection implements ISelection {
     }
 
     private IChromosome selectParents(IPopulation populationPool) {
-        logger.info("");
+        //logger.info("");
         double totalPopulationSickness = (double) populationPool.getSumPopulationSickness();
         double roulettePointer = randomGenerator.nextDouble(true, false); /*incl. 0, excl. 1*/
         double bottomBoundary = 0.0;
@@ -61,7 +64,9 @@ public class RouletteWheelSelection implements ISelection {
             }
         }
         IChromosome[] sortedPopulation = populationPool.getPopulationSorted();
-        System.out.println("sorted population length: "+ sortedPopulation.length);
+        if(GameSettings.INSTANCE.loggingEnabled){
+            logger.info("sorted population length: "+ sortedPopulation.length);
+        }
         return sortedPopulation[sortedPopulation.length - 1];
     }
 }

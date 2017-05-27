@@ -1,12 +1,14 @@
 package engine;
 
+import config.CrossoverEnum;
+import config.MutationEnum;
+import config.SelectionEnum;
 import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
 import evolution.SicknessCalculator;
 import evolution.IChromosome;
-import evolution.NumChromosome;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,7 +34,7 @@ public class GameEngine {
     /*Simulate Mastermind via GUI*/
     public GameEngine(Stage primaryStage) throws IOException {
         this();
-        logger.info("Mastermind with GUI");
+        //logger.info("Mastermind with GUI");
         GUIManager gui = new GUIManager(this, submissionHandler);
         gui.openConfigurationPage(primaryStage);
     }
@@ -43,31 +45,65 @@ public class GameEngine {
     private CodeValidator validator;
     private CodeSolver solver;
     private SubmissionHandler submissionHandler;
+    private boolean codeSolved=false;
 
     /*--
-     * functions
+     * settings
      */
-
     public void settingsSetLocNocNot(int lengthOfCode, int numberOfColors, int numberOfTries){
         GameSettings.INSTANCE.setLengthOfCode(lengthOfCode);
         GameSettings.INSTANCE.setNumberOfColors(numberOfColors);
         GameSettings.INSTANCE.setNumberOfTries(numberOfTries);
     }
 
+    public void settingsSetSimulationSpeedInMs(int speed){
+        GameSettings.INSTANCE.setSimulationSpeedInMs(speed);
+    }
+
+    public void settingsSetAnalysingMode(boolean analyse){
+        GameSettings.INSTANCE.setEfficiencyAnalysisEnabled(analyse);
+    }
+
+    public void settingsSetPopulationSizePop(int size){
+        GameSettings.INSTANCE.setSizeOfPopulation(size);
+    }
+
+    public void settingsSetRepeatEvolution(int number){
+        GameSettings.INSTANCE.setRepeatEvolutionNTimes(number);
+    }
+
+    public void settingsSetEvolutionTypes(SelectionEnum sType, CrossoverEnum cType, MutationEnum mType) {
+        if (sType != null) {
+            GameSettings.INSTANCE.setSelectionType(sType);
+        }
+        if (cType != null) {
+            GameSettings.INSTANCE.setCrossoverType(cType);
+        }
+        if (sType != null) {
+            GameSettings.INSTANCE.setMutationType(mType);
+        }
+    }
+
+   /*--
+     * functions
+     */
+
     public void startGame(IChromosome code) {
-        logger.info("");
+        //logger.info("");
 
         SicknessCalculator.INSTANCE.dropForNextGame();
         validator = new CodeValidator(code);
-        System.out.printf("starting simulation with values LOC: "
-                + GameSettings.INSTANCE.lengthOfCode + ", NOC: " + GameSettings.INSTANCE.numberOfColors + ", NOT: "
-                + GameSettings.INSTANCE.numberOfTries + ", secret code: \n* " + code.toString() + " *\n");
+        if(!GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
+            System.out.printf("starting simulation with values LOC: "
+                    + GameSettings.INSTANCE.lengthOfCode + ", NOC: " + GameSettings.INSTANCE.numberOfColors + ", NOT: "
+                    + GameSettings.INSTANCE.numberOfTries + ", secret code: \n* " + code.toString() + " *\n");
+        }
         /*initialize solver*/
         solver = new CodeSolver(this);
         calculateNextSubmission();
     }
 
-    public void runGameAutomated(IChromosome code) {
+    public boolean runGameAutomated(IChromosome code) {
         startGame(code);
 
         while (solver.getRequestCounter() < GameSettings.INSTANCE.numberOfTries) {
@@ -78,21 +114,27 @@ public class GameEngine {
                 System.out.println("GameEngine runGameAutomated: Thread Exception");
                 e.printStackTrace();
             }
-            logger.info("");
+            //logger.info("");
         }
+
+        return codeSolved;
     }
 
     public void resolveSubmission(IChromosome chromosome) {
-        logger.info("");
+        //logger.info("");
         Submission newSubmission = validator.calculateResponse(chromosome);
-        this.logger.info("red = " + newSubmission.getRed() + ", white = " + newSubmission.getWhite() + ", code = "
-                + chromosome.toString());
-        System.out.printf("  " + chromosome.toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %3d. @GameEngine - resolveSubmission.\n"
-                , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration());
+        if(GameSettings.INSTANCE.loggingEnabled) {
+            this.logger.info("red = " + newSubmission.getRed() + ", white = " + newSubmission.getWhite() + ", code = "
+                    + chromosome.toString());
+        }
+        if(!GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
+            System.out.printf("  " + chromosome.toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %3d. @GameEngine - resolveSubmission.\n"
+                    , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration());
+        }
 
         /*if solution is found, break loop by setting currentLine to max*/
         if (newSubmission.getRed() == GameSettings.INSTANCE.lengthOfCode) {
-            System.out.println("secret code found!!!");
+            codeSolved = true;
             solver.setRequestCounter(GameSettings.INSTANCE.numberOfTries);
         }
 
@@ -102,7 +144,7 @@ public class GameEngine {
     }
 
     public void calculateNextSubmission() {
-        logger.info("");
+        //logger.info("");
         solver.solve();
     }
 
