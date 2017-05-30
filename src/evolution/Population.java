@@ -38,7 +38,7 @@ public class Population implements IPopulation {
     /*--
      * attributes
      */
-    private int maxGenerationCounter = 0;
+    private int generationCounter = 0;
     private ArrayList<IChromosome> genePool = new ArrayList<>();
     private ISelection select;
     private ICrossover crossover;
@@ -56,7 +56,7 @@ public class Population implements IPopulation {
     @Override
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
         //logger.info("");
-        maxGenerationCounter++;
+        generationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
         //logger.info("Start selection");
@@ -74,8 +74,6 @@ public class Population implements IPopulation {
                 throw new InputMismatchException("Population crossover: ERROR - got invalid child " + children[i].toString());
             }
         }
-        children[0].setGeneration(maxGenerationCounter + 1);
-        children[1].setGeneration(maxGenerationCounter + 1);
         replaceWeakestWithNewGenes(children);
 
         /*mutation*/
@@ -84,7 +82,7 @@ public class Population implements IPopulation {
         this.genePool = transformToNonDuplicateList(mutatedGeneration);
 
         if(GameSettings.INSTANCE.loggingEnabled) {
-            logger.info("A new generation was born! #" + maxGenerationCounter);
+            logger.info("A new generation was born! #" + generationCounter);
         }
     }
 
@@ -235,8 +233,8 @@ public class Population implements IPopulation {
     /*--
      * getter + setter
      */
-    public int getMaxGenerationCounter() {
-        return maxGenerationCounter;
+    public int getGenerationCounter() {
+        return generationCounter;
     }
 
     @Override

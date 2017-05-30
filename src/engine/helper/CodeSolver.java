@@ -3,6 +3,7 @@ package engine.helper;
 import engine.GameEngine;
 import engine.GameSettings;
 import evolution.IChromosome;
+import evolution.IPopulation;
 import evolution.NumChromosome;
 import evolution.Population;
 import org.apache.logging.log4j.LogManager;
@@ -76,8 +77,11 @@ public class CodeSolver {
                 this.logger.info("    Code Solver - population sickness at round #" + i + ": " + population.getSumPopulationSickness());
             }
 
-            /*remove already posted sequences*/
-            population.removeAlreadyRequestedCodes(alreadyPostedRequests);
+            /*remove already posted sequences in a copy to not to disturb creation of similar requests*/
+            IPopulation copyOfPopulation = new Population(population.getGenePoolArray());
+            copyOfPopulation.removeAlreadyRequestedCodes(alreadyPostedRequests);
+
+            copyOfPopulation.getFittest().setGeneration(i);
         }
 
         /*get fittest*/

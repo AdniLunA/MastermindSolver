@@ -65,13 +65,13 @@ public enum GameSettings {
         setEfficiencyAnalysisEnabled(false);
         setLoggingEnabled(true);
 
-        setSizeOfPopulation(250);
-        setRepeatEvolutionNTimes(2500);
+        setSizeOfPopulation(500);
+        setRepeatEvolutionNTimes(25000);
         setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
         setCrossoverType(CrossoverEnum.UNIFORM);
 
-        setLengthOfCode(5);
-        setNumberOfColors(10);
+        setLengthOfCode(7);
+        setNumberOfColors(14);
         setMaxNumberOfTries(50);
         setNumberOfTries(20);
 
