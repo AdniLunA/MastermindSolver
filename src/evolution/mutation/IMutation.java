@@ -2,9 +2,11 @@ package evolution.mutation;
 
 import evolution.IChromosome;
 
+import java.util.ArrayList;
+
 public interface IMutation {
 
-    IChromosome[] mutateGenes(IChromosome[] genePool);
+    ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool);
 
     int[] generateTwoSplitPositions(int max);
 }

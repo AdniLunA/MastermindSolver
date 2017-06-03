@@ -13,6 +13,8 @@ public interface IChromosome {
 
     boolean checkValidity();
 
+    int compare(IChromosome one, IChromosome two);
+
     /*Java.util.Arrays.sort(int[])*/
     int[] getSequenceSorted();
 

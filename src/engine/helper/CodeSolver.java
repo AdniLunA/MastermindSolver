@@ -88,7 +88,7 @@ public class CodeSolver {
             }
 
             /*remove already posted sequences in a copy to not to disturb creation of similar requests*/
-            IPopulation copyOfPopulation = new Population(population.getGenePoolArray());
+            IPopulation copyOfPopulation = new Population(population.getGenePool());
             copyOfPopulation.removeAlreadyRequestedCodes(alreadyPostedRequests);
 
             copyOfPopulation.getFittest().setGeneration(i);

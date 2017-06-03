@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
-public class MutatorBasics implements IMutation {
+public abstract class MutatorBasics implements IMutation {
     /*--
      * debugging
      */
@@ -22,11 +22,6 @@ public class MutatorBasics implements IMutation {
     /*--
      * functions
      */
-    @Override
-    public IChromosome[] mutateGenes(IChromosome[] genePool) {
-        return genePool;
-    }
-
     @Override
     public int[] generateTwoSplitPositions(int max) {
         //logger.info("");

@@ -6,6 +6,8 @@ import evolution.NumChromosome;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+
 public class ExchangeMutation extends MutatorBasics {
     /*--
      * debugging
@@ -20,46 +22,35 @@ public class ExchangeMutation extends MutatorBasics {
      * functions
      */
     @Override
-    public IChromosome[] mutateGenes(IChromosome[] genePool) {
+    public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
         //logger.info("");
-        for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
-            IChromosome mutatedChromosome = genePool[chromosomeCount];
+        for (int chromosomeCount = 0; chromosomeCount < genePool.size(); chromosomeCount++) {
+            IChromosome chromosomeToMutate = genePool.get(chromosomeCount);
+            IChromosome mutatedChromosome;
 
             /*test if current chromosomeCount should be manipulated*/
             if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
-                boolean validGeneFound = false;
-                int countTries = 0;
-                String mutatedMsg = "Mutated " + genePool[chromosomeCount].toString();
-                do {
-                    int[] mutatedSequence = genePool[chromosomeCount].getSequence();
-                    int[] splitPos = super.generateTwoSplitPositions(GameSettings.INSTANCE.lengthOfCode - 1);
+                String mutatedMsg = "Mutated " + chromosomeToMutate.toString();
 
-                    int[] saveSwapValues = new int[2];
-                    saveSwapValues[0] = mutatedSequence[splitPos[0]];
-                    saveSwapValues[1] = mutatedSequence[splitPos[1]];
+                int[] mutatedSequence = chromosomeToMutate.getSequence();
+                int[] splitPos = super.generateTwoSplitPositions(GameSettings.INSTANCE.lengthOfCode - 1);
 
-                    /*swap*/
-                    mutatedSequence[splitPos[0]] = saveSwapValues[1];
-                    mutatedSequence[splitPos[1]] = saveSwapValues[0];
+                int[] saveSwapValues = new int[2];
+                saveSwapValues[0] = mutatedSequence[splitPos[0]];
+                saveSwapValues[1] = mutatedSequence[splitPos[1]];
 
-                    mutatedChromosome = new NumChromosome(mutatedSequence);
-                    validGeneFound = mutatedChromosome.checkValidity();
+                /*swap*/
+                mutatedSequence[splitPos[0]] = saveSwapValues[1];
+                mutatedSequence[splitPos[1]] = saveSwapValues[0];
 
-                    if (validGeneFound) {
-                        mutatedChromosome.incrementGeneration();
-                    }
-                    countTries++;
-                    if (countTries >= GameSettings.INSTANCE.mutationMaxTryAgain) {
-                        /*give up*/
-                        validGeneFound = true;
-                    }
-                } while (!validGeneFound);
+                mutatedChromosome = new NumChromosome(mutatedSequence);
 
                 if(GameSettings.INSTANCE.loggingEnabled) {
                     logger.info(mutatedMsg + " to " + mutatedChromosome);
                 }
 
-                genePool[chromosomeCount] = mutatedChromosome;
+                genePool.remove(chromosomeCount);
+                genePool.add(mutatedChromosome);
             }
         }
         return genePool;

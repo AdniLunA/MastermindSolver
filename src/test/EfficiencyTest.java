@@ -44,7 +44,7 @@ public class EfficiencyTest {
         LOG.info(description, countPositive + " of " + NUMBER_OF_TESTS + " tests successful (" + countPositive * 100 / NUMBER_OF_TESTS + "%)");
     }
 
-    public static void main(String... args) throws IOException {
+    public static void main(String... args)  {
         /*
         settingsSetEvolutionTypes
         */

@@ -12,9 +12,7 @@ import evolution.selection.TournamentSelection;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.InputMismatchException;
+import java.util.*;
 
 public class Population implements IPopulation {
     /*--
@@ -27,19 +25,21 @@ public class Population implements IPopulation {
      */
     public Population() {
         this.populationSize=GameSettings.INSTANCE.sizeOfPopulation;
+        genePool = new ArrayList<>();
+        genePool.ensureCapacity(populationSize);
         setGenePoolRandom(populationSize);
     }
 
-    public Population(IChromosome[] genePool) {
-        this.genePool = transformToNonDuplicateList(genePool);
-        this.populationSize=genePool.length;
+    public Population(ArrayList<IChromosome> genePool) {
+        this.genePool = (ArrayList<IChromosome>) genePool.clone();
+        this.populationSize=genePool.size();
     }
 
     /*--
      * attributes
      */
     private int generationCounter = 0;
-    private ArrayList<IChromosome> genePool = new ArrayList<>();
+    private ArrayList<IChromosome> genePool;
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
@@ -61,7 +61,7 @@ public class Population implements IPopulation {
         /*selection*/
         //logger.info("Start selection");
         /*todo: fortfahren mit error tracking*/
-        IChromosome[] parents = select.getParents(getGenePoolArray());
+        IChromosome[] parents = select.getParents(genePool);
 
         /*crossParents*/
         //logger.info("Start crossover");
@@ -78,8 +78,7 @@ public class Population implements IPopulation {
 
         /*mutation*/
         //logger.info("Start mutation");
-        IChromosome[] mutatedGeneration = mutate.mutateGenes(getGenePoolArray());
-        this.genePool = transformToNonDuplicateList(mutatedGeneration);
+        genePool = mutate.mutateGenes(genePool);
 
         if(GameSettings.INSTANCE.loggingEnabled) {
             logger.info("A new generation was born! #" + generationCounter);
@@ -87,11 +86,10 @@ public class Population implements IPopulation {
     }
 
     @Override
-    public IChromosome[] getPopulationSorted() {
-        //logger.info("");
-        IChromosome[] sortedPopulation = getGenePoolArray();
-        Arrays.sort(sortedPopulation);
-        return sortedPopulation;
+    public ArrayList<IChromosome> getPopulationSorted() {
+        ArrayList<IChromosome> sortedCopy = (ArrayList<IChromosome>) genePool.clone();
+        sortedCopy.sort((c1, c2) -> c1.compare(c1,c2));
+        return sortedCopy;
     }
 
     @Override
@@ -102,12 +100,6 @@ public class Population implements IPopulation {
             sum += chromosome.getSickness();
         }
         return sum;
-    }
-
-    @Override
-    public void replaceGene(IChromosome geneToReplace) {
-        genePool.remove(geneToReplace);
-        genePool.add(createNonDuplicateRandomChromosome());
     }
 
     private IChromosome createNonDuplicateRandomChromosome(){
@@ -135,23 +127,33 @@ public class Population implements IPopulation {
 
     @Override
     public IChromosome getFittest() {
-        //logger.info("");
-        IChromosome fittest = getPopulationSorted()[genePool.size() - 1];
-        /*todo check*/
-        if(GameSettings.INSTANCE.loggingEnabled) {
-            logger.info("*****Sickness of fittest: " + fittest.getSickness());
-            logger.info("*****Sickness of weakest: " + getPopulationSorted()[0].getSickness());
+        for (IChromosome candidate :
+                genePool) {
+            if(candidate.getSickness() == 0){
+                return candidate;
+            }
         }
-
-        return fittest;
+        return genePool.get(0);
     }
 
     private void replaceWeakestWithNewGenes(IChromosome[] newGenes) {
-        IChromosome[] improvedGenePool = getPopulationSorted();
-        int lastPos = improvedGenePool.length - 1;
-        improvedGenePool[lastPos - 1] = newGenes[0];
-        improvedGenePool[lastPos] = newGenes[1];
-        this.genePool = transformToNonDuplicateList(improvedGenePool);
+        boolean isGene0Known = genePool.contains(newGenes[0]);
+        boolean isGene1Known = genePool.contains(newGenes[1]);
+        if(!isGene0Known || !isGene1Known) {
+            ArrayList<IChromosome> improvedGenePool = getPopulationSorted();
+            int lastPos = improvedGenePool.size() - 1;
+
+            genePool.remove(improvedGenePool.get(lastPos));
+            if(!isGene0Known && !isGene1Known) {
+                genePool.remove(improvedGenePool.get(lastPos - 1));
+            }
+        }
+        if(isGene0Known){
+            genePool.add(newGenes[0]);
+        }
+        if(isGene1Known){
+            genePool.add(newGenes[1]);
+        }
     }
 
     private void setGenePoolRandom(int size) {
@@ -218,37 +220,11 @@ public class Population implements IPopulation {
         }
     }
 
-    private ArrayList<IChromosome> transformToNonDuplicateList(IChromosome[] array) {
-        ArrayList<IChromosome> list = new ArrayList<>();
-        for (int i = 0; i < array.length; i++) {
-            if(!list.contains(array[i])) {
-                list.add(array[i]);
-            } else {
-                list.add(createNonDuplicateRandomChromosome());
-            }
-        }
-        return list;
-    }
-
     /*--
      * getter + setter
      */
-    public int getGenerationCounter() {
-        return generationCounter;
-    }
-
     @Override
-    public IChromosome[] getGenePoolArray() {
-        IChromosome[] geneArray = new IChromosome[genePool.size()];
-        for (int i = 0; i < genePool.size(); i++) {
-            geneArray[i] = genePool.get(i);
-        }
-        return geneArray;
+    public ArrayList<IChromosome> getGenePool(){
+        return genePool;
     }
-
-    public void setGenePool(IChromosome[] genePool) {
-        this.genePool = transformToNonDuplicateList(genePool);
-    }
-
-
 }

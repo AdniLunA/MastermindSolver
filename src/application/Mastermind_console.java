@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Mastermind_console {
 
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) {
         //LogManager.getLogger(Mastermind_console.class).info("");
 
         /*start application in console*/

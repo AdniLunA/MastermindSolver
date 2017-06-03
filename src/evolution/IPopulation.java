@@ -16,11 +16,9 @@ public interface IPopulation {
 
     void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes);
 
-    IChromosome[] getPopulationSorted();
+    ArrayList<IChromosome> getPopulationSorted();
 
-    IChromosome[] getGenePoolArray();
+    ArrayList<IChromosome> getGenePool();
 
     int getSumPopulationSickness();
-
-    void replaceGene(IChromosome geneToRemove);
 }

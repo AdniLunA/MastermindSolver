@@ -7,6 +7,7 @@ import evolution.SingleArrayBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class DisplacementMutation extends MutatorBasics {
@@ -16,23 +17,25 @@ public class DisplacementMutation extends MutatorBasics {
     private final Logger logger = LogManager.getLogger(this);
 
     @Override
-    public IChromosome[] mutateGenes(IChromosome[] genePool) {
+    public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
         //logger.info("");
-        for (int chromosomeCount = 0; chromosomeCount < genePool.length; chromosomeCount++) {
-            IChromosome mutatedChromosome = genePool[chromosomeCount];
+        for (int chromosomeCount = 0; chromosomeCount < genePool.size(); chromosomeCount++) {
+            IChromosome chromosomeToMutate = genePool.get(chromosomeCount);
+            IChromosome mutatedChromosome;
 
             /*test if current chromosomeCount should be manipulated*/
             if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
-                boolean validGeneFound = false;
+                boolean validGeneFound;
                 int countTries = 0;
+                boolean keepTrying = true;
                 do {
-                    int[] splitPos = super.generateTwoSplitPositions(genePool.length);
+                    int[] splitPos = super.generateTwoSplitPositions(genePool.size());
                     int illegalPos = splitPos[0];
 
                     SingleArrayBuilder builder = new SingleArrayBuilder();
-                    int[] sequence = genePool[chromosomeCount].getSequence();
+                    int[] sequence = genePool.get(chromosomeCount).getSequence();
                     builder.addToQueue(Arrays.copyOf(sequence, splitPos[0]));
-                    builder.addToQueue(Arrays.copyOfRange(sequence, splitPos[1], genePool.length));
+                    builder.addToQueue(Arrays.copyOfRange(sequence, splitPos[1], genePool.size()));
 
                     int insertionPos;
                     do {
@@ -50,14 +53,17 @@ public class DisplacementMutation extends MutatorBasics {
                     countTries++;
                     if (countTries >= GameSettings.INSTANCE.mutationMaxTryAgain) {
                         /*give up*/
-                        validGeneFound = true;
+                        keepTrying = false;
                     }
-                } while (!validGeneFound);
+                } while (!validGeneFound && keepTrying);
 
-                if(GameSettings.INSTANCE.loggingEnabled) {
-                    logger.info("Mutated " + genePool[chromosomeCount].toString() + " to " + mutatedChromosome);
+                if (validGeneFound) {
+                    if (GameSettings.INSTANCE.loggingEnabled) {
+                        logger.info("Mutated " + chromosomeToMutate + " to " + mutatedChromosome);
+                    }
+                    genePool.remove(chromosomeCount);
+                    genePool.add(mutatedChromosome);
                 }
-                genePool[chromosomeCount] = mutatedChromosome;
             }
         }
         return genePool;

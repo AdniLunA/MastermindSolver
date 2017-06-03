@@ -2,7 +2,9 @@ package evolution.selection;
 
 import evolution.IChromosome;
 
+import java.util.ArrayList;
+
 public interface ISelection {
-    IChromosome[] getParents(IChromosome[] genePool);
+    IChromosome[] getParents(ArrayList<IChromosome> genePool);
 
 }

@@ -82,7 +82,7 @@ public enum GameSettings {
         setKForCrossover(3);
         setCrossoverMaxTryAgain(10);
         setMixingRatio(0.75f);
-        setMutationType(MutationEnum.INSERTION); /*best results with SCRAMBLE*/
+        setMutationType(MutationEnum.EXCHANGE); /*best results with SCRAMBLE*/
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 

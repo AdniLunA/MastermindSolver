@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /*--
@@ -127,17 +128,22 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public int compareTo(NumChromosome other) { //todo sickness min to max & vice versa
+    public int compareTo(NumChromosome other) {
+        return compare(this, other);
+    }
+
+    @Override
+    public int compare(IChromosome one, IChromosome two) {
         /*  < 0 -> more sick than other;
             = 0 -> equally sick;
             > 0 -> less sick than other*/
-        if (this.getSickness() > other.getSickness()) {
+        if(one.getSickness() > two.getSickness()){
             return -1;
-        } else if (this.getSickness() < other.getSickness()) {
-            return 1;
-        } else {
-            return 0;
         }
+        if(one.getSickness() < two.getSickness()){
+            return 1;
+        }
+        return 0;
     }
 
     @Override
