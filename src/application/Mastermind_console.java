@@ -1,6 +1,7 @@
 package application;
 
 import engine.GameEngine;
+import engine.GameSettings;
 import evolution.NumChromosome;
 
 import java.io.IOException;
@@ -13,8 +14,13 @@ public class Mastermind_console {
 
         /*start application in console*/
         GameEngine engine = new GameEngine();
+
+        engine.settingsSetLocNocNot(7, 14, 15);
+        GameSettings.INSTANCE.setLoggingEnabled(false);
+        int[] codeToSolve = {0,1,2,3,4,5,6};
+
         long startTime = System.currentTimeMillis();
-        boolean codeSolved = engine.runGameAutomated(new NumChromosome());
+        boolean codeSolved = engine.runGameAutomated(new NumChromosome(codeToSolve));
         if (codeSolved) {
             System.out.println("secret code found!");
         }

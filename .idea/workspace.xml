@@ -2,25 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/ConstellationTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/pos_exec_17-05-27_21-36-22.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/pos_exec_17-05-27_21-42-39.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/pos_exec_17-05-27_21-55-57.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/pos_exec_17-05-27_22-00-12.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/application/Mastermind_console.class" afterPath="$PROJECT_DIR$/bin/application/Mastermind_console.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/GameEngine.class" afterPath="$PROJECT_DIR$/bin/engine/GameEngine.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/GameSettings.class" afterPath="$PROJECT_DIR$/bin/engine/GameSettings.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/helper/CodeSolver.class" afterPath="$PROJECT_DIR$/bin/engine/helper/CodeSolver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" afterPath="$PROJECT_DIR$/bin/evolution/NumChromosome.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/Population$1.class" afterPath="$PROJECT_DIR$/bin/evolution/Population$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/Population.class" afterPath="$PROJECT_DIR$/bin/evolution/Population.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/Mastermind_console.java" afterPath="$PROJECT_DIR$/src/application/Mastermind_console.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameEngine.java" afterPath="$PROJECT_DIR$/src/engine/GameEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameSettings.java" afterPath="$PROJECT_DIR$/src/engine/GameSettings.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" afterPath="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/NumChromosome.java" afterPath="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/Population.java" afterPath="$PROJECT_DIR$/src/evolution/Population.java" />
     </list>
     <ignored path="MastermindSolver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,21 +28,7 @@
     <favorites_list name="MastermindSolver" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ConstellationTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/ConstellationTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="27" column="89" lean-forward="true" selection-start-line="27" selection-start-column="89" selection-end-line="27" selection-end-column="89" />
-              <folding>
-                <element signature="e#543#544#0" expanded="true" />
-                <element signature="e#607#608#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -67,18 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.i</find>
-      <find>.inf</find>
-      <find>.info</find>
-      <find>.info(</find>
-      <find>.info(&quot;</find>
-      <find>.info(&quot;&quot;</find>
-      <find>.info(&quot;&quot;)</find>
-      <find>as to be &gt;=</find>
-      <find>lo</find>
-      <find>logg</find>
-      <find>logger.</find>
-      <find>logger.i</find>
       <find>logger.in</find>
       <find>logger.info</find>
       <find>fittest</find>
@@ -91,12 +53,24 @@
       <find>sequec</find>
       <find>seque</find>
       <find>sequence</find>
-      <find>sequence</find>
       <find>loggi</find>
       <find>sequence #</find>
       <find>l</find>
       <find>logger</find>
       <find>log</find>
+      <find>hsama</find>
+      <find>hsa</find>
+      <find>hs</find>
+      <find>h</find>
+      <find>hah</find>
+      <find>has</find>
+      <find>hash</find>
+      <find>H</find>
+      <find>Has</find>
+      <find>Hash</find>
+      <find>HashM</find>
+      <find>HashMa</find>
+      <find>HashMap</find>
     </findStrings>
     <replaceStrings>
       <replace>/*--</replace>
@@ -174,13 +148,13 @@
         <option value="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
         <option value="$PROJECT_DIR$/src/engine/GameEngine.java" />
         <option value="$PROJECT_DIR$/logs/exec_17-05-30_19-50-23.log" />
-        <option value="$PROJECT_DIR$/src/application/Mastermind_console.java" />
-        <option value="$PROJECT_DIR$/src/engine/GameSettings.java" />
         <option value="$PROJECT_DIR$/src/test/ConstellationTest06_12.java" />
         <option value="$PROJECT_DIR$/src/test/ConstellationTest07_14.java" />
-        <option value="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
         <option value="$PROJECT_DIR$/src/evolution/Population.java" />
         <option value="$PROJECT_DIR$/src/test/ConstellationTest.java" />
+        <option value="$PROJECT_DIR$/src/engine/GameSettings.java" />
+        <option value="$PROJECT_DIR$/src/application/Mastermind_console.java" />
+        <option value="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
       </list>
     </option>
   </component>
@@ -189,7 +163,6 @@
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-11" />
-    <option name="y" value="-11" />
     <option name="width" value="1932" />
     <option name="height" value="1042" />
   </component>
@@ -347,8 +320,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -392,7 +365,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ConstellationTest.TestConstellation1_05H10C15T">
+  <component name="RunManager" selected="Application.Mastermind_console">
     <configuration default="false" name="Mastermind_console" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -730,11 +703,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.ConstellationTest.TestConstellation1_05H10C15T" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.ConstellationTest.TestConstellation2_06H12C15T" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ConstellationTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.ConstellationTest06_12" />
-        <item index="4" class="java.lang.String" itemvalue="Application.Mastermind_console" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Mastermind_console" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ConstellationTest.TestConstellation1_05H10C15T" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ConstellationTest.TestConstellation2_06H12C15T" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ConstellationTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ConstellationTest06_12" />
       </list>
     </recent_temporary>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -792,15 +765,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ConstellationTest - 2017.05.30 at 21h 29m 12s.xml">
-      <configuration name="ConstellationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ConstellationTest - 2017.05.30 at 21h 30m 06s.xml">
-      <configuration name="ConstellationTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ConstellationTest - 2017.05.30 at 21h 31m 16s.xml">
-      <configuration name="ConstellationTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ConstellationTest - 2017.05.30 at 21h 32m 13s.xml">
       <configuration name="ConstellationTest" configurationId="JUnit" />
     </history-entry>
@@ -822,6 +786,15 @@
     <history-entry file="ConstellationTest - 2017.05.30 at 22h 29m 17s.xml">
       <configuration name="ConstellationTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ConstellationTest_TestConstellation1_05H10C15T - 2017.05.30 at 22h 36m 45s.xml">
+      <configuration name="ConstellationTest.TestConstellation1_05H10C15T" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConstellationTest_TestConstellation1_05H10C15T - 2017.06.02 at 18h 37m 00s.xml">
+      <configuration name="ConstellationTest.TestConstellation1_05H10C15T" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ConstellationTest_TestConstellation2_06H12C15T - 2017.05.30 at 22h 38m 27s.xml">
+      <configuration name="ConstellationTest.TestConstellation2_06H12C15T" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -833,37 +806,36 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1932" height="1042" extended-state="0" />
-    <editor active="true" />
+    <frame x="-11" y="0" width="1932" height="1042" extended-state="0" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.49781898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35964912" sideWeight="0.49781898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41557017" sideWeight="0.50427353" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35313532" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.4957265" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35313532" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17948718" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1826923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3850385" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43124312" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35964912" sideWeight="0.49781898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -901,9 +873,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-27_16-30-55.log" />
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-27_16-31-45.log" />
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-27_16-32-19.log" />
     <entry file="file://$PROJECT_DIR$/logs/exec_17-05-27_16-32-54.log" />
     <entry file="file://$PROJECT_DIR$/logs/exec_17-05-27_16-33-36.log" />
     <entry file="file://$PROJECT_DIR$/logs/exec_17-05-27_16-37-13.log" />
@@ -963,7 +932,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="77" column="8" lean-forward="false" selection-start-line="77" selection-start-column="8" selection-end-line="77" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -971,7 +939,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="73" column="8" lean-forward="false" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -979,7 +946,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="228">
           <caret line="69" column="8" lean-forward="false" selection-start-line="69" selection-start-column="8" selection-end-line="69" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -987,7 +953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="245">
           <caret line="73" column="8" lean-forward="false" selection-start-line="73" selection-start-column="8" selection-end-line="73" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1035,18 +1000,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
           <caret line="18" column="15" lean-forward="false" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-30_19-50-23.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-30_19-50-23.log" />
     <entry file="file://$PROJECT_DIR$/src/evolution/NumChromosome.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -1064,7 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1072,58 +1028,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/GameEngine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="121" column="0" lean-forward="true" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-30_21-12-07.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-30_21-17-33.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/ConstellationTest06_12.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="18" column="44" lean-forward="false" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/helper/CodeSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="79" column="102" lean-forward="false" selection-start-line="79" selection-start-column="102" selection-end-line="79" selection-end-column="102" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-30_21-12-07.log" />
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-05-30_21-17-33.log" />
+    <entry file="file://$PROJECT_DIR$/src/test/ConstellationTest06_12.java" />
     <entry file="file://$PROJECT_DIR$/src/test/EfficiencyTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1132,22 +1042,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/GameSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="71" column="0" lean-forward="false" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <element signature="e#3073#3074#0" expanded="true" />
-            <element signature="e#3125#3126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/evolution/IPopulation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1161,12 +1059,64 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/ConstellationTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="27" column="89" lean-forward="true" selection-start-line="27" selection-start-column="89" selection-end-line="27" selection-end-column="89" />
+        <state relative-caret-position="175">
+          <caret line="27" column="89" lean-forward="false" selection-start-line="27" selection-start-column="89" selection-end-line="27" selection-end-column="89" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/GameSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="68" column="36" lean-forward="false" selection-start-line="68" selection-start-column="36" selection-end-line="68" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-02_18-37-06.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-02_18-36-59.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-02_18-37-14.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="53" lean-forward="false" selection-start-line="18" selection-start-column="53" selection-end-line="18" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/helper/CodeSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="103" column="23" lean-forward="true" selection-start-line="103" selection-start-column="23" selection-end-line="103" selection-end-column="23" />
           <folding>
-            <element signature="e#543#544#0" expanded="true" />
-            <element signature="e#607#608#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/GameEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="685">
+          <caret line="147" column="19" lean-forward="false" selection-start-line="147" selection-start-column="19" selection-end-line="147" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -51,7 +51,12 @@ public class CodeSolver {
         IChromosome newSequence = new NumChromosome();
         /*first submission random, others via EA*/
         if (requestCounter != 0) {
+
+            long timeStart = System.currentTimeMillis();
+
             newSequence = solveViaEvolutionaryAlgorithms();
+
+            System.out.println("Solve Via Evolutionary Algorithms: "+ (System.currentTimeMillis() - timeStart));
         }
         if (GameSettings.INSTANCE.loggingEnabled) {
             this.logger.info("CodeSolver: request #" + requestCounter);
@@ -68,8 +73,13 @@ public class CodeSolver {
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
         /*todo: fortfahren mit error tracking*/
+        long timeStart = System.currentTimeMillis();
+        int lastNumber = 0;
+        long lastTime = 0;
         for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (population.getFittest().getSickness() > 0); i++) {
+
             population.evolve();
+
             if (GameSettings.INSTANCE.trackSicknessByEvolving && !GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
                 System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
             }
@@ -82,6 +92,13 @@ public class CodeSolver {
             copyOfPopulation.removeAlreadyRequestedCodes(alreadyPostedRequests);
 
             copyOfPopulation.getFittest().setGeneration(i);
+
+            long passedTime = System.currentTimeMillis() - timeStart;
+            if(passedTime%1000 < 6){
+                System.out.println(i - lastNumber+" evolution steps in "+ (passedTime/1000 - lastTime) +"sec");
+                lastNumber = i;
+                lastTime = (passedTime/1000);
+            }
         }
 
         /*get fittest*/
