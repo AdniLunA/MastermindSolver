@@ -50,7 +50,7 @@ public class DisplacementMutation extends MutatorBasics {
             insertionPos = 0;
         } else {
             do {
-                insertionPos = generator.nextInt(0, builder.getLength());
+                insertionPos = generator.nextInt(0, builder.getLength()-1);
             } while (insertionPos == illegalPos || insertionPos >= builder.getLength());
         }
 

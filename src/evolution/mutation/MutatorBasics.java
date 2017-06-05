@@ -29,7 +29,9 @@ public abstract class MutatorBasics implements IMutation {
         for (IChromosome chromosomeToMutate : genePool) {
             /*test if current chromosomeCount should be manipulated*/
             if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
-                genesToMutate.add(chromosomeToMutate);
+                if(chromosomeToMutate.getSickness() != 0){
+                    genesToMutate.add(chromosomeToMutate);
+                }
             }
         }
         return genesToMutate;

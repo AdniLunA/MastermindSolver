@@ -54,22 +54,28 @@ public class InsertionMutation extends MutatorBasics {
         int[] mutatedSequence = new int[sequenceToMutate.length];
 
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
-        int insertionPos = generator.nextInt(0, sequenceToMutate.length);
+        int insertionPos = generator.nextInt(0, sequenceToMutate.length-1);
         int geneToInsert;
 
-        ArrayList<Integer> containedGenes = new ArrayList<>();
-        for (int i = 0; i < (sequenceToMutate.length - 1); i++) {
-            containedGenes.add(sequenceToMutate[i]);
+        ArrayList<Integer> availableGenes = new ArrayList<>();
+        for(int i = 0; i < GameSettings.INSTANCE.numberOfColors; i++){
+            availableGenes.add(i);
+        }
+        for (int i = 0; i < (sequenceToMutate.length -1); i++) {
+            availableGenes.remove((Integer) sequenceToMutate[i]);
         }
 
-        do {
-            geneToInsert = generator.nextInt(0, GameSettings.INSTANCE.numberOfColors);
-        } while (containedGenes.contains(geneToInsert));
+        int genePos = generator.nextInt(0, availableGenes.size()-1);
+        geneToInsert = availableGenes.get(genePos);
 
         if (insertionPos > 0) {
             System.arraycopy(sequenceToMutate, 0, mutatedSequence, 0, insertionPos-1);
         }
-        mutatedSequence[insertionPos] = geneToInsert;
+        try {
+            mutatedSequence[insertionPos] = geneToInsert;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         System.arraycopy(sequenceToMutate, insertionPos + 1 - 1, mutatedSequence, insertionPos + 1, sequenceToMutate.length - (insertionPos + 1));
 
         IChromosome mutatedChromosome = new NumChromosome(mutatedSequence);

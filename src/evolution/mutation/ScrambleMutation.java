@@ -56,7 +56,7 @@ public class ScrambleMutation extends MutatorBasics {
         }
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         for (int i = 0; i < scrambledSequence.length; i++) {
-            scrambledSequence[i] = numberPool.get(generator.nextInt(0, numberPool.size()));
+            scrambledSequence[i] = numberPool.get(generator.nextInt(0, numberPool.size()-1));
         }
         return scrambledSequence;
     }

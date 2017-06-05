@@ -100,7 +100,7 @@ public class UniformCrossover implements ICrossover {
                 choose1to1 = countP1 < p1Capacity;
             } else { /*if capacity is not reached by p1 or p2, choose gene randomized.*/
                 /*choose gene random*/
-                int randomPointer = randomGenerator.nextInt(0, 101);/*incl. 0, excl. 101*/
+                int randomPointer = randomGenerator.nextInt(0, 100);/*incl. 0, incl. 100*/
                 choose1to1 = (randomPointer <= mixingRatio);
             }
 

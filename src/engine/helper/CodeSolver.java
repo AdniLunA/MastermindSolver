@@ -108,9 +108,9 @@ public class CodeSolver {
 
     void dynamicEvolution(){
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
-        int selectionNum = generator.nextInt(0, 2);
-        int crossoverNum = generator.nextInt(0, 4);
-        int mutationNum = generator.nextInt(0, 5);
+        int selectionNum = generator.nextInt(0, 1);
+        int crossoverNum = generator.nextInt(0, 3);
+        int mutationNum = generator.nextInt(0, 4);
         population.evolve(selectionNum,crossoverNum,mutationNum);
     }
 

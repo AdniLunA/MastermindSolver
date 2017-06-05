@@ -10,31 +10,20 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
 
-public class KPointCrossover implements ICrossover {
+public class KPointCrossover extends CrossoverBasics {
     /*--
      * debugging
      */
     private final Logger logger = LoggerGenerator.kPointCrossover;
 
     /*--
-     * attributes
-     */
-    private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
-    private IChromosome parent1;
-    private IChromosome parent2;
-    private int sequenceLength;
-    private IChromosome[] children = new IChromosome[2];
-    private int[] splitPos;
-
-    /*--
      * functions
      */
     @Override
     public IChromosome[] crossParents(IChromosome[] parents) {
-        //logger.info("");
-        this.parent1 = parents[0];
-        this.parent2 = parents[1];
-        sequenceLength = GameSettings.INSTANCE.lengthOfCode;
+        super.parent1 = parents[0];
+        super.parent2 = parents[1];
+        super.sequenceLength = GameSettings.INSTANCE.lengthOfCode;
 
         int numberOfHealthyChildren = 0;
         int tryCounter = 0;
@@ -83,33 +72,6 @@ public class KPointCrossover implements ICrossover {
             splitPos[i] = createValidRandomSplitPos(i);
         }
         Arrays.sort(splitPos);
-    }
-
-    private int createValidRandomSplitPos(int currentPos) {
-        int pos = 0;
-        boolean invalid = false;
-        try {
-            /**
-             * calculate splitting position.
-             * search if new position is duplicate.
-             * if that is the case, search new position.
-             */
-            do {
-                /*nextInt: incl. minimum, incl. maximum*/
-                pos = randomGenerator.nextInt(1, sequenceLength - 2);
-                invalid = false;
-                for (int i = currentPos; (i > 1 && !invalid); i--) {
-                    if (pos == splitPos[i]) {
-                        invalid = true;
-                    }
-                }
-            } while (invalid);
-        } catch (RuntimeException r) {
-            System.out.println("KPointCrossover - createValidRandomSplitPos: - cannot resolve new position, last value: " + pos);
-            r.printStackTrace();
-        }
-
-        return pos;
     }
 
     private IChromosome[] breedChildren() {

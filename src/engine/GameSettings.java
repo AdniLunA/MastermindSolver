@@ -68,9 +68,9 @@ public enum GameSettings {
         setLoggingEnabled(true);
 
         setSizeOfPopulation(100);
-        setRepeatEvolutionNTimes(100000);
+        setRepeatEvolutionNTimes(1000000);
         setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
-        setCrossoverType(CrossoverEnum.UNIFORM);
+        setCrossoverType(CrossoverEnum.K_POINT);
 
         setLengthOfCode(7);
         setNumberOfColors(14);
@@ -84,7 +84,7 @@ public enum GameSettings {
         setKForCrossover(3);
         setCrossoverMaxTryAgain(10);
         setMixingRatio(0.75f);
-        setMutationType(MutationEnum.DISPLACEMENT); /*best results with SCRAMBLE*/
+        setMutationType(MutationEnum.INSERTION); /*best results with SCRAMBLE*/
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 

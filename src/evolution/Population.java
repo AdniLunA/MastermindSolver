@@ -153,10 +153,10 @@ public class Population implements IPopulation {
                 genePool.remove(improvedGenePool.get(improvedGenePool.size() - 2));
             }
         }
-        if (isGene0Known) {
+        if (!isGene0Known) {
             genePool.add(newGenes[0]);
         }
-        if (isGene1Known) {
+        if (!isGene1Known) {
             genePool.add(newGenes[1]);
         }
     }
