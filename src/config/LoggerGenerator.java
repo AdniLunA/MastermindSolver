@@ -47,7 +47,4 @@ public enum LoggerGenerator {
     public static final Logger configurationController = LogManager.getLogger(ConfigurationController.class);
     public static final Logger guiManager = LogManager.getLogger(GUIManager.class);
     public static final Logger simulationController = LogManager.getLogger(SimulationController.class);
-    public static final Logger c = LogManager.getLogger(GameEngine.class);
-
-
 }

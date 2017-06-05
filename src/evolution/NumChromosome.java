@@ -167,6 +167,9 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public int getChromosomeAtPos(int position) {
+        if(position >= sequence.length){
+            throw new IndexOutOfBoundsException("Requested pos: "+position+" while length "+sequence.length);
+        }
         return sequence[position];
     }
 

@@ -16,6 +16,7 @@ public enum GameSettings {
     public boolean loggingEnabled;
     public int sizeOfPopulation;
     public int repeatEvolutionNTimes;
+    public boolean dynamicEvolution;
     public SelectionEnum selectionType;
     public CrossoverEnum crossoverType;
     public int kForCrossover;
@@ -62,6 +63,7 @@ public enum GameSettings {
      * functions
      */
     protected void loadDefaultSettings() {
+        dynamicEvolution = false;
         setEfficiencyAnalysisEnabled(false);
         setLoggingEnabled(true);
 
@@ -82,7 +84,7 @@ public enum GameSettings {
         setKForCrossover(3);
         setCrossoverMaxTryAgain(10);
         setMixingRatio(0.75f);
-        setMutationType(MutationEnum.EXCHANGE); /*best results with SCRAMBLE*/
+        setMutationType(MutationEnum.DISPLACEMENT); /*best results with SCRAMBLE*/
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 

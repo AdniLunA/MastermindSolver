@@ -3,8 +3,11 @@ package evolution.mutation;
 
 import config.LoggerGenerator;
 import config.MersenneTwisterFast;
+import engine.GameSettings;
+import evolution.IChromosome;
 import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public abstract class MutatorBasics implements IMutation {
@@ -16,14 +19,23 @@ public abstract class MutatorBasics implements IMutation {
     /*--
      * attributes
      */
-    protected MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
+    MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
 
     /*--
      * functions
      */
-    @Override
-    public int[] generateTwoSplitPositions(int max) {
-        //logger.info("");
+    ArrayList<IChromosome> getGenesToMutate(ArrayList<IChromosome> genePool) {
+        ArrayList<IChromosome> genesToMutate = new ArrayList<>();
+        for (IChromosome chromosomeToMutate : genePool) {
+            /*test if current chromosomeCount should be manipulated*/
+            if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
+                genesToMutate.add(chromosomeToMutate);
+            }
+        }
+        return genesToMutate;
+    }
+
+    int[] generateTwoPositions(int max) {
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         int[] splitPos = new int[2];
         splitPos[0] = generator.nextInt(0, max);

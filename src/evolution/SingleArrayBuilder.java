@@ -14,7 +14,7 @@ public class SingleArrayBuilder {
     private final Logger logger = LoggerGenerator.singleArrayBuilder;
 
     /*attributes*/
-    private Queue<Integer> arrayToBuild = new LinkedList<Integer>();
+    private Queue<Integer> arrayToBuild = new LinkedList<>();
 
     /*functions*/
     public void addToQueue(int[] numbersToAdd) {
@@ -29,14 +29,14 @@ public class SingleArrayBuilder {
 
     public int[] insert(int position, int[] toInsert) {
         int[] sequence = getSequence();
-        if (position < getLength() && position > -1) {
+        if (position < sequence.length && position > -1) {
             addToQueue(Arrays.copyOfRange(sequence, 0, position));
             addToQueue(toInsert);
             addToQueue(Arrays.copyOfRange(sequence, position, sequence.length));
         } else {
             System.out.println("SingleArrayBuilder - insert - ERROR, given position " + position + " must be between 0 and " + sequence.length);
         }
-        return sequence;
+        return getSequence();
     }
 
     public int[] getSequence() {

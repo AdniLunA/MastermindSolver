@@ -33,7 +33,7 @@ public class CodeValidator {
     public Submission calculateResponse(IChromosome sequenceToCheck) {
         int redResponse = 0;
         int whiteResponse = 0;
-        for (int i = 0; i < secretCode.getSequence().length; i++) {
+        for (int i = 0; i < sequenceToCheck.getSequence().length; i++) {
             if (secretCode.getChromosomeAtPos(i) == sequenceToCheck.getChromosomeAtPos(i)) {
                 redResponse++;
             }

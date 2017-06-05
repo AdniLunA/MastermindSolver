@@ -8,5 +8,5 @@ public interface IMutation {
 
     ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool);
 
-    int[] generateTwoSplitPositions(int max);
+    IChromosome mutate(IChromosome chromosomeToMutate);
 }

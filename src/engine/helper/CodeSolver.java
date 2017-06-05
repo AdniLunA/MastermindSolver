@@ -1,12 +1,19 @@
 package engine.helper;
 
-import config.LoggerGenerator;
+import config.*;
 import engine.GameEngine;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.IPopulation;
 import evolution.NumChromosome;
 import evolution.Population;
+import evolution.crossover.KPointCrossover;
+import evolution.crossover.OnePointCrossover;
+import evolution.crossover.TwoPointCrossover;
+import evolution.crossover.UniformCrossover;
+import evolution.mutation.*;
+import evolution.selection.RouletteWheelSelection;
+import evolution.selection.TournamentSelection;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -73,7 +80,11 @@ public class CodeSolver {
         IChromosome fittest = new NumChromosome();
         for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (fittest.getSickness() > 0); i++) {
 
-            population.evolve();
+            if(GameSettings.INSTANCE.dynamicEvolution){
+                dynamicEvolution();
+            }else {
+                population.evolve();
+            }
 
             if (GameSettings.INSTANCE.trackSicknessByEvolving && !GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
                 System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
@@ -93,6 +104,14 @@ public class CodeSolver {
             this.logger.info("New request has fitness " + nextRequest.getSickness());
         }
         return nextRequest;
+    }
+
+    void dynamicEvolution(){
+        MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
+        int selectionNum = generator.nextInt(0, 2);
+        int crossoverNum = generator.nextInt(0, 4);
+        int mutationNum = generator.nextInt(0, 5);
+        population.evolve(selectionNum,crossoverNum,mutationNum);
     }
 
     /*--getter + setter*/

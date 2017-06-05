@@ -40,7 +40,7 @@ public class Population implements IPopulation {
      * attributes
      */
     private int generationCounter = 0;
-    private ArrayList<IChromosome> genePool = new ArrayList<>();
+    private ArrayList<IChromosome> genePool = new ArrayList<>(GameSettings.INSTANCE.sizeOfPopulation);
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
@@ -58,6 +58,16 @@ public class Population implements IPopulation {
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
         generationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
+        doEvolution();
+    }
+
+    @Override
+    public void evolve(int selection, int crossover, int mutation){
+        generationCounter++;
+        instantiateHelpers(selection, crossover, mutation);
+    }
+
+    private void doEvolution() {
         /*selection*/
         //logger.info("Start selection");
         /*todo: fortfahren mit error tracking*/
@@ -210,6 +220,63 @@ public class Population implements IPopulation {
                 mutate = new InversionMutation();
                 break;
             case SCRAMBLE:
+                mutate = new ScrambleMutation();
+                break;
+        }
+    }
+
+    private void instantiateHelpers(int chooseSelection, int chooseCrossover, int chooseMutation) {
+        switch (chooseSelection) {
+            case 0:
+                select = new RouletteWheelSelection();
+                break;
+            case 1:
+                select = new TournamentSelection();
+                break;
+        }
+
+        switch (chooseCrossover) {
+            case 0:
+                if (GameSettings.INSTANCE.kForCrossover > GameSettings.INSTANCE.lengthOfCode) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: configured k ="
+                            + GameSettings.INSTANCE.kForCrossover + " while code length is " + GameSettings.INSTANCE.lengthOfCode;
+                    throw new IndexOutOfBoundsException(errorMessage);
+                }
+                crossover = new KPointCrossover();
+                break;
+            case 1:
+                if (GameSettings.INSTANCE.lengthOfCode < 2) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: one-point crossParents while code length is " + GameSettings.INSTANCE.lengthOfCode;
+                    throw new IndexOutOfBoundsException(errorMessage);
+                }
+                crossover = new OnePointCrossover();
+                break;
+            case 2:
+                if (GameSettings.INSTANCE.lengthOfCode < 3) {
+                    String errorMessage = "   Population - instantiateHelpers: chooseCrossover ERROR: two-point crossParents while code length is " + GameSettings.INSTANCE.lengthOfCode;
+                    throw new IndexOutOfBoundsException(errorMessage);
+                }
+                crossover = new TwoPointCrossover();
+                break;
+            case 3:
+                crossover = new UniformCrossover();
+                break;
+        }
+
+        switch (chooseMutation) {
+            case 0:
+                mutate = new DisplacementMutation();
+                break;
+            case 1:
+                mutate = new ExchangeMutation();
+                break;
+            case 2:
+                mutate = new InsertionMutation();
+                break;
+            case 3:
+                mutate = new InversionMutation();
+                break;
+            case 4:
                 mutate = new ScrambleMutation();
                 break;
         }

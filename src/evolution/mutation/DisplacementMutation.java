@@ -16,56 +16,48 @@ public class DisplacementMutation extends MutatorBasics {
      */
     private final Logger logger = LoggerGenerator.displacementMutation;
 
+    /*--
+     * functions
+     */
     @Override
     public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
-        //logger.info("");
-        for (int chromosomeCount = 0; chromosomeCount < genePool.size(); chromosomeCount++) {
-            IChromosome chromosomeToMutate = genePool.get(chromosomeCount);
-            IChromosome mutatedChromosome;
+        ArrayList<IChromosome> genesToMutate = super.getGenesToMutate(genePool);
+        for (IChromosome geneToMutate : genesToMutate) {
+            IChromosome mutatedChromosome = mutate(geneToMutate);
+            genePool.remove(geneToMutate);
+            genePool.add(mutatedChromosome);
 
-            /*test if current chromosomeCount should be manipulated*/
-            if (generator.nextFloat() <= GameSettings.INSTANCE.mutationRatio) {
-                boolean validGeneFound;
-                int countTries = 0;
-                boolean keepTrying = true;
-                do {
-                    int[] splitPos = super.generateTwoSplitPositions(genePool.size());
-                    int illegalPos = splitPos[0];
-
-                    SingleArrayBuilder builder = new SingleArrayBuilder();
-                    int[] sequence = genePool.get(chromosomeCount).getSequence();
-                    builder.addToQueue(Arrays.copyOf(sequence, splitPos[0]));
-                    builder.addToQueue(Arrays.copyOfRange(sequence, splitPos[1], genePool.size()));
-
-                    int insertionPos;
-                    do {
-                        insertionPos = generator.nextInt(0, builder.getLength());
-                    } while (insertionPos == illegalPos);
-
-                    int[] mutatedSequence = builder.insert(insertionPos, Arrays.copyOfRange(sequence, splitPos[0], splitPos[1]));
-
-                    mutatedChromosome = new NumChromosome(mutatedSequence);
-                    validGeneFound = mutatedChromosome.checkValidity();
-
-                    if (validGeneFound) {
-                        mutatedChromosome.incrementGeneration();
-                    }
-                    countTries++;
-                    if (countTries >= GameSettings.INSTANCE.mutationMaxTryAgain) {
-                        /*give up*/
-                        keepTrying = false;
-                    }
-                } while (!validGeneFound && keepTrying);
-
-                if (validGeneFound) {
-                    if (GameSettings.INSTANCE.loggingEnabled) {
-                        logger.info("Mutated " + chromosomeToMutate + " to " + mutatedChromosome);
-                    }
-                    genePool.remove(chromosomeCount);
-                    genePool.add(mutatedChromosome);
-                }
+            if (GameSettings.INSTANCE.loggingEnabled) {
+                logger.info("Mutated " + geneToMutate + " to " + mutatedChromosome);
             }
         }
         return genePool;
+    }
+
+    @Override
+    public IChromosome mutate(IChromosome chromosomeToMutate) {
+        IChromosome mutatedChromosome;
+        int[] sequenceToMutate = chromosomeToMutate.getSequence();
+
+        int[] splitPos = super.generateTwoPositions(sequenceToMutate.length-1);
+        int illegalPos = splitPos[0];
+        SingleArrayBuilder builder = new SingleArrayBuilder();
+        builder.addToQueue(Arrays.copyOf(sequenceToMutate, splitPos[0]));
+        builder.addToQueue(Arrays.copyOfRange(sequenceToMutate, splitPos[1], chromosomeToMutate.getSequence().length));
+
+        int insertionPos;
+        if(builder.getLength() == 1){
+            insertionPos = 0;
+        } else {
+            do {
+                insertionPos = generator.nextInt(0, builder.getLength());
+            } while (insertionPos == illegalPos || insertionPos >= builder.getLength());
+        }
+
+        int[] mutatedSequence = builder.insert(insertionPos, Arrays.copyOfRange(sequenceToMutate, splitPos[0], splitPos[1]));
+
+        mutatedChromosome = new NumChromosome(mutatedSequence);
+        mutatedChromosome.setGeneration(chromosomeToMutate.getGeneration() + 1);
+        return mutatedChromosome;
     }
 }
