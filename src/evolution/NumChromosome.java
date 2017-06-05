@@ -1,27 +1,28 @@
 package evolution;
 
+import config.LoggerGenerator;
 import engine.GameSettings;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.numChromosome;
 
     /*--
      * constructors
      */
     public NumChromosome() {
         generateRandom();
+        calculateSickness();
     }
 
     public NumChromosome(int[] sequence) {
         this.sequence = sequence;
+        calculateSickness();
     }
 
     /*--
@@ -29,6 +30,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
      */
     private int[] sequence;
     private int generation;
+    private int sickness;
 
     /*--
      * functions
@@ -36,7 +38,6 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     private void generateRandom() {
         /*System.out.println("NumChromosome - generateRandom");*/
         boolean validSequence = false;
-        int numOfTries = 0;
         while (!validSequence) {
             sequence = new int[GameSettings.INSTANCE.lengthOfCode];
             int[] numberPool = new int[GameSettings.INSTANCE.numberOfColors];
@@ -50,7 +51,6 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
                 numberPool = removeItemOfArray(numberPool, randomPointer);
                 sequence[i] = randomNumber;
             }
-            numOfTries++;
             validSequence = checkValidity();
         }
         /*System.out.println("NumChromosome - generateRandom: Number of tries to find random code: "+numOfTries);*/
@@ -95,22 +95,18 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public int getSickness() {
-        /*System.out.println("NumChromosome - getSickness");*/
-        try {
-            return SicknessCalculator.INSTANCE.calculateSickness(this);
-        } catch (ArrayIndexOutOfBoundsException a) {
-            System.out.println("getSickness: ERROR while trying to calculate sickness of chromosome " + toString());
-            a.printStackTrace();
-            return 0;
-        }
+        return sickness;
     }
 
     @Override
-    public int[] getSequenceSorted() {
-        /*System.out.println("NumChromosome - getSequenceSorted");*/
-        int[] copyOfSequence = Arrays.copyOf(sequence, sequence.length);
-        Arrays.sort(copyOfSequence);
-        return copyOfSequence;
+    public void calculateSickness(){
+        try {
+            sickness = SicknessCalculator.INSTANCE.calculateSickness(this);
+        } catch (ArrayIndexOutOfBoundsException a) {
+            System.out.println("getSickness: ERROR while trying to calculate sickness of chromosome " + toString());
+            a.printStackTrace();
+            sickness = 13;
+        }
     }
 
     @Override
@@ -137,30 +133,32 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
         /*  < 0 -> more sick than other;
             = 0 -> equally sick;
             > 0 -> less sick than other*/
-        if(one.getSickness() > two.getSickness()){
+        int sicknessOne = one.getSickness();
+        int sicknessTwo = two.getSickness();
+        if (sicknessOne < sicknessTwo) {
             return -1;
         }
-        if(one.getSickness() < two.getSickness()){
+        if (sicknessOne > sicknessTwo) {
             return 1;
         }
         return 0;
     }
 
     @Override
-    public boolean equals(Object o){
-        if(o == this){
+    public boolean equals(Object o) {
+        if (o == this) {
             return true;
         }
-        if(o == null || !(o instanceof IChromosome)){
+        if (o == null || !(o instanceof IChromosome)) {
             return false;
         }
         IChromosome other = (IChromosome) o;
-        return(sequenceCompare(other.getSequence()));
+        return (sequenceCompare(other.getSequence()));
     }
 
-    private boolean sequenceCompare(int[] otherSequence){
+    private boolean sequenceCompare(int[] otherSequence) {
         for (int i = 0; i < GameSettings.INSTANCE.lengthOfCode; i++) {
-            if (sequence[i] != otherSequence[i]){
+            if (sequence[i] != otherSequence[i]) {
                 return false;
             }
         }
@@ -168,7 +166,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public int getChromosomeAtPos(int position){
+    public int getChromosomeAtPos(int position) {
         return sequence[position];
     }
 

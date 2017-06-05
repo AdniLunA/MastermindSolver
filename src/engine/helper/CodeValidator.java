@@ -1,8 +1,8 @@
 package engine.helper;
 
+import config.LoggerGenerator;
 import engine.GameSettings;
 import evolution.IChromosome;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
@@ -10,10 +10,6 @@ import org.apache.logging.log4j.Logger;
  * - knows the secret code
  */
 public class CodeValidator {
-    /*--
-     * debugging
-     */
-    private final Logger logger = LogManager.getLogger(this);
 
     /*--
      * constructor
@@ -21,7 +17,8 @@ public class CodeValidator {
     public CodeValidator(IChromosome secretCode) {
         this.secretCode = secretCode;
         if (GameSettings.INSTANCE.loggingEnabled) {
-            this.logger.info("- initialized with " + secretCode.toString());
+            Logger logger = LoggerGenerator.codeValidator;
+            logger.info("- initialized with " + secretCode.toString());
         }
     }
 
@@ -42,12 +39,10 @@ public class CodeValidator {
             }
         }
 
-        int[] sortedSecretCode = secretCode.getSequenceSorted();
-        int[] sortedSequenceToCheck = sequenceToCheck.getSequenceSorted();
         int[] colorCounter = new int[GameSettings.INSTANCE.numberOfColors];
-        for (int i = 0; i < sortedSecretCode.length; i++) {
-            colorCounter[sortedSecretCode[i]]++;
-            colorCounter[sortedSequenceToCheck[i]]++;
+        for (int i = 0; i < secretCode.getSequence().length; i++) {
+            colorCounter[secretCode.getSequence()[i]]++;
+            colorCounter[sequenceToCheck.getSequence()[i]]++;
         }
         for (int colorCount : colorCounter) {
             if (colorCount == 2) {

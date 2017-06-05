@@ -1,22 +1,20 @@
 package evolution.selection;
 
+import config.LoggerGenerator;
 import config.MersenneTwisterFast;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.IPopulation;
 import evolution.NumChromosome;
-import evolution.Population;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class RouletteWheelSelection extends SelectorBasics {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.rouletteWheelSelection;
 
     /*--attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
@@ -29,7 +27,7 @@ public class RouletteWheelSelection extends SelectorBasics {
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(super.fatherPool);
         parents[1] = selectParents(super.motherPool);
-        if(GameSettings.INSTANCE.loggingEnabled) {
+        if (GameSettings.INSTANCE.loggingEnabled) {
             logger.info("    Father: " + parents[0].toString() + ", mother: " + parents[1].toString());
             logger.info("    Fitness of father: " + parents[0].getSickness() + ", fitness of mother: " + parents[1].getSickness());
         }
@@ -45,7 +43,7 @@ public class RouletteWheelSelection extends SelectorBasics {
 
         for (IChromosome chromosome : populationPool.getGenePool()) {
             topBoundary = bottomBoundary
-                    + ( (totalPopulationSickness - chromosome.getSickness())
+                    + ((totalPopulationSickness - chromosome.getSickness())
                     / totalPopulationSickness);
             if (bottomBoundary <= roulettePointer && roulettePointer < topBoundary) {
                 return chromosome;

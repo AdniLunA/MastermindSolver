@@ -65,7 +65,7 @@ public enum GameSettings {
         setEfficiencyAnalysisEnabled(false);
         setLoggingEnabled(true);
 
-        setSizeOfPopulation(500);
+        setSizeOfPopulation(100);
         setRepeatEvolutionNTimes(100000);
         setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
         setCrossoverType(CrossoverEnum.UNIFORM);
@@ -86,8 +86,8 @@ public enum GameSettings {
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 
-        setWeightOfWhiteDifference(1);
-        setWeightOfRedDifference(7);
+        setWeightOfWhiteDifference(2);
+        setWeightOfRedDifference(5);
     }
 
     /*--
@@ -184,7 +184,7 @@ public enum GameSettings {
 
     protected void setNumberOfTries(int numberOfTries) {
         if (numberOfTries < 1 || numberOfTries > maxNumberOfTries) {
-            throw new IllegalArgumentException("numberOfTries has to be between 0 and "+maxNumberOfTries);
+            throw new IllegalArgumentException("numberOfTries has to be between 0 and " + maxNumberOfTries);
         }
         this.numberOfTries = numberOfTries;
     }

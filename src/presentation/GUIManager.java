@@ -1,5 +1,6 @@
 package presentation;
 
+import config.LoggerGenerator;
 import engine.GameEngine;
 import engine.helper.SubmissionHandler;
 import evolution.IChromosome;
@@ -8,14 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
 public class GUIManager {
     /*for debugging*/
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.guiManager;
 
     /*constructor*/
     public GUIManager(GameEngine engine, SubmissionHandler submissionHandler) {
@@ -69,7 +69,7 @@ public class GUIManager {
     }
 
     public void setSelectedSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
-        gameEngine.settingsSetLocNocNot(lengthOfCode,numberOfColors,numberOfTries);
+        gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
         this.code = new NumChromosome(secretCode);
 
         logger.info(" - starting simulation with values LOC: " + lengthOfCode

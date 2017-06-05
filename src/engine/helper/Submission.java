@@ -1,5 +1,6 @@
 package engine.helper;
 
+import config.LoggerGenerator;
 import evolution.IChromosome;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,11 +9,6 @@ import org.apache.logging.log4j.Logger;
  *
  */
 public class Submission {
-    /*--
-     * debugging
-     */
-    private final Logger logger = LogManager.getLogger(this);
-
     /*constructor*/
     public Submission() {
     }
@@ -36,10 +32,6 @@ public class Submission {
     /*--getter + setter*/
     public IChromosome getChromosome() {
         return submittedChromosome;
-    }
-
-    public void setSubmittedChromosome(IChromosome submittedChromosome) {
-        this.submittedChromosome = submittedChromosome;
     }
 
     public int getRed() {

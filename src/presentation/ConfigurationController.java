@@ -1,6 +1,7 @@
 package presentation;
 
 import config.CrossoverEnum;
+import config.LoggerGenerator;
 import engine.GameSettings;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -17,7 +18,6 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
@@ -28,7 +28,7 @@ public class ConfigurationController implements Initializable {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.configurationController;
 
     /*--
      * constructor

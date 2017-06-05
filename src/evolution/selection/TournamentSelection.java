@@ -1,20 +1,18 @@
 package evolution.selection;
 
+import config.LoggerGenerator;
 import evolution.IChromosome;
 import evolution.IPopulation;
 import evolution.NumChromosome;
-import evolution.Population;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class TournamentSelection extends SelectorBasics {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.tournamentSelection;
 
     /*--
      * functions

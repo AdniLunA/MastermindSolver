@@ -14,7 +14,7 @@ public interface IPopulation {
 
     void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation);
 
-    void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes);
+    void refreshSicknessOfGenePool();
 
     ArrayList<IChromosome> getPopulationSorted();
 

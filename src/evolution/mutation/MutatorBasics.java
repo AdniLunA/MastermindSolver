@@ -1,9 +1,8 @@
 package evolution.mutation;
 
 
+import config.LoggerGenerator;
 import config.MersenneTwisterFast;
-import evolution.IChromosome;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
@@ -12,7 +11,7 @@ public abstract class MutatorBasics implements IMutation {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.mutatorBasics;
 
     /*--
      * attributes

@@ -10,14 +10,12 @@ import java.util.concurrent.TimeUnit;
 public class Mastermind_console {
 
     public static void main(String... args) {
-        //LogManager.getLogger(Mastermind_console.class).info("");
-
         /*start application in console*/
         GameEngine engine = new GameEngine();
 
-        engine.settingsSetLocNocNot(7, 14, 15);
+        engine.settingsSetLocNocNot(8, 10, 15);
         GameSettings.INSTANCE.setLoggingEnabled(false);
-        int[] codeToSolve = {0,1,2,3,4,5,6};
+        int[] codeToSolve = {1,2,3,4,5,6,7,8};
 
         long startTime = System.currentTimeMillis();
         boolean codeSolved = engine.runGameAutomated(new NumChromosome(codeToSolve));

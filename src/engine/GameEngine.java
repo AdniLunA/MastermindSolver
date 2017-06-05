@@ -1,16 +1,16 @@
 package engine;
 
 import config.CrossoverEnum;
+import config.LoggerGenerator;
 import config.MutationEnum;
 import config.SelectionEnum;
 import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
-import evolution.SicknessCalculator;
 import evolution.IChromosome;
+import evolution.SicknessCalculator;
 import javafx.stage.Stage;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import presentation.GUIManager;
 
@@ -20,7 +20,7 @@ public class GameEngine {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.gameEngine;
 
     /*--
      * constructors

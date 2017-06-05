@@ -1,12 +1,12 @@
 package engine.helper;
 
+import config.LoggerGenerator;
 import engine.GameEngine;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.IPopulation;
 import evolution.NumChromosome;
 import evolution.Population;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class CodeSolver {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private static final Logger logger = LoggerGenerator.codeSolver;
 
     /*--
      * console
@@ -51,12 +51,7 @@ public class CodeSolver {
         IChromosome newSequence = new NumChromosome();
         /*first submission random, others via EA*/
         if (requestCounter != 0) {
-
-            long timeStart = System.currentTimeMillis();
-
             newSequence = solveViaEvolutionaryAlgorithms();
-
-            System.out.println("Solve Via Evolutionary Algorithms: "+ (System.currentTimeMillis() - timeStart));
         }
         if (GameSettings.INSTANCE.loggingEnabled) {
             this.logger.info("CodeSolver: request #" + requestCounter);
@@ -73,10 +68,10 @@ public class CodeSolver {
         /*evolve n times*/
         /*todo: find an intelligent way to choose mutation methods*/
         /*todo: fortfahren mit error tracking*/
-        long timeStart = System.currentTimeMillis();
-        int lastNumber = 0;
-        long lastTime = 0;
-        for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (population.getFittest().getSickness() > 0); i++) {
+
+        population.refreshSicknessOfGenePool();
+        IChromosome fittest = new NumChromosome();
+        for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (fittest.getSickness() > 0); i++) {
 
             population.evolve();
 
@@ -84,25 +79,15 @@ public class CodeSolver {
                 System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
             }
             if (GameSettings.INSTANCE.loggingEnabled) {
-                this.logger.info("    Code Solver - population sickness at round #" + i + ": " + population.getSumPopulationSickness());
+                logger.info("    Code Solver - population sickness at round #" + i + ": " + population.getSumPopulationSickness());
             }
 
-            /*remove already posted sequences in a copy to not to disturb creation of similar requests*/
-            IPopulation copyOfPopulation = new Population(population.getGenePool());
-            copyOfPopulation.removeAlreadyRequestedCodes(alreadyPostedRequests);
-
-            copyOfPopulation.getFittest().setGeneration(i);
-
-            long passedTime = System.currentTimeMillis() - timeStart;
-            if(passedTime%1000 < 6){
-                System.out.println(i - lastNumber+" evolution steps in "+ (passedTime/1000 - lastTime) +"sec");
-                lastNumber = i;
-                lastTime = (passedTime/1000);
-            }
+            population.getFittest().setGeneration(i);
+            fittest = population.getFittest();
         }
 
         /*get fittest*/
-        IChromosome nextRequest = population.getFittest();
+        IChromosome nextRequest = fittest;
 
         if (GameSettings.INSTANCE.loggingEnabled) {
             this.logger.info("New request has fitness " + nextRequest.getSickness());

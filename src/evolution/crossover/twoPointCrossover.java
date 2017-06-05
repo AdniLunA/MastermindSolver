@@ -1,11 +1,11 @@
 package evolution.crossover;
 
+import config.LoggerGenerator;
 import config.MersenneTwisterFast;
 import engine.GameSettings;
 import evolution.ArrayBuilder;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
@@ -14,7 +14,7 @@ public class TwoPointCrossover implements ICrossover {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.twoPointCrossover;
 
     /*--
      * attributes
@@ -67,7 +67,7 @@ public class TwoPointCrossover implements ICrossover {
             }
             return parents;
         }
-        if(GameSettings.INSTANCE.loggingEnabled) {
+        if (GameSettings.INSTANCE.loggingEnabled) {
             logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
             logger.info("    Fitness of children: " + children[0].getSickness() + " and " + children[1].getSickness());
         }

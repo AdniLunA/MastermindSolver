@@ -1,6 +1,7 @@
 package evolution;
 
 import config.CrossoverEnum;
+import config.LoggerGenerator;
 import config.MutationEnum;
 import config.SelectionEnum;
 import engine.GameSettings;
@@ -9,37 +10,37 @@ import evolution.mutation.*;
 import evolution.selection.ISelection;
 import evolution.selection.RouletteWheelSelection;
 import evolution.selection.TournamentSelection;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
 
 public class Population implements IPopulation {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.population;
 
     /*--
      * constructors
      */
     public Population() {
-        this.populationSize=GameSettings.INSTANCE.sizeOfPopulation;
-        genePool = new ArrayList<>();
-        genePool.ensureCapacity(populationSize);
+        this.populationSize = GameSettings.INSTANCE.sizeOfPopulation;
+        genePool.clear();
         setGenePoolRandom(populationSize);
     }
 
     public Population(ArrayList<IChromosome> genePool) {
-        this.genePool = (ArrayList<IChromosome>) genePool.clone();
-        this.populationSize=genePool.size();
+        this.genePool.clear();
+        this.genePool.addAll(genePool);
+        this.populationSize = genePool.size();
     }
 
     /*--
      * attributes
      */
     private int generationCounter = 0;
-    private ArrayList<IChromosome> genePool;
+    private ArrayList<IChromosome> genePool = new ArrayList<>();
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
@@ -55,7 +56,6 @@ public class Population implements IPopulation {
 
     @Override
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
-        //logger.info("");
         generationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         /*selection*/
@@ -67,28 +67,30 @@ public class Population implements IPopulation {
         //logger.info("Start crossover");
         IChromosome[] children = crossover.crossParents(parents);
         for (int i = 0; i < children.length; i++) {
-            if(GameSettings.INSTANCE.loggingEnabled) {
+            if (GameSettings.INSTANCE.loggingEnabled) {
                 logger.info("    -- Child #" + i + " is valid: " + children[i].checkValidity());
             }
             if (!children[i].checkValidity()) {
                 throw new InputMismatchException("Population crossover: ERROR - got invalid child " + children[i].toString());
             }
         }
-        replaceWeakestWithNewGenes(children);
 
         /*mutation*/
         //logger.info("Start mutation");
         genePool = mutate.mutateGenes(genePool);
 
-        if(GameSettings.INSTANCE.loggingEnabled) {
+        replaceWeakestWithNewGenes(children);
+
+        if (GameSettings.INSTANCE.loggingEnabled) {
             logger.info("A new generation was born! #" + generationCounter);
         }
     }
 
     @Override
     public ArrayList<IChromosome> getPopulationSorted() {
-        ArrayList<IChromosome> sortedCopy = (ArrayList<IChromosome>) genePool.clone();
-        sortedCopy.sort((c1, c2) -> c1.compare(c1,c2));
+        ArrayList<IChromosome> sortedCopy = new ArrayList<>();
+        sortedCopy.addAll(genePool);
+        sortedCopy.sort((c1, c2) -> c1.compare(c1, c2));
         return sortedCopy;
     }
 
@@ -102,13 +104,13 @@ public class Population implements IPopulation {
         return sum;
     }
 
-    private IChromosome createNonDuplicateRandomChromosome(){
+    private IChromosome createNonDuplicateRandomChromosome() {
         NumChromosome randomChromosome;
         int countTries = 0;
         do {
-            if(countTries > GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS){
-                throw new RuntimeException("Population - removeAlreadyRequestedCodes: "+
-                        "Tried to often to generate new code that hasn't been submitted yet. "+
+            if (countTries > GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS) {
+                throw new RuntimeException("Population - removeAlreadyRequestedCodes: " +
+                        "Tried to often to generate new code that hasn't been submitted yet. " +
                         "Stopped to prevent infinite loop.");
             }
             randomChromosome = new NumChromosome();
@@ -118,40 +120,33 @@ public class Population implements IPopulation {
     }
 
     @Override
-    public void removeAlreadyRequestedCodes(ArrayList<IChromosome> alreadyRequestedCodes){
-        genePool.removeAll(alreadyRequestedCodes);
-        while(genePool.size() < populationSize){
-            genePool.add(createNonDuplicateRandomChromosome());
-        }
+    public IChromosome getFittest() {
+        ArrayList<IChromosome> sortedPop = getPopulationSorted();
+        return sortedPop.get(0);
     }
 
     @Override
-    public IChromosome getFittest() {
-        for (IChromosome candidate :
-                genePool) {
-            if(candidate.getSickness() == 0){
-                return candidate;
-            }
+    public void refreshSicknessOfGenePool(){
+        for (IChromosome gene:genePool) {
+            gene.calculateSickness();
         }
-        return genePool.get(0);
     }
 
     private void replaceWeakestWithNewGenes(IChromosome[] newGenes) {
         boolean isGene0Known = genePool.contains(newGenes[0]);
         boolean isGene1Known = genePool.contains(newGenes[1]);
-        if(!isGene0Known || !isGene1Known) {
+        if (!isGene0Known || !isGene1Known) {
             ArrayList<IChromosome> improvedGenePool = getPopulationSorted();
-            int lastPos = improvedGenePool.size() - 1;
 
-            genePool.remove(improvedGenePool.get(lastPos));
-            if(!isGene0Known && !isGene1Known) {
-                genePool.remove(improvedGenePool.get(lastPos - 1));
+            genePool.remove(improvedGenePool.get(improvedGenePool.size() - 1));
+            if (!isGene0Known && !isGene1Known) {
+                genePool.remove(improvedGenePool.get(improvedGenePool.size() - 2));
             }
         }
-        if(isGene0Known){
+        if (isGene0Known) {
             genePool.add(newGenes[0]);
         }
-        if(isGene1Known){
+        if (isGene1Known) {
             genePool.add(newGenes[1]);
         }
     }
@@ -224,7 +219,7 @@ public class Population implements IPopulation {
      * getter + setter
      */
     @Override
-    public ArrayList<IChromosome> getGenePool(){
+    public ArrayList<IChromosome> getGenePool() {
         return genePool;
     }
 }

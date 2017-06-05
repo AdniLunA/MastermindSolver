@@ -1,5 +1,6 @@
 package presentation;
 
+import config.LoggerGenerator;
 import engine.GameSettings;
 import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
@@ -18,7 +19,6 @@ import javafx.scene.paint.LinearGradient;
 import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
@@ -29,7 +29,7 @@ public class SimulationController implements Initializable {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.simulationController;
 
     /*--
      * constructor

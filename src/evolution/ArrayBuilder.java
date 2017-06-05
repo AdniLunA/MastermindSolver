@@ -5,8 +5,8 @@ import java.util.Queue;
 
 public class ArrayBuilder {
     //attributes
-    Queue<Integer> child1Q = new LinkedList<Integer>();
-    Queue<Integer> child2Q = new LinkedList<Integer>();
+    private Queue<Integer> child1Q = new LinkedList<Integer>();
+    private Queue<Integer> child2Q = new LinkedList<Integer>();
 
     //functions
     public void addToQueue(int numberOfChild, int[] numbersToAdd) {

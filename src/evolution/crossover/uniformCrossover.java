@@ -1,10 +1,10 @@
 package evolution.crossover;
 
+import config.LoggerGenerator;
 import config.MersenneTwisterFast;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.InputMismatchException;
@@ -13,7 +13,7 @@ public class UniformCrossover implements ICrossover {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.uniformCrossover;
 
     /*--attributes*/
     private MersenneTwisterFast randomGenerator = new MersenneTwisterFast(System.nanoTime());
@@ -71,7 +71,7 @@ public class UniformCrossover implements ICrossover {
             }
             return parents;
         }
-        if(GameSettings.INSTANCE.loggingEnabled) {
+        if (GameSettings.INSTANCE.loggingEnabled) {
             logger.info("    Children: " + children[0].toString() + " and " + children[1].toString());
             logger.info("    Fitness of children: " + children[0].getSickness() + " and " + children[1].getSickness());
         }

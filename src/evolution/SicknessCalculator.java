@@ -1,9 +1,9 @@
 package evolution;
 
+import config.LoggerGenerator;
 import engine.GameSettings;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
-import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ public enum SicknessCalculator {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.sicknessCalculator;
 
     /*--
      * attributes
@@ -26,7 +26,7 @@ public enum SicknessCalculator {
      * functions
      */
     public void addSubmission(Submission newSubmission) {
-        if(GameSettings.INSTANCE.loggingEnabled) {
+        if (GameSettings.INSTANCE.loggingEnabled) {
             logger.info(newSubmission.getChromosome().toString());
         }
         this.submissions.add(newSubmission);
@@ -45,7 +45,7 @@ public enum SicknessCalculator {
                 int whiteSimilarity = validationByCurrentSubmission.getWhite();
 
                 int redDifference = Math.abs(submissions.get(count).getRed() - redSimilarity);
-                int whiteDifference =Math.abs(submissions.get(count).getWhite() - whiteSimilarity);
+                int whiteDifference = Math.abs(submissions.get(count).getWhite() - whiteSimilarity);
 
                 sickness += (GameSettings.INSTANCE.weightOfRedDifference * redDifference
                         + GameSettings.INSTANCE.weightOfWhiteDifference * whiteDifference);

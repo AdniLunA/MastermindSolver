@@ -1,6 +1,6 @@
 package evolution;
 
-import org.apache.logging.log4j.LogManager;
+import config.LoggerGenerator;
 import org.apache.logging.log4j.Logger;
 
 import java.util.Arrays;
@@ -11,10 +11,10 @@ public class SingleArrayBuilder {
     /*--
      * debugging
      */
-    private final Logger logger = LogManager.getLogger(this);
+    private final Logger logger = LoggerGenerator.singleArrayBuilder;
 
     /*attributes*/
-    Queue<Integer> arrayToBuild = new LinkedList<Integer>();
+    private Queue<Integer> arrayToBuild = new LinkedList<Integer>();
 
     /*functions*/
     public void addToQueue(int[] numbersToAdd) {
