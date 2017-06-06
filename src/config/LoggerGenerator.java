@@ -4,7 +4,7 @@ import engine.GameEngine;
 import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import evolution.NumChromosome;
-import evolution.Population;
+import evolution.population.Population;
 import evolution.SicknessCalculator;
 import evolution.SingleArrayBuilder;
 import evolution.crossover.KPointCrossover;

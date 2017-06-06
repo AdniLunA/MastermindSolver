@@ -4,8 +4,8 @@ import config.LoggerGenerator;
 import config.MersenneTwisterFast;
 import engine.GameSettings;
 import evolution.IChromosome;
-import evolution.IPopulation;
 import evolution.NumChromosome;
+import evolution.population.PopulationBasics;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -34,7 +34,7 @@ public class RouletteWheelSelection extends SelectorBasics {
         return parents;
     }
 
-    private IChromosome selectParents(IPopulation populationPool) {
+    private IChromosome selectParents(PopulationBasics populationPool) {
         //logger.info("");
         double totalPopulationSickness = (double) populationPool.getSumPopulationSickness();
         double roulettePointer = randomGenerator.nextDouble(true, false); /*incl. 0, excl. 1*/

@@ -38,10 +38,10 @@ public class InversionMutation extends MutatorBasics {
         IChromosome mutatedChromosome;
 
         int[] sequence = chromosomeToMutate.getSequence();
-        int[] splitPos = super.generateTwoPositions(sequence.length -1);
+        int[] splitPos = super.generateTwoDistancedPos(sequence.length -1, 2);
 
         int[] inversedSequence = invert(Arrays.copyOfRange(sequence, splitPos[0], splitPos[1]));
-        System.arraycopy(inversedSequence, splitPos[0], sequence, splitPos[0], splitPos[1] + 1 - splitPos[0]);
+        System.arraycopy(inversedSequence, 0, sequence, splitPos[0], inversedSequence.length);
         mutatedChromosome = new NumChromosome(sequence);
         mutatedChromosome.setGeneration(chromosomeToMutate.getGeneration() + 1);
         return mutatedChromosome;

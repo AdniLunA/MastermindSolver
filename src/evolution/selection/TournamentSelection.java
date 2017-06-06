@@ -2,8 +2,8 @@ package evolution.selection;
 
 import config.LoggerGenerator;
 import evolution.IChromosome;
-import evolution.IPopulation;
 import evolution.NumChromosome;
+import evolution.population.PopulationBasics;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class TournamentSelection extends SelectorBasics {
         return parents;
     }
 
-    private IChromosome selectParents(IPopulation populationPool) {
+    private IChromosome selectParents(PopulationBasics populationPool) {
         return populationPool.getFittest();
     }
 }

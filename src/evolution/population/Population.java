@@ -1,10 +1,12 @@
-package evolution;
+package evolution.population;
 
 import config.CrossoverEnum;
 import config.LoggerGenerator;
 import config.MutationEnum;
 import config.SelectionEnum;
 import engine.GameSettings;
+import evolution.IChromosome;
+import evolution.NumChromosome;
 import evolution.crossover.*;
 import evolution.mutation.*;
 import evolution.selection.ISelection;
@@ -15,7 +17,7 @@ import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 
-public class Population implements IPopulation {
+public class Population extends PopulationBasics {
     /*--
      * debugging
      */
@@ -25,56 +27,43 @@ public class Population implements IPopulation {
      * constructors
      */
     public Population() {
-        this.populationSize = GameSettings.INSTANCE.sizeOfPopulation;
+        populationSize = GameSettings.INSTANCE.sizeOfPopulation;
         genePool.clear();
         setGenePoolRandom(populationSize);
-    }
-
-    public Population(ArrayList<IChromosome> genePool) {
-        this.genePool.clear();
-        this.genePool.addAll(genePool);
-        this.populationSize = genePool.size();
     }
 
     /*--
      * attributes
      */
     private int generationCounter = 0;
-    private ArrayList<IChromosome> genePool = new ArrayList<>(GameSettings.INSTANCE.sizeOfPopulation);
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
-    private int populationSize;
 
     /*--
      * functions
      */
-    @Override
     public void evolve() {
         evolve(GameSettings.INSTANCE.selectionType, GameSettings.INSTANCE.crossoverType, GameSettings.INSTANCE.mutationType);
     }
 
-    @Override
     public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
         generationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         doEvolution();
     }
 
-    @Override
-    public void evolve(int selection, int crossover, int mutation){
+    public void evolve(int selection, int crossover, int mutation) {
         generationCounter++;
         instantiateHelpers(selection, crossover, mutation);
     }
 
     private void doEvolution() {
         /*selection*/
-        //logger.info("Start selection");
         /*todo: fortfahren mit error tracking*/
         IChromosome[] parents = select.getParents(genePool);
 
         /*crossParents*/
-        //logger.info("Start crossover");
         IChromosome[] children = crossover.crossParents(parents);
         for (int i = 0; i < children.length; i++) {
             if (GameSettings.INSTANCE.loggingEnabled) {
@@ -86,7 +75,6 @@ public class Population implements IPopulation {
         }
 
         /*mutation*/
-        //logger.info("Start mutation");
         genePool = mutate.mutateGenes(genePool);
 
         replaceWeakestWithNewGenes(children);
@@ -94,24 +82,6 @@ public class Population implements IPopulation {
         if (GameSettings.INSTANCE.loggingEnabled) {
             logger.info("A new generation was born! #" + generationCounter);
         }
-    }
-
-    @Override
-    public ArrayList<IChromosome> getPopulationSorted() {
-        ArrayList<IChromosome> sortedCopy = new ArrayList<>();
-        sortedCopy.addAll(genePool);
-        sortedCopy.sort((c1, c2) -> c1.compare(c1, c2));
-        return sortedCopy;
-    }
-
-    @Override
-    public int getSumPopulationSickness() {
-        //logger.info("");
-        int sum = 0;
-        for (IChromosome chromosome : genePool) {
-            sum += chromosome.getSickness();
-        }
-        return sum;
     }
 
     private IChromosome createNonDuplicateRandomChromosome() {
@@ -129,15 +99,8 @@ public class Population implements IPopulation {
         return randomChromosome;
     }
 
-    @Override
-    public IChromosome getFittest() {
-        ArrayList<IChromosome> sortedPop = getPopulationSorted();
-        return sortedPop.get(0);
-    }
-
-    @Override
-    public void refreshSicknessOfGenePool(){
-        for (IChromosome gene:genePool) {
+    public void refreshSicknessOfGenePool() {
+        for (IChromosome gene : genePool) {
             gene.calculateSickness();
         }
     }
@@ -282,11 +245,4 @@ public class Population implements IPopulation {
         }
     }
 
-    /*--
-     * getter + setter
-     */
-    @Override
-    public ArrayList<IChromosome> getGenePool() {
-        return genePool;
-    }
 }

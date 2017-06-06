@@ -1,0 +1,17 @@
+starting simulation with values LOC: 6, NOC: 13, NOT: 15, secret code: 
+* 01 02 03 04 05 06 *
+  07 01 10 09 04 03  => sequence #00, red =  0, white =  3, sickness =    0, generation =       0.
+  09 07 03 06 12 11  => sequence #01, red =  1, white =  1, sickness =    0, generation =       0.
+  09 10 00 08 01 12  => sequence #02, red =  0, white =  1, sickness =    0, generation =       0.
+  05 02 04 06 07 01  => sequence #03, red =  1, white =  4, sickness =    0, generation =     258.
+  01 07 04 05 11 02  => sequence #04, red =  1, white =  3, sickness =    0, generation =    1990.
+  04 05 01 06 03 02  => sequence #05, red =  0, white =  6, sickness =    0, generation =    3897.
+  01 02 03 04 05 06  => sequence #06, red =  6, white =  0, sickness =    0, generation =     617.
+secret code found!
+Runtime:   0: 2
+
+setSizeOfPopulation(700);
+setRepeatEvolutionNTimes(100001);
+setSelectionType(SelectionEnum.ROULETTE_WHEEL);
+setCrossoverType(CrossoverEnum.K_POINT);
+setMutationType(MutationEnum.EXCHANGE);

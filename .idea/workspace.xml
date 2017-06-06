@@ -2,25 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/evolution/population/PopulationBasics.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/evolution/IPopulation.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/evolution/Population$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/evolution/Population.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/evolution/IPopulation.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/application/Mastermind_console.class" afterPath="$PROJECT_DIR$/bin/application/Mastermind_console.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/GameSettings.class" afterPath="$PROJECT_DIR$/bin/engine/GameSettings.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/engine/helper/CodeSolver.class" afterPath="$PROJECT_DIR$/bin/engine/helper/CodeSolver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/Population.class" afterPath="$PROJECT_DIR$/bin/evolution/Population.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/KPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/KPointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/OnePointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/OnePointCrossover.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/TwoPointCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/TwoPointCrossover.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/crossover/UniformCrossover.class" afterPath="$PROJECT_DIR$/bin/evolution/crossover/UniformCrossover.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/DisplacementMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/DisplacementMutation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/InsertionMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/InsertionMutation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/InversionMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/InversionMutation.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/MutatorBasics.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/MutatorBasics.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/mutation/ScrambleMutation.class" afterPath="$PROJECT_DIR$/bin/evolution/mutation/ScrambleMutation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/selection/RouletteWheelSelection.class" afterPath="$PROJECT_DIR$/bin/evolution/selection/RouletteWheelSelection.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/evolution/selection/TournamentSelection.class" afterPath="$PROJECT_DIR$/bin/evolution/selection/TournamentSelection.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/Mastermind_console.java" afterPath="$PROJECT_DIR$/src/application/Mastermind_console.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/LoggerGenerator.java" afterPath="$PROJECT_DIR$/src/config/LoggerGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameEngine.java" afterPath="$PROJECT_DIR$/src/engine/GameEngine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameSettings.java" afterPath="$PROJECT_DIR$/src/engine/GameSettings.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" afterPath="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/Population.java" afterPath="$PROJECT_DIR$/src/evolution/Population.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/kPointCrossover.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/onePointCrossover.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/twoPointCrossover.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/uniformCrossover.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/mutation/ScrambleMutation.java" afterPath="$PROJECT_DIR$/src/evolution/mutation/ScrambleMutation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" afterPath="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/SelectorBasics.java" afterPath="$PROJECT_DIR$/src/evolution/selection/SelectorBasics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" afterPath="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/evolution/Population.java" afterPath="$PROJECT_DIR$/src/evolution/population/Population.java" />
     </list>
     <ignored path="MastermindSolver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,38 +57,58 @@
     <favorites_list name="MastermindSolver" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="KPointCrossover.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="218">
-                  <caret line="30" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="CrossoverBasics.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="174">
-                  <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="Mastermind_console.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameSettings.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/GameSettings.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="74" column="24" lean-forward="false" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GameEngine.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/engine/GameEngine.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="277">
+              <caret line="111" column="39" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="39" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Population.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/evolution/population/Population.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CodeSolver.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/engine/helper/CodeSolver.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="319">
+              <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -84,36 +121,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>evolu</find>
-      <find>evolutio</find>
-      <find>evolution ste</find>
-      <find>evolution steps</find>
+      <find>calculateSickne</find>
+      <find>calculateSicknes</find>
       <find>s</find>
-      <find>solv</find>
-      <find>solve</find>
-      <find>solve viea</find>
-      <find>solve viea</find>
-      <find>solve vie</find>
-      <find>solve vi</find>
-      <find>solve via</find>
-      <find>solve via v</find>
-      <find>removeAlreadyRequestedCodes</find>
-      <find>solve via</find>
-      <find>l</find>
-      <find>lo</find>
-      <find>logg</find>
-      <find>log</find>
-      <find>logger</find>
+      <find>se</find>
+      <find>seq</find>
+      <find>sequ</find>
+      <find>sequen</find>
+      <find>sequenc</find>
+      <find>sequence</find>
+      <find>sequence</find>
+      <find>sequence #</find>
       <find>c</find>
-      <find>crea</find>
-      <find>create</find>
-      <find>createn</find>
-      <find>createnon</find>
-      <find>createnond</find>
-      <find>createnondu</find>
-      <find>getsickness</find>
-      <find>calcu</find>
-      <find>getPopulationSorted</find>
+      <find>cros</find>
+      <find>cross</find>
+      <find>crossov</find>
+      <find>crossovermax</find>
+      <find>crossoverma</find>
+      <find>crossoverm</find>
+      <find>crossoverMax</find>
+      <find>crossoverMa</find>
+      <find>crossoverM</find>
+      <find>crossover</find>
+      <find>crossove</find>
+      <find>m</find>
+      <find>ma</find>
+      <find>max</find>
+      <find>maxT</find>
+      <find>maxTr</find>
+      <find>maxTry</find>
+      <find>getpopulat</find>
     </findStrings>
     <replaceStrings>
       <replace>/*--</replace>
@@ -147,27 +184,15 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/logs/exec_17-05-30_19-50-23.log" />
-        <option value="$PROJECT_DIR$/src/test/ConstellationTest06_12.java" />
-        <option value="$PROJECT_DIR$/src/test/ConstellationTest07_14.java" />
-        <option value="$PROJECT_DIR$/src/test/ConstellationTest.java" />
-        <option value="$PROJECT_DIR$/src/test/EfficiencyTest.java" />
-        <option value="$PROJECT_DIR$/src/test/HashMapTest.java" />
         <option value="$PROJECT_DIR$/src/test/HashSetTest.java" />
         <option value="$PROJECT_DIR$/src/test/ArrayListTest.java" />
         <option value="$PROJECT_DIR$/src/test/PopulationTest.java" />
         <option value="$PROJECT_DIR$/src/evolution/selection/ISelection.java" />
         <option value="$PROJECT_DIR$/src/evolution/selection/BasicSelection.java" />
-        <option value="$PROJECT_DIR$/src/evolution/selection/SelectorBasics.java" />
         <option value="$PROJECT_DIR$/src/test/CloneTest.java" />
         <option value="$PROJECT_DIR$/src/config/CentralLogger.java" />
         <option value="$PROJECT_DIR$/src/application/Mastermind_gui.java" />
         <option value="$PROJECT_DIR$/src/engine/helper/SubmissionHandler.java" />
-        <option value="$PROJECT_DIR$/src/engine/GameEngine.java" />
-        <option value="$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java" />
-        <option value="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" />
-        <option value="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" />
-        <option value="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" />
         <option value="$PROJECT_DIR$/src/evolution/Submission.java" />
         <option value="$PROJECT_DIR$/src/engine/helper/Submission.java" />
         <option value="$PROJECT_DIR$/src/evolution/ArrayBuilder.java" />
@@ -176,28 +201,40 @@
         <option value="$PROJECT_DIR$/src/presentation/GUIManager.java" />
         <option value="$PROJECT_DIR$/src/evolution/IChromosome.java" />
         <option value="$PROJECT_DIR$/src/evolution/SicknessCalculator.java" />
-        <option value="$PROJECT_DIR$/src/application/Mastermind_console.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/SwapMutation.java" />
         <option value="$PROJECT_DIR$/src/config/LoggerGenerator.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/IMutation.java" />
         <option value="$PROJECT_DIR$/src/config/MutationEnum.java" />
         <option value="$PROJECT_DIR$/src/config/SelectionEnum.java" />
-        <option value="$PROJECT_DIR$/src/evolution/IPopulation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java" />
-        <option value="$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/NumChromosome.java" />
         <option value="$PROJECT_DIR$/src/engine/helper/CodeValidator.java" />
         <option value="$PROJECT_DIR$/src/evolution/SingleArrayBuilder.java" />
-        <option value="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" />
-        <option value="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java" />
         <option value="$PROJECT_DIR$/src/evolution/mutation/ScrambleMutation.java" />
-        <option value="$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java" />
-        <option value="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" />
-        <option value="$PROJECT_DIR$/src/evolution/Population.java" />
-        <option value="$PROJECT_DIR$/src/engine/GameSettings.java" />
-        <option value="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" />
+        <option value="$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java" />
         <option value="$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java" />
+        <option value="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" />
+        <option value="$PROJECT_DIR$/src/evolution/IBasicPopulation.java" />
+        <option value="$PROJECT_DIR$/src/evolution/IPopulationBasics.java" />
+        <option value="$PROJECT_DIR$/src/evolution/IPopulation.java" />
+        <option value="$PROJECT_DIR$/src/evolution/Population.java" />
+        <option value="$PROJECT_DIR$/src/evolution/PopulationBasics.java" />
+        <option value="$PROJECT_DIR$/src/evolution/population/IPopulation.java" />
+        <option value="$PROJECT_DIR$/src/evolution/population/Population.java" />
+        <option value="$PROJECT_DIR$/src/evolution/selection/SelectorBasics.java" />
+        <option value="$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java" />
+        <option value="$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java" />
+        <option value="$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java" />
+        <option value="$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java" />
+        <option value="$PROJECT_DIR$/src/evolution/population/PopulationBasics.java" />
+        <option value="$PROJECT_DIR$/src/engine/GameEngine.java" />
+        <option value="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" />
+        <option value="$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java" />
+        <option value="$PROJECT_DIR$/src/engine/GameSettings.java" />
+        <option value="$PROJECT_DIR$/src/application/Mastermind_console.java" />
+        <option value="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" />
+        <option value="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
       </list>
     </option>
   </component>
@@ -288,6 +325,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="evolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MastermindSolver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MastermindSolver" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="evolution" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="population" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -891,24 +950,25 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.49781898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44004402" sideWeight="0.49781898" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42794278" sideWeight="0.49781898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41557017" sideWeight="0.50427353" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36743674" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3960396" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.4957265" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18696581" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14636752" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3850385" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38613862" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44664466" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -916,7 +976,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3850385" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -943,11 +1002,17 @@
           <properties />
           <option name="timeStamp" value="226" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java</url>
+          <line>22</line>
+          <properties />
+          <option name="timeStamp" value="299" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="239" />
+      <option name="time" value="306" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="JUnit">
@@ -961,24 +1026,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/config/VariableConfig.java" />
-    <entry file="file://$PROJECT_DIR$/src/config/IConfigurationFile.java" />
-    <entry file="file://$PROJECT_DIR$/src/config/LoggerCreator.java" />
-    <entry file="file://$PROJECT_DIR$/src/config/CentralLogger.java" />
-    <entry file="jar://$PROJECT_DIR$/lib/apache-log4j-2.8.2-bin/log4j-api-2.8.2.jar!/org/apache/logging/log4j/Logger.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12029">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/apache-log4j-2.8.2-bin/log4j-api-2.8.2.jar!/org/apache/logging/log4j/LogManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="177" column="20" lean-forward="false" selection-start-line="177" selection-start-column="20" selection-end-line="177" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/application/Mastermind_gui.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -994,46 +1041,6 @@
           <folding>
             <element signature="e#409#410#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" column="68" lean-forward="false" selection-start-line="16" selection-start-column="68" selection-end-line="16" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/selection/SelectorBasics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="124" lean-forward="false" selection-start-line="18" selection-start-column="124" selection-end-line="18" selection-end-column="124" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="16" column="73" lean-forward="false" selection-start-line="16" selection-start-column="73" selection-end-line="16" selection-end-column="73" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="70" lean-forward="false" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1081,13 +1088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/IChromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="11" lean-forward="false" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/EfficiencyTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="196">
@@ -1109,7 +1109,7 @@
         <state relative-caret-position="287">
           <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1138,14 +1138,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/IPopulation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="16" column="60" lean-forward="false" selection-start-line="16" selection-start-column="60" selection-end-line="16" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/config/SelectionEnum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -1170,124 +1162,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="39" column="44" lean-forward="true" selection-start-line="39" selection-start-column="44" selection-end-line="39" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="40" column="44" lean-forward="true" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/NumChromosome.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/SicknessCalculator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="35" column="59" lean-forward="false" selection-start-line="35" selection-start-column="59" selection-end-line="35" selection-end-column="59" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/SingleArrayBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="298">
-          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://D:/Program Files/Java/jdk1.8.0_73/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="181">
           <caret line="428" column="0" lean-forward="false" selection-start-line="428" selection-start-column="0" selection-end-line="428" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ScrambleMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="58" column="62" lean-forward="false" selection-start-line="58" selection-start-column="62" selection-end-line="58" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="102" column="88" lean-forward="false" selection-start-line="102" selection-start-column="88" selection-end-line="102" selection-end-column="88" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="25" column="45" lean-forward="false" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="52" column="44" lean-forward="false" selection-start-line="52" selection-start-column="44" selection-end-line="52" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/config/MersenneTwisterFast.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="883" column="17" lean-forward="false" selection-start-line="883" selection-start-column="17" selection-end-line="883" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/GameSettings.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="70" column="39" lean-forward="false" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/helper/CodeSolver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="113" column="22" lean-forward="false" selection-start-line="113" selection-start-column="22" selection-end-line="113" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1308,39 +1186,263 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/Population.java">
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_73/src.zip!/java/lang/reflect/Array.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="77" column="51" lean-forward="false" selection-start-line="77" selection-start-column="51" selection-end-line="77" selection-end-column="51" />
+        <state relative-caret-position="176">
+          <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/engine/GameEngine.java">
+    <entry file="file://$PROJECT_DIR$/src/evolution/IChromosome.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="850">
-          <caret line="66" column="36" lean-forward="false" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
+        <state relative-caret-position="136">
+          <caret line="8" column="0" lean-forward="true" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_73/src.zip!/java/util/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="198" column="6" lean-forward="false" selection-start-line="198" selection-start-column="6" selection-end-line="198" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_73/jre/lib/javaws.jar!/com/sun/javaws/exceptions/InvalidArgumentException.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="671">
+          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/OnePointCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="515">
+          <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/SingleArrayBuilder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="38" column="28" lean-forward="false" selection-start-line="38" selection-start-column="28" selection-end-line="38" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/IPopulationBasics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/population/IPopulation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/selection/SelectorBasics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="1" lean-forward="true" selection-start-line="21" selection-start-column="1" selection-end-line="21" selection-end-column="1" />
           <folding>
-            <element signature="e#1914#1915#0" expanded="true" />
-            <element signature="e#1977#1978#0" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java">
+    <entry file="file://$PROJECT_DIR$/src/evolution/selection/TournamentSelection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="68">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding>
+            <element signature="e#842#843#0" expanded="true" />
+            <element signature="e#892#893#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/selection/RouletteWheelSelection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="54" lean-forward="false" selection-start-line="36" selection-start-column="54" selection-end-line="36" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/KPointCrossover.java">
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/DisplacementMutation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="30" column="0" lean-forward="true" selection-start-line="26" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+        <state relative-caret-position="173">
+          <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/NumChromosome.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="50" column="26" lean-forward="false" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ExchangeMutation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="20" column="80" lean-forward="true" selection-start-line="20" selection-start-column="80" selection-end-line="20" selection-end-column="80" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/MersenneTwisterFast.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="1229" column="0" lean-forward="false" selection-start-line="1229" selection-start-column="0" selection-end-line="1229" selection-end-column="0" />
+          <folding>
+            <element signature="e#45705#45706#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/InversionMutation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="40" column="14" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/MutatorBasics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="74" column="0" lean-forward="false" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/pos_6_13_exec_17-06-06_14-34-33.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/SicknessCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/UniformCrossover.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/ScrambleMutation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="103">
+          <caret line="24" column="34" lean-forward="false" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/GameSettings.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="74" column="24" lean-forward="false" selection-start-line="74" selection-start-column="24" selection-end-line="74" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/population/PopulationBasics.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/GameEngine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="111" column="39" lean-forward="false" selection-start-line="111" selection-start-column="16" selection-end-line="111" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/evolution/population/Population.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="55" column="19" lean-forward="false" selection-start-line="55" selection-start-column="19" selection-end-line="55" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/engine/helper/CodeSolver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
           <folding />
         </state>
       </provider>

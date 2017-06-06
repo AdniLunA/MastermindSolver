@@ -1,22 +1,13 @@
 package engine.helper;
 
-import config.*;
+import config.LoggerGenerator;
+import config.MersenneTwisterFast;
 import engine.GameEngine;
 import engine.GameSettings;
 import evolution.IChromosome;
-import evolution.IPopulation;
 import evolution.NumChromosome;
-import evolution.Population;
-import evolution.crossover.KPointCrossover;
-import evolution.crossover.OnePointCrossover;
-import evolution.crossover.TwoPointCrossover;
-import evolution.crossover.UniformCrossover;
-import evolution.mutation.*;
-import evolution.selection.RouletteWheelSelection;
-import evolution.selection.TournamentSelection;
+import evolution.population.Population;
 import org.apache.logging.log4j.Logger;
-
-import java.util.ArrayList;
 
 /**
  * Handle request for next code submission
@@ -44,13 +35,12 @@ public class CodeSolver {
     private GameEngine engine;
     private int requestCounter;
     private Population population;
-    private ArrayList<IChromosome> alreadyPostedRequests = new ArrayList<>();
+    /*private ArrayList<IChromosome> alreadyPostedRequests = new ArrayList<>();*/
 
     /*--
      * functions
      */
     public void solve() {
-        //this.logger.info("");
         if (requestCounter >= GameSettings.INSTANCE.maxNumberOfTries) {
             logger.error("maxNumberOfTries reached. No further submissions are calculated.");
             throw new IndexOutOfBoundsException("maxNumberOfTries reached. No further submissions are calculated.");
@@ -61,12 +51,12 @@ public class CodeSolver {
             newSequence = solveViaEvolutionaryAlgorithms();
         }
         if (GameSettings.INSTANCE.loggingEnabled) {
-            this.logger.info("CodeSolver: request #" + requestCounter);
-            this.logger.info("    CodeSolver: next sequence = " + newSequence.toString());
+            logger.info("CodeSolver: request #" + requestCounter);
+            logger.info("    CodeSolver: next sequence = " + newSequence.toString());
         }
         requestCounter++;
 
-        alreadyPostedRequests.add(newSequence);
+        /*alreadyPostedRequests.add(newSequence);*/
         engine.resolveSubmission(newSequence);
     }
 
@@ -80,9 +70,9 @@ public class CodeSolver {
         IChromosome fittest = new NumChromosome();
         for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (fittest.getSickness() > 0); i++) {
 
-            if(GameSettings.INSTANCE.dynamicEvolution){
+            if (GameSettings.INSTANCE.dynamicEvolution) {
                 dynamicEvolution();
-            }else {
+            } else {
                 population.evolve();
             }
 
@@ -93,25 +83,25 @@ public class CodeSolver {
                 logger.info("    Code Solver - population sickness at round #" + i + ": " + population.getSumPopulationSickness());
             }
 
-            population.getFittest().setGeneration(i);
             fittest = population.getFittest();
+            fittest.setGeneration(i);
         }
 
         /*get fittest*/
         IChromosome nextRequest = fittest;
 
         if (GameSettings.INSTANCE.loggingEnabled) {
-            this.logger.info("New request has fitness " + nextRequest.getSickness());
+            logger.info("New request has fitness " + nextRequest.getSickness());
         }
         return nextRequest;
     }
 
-    void dynamicEvolution(){
+    private void dynamicEvolution() {
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         int selectionNum = generator.nextInt(0, 1);
         int crossoverNum = generator.nextInt(0, 3);
         int mutationNum = generator.nextInt(0, 4);
-        population.evolve(selectionNum,crossoverNum,mutationNum);
+        population.evolve(selectionNum, crossoverNum, mutationNum);
     }
 
     /*--getter + setter*/

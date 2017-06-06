@@ -20,7 +20,6 @@ public enum GameSettings {
     public SelectionEnum selectionType;
     public CrossoverEnum crossoverType;
     public int kForCrossover;
-    public int crossoverMaxTryAgain;
     public float mixingRatio;
     public MutationEnum mutationType;
     public double mutationRatio;
@@ -67,8 +66,8 @@ public enum GameSettings {
         setEfficiencyAnalysisEnabled(false);
         setLoggingEnabled(true);
 
-        setSizeOfPopulation(100);
-        setRepeatEvolutionNTimes(1000000);
+        setSizeOfPopulation(750);
+        setRepeatEvolutionNTimes(10000001);
         setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
         setCrossoverType(CrossoverEnum.K_POINT);
 
@@ -81,10 +80,9 @@ public enum GameSettings {
 
         setSimulationSpeedInMs(100);
 
-        setKForCrossover(3);
-        setCrossoverMaxTryAgain(10);
-        setMixingRatio(0.75f);
-        setMutationType(MutationEnum.INSERTION); /*best results with SCRAMBLE*/
+        setKForCrossover(4);
+        setMixingRatio(0.35f);
+        setMutationType(MutationEnum.SCRAMBLE); /*best results with SCRAMBLE*/
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
 
@@ -135,13 +133,6 @@ public enum GameSettings {
             }
         }
         this.kForCrossover = kForCrossover;
-    }
-
-    protected void setCrossoverMaxTryAgain(int crossoverMaxTryAgain) {
-        if (crossoverMaxTryAgain < 1) {
-            throw new IllegalArgumentException("crossoverMaxTryAgain has to be > 0");
-        }
-        this.crossoverMaxTryAgain = crossoverMaxTryAgain;
     }
 
     /* for uniform crossParents; best results with values > 0.5, like 0.75*/

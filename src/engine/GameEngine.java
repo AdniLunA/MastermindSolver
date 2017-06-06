@@ -128,7 +128,7 @@ public class GameEngine {
                     + chromosome.toString());
         }
         if(!GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
-            System.out.printf("  " + chromosome.toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %7d.\n"
+            System.out.printf("  " + newSubmission.getChromosome().toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %7d.\n"
                     , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration());
         }
 

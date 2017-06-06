@@ -39,10 +39,10 @@ public class ScrambleMutation extends MutatorBasics {
         IChromosome mutatedChromosome;
 
         int[] sequence = chromosomeToMutate.getSequence();
-        int[] splitPos = super.generateTwoPositions(sequence.length -1);
+        int[] splitPos = super.generateTwoDistancedPos(sequence.length -1, 3);
 
         int[] scrambledSequence = scramble(Arrays.copyOfRange(sequence, splitPos[0], splitPos[1]));
-        System.arraycopy(scrambledSequence, splitPos[0], sequence, splitPos[0], splitPos[1] + 1 - splitPos[0]);
+        System.arraycopy(scrambledSequence, 0, sequence, splitPos[0], scrambledSequence.length);
         mutatedChromosome = new NumChromosome(sequence);
         mutatedChromosome.setGeneration(chromosomeToMutate.getGeneration() + 1);
         return mutatedChromosome;
@@ -56,7 +56,9 @@ public class ScrambleMutation extends MutatorBasics {
         }
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         for (int i = 0; i < scrambledSequence.length; i++) {
-            scrambledSequence[i] = numberPool.get(generator.nextInt(0, numberPool.size()-1));
+            int itemPos = generator.nextInt(0, numberPool.size()-1);
+            scrambledSequence[i] = numberPool.get(itemPos);
+            numberPool.remove(itemPos);
         }
         return scrambledSequence;
     }

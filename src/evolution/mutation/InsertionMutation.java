@@ -22,7 +22,7 @@ public class InsertionMutation extends MutatorBasics {
     public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
         ArrayList<IChromosome> genesToMutate = super.getGenesToMutate(genePool);
         for (IChromosome geneToMutate : genesToMutate) {
-            boolean validGeneFound = false;
+            boolean validGeneFound;
             int countTries = 0;
             boolean keepTrying = true;
             IChromosome mutatedChromosome;
