@@ -37,16 +37,14 @@ public class GUIManager {
     /*--
      * presentation event tracking/settings
      */
-    public boolean TRACK_CODE_SETTING = false;
-    public boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
-    public boolean DEFAULT_RUN_AUTOMATED = false;
+    boolean TRACK_CODE_SETTING = false;
+    boolean DEFAULT_SHOW_BLACKBOX_CONTENT = true;
+    boolean DEFAULT_RUN_AUTOMATED = false;
 
     /*--
      * functions
      */
     public void openConfigurationPage(Stage primaryStage) {
-//        logger.info("");
-
         configPg = new ConfigurationController(this);
 
         this.primaryStage = primaryStage;
@@ -63,12 +61,12 @@ public class GUIManager {
         }
     }
 
-    protected void returnToConfigurationPage() {
+    void returnToConfigurationPage() {
 //        logger.info("");
         openConfigurationPage(primaryStage);
     }
 
-    public void setSelectedSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
+    void setSelectedSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
         gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
         this.code = new NumChromosome(secretCode);
 
@@ -78,7 +76,7 @@ public class GUIManager {
         openSimulationPage();
     }
 
-    public void setRandomSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
+    void setRandomSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
         gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
         this.code = new NumChromosome();
 
@@ -89,12 +87,8 @@ public class GUIManager {
     }
 
     private void openSimulationPage() {
-
-//        logger.info("");
         //only accept valid code
-        if (!code.checkValidity()) {
-            /*todo: GUI error message invalid code*/
-        } else {
+        if (code.checkValidity()) {
             try {
                 Pane simulationPage = (Pane) FXMLLoader.load(getClass().getResource("simulationPage.fxml"));
                 Scene scene = new Scene(simulationPage);
@@ -106,16 +100,13 @@ public class GUIManager {
             }
             gameEngine.startGame(code);
         }
+        /*todo: GUI error message invalid code*/
     }
 
     /*--
      * getter + setter
      */
-    public GameEngine getGameEngine() {
-        return gameEngine;
-    }
-
-    protected int[] getSecretCode() {
+    int[] getSecretCode() {
         return code.getSequence();
     }
 

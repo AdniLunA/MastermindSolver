@@ -1,0 +1,11 @@
+starting simulation with values LOC: 7, NOC: 13, NOT: 15, secret code:
+* 01 02 03 04 05 06 07 *
+  11 12 08 00 10 04 03  => sequence #00, red =  0, white =  2, sickness =    0, generation =       0.
+  10 02 06 11 05 07 01  => sequence #01, red =  2, white =  3, sickness =    0, generation =       0.
+  00 01 06 02 05 12 07  => sequence #02, red =  2, white =  3, sickness =    0, generation =       0.
+  00 02 01 11 09 05 06  => sequence #03, red =  1, white =  3, sickness =    0, generation =     968.
+  07 02 04 05 06 03 01  => sequence #04, red =  1, white =  6, sickness =    0, generation =     512.
+  04 02 03 06 05 01 07  => sequence #05, red =  4, white =  3, sickness =    0, generation =    6651.
+  01 02 03 04 05 06 07  => sequence #06, red =  7, white =  0, sickness =    0, generation =     103.
+secret code found!
+Runtime:   0: 2

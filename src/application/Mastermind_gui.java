@@ -12,8 +12,6 @@ public class Mastermind_gui extends Application {
     /*--functions*/
     @Override
     public void start(Stage primaryStage) throws IOException {
-        //logger.info("");
-
         new GameEngine(primaryStage);
     }
 

@@ -34,7 +34,7 @@ public class SimulationController implements Initializable {
     /*--
      * constructor
      */
-    public SimulationController(GUIManager guiManager, SubmissionHandler submissionHandler) {
+    SimulationController(GUIManager guiManager, SubmissionHandler submissionHandler) {
         this.gui = guiManager;
         this.submissionHandler = submissionHandler;
     }
@@ -234,11 +234,10 @@ public class SimulationController implements Initializable {
     }
 
     private LinearGradient getCircleGradient(int color) {
-        LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
+        /*this.fillProperty().set(gradient);*/
+        return new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, GameSettings.INSTANCE.COLORS[color]),
                 new Stop(1, Color.web("#ffffff")));
-        /*this.fillProperty().set(gradient);*/
-        return gradient;
     }
 
     private void fillCircleLine(Circle[] circles, int colors[]) {
