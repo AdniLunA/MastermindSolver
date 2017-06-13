@@ -34,16 +34,15 @@ public class ConfigurationController implements Initializable {
      * constructor
      */
     public ConfigurationController(GUIManager guiManager) {
-        this.gui = guiManager;
+        this.guiManager = guiManager;
     }
 
     /*--attributes*/
-    private GUIManager gui;
+    private GUIManager guiManager;
 
     private int lengthOfCode;
     private int numberOfColors;
     private int numberOfTries;
-    private GUIManager guiManager;
 
     @FXML
     private TextField loc_textfield;
@@ -129,7 +128,6 @@ public class ConfigurationController implements Initializable {
 
     /*--functions*/
     private int checkBoundaries(String sValue, int maxValue) {
-        //logger.info("");
         try {
             int value = Integer.parseInt(sValue);
             if (value < 1) {
@@ -149,7 +147,6 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeLOCTextfield() {
-//        logger.info("");
 
         int newValue = checkBoundaries(loc_textfield.getText(), GameSettings.INSTANCE.MAX_LENGTH_OF_CODE);
         if (newValue != 0) {
@@ -164,7 +161,6 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeNOCTextfield() {
-//        logger.info("");
 
         int newValue = checkBoundaries(noc_textfield.getText(), GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS);
         if (newValue != 0) {
@@ -179,7 +175,6 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onchangeNOTTextfield() {
-//        logger.info("");
 
         int newValue = checkBoundaries(not_textfield.getText(), GameSettings.INSTANCE.maxNumberOfTries);
         if (newValue != 0) {
@@ -269,7 +264,7 @@ public class ConfigurationController implements Initializable {
     }
 
     private void incrColor(int pos) {
-        if (gui.TRACK_CODE_SETTING) {
+        if (guiManager.TRACK_CODE_SETTING) {
             logger.info("");
         }
         Circle circle = circles[pos];
@@ -282,7 +277,7 @@ public class ConfigurationController implements Initializable {
         LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
                 new Stop(0, nextColor),
                 new Stop(1, Color.web("#ffffff")));
-        if (gui.TRACK_CODE_SETTING) {
+        if (guiManager.TRACK_CODE_SETTING) {
             logger.info("new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
         }
         circle.fillProperty().set(gradient);
@@ -427,7 +422,7 @@ public class ConfigurationController implements Initializable {
         c0.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(0);
@@ -436,7 +431,7 @@ public class ConfigurationController implements Initializable {
         c1.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(1);
@@ -445,7 +440,7 @@ public class ConfigurationController implements Initializable {
         c2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(2);
@@ -454,7 +449,7 @@ public class ConfigurationController implements Initializable {
         c3.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(3);
@@ -463,7 +458,7 @@ public class ConfigurationController implements Initializable {
         c4.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(4);
@@ -472,7 +467,7 @@ public class ConfigurationController implements Initializable {
         c5.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(5);
@@ -481,7 +476,7 @@ public class ConfigurationController implements Initializable {
         c6.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(6);
@@ -490,7 +485,7 @@ public class ConfigurationController implements Initializable {
         c7.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(7);
@@ -499,7 +494,7 @@ public class ConfigurationController implements Initializable {
         c8.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(8);
@@ -508,7 +503,7 @@ public class ConfigurationController implements Initializable {
         c9.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent t) {
-                if (gui.TRACK_CODE_SETTING) {
+                if (guiManager.TRACK_CODE_SETTING) {
                     logger.info("");
                 }
                 incrColor(9);

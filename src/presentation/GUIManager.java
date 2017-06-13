@@ -20,7 +20,7 @@ public class GUIManager {
     /*constructor*/
     public GUIManager(GameEngine engine, SubmissionHandler submissionHandler) {
         this.gameEngine = engine;
-        simulationPg = new SimulationController(this, submissionHandler);
+        this.submissionHandler = submissionHandler;
     }
 
     /*--
@@ -28,7 +28,7 @@ public class GUIManager {
      */
     private GameEngine gameEngine;
 
-    private ConfigurationController configPg;
+    private SubmissionHandler submissionHandler;
     private SimulationController simulationPg;
     private IChromosome code;
 
@@ -45,12 +45,15 @@ public class GUIManager {
      * functions
      */
     public void openConfigurationPage(Stage primaryStage) {
-        configPg = new ConfigurationController(this);
+        ConfigurationController configPg = new ConfigurationController(this);
 
         this.primaryStage = primaryStage;
 
         try {
-            Pane configPage = (Pane) FXMLLoader.load(getClass().getResource("configurationPage.fxml"));
+            FXMLLoader configPgLoader = new FXMLLoader(getClass().getResource("configurationPage.fxml"));
+            configPgLoader.setController(configPg);
+            Pane configPage = configPgLoader.load();
+
             Scene scene = new Scene(configPage);
             primaryStage.setTitle("application.InitializeGui Simulation");
             primaryStage.setScene(scene);
@@ -90,7 +93,11 @@ public class GUIManager {
         //only accept valid code
         if (code.checkValidity()) {
             try {
-                Pane simulationPage = (Pane) FXMLLoader.load(getClass().getResource("simulationPage.fxml"));
+                simulationPg = new SimulationController(this, submissionHandler);
+                FXMLLoader simulationPgLoader = new FXMLLoader(getClass().getResource("simulationPage.fxml"));
+                simulationPgLoader.setController(simulationPg);
+                Pane simulationPage = (simulationPgLoader.load());
+
                 Scene scene = new Scene(simulationPage);
                 primaryStage.setScene(scene);
                 primaryStage.show();

@@ -1,6 +1,7 @@
 package presentation;
 
 import config.LoggerGenerator;
+import engine.GameEngine;
 import engine.GameSettings;
 import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
@@ -37,6 +38,8 @@ public class SimulationController implements Initializable {
     SimulationController(GUIManager guiManager, SubmissionHandler submissionHandler) {
         this.gui = guiManager;
         this.submissionHandler = submissionHandler;
+        showBlackboxContent = guiManager.DEFAULT_SHOW_BLACKBOX_CONTENT;
+        runAutomated =  guiManager.DEFAULT_RUN_AUTOMATED;
     }
 
     /*--
@@ -51,8 +54,8 @@ public class SimulationController implements Initializable {
     private int currentLineToPrint = 0;
 
     /*default values*/
-    private boolean showBlackboxContent = gui.DEFAULT_SHOW_BLACKBOX_CONTENT;
-    private boolean runAutomated = gui.DEFAULT_RUN_AUTOMATED;
+    private boolean showBlackboxContent;
+    private boolean runAutomated;
     private int simulationSpeed;
 
     @FXML
