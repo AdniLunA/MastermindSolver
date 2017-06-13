@@ -9,8 +9,6 @@ import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
 
-import java.io.IOException;
-
 public class EfficiencyTest {
 
     private EfficiencyTest() {
@@ -31,7 +29,7 @@ public class EfficiencyTest {
     private void countPositives(String description, GameEngine engine) {
         engine.settingsSetLocNocNot(LOC_NOC_NOT[0], LOC_NOC_NOT[1], LOC_NOC_NOT[2]);
         engine.settingsSetSimulationSpeedInMs(0);
-        engine.settingsSetAnalysingMode(true);
+        engine.runInAnalysingMode();
 
         int countPositive = 0;
         for (int i = NUMBER_OF_TESTS; i > 0; i--) {

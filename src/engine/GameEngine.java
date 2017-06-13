@@ -54,14 +54,27 @@ public class GameEngine {
         GameSettings.INSTANCE.setLengthOfCode(lengthOfCode);
         GameSettings.INSTANCE.setNumberOfColors(numberOfColors);
         GameSettings.INSTANCE.setNumberOfTries(numberOfTries);
+
+        int variations = calculateNumberOfVariations(numberOfColors, lengthOfCode);
+        if(variations/10 < GameSettings.INSTANCE.sizeOfPopulation){
+            GameSettings.INSTANCE.setSizeOfPopulation(variations/10);
+        }
+    }
+
+    private int calculateNumberOfVariations(int noc, int loc){
+        int var = noc;
+        for(int i = noc-1; i > (noc-loc); i--){
+            var *= i;
+        }
+        return var;
     }
 
     public void settingsSetSimulationSpeedInMs(int speed){
         GameSettings.INSTANCE.setSimulationSpeedInMs(speed);
     }
 
-    public void settingsSetAnalysingMode(boolean analyse){
-        GameSettings.INSTANCE.setEfficiencyAnalysisEnabled(analyse);
+    public void runInAnalysingMode(){
+        GameSettings.INSTANCE.setEfficiencyAnalysisEnabled(true);
     }
 
     public void settingsSetPopulationSizePop(int size){

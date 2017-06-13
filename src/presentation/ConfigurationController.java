@@ -19,8 +19,10 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ResourceBundle;
 
@@ -124,6 +126,7 @@ public class ConfigurationController implements Initializable {
     private Rectangle[] rectangles;
     private Circle[] circles;
     private int[] circleState = new int[GameSettings.INSTANCE.MAX_LENGTH_OF_CODE];
+    private ArrayList<Integer> addedColors = new ArrayList<>();
     private Color[] colors;
 
     /*--functions*/
@@ -189,8 +192,6 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickNextStep() {
-//        logger.info("");
-
         paramSettingArea.setDisable(true);
         initializeCodeSettingArea();
         codeSettingArea.setDisable(false);
@@ -199,23 +200,17 @@ public class ConfigurationController implements Initializable {
 
     @FXML
     private void onclickGenerateRandom() {
-//        logger.info("");
         guiManager.setRandomSecretCode(lengthOfCode, numberOfColors, numberOfTries);
     }
 
     @FXML
     private void onclickLastStep() {
-//        logger.info("");
-
         paramSettingArea.setDisable(false);
         codeSettingArea.setDisable(true);
-
     }
 
     @FXML
     private void onclickStartSimulation() {
-//        logger.info("");
-
         boolean[] accepted = checkCodeAcceptance();
 
         if (accepted[0] && accepted[1]) {
@@ -233,8 +228,6 @@ public class ConfigurationController implements Initializable {
     }
 
     private boolean[] checkCodeAcceptance() {
-        //logger.info("");
-
         /*test if a hole is not filled*/
         int i = 0;
         boolean emptyHoleFound = false;
@@ -268,23 +261,44 @@ public class ConfigurationController implements Initializable {
             logger.info("");
         }
         Circle circle = circles[pos];
-        int nextState = circleState[pos] + 1;
-        if (nextState >= numberOfColors) {
+        int nextState;
+        if(circleState[pos]!=GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
+            addedColors.remove((Integer) circleState[pos]);
+        }
+        nextState = circleState[pos] + 1;
+        if (nextState > numberOfColors) {
             nextState = 0;
         }
-        circleState[pos] = nextState;
-        Color nextColor = colors[nextState];
-        LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
-                new Stop(0, nextColor),
-                new Stop(1, Color.web("#ffffff")));
-        if (guiManager.TRACK_CODE_SETTING) {
-            logger.info("new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
+        while(addedColors.contains(nextState)) {
+            nextState++;
+            if (nextState > numberOfColors) {
+                nextState = 0;
+            }
         }
-        circle.fillProperty().set(gradient);
+        circleState[pos] = nextState;
+
+        if (nextState == numberOfColors){
+            clearHole(pos);
+        } else {
+            addedColors.add(nextState);
+
+            Color nextColor = colors[nextState];
+            LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
+                    new Stop(0, nextColor),
+                    new Stop(1, Color.web("#ffffff")));
+            if (guiManager.TRACK_CODE_SETTING) {
+                logger.info("new color: " + nextColor + ", state: " + nextState + ", circle position: " + pos);
+            }
+            circle.fillProperty().set(gradient);
+        }
+    }
+
+    private void clearHole(int pos){
+        circleState[pos] = GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS;
+        circles[pos].setFill(Color.BLACK);
     }
 
     private void initializeColors() {
-//        logger.info("");
         for (int i = 0; i < GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
             try {
                 LinearGradient gradient = new LinearGradient(0f, 1f, 1f, 0f, true, CycleMethod.NO_CYCLE,
@@ -298,8 +312,6 @@ public class ConfigurationController implements Initializable {
     }
 
     private void initializeParamSettingArea(int locMinLength) {
-//        logger.info("");
-
         lengthOfCode = GameSettings.INSTANCE.lengthOfCode;
         /*override Config setting if its below minimum)*/
         lengthOfCode = (lengthOfCode < locMinLength) ? locMinLength : lengthOfCode;
@@ -321,16 +333,17 @@ public class ConfigurationController implements Initializable {
     }
 
     private void initializeCodeSettingArea() {
-//        logger.info("");
-
-        for (int i = 0; i < GameSettings.INSTANCE.MAX_LENGTH_OF_CODE; i++) {
+        for (int i = 0; i < lengthOfCode; i++) {
             circles[i].setVisible(true);
+            if(circleState[i] >= numberOfColors){
+                clearHole(i);
+            }
         }
         for (int i = GameSettings.INSTANCE.MAX_LENGTH_OF_CODE - 1; i >= lengthOfCode; i--) {
             circles[i].setVisible(false);
         }
 
-        for (int i = 0; i < GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS; i++) {
+        for (int i = 0; i < numberOfColors; i++) {
             rectangles[i].setVisible(true);
         }
         for (int i = GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS - 1; i >= numberOfColors; i--) {
@@ -365,7 +378,6 @@ public class ConfigurationController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        logger.info("");
         /*--attributes*/
         int k = GameSettings.INSTANCE.kForCrossover;
         int minValue;

@@ -5,6 +5,7 @@ import engine.GameEngine;
 import engine.helper.SubmissionHandler;
 import evolution.IChromosome;
 import evolution.NumChromosome;
+import evolution.SicknessCalculator;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
@@ -29,7 +30,6 @@ public class GUIManager {
     private GameEngine gameEngine;
 
     private SubmissionHandler submissionHandler;
-    private SimulationController simulationPg;
     private IChromosome code;
 
     private Stage primaryStage;
@@ -65,11 +65,12 @@ public class GUIManager {
     }
 
     void returnToConfigurationPage() {
-//        logger.info("");
         openConfigurationPage(primaryStage);
     }
 
     void setSelectedSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries, int[] secretCode) {
+        submissionHandler.dropSubmissions();
+        SicknessCalculator.INSTANCE.dropForNextGame();
         gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
         this.code = new NumChromosome(secretCode);
 
@@ -80,6 +81,8 @@ public class GUIManager {
     }
 
     void setRandomSecretCode(int lengthOfCode, int numberOfColors, int numberOfTries) {
+        submissionHandler.dropSubmissions();
+        SicknessCalculator.INSTANCE.dropForNextGame();
         gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
         this.code = new NumChromosome();
 
@@ -90,10 +93,10 @@ public class GUIManager {
     }
 
     private void openSimulationPage() {
-        //only accept valid code
+        /*only accept valid code*/
         if (code.checkValidity()) {
             try {
-                simulationPg = new SimulationController(this, submissionHandler);
+                SimulationController simulationPg = new SimulationController(this, submissionHandler);
                 FXMLLoader simulationPgLoader = new FXMLLoader(getClass().getResource("simulationPage.fxml"));
                 simulationPgLoader.setController(simulationPg);
                 Pane simulationPage = (simulationPgLoader.load());

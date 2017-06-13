@@ -114,18 +114,24 @@ abstract class CrossoverBasics implements ICrossover {
         }
     }
 
+    /**
+     * calculate splitting position.
+     * search if new position is duplicate.
+     * if that is the case, search new position.
+     */
     int createValidRandomSplitPos(int currentPos) {
         int pos = 0;
+        ArrayList<Integer> possibleSplitPos = new ArrayList<>();
+        for (int i = 1; i < sequenceLength - 1; i++) {
+            if (!splitPos.contains(i)) {
+                possibleSplitPos.add(i);
+            }
+        }
         try {
-            /**
-             * calculate splitting position.
-             * search if new position is duplicate.
-             * if that is the case, search new position.
-             */
-            do {
-                /*nextInt: incl. minimum, incl. maximum*/
-                pos = randomGenerator.nextInt(1, sequenceLength - 2);
-            } while (splitPos.contains(pos));
+            /*nextInt: incl. minimum, incl. maximum*/
+            if(!possibleSplitPos.isEmpty()) {
+                pos = possibleSplitPos.get(randomGenerator.nextInt(0, possibleSplitPos.size()-1));
+            }
         } catch (RuntimeException r) {
             System.out.println("Crossover - createValidRandomSplitPos: - cannot resolve new position, last value: " + pos);
             r.printStackTrace();

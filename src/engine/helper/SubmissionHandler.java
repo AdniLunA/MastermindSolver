@@ -35,6 +35,10 @@ public class SubmissionHandler {
         }
     }
 
+    public void dropSubmissions(){
+        submissions.clear();
+    }
+
     public void handleSubmissionRequest(int requestCounter) {
         //logger.info("");
         if (requestCounter < GameSettings.INSTANCE.numberOfTries) {
@@ -61,5 +65,9 @@ public class SubmissionHandler {
                 logger.info("    position = " + requestCounter + ", " + currentLine.toString());
             }
         }
+    }
+
+    public LinkedBlockingQueue<Submission> getSubmissions() {
+        return submissions;
     }
 }

@@ -1,7 +1,6 @@
 package presentation;
 
 import config.LoggerGenerator;
-import engine.GameEngine;
 import engine.GameSettings;
 import engine.helper.Submission;
 import engine.helper.SubmissionHandler;
@@ -39,7 +38,7 @@ public class SimulationController implements Initializable {
         this.gui = guiManager;
         this.submissionHandler = submissionHandler;
         showBlackboxContent = guiManager.DEFAULT_SHOW_BLACKBOX_CONTENT;
-        runAutomated =  guiManager.DEFAULT_RUN_AUTOMATED;
+        runAutomated = guiManager.DEFAULT_RUN_AUTOMATED;
     }
 
     /*--
@@ -96,10 +95,6 @@ public class SimulationController implements Initializable {
     /*--
      * functions
      */
-    private void addNewLine(Submission lineInfo) {
-        logger.info("");
-    }
-
     private void generateGameMatrix() {
         logger.info("");
         int x = GameSettings.INSTANCE.lengthOfCode;
@@ -259,6 +254,7 @@ public class SimulationController implements Initializable {
         } else {
             logger.info("");
             submissionHandler.handleSubmissionRequest(currentLineToPrint);
+            setNextSubmission(submissionHandler.getSubmissions().peek());
             logger.info("");
         }
     }
@@ -310,8 +306,10 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickRunAutomated() {
-        switchSimulationMode();
-        runSimulationAutomated();
+        if(gameIsRunning) {
+            switchSimulationMode();
+            runSimulationAutomated();
+        }
     }
 
     @FXML
