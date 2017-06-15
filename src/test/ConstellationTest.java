@@ -29,7 +29,7 @@ public class ConstellationTest {
         GameEngine engine = new GameEngine();
 
         engine.settingsSetLocNocNot(loc, noc, 15);
-        engine.settingsSetPopulationSizePop(750);
+        engine.settingsSetPopulationSize(750);
         engine.settingsSetRepeatEvolution(repEv);
         GameSettings.INSTANCE.setLoggingEnabled(false);
 

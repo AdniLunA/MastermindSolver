@@ -15,9 +15,6 @@ public class InversionMutation extends MutatorBasics {
      */
     private final Logger logger = LoggerGenerator.inversionMutation;
 
-    /**
-     * TODO
-     */
     @Override
     public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
         ArrayList<IChromosome> genesToMutate = super.getGenesToMutate(genePool);

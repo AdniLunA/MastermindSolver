@@ -15,9 +15,6 @@ public class InsertionMutation extends MutatorBasics {
      */
     private final Logger logger = LoggerGenerator.insertionMutation;
 
-    /**
-     * TODO
-     */
     @Override
     public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
         ArrayList<IChromosome> genesToMutate = super.getGenesToMutate(genePool);

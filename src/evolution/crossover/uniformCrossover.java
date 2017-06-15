@@ -23,7 +23,7 @@ public class UniformCrossover extends CrossoverBasics {
      *functions
      */
     private float readValidMixingRatio() {
-        float ratio = 100 * GameSettings.INSTANCE.mixingRatio; /*transform to percent
+        float ratio = 100 * GameSettings.INSTANCE.uniformMixingRatio; /*transform to percent
         /*no 0 or 100 allowed*/
         if (ratio <= 0 || ratio >= 100) {
             throw new InputMismatchException("ERROR: The mixing ratio in the configuration must be a value between 0 and 1.");

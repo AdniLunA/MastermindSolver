@@ -4,9 +4,6 @@ import evolution.IChromosome;
 
 public class Submission {
     /*constructor*/
-    public Submission() {
-    }
-
     public Submission(IChromosome submittedChromosome, int red, int white) {
         this.submittedChromosome = submittedChromosome;
         this.red = red;

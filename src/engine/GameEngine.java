@@ -69,7 +69,7 @@ public class GameEngine {
         return var;
     }
 
-    public void settingsSetPopulationSizePop(int size) {
+    public void settingsSetPopulationSize(int size) {
         GameSettings.INSTANCE.setSizeOfPopulation(size);
     }
 
@@ -106,6 +106,7 @@ public class GameEngine {
     }
 
     public boolean runGameAutomated(IChromosome code) {
+        codeSolved = false;
         startGame(code);
 
         while (solver.getRequestCounter() < GameSettings.INSTANCE.numberOfTries) {
@@ -129,7 +130,7 @@ public class GameEngine {
         }
         if (!GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
             System.out.printf("  " + newSubmission.getChromosome().toString() + "  => sequence #%02d, red = %2d, white = %2d, sickness = %4d, generation = %7d.\n"
-                    , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration());
+                    , (solver.getRequestCounter() - 1), newSubmission.getRed(), newSubmission.getWhite(), chromosome.getSickness(), chromosome.getGeneration()+1);
         }
 
         /*if solution is found, break loop by setting currentLine to max*/
@@ -145,5 +146,9 @@ public class GameEngine {
 
     public void calculateNextSubmission() {
         solver.solve();
+    }
+
+    public int getSumEvolutions(){
+        return submissionHandler.sumEvolutionSteps();
     }
 }

@@ -85,7 +85,7 @@ public class Population extends PopulationBasics {
         NumChromosome randomChromosome;
         int countTries = 0;
         do {
-            if (countTries > GameSettings.INSTANCE.MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS) {
+            if (countTries > GameSettings.INSTANCE.MAX_TRY_AGAIN_NEW_RANDOM_CHR) {
                 throw new RuntimeException("Population - removeAlreadyRequestedCodes: " +
                         "Tried to often to generate new code that hasn't been submitted yet. " +
                         "Stopped to prevent infinite loop.");

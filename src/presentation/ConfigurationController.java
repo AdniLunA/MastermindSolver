@@ -34,7 +34,7 @@ public class ConfigurationController implements Initializable {
     /*--
      * constructor
      */
-    public ConfigurationController(GUIManager guiManager) {
+    ConfigurationController(GUIManager guiManager) {
         this.guiManager = guiManager;
     }
 
@@ -217,11 +217,9 @@ public class ConfigurationController implements Initializable {
             guiManager.setSelectedSecretCode(lengthOfCode, numberOfColors, numberOfTries, secretCode);
         }
         if (!accepted[0]) {
-            /*todo presentation show empty hole message*/
             System.out.println("ConfigurationController - onclickStartSimulation - code not accepted due to empty hole(s)");
         }
         if (!accepted[1]) {
-            /*todo presentation show duplicate color message*/
             System.out.println("ConfigurationController - onclickStartSimulation - code not accepted due to duplicate colors");
         }
     }

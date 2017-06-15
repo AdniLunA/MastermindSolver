@@ -20,11 +20,11 @@ public enum GameSettings {
     public SelectionEnum selectionType;
     public CrossoverEnum crossoverType;
     public int kForCrossover;
-    public float mixingRatio;
+    public float uniformMixingRatio;
     public MutationEnum mutationType;
     public double mutationRatio;
     public int mutationMaxTryAgain;
-    public final int MAX_NO_OF_TRIES_TO_GENERATE_NEW_REQUESTS = 50;
+    public final int MAX_TRY_AGAIN_NEW_RANDOM_CHR = 50;
 
     public boolean trackSicknessByEvolving;
 
@@ -67,7 +67,7 @@ public enum GameSettings {
         setLoggingEnabled(true);
 
         setSizeOfPopulation(750);
-        setRepeatEvolutionNTimes(10000001);
+        setRepeatEvolutionNTimes(10000000);
         setSelectionType(SelectionEnum.ROULETTE_WHEEL); /*expecting better performance with tournament*/
         setCrossoverType(CrossoverEnum.K_POINT);
 
@@ -81,7 +81,7 @@ public enum GameSettings {
         setSimulationSpeedInMs(100);
 
         setKForCrossover(4);
-        setMixingRatio(0.35f);
+        setUniformMixingRatio(0.35f);
         setMutationType(MutationEnum.SCRAMBLE); /*best results with SCRAMBLE*/
         setMutationRatio(0.005);
         setMutationMaxTryAgain(10);
@@ -136,18 +136,18 @@ public enum GameSettings {
     }
 
     /* for uniform crossParents; best results with values > 0.5, like 0.75*/
-    protected void setMixingRatio(float mixingRatio) {
+    public void setUniformMixingRatio(float mixingRatio) {
         if (mixingRatio <= 0 || mixingRatio >= 1) {
-            throw new IndexOutOfBoundsException("mixingRatio must be a value between 0 and 1.");
+            throw new IndexOutOfBoundsException("uniformMixingRatio must be a value between 0 and 1.");
         }
-        this.mixingRatio = mixingRatio;
+        this.uniformMixingRatio = mixingRatio;
     }
 
     protected void setMutationType(MutationEnum mutationType) {
         this.mutationType = mutationType;
     }
 
-    protected void setMutationRatio(double mutationRatio) {
+    public void setMutationRatio(double mutationRatio) {
         if (mutationRatio <= 0 || mutationRatio >= 1) {
             throw new IndexOutOfBoundsException("mutationRatio must be a value between 0 and 1.");
         }

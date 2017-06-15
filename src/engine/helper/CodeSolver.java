@@ -21,7 +21,7 @@ public class CodeSolver {
     private static final Logger logger = LoggerGenerator.codeSolver;
 
     /*--
-     * console
+     * constructor
      */
     public CodeSolver(GameEngine engine, MersenneTwisterFast generator) {
         this.engine = engine;
@@ -64,8 +64,6 @@ public class CodeSolver {
     private IChromosome solveViaEvolutionaryAlgorithms() {
         /*random gene pool -> population*/
         /*evolve n times*/
-        /*todo: find an intelligent way to choose mutation methods*/
-        /*todo: fortfahren mit error tracking*/
 
         population.refreshSicknessOfGenePool();
         IChromosome fittest = new NumChromosome(generator);

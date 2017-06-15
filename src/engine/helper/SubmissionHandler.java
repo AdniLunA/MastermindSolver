@@ -65,6 +65,14 @@ public class SubmissionHandler {
         }
     }
 
+    public int sumEvolutionSteps() {
+        int sum = 0;
+        for (Submission subm : submissions) {
+            sum += subm.getChromosome().getGeneration();
+        }
+        return sum;
+    }
+
     /*getter + setter*/
     public LinkedBlockingQueue<Submission> getSubmissions() {
         return submissions;
