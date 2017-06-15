@@ -16,9 +16,6 @@ public class ScrambleMutation extends MutatorBasics {
      */
     private final Logger logger = LoggerGenerator.scrambleMutation;
 
-    /**
-     * TODO
-     */
     @Override
     public ArrayList<IChromosome> mutateGenes(ArrayList<IChromosome> genePool) {
         ArrayList<IChromosome> genesToMutate = super.getGenesToMutate(genePool);
@@ -39,7 +36,7 @@ public class ScrambleMutation extends MutatorBasics {
         IChromosome mutatedChromosome;
 
         int[] sequence = chromosomeToMutate.getSequence();
-        int[] splitPos = super.generateTwoDistancedPos(sequence.length -1, 3);
+        int[] splitPos = super.generateTwoDistancedPos(sequence.length - 1, 3);
 
         int[] scrambledSequence = scramble(Arrays.copyOfRange(sequence, splitPos[0], splitPos[1]));
         System.arraycopy(scrambledSequence, 0, sequence, splitPos[0], scrambledSequence.length);
@@ -56,7 +53,7 @@ public class ScrambleMutation extends MutatorBasics {
         }
         MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         for (int i = 0; i < scrambledSequence.length; i++) {
-            int itemPos = generator.nextInt(0, numberPool.size()-1);
+            int itemPos = generator.nextInt(0, numberPool.size() - 1);
             scrambledSequence[i] = numberPool.get(itemPos);
             numberPool.remove(itemPos);
         }

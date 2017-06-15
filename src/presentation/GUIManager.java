@@ -1,6 +1,7 @@
 package presentation;
 
 import config.LoggerGenerator;
+import config.MersenneTwisterFast;
 import engine.GameEngine;
 import engine.helper.SubmissionHandler;
 import evolution.IChromosome;
@@ -22,12 +23,14 @@ public class GUIManager {
     public GUIManager(GameEngine engine, SubmissionHandler submissionHandler) {
         this.gameEngine = engine;
         this.submissionHandler = submissionHandler;
+        this.generator = new MersenneTwisterFast(System.nanoTime());
     }
 
     /*--
      * attributes
      */
     private GameEngine gameEngine;
+    private MersenneTwisterFast generator;
 
     private SubmissionHandler submissionHandler;
     private IChromosome code;
@@ -84,7 +87,7 @@ public class GUIManager {
         submissionHandler.dropSubmissions();
         SicknessCalculator.INSTANCE.dropForNextGame();
         gameEngine.settingsSetLocNocNot(lengthOfCode, numberOfColors, numberOfTries);
-        this.code = new NumChromosome();
+        this.code = new NumChromosome(generator);
 
         logger.info(" - starting simulation with values LOC: " + lengthOfCode
                 + ", NOC: " + numberOfColors + ", NOT: " + numberOfTries + ", secret code: " + code.toString());

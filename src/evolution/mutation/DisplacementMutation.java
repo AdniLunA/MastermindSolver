@@ -39,18 +39,18 @@ public class DisplacementMutation extends MutatorBasics {
         IChromosome mutatedChromosome;
         int[] sequenceToMutate = chromosomeToMutate.getSequence();
 
-        int[] splitPos = super.generateTwoPositions(sequenceToMutate.length-1);
+        int[] splitPos = super.generateTwoPositions(sequenceToMutate.length - 1);
         int illegalPos = splitPos[0];
         SingleArrayBuilder builder = new SingleArrayBuilder();
         builder.addToQueue(Arrays.copyOf(sequenceToMutate, splitPos[0]));
         builder.addToQueue(Arrays.copyOfRange(sequenceToMutate, splitPos[1], chromosomeToMutate.getSequence().length));
 
         int insertionPos;
-        if(builder.getLength() == 1){
+        if (builder.getLength() == 1) {
             insertionPos = 0;
         } else {
             do {
-                insertionPos = generator.nextInt(0, builder.getLength()-1);
+                insertionPos = generator.nextInt(0, builder.getLength() - 1);
             } while (insertionPos == illegalPos || insertionPos >= builder.getLength());
         }
 

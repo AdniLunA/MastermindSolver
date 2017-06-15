@@ -23,10 +23,11 @@ public class CodeSolver {
     /*--
      * console
      */
-    public CodeSolver(GameEngine engine) {
+    public CodeSolver(GameEngine engine, MersenneTwisterFast generator) {
         this.engine = engine;
         this.requestCounter = 0;
         this.population = new Population();
+        this.generator = generator;
     }
 
     /*--
@@ -35,7 +36,7 @@ public class CodeSolver {
     private GameEngine engine;
     private int requestCounter;
     private Population population;
-    /*private ArrayList<IChromosome> alreadyPostedRequests = new ArrayList<>();*/
+    private MersenneTwisterFast generator;
 
     /*--
      * functions
@@ -45,7 +46,7 @@ public class CodeSolver {
             logger.error("maxNumberOfTries reached. No further submissions are calculated.");
             throw new IndexOutOfBoundsException("maxNumberOfTries reached. No further submissions are calculated.");
         }
-        IChromosome newSequence = new NumChromosome();
+        IChromosome newSequence = new NumChromosome(generator);
         /*first submission random, others via EA*/
         if (requestCounter != 0) {
             newSequence = solveViaEvolutionaryAlgorithms();
@@ -67,7 +68,7 @@ public class CodeSolver {
         /*todo: fortfahren mit error tracking*/
 
         population.refreshSicknessOfGenePool();
-        IChromosome fittest = new NumChromosome();
+        IChromosome fittest = new NumChromosome(generator);
         for (int i = 0; (i < GameSettings.INSTANCE.repeatEvolutionNTimes) && (fittest.getSickness() > 0); i++) {
 
             if (GameSettings.INSTANCE.dynamicEvolution) {

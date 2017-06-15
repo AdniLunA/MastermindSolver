@@ -129,8 +129,8 @@ abstract class CrossoverBasics implements ICrossover {
         }
         try {
             /*nextInt: incl. minimum, incl. maximum*/
-            if(!possibleSplitPos.isEmpty()) {
-                pos = possibleSplitPos.get(randomGenerator.nextInt(0, possibleSplitPos.size()-1));
+            if (!possibleSplitPos.isEmpty()) {
+                pos = possibleSplitPos.get(randomGenerator.nextInt(0, possibleSplitPos.size() - 1));
             }
         } catch (RuntimeException r) {
             System.out.println("Crossover - createValidRandomSplitPos: - cannot resolve new position, last value: " + pos);

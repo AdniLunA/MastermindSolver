@@ -59,6 +59,4 @@ public class TwoPointCrossover extends CrossoverBasics {
         child1Sequence = builder.getChild1Sequence();
         child2Sequence = builder.getChild2Sequence();
     }
-
-    /*--getter + setter*/
 }

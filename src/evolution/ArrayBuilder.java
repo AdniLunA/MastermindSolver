@@ -7,8 +7,8 @@ public class ArrayBuilder {
     /*
      * attributes
      * */
-    private Queue<Integer> child1Q = new LinkedList<Integer>();
-    private Queue<Integer> child2Q = new LinkedList<Integer>();
+    private Queue<Integer> child1Q = new LinkedList<>();
+    private Queue<Integer> child2Q = new LinkedList<>();
 
     /*
      * functions

@@ -61,15 +61,15 @@ public abstract class MutatorBasics implements IMutation {
         int[] splitPos = new int[2];
         splitPos[0] = generator.nextInt(0, max);
         ArrayList<Integer> possibleOther = new ArrayList<>();
-        for(int posCandidate=0; posCandidate<max; posCandidate++){
-            if(Math.abs(splitPos[0] - posCandidate) >= minDistance){
+        for (int posCandidate = 0; posCandidate < max; posCandidate++) {
+            if (Math.abs(splitPos[0] - posCandidate) >= minDistance) {
                 possibleOther.add(posCandidate);
             }
         }
-        if(possibleOther.isEmpty()){
+        if (possibleOther.isEmpty()) {
             return generateTwoDistancedPos(max, minDistance);
         }
-        splitPos[1] = possibleOther.get(generator.nextInt(0, possibleOther.size()-1));
+        splitPos[1] = possibleOther.get(generator.nextInt(0, possibleOther.size() - 1));
 
         Arrays.sort(splitPos);
         return splitPos;

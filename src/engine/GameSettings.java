@@ -63,7 +63,7 @@ public enum GameSettings {
      */
     protected void loadDefaultSettings() {
         dynamicEvolution = false;
-        setEfficiencyAnalysisEnabled(false);
+        setEfficiencyAnalysisEnabled(false); /*disables console tracking of game*/
         setLoggingEnabled(true);
 
         setSizeOfPopulation(750);
@@ -73,8 +73,8 @@ public enum GameSettings {
 
         setLengthOfCode(7);
         setNumberOfColors(14);
-        setMaxNumberOfTries(50);
-        setNumberOfTries(20);
+        setMaxNumberOfTries(25);
+        setNumberOfTries(15);
 
         setTrackSicknessByEvolving(false);
 

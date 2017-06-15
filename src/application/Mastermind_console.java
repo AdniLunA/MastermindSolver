@@ -14,7 +14,7 @@ public class Mastermind_console {
 
         engine.settingsSetLocNocNot(7, 13, 15);
         GameSettings.INSTANCE.setLoggingEnabled(false);
-        int[] codeToSolve = {1,2,3,4,5,6,7};
+        int[] codeToSolve = {1, 2, 3, 4, 5, 6, 7};
 
         long startTime = System.currentTimeMillis();
         boolean codeSolved = engine.runGameAutomated(new NumChromosome(codeToSolve));

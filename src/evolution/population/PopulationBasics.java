@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class PopulationBasics {
 
     /*--
-         * constructors
-         */
+     * constructors
+     */
     PopulationBasics() {
     }
 
@@ -34,7 +34,6 @@ public class PopulationBasics {
     }
 
     public int getSumPopulationSickness() {
-        //logger.info("");
         int sum = 0;
         for (IChromosome chromosome : genePool) {
             sum += chromosome.getSickness();

@@ -33,6 +33,14 @@ public enum SicknessCalculator {
         this.submissionComparer.add(new CodeValidator(newSubmission.getChromosome()));
     }
 
+    public boolean checkUpToDate(int nKnownSubmissions) {
+        return nKnownSubmissions == submissions.size();
+    }
+
+    public int getNSubmissions() {
+        return submissions.size();
+    }
+
     public int calculateSickness(IChromosome chromosomeToCheck) {
         /*smaller sickness = greater fitness*/
         int sickness = 0;
@@ -61,12 +69,4 @@ public enum SicknessCalculator {
         submissions.clear();
         submissionComparer.clear();
     }
-
-    /*--
-     * getter + setter
-     */
-    public ArrayList<Submission> getSubmissions() {
-        return submissions;
-    }
-
 }

@@ -1,21 +1,16 @@
 package evolution;
 
-import config.LoggerGenerator;
+import config.MersenneTwisterFast;
 import engine.GameSettings;
-import org.apache.logging.log4j.Logger;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     /*--
-     * debugging
-     */
-    private final Logger logger = LoggerGenerator.numChromosome;
-
-    /*--
      * constructors
      */
-    public NumChromosome() {
+    public NumChromosome(MersenneTwisterFast generator) {
+        this.generator = generator;
         generateRandom();
         calculateSickness();
     }
@@ -30,44 +25,29 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
      */
     private int[] sequence;
     private int generation;
-    private int sickness;
+    private int sickness = 0;
+    private MersenneTwisterFast generator;
+    private int nKnownSubmissions = 0;
 
     /*--
      * functions
      */
     private void generateRandom() {
-        /*System.out.println("NumChromosome - generateRandom");*/
         boolean validSequence = false;
         while (!validSequence) {
             sequence = new int[GameSettings.INSTANCE.lengthOfCode];
-            int[] numberPool = new int[GameSettings.INSTANCE.numberOfColors];
+            ArrayList<Integer> numberPool = new ArrayList<>(GameSettings.INSTANCE.numberOfColors);
             for (int i = 0; i < GameSettings.INSTANCE.numberOfColors; i++) {
-                numberPool[i] = i;
+                numberPool.add(i);
             }
             /*reduce available numbers after one was picked*/
+            int posPointer;
             for (int i = 0; i < sequence.length; i++) {
-                int randomPointer = (int) Math.floor((Math.random() * numberPool.length)); /*todo improve with mersenne twister*/
-                int randomNumber = numberPool[randomPointer];
-                numberPool = removeItemOfArray(numberPool, randomPointer);
-                sequence[i] = randomNumber;
+                posPointer = generator.nextInt(0, numberPool.size() - 1);
+                sequence[i] = numberPool.get(posPointer);
+                numberPool.remove(posPointer);
             }
             validSequence = checkValidity();
-        }
-        /*System.out.println("NumChromosome - generateRandom: Number of tries to find random code: "+numOfTries);*/
-    }
-
-    private int[] removeItemOfArray(int[] numberPool, int numberPosition) {
-        SingleArrayBuilder builder = new SingleArrayBuilder();
-        /*from inclusive, to exclusive*/
-        builder.addToQueue(Arrays.copyOfRange(numberPool, 0, numberPosition));
-        builder.addToQueue(Arrays.copyOfRange(numberPool, numberPosition + 1, numberPool.length));
-
-        try {
-            return builder.getSequence();
-        } catch (NullPointerException n) {
-            System.out.println("removeItemOfArray: ERROR - empty numberPool " + numberPool);
-            n.printStackTrace();
-            return null;
         }
     }
 
@@ -99,9 +79,12 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
     }
 
     @Override
-    public void calculateSickness(){
+    public void calculateSickness() {
         try {
-            sickness = SicknessCalculator.INSTANCE.calculateSickness(this);
+            if(!SicknessCalculator.INSTANCE.checkUpToDate(nKnownSubmissions)) {
+                sickness = SicknessCalculator.INSTANCE.calculateSickness(this);
+                nKnownSubmissions = SicknessCalculator.INSTANCE.getNSubmissions();
+            }
         } catch (ArrayIndexOutOfBoundsException a) {
             System.out.println("getSickness: ERROR while trying to calculate sickness of chromosome " + toString());
             a.printStackTrace();
@@ -167,15 +150,10 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public int getChromosomeAtPos(int position) {
-        if(position >= sequence.length){
-            throw new IndexOutOfBoundsException("Requested pos: "+position+" while length "+sequence.length);
+        if (position >= sequence.length) {
+            throw new IndexOutOfBoundsException("Requested pos: " + position + " while length " + sequence.length);
         }
         return sequence[position];
-    }
-
-    @Override
-    public void incrementGeneration() {
-        generation++;
     }
 
     /*getters + setters*/

@@ -22,7 +22,6 @@ public class RouletteWheelSelection extends SelectorBasics {
     /*--functions*/
     @Override
     public IChromosome[] getParents(ArrayList<IChromosome> genePool) {
-        //logger.info("");
         super.splitPopulation(genePool);
         IChromosome[] parents = new NumChromosome[2];
         parents[0] = selectParents(super.fatherPool);
@@ -35,7 +34,6 @@ public class RouletteWheelSelection extends SelectorBasics {
     }
 
     private IChromosome selectParents(PopulationBasics populationPool) {
-        //logger.info("");
         double totalPopulationSickness = (double) populationPool.getSumPopulationSickness();
         double roulettePointer = randomGenerator.nextDouble(true, false); /*incl. 0, excl. 1*/
         double bottomBoundary = 0.0;

@@ -1,9 +1,6 @@
 package evolution.population;
 
-import config.CrossoverEnum;
-import config.LoggerGenerator;
-import config.MutationEnum;
-import config.SelectionEnum;
+import config.*;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -39,6 +36,7 @@ public class Population extends PopulationBasics {
     private ISelection select;
     private ICrossover crossover;
     private IMutation mutate;
+    private MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
 
     /*--
      * functions
@@ -47,7 +45,7 @@ public class Population extends PopulationBasics {
         evolve(GameSettings.INSTANCE.selectionType, GameSettings.INSTANCE.crossoverType, GameSettings.INSTANCE.mutationType);
     }
 
-    public void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
+    private void evolve(SelectionEnum chooseSelection, CrossoverEnum chooseCrossover, MutationEnum chooseMutation) {
         generationCounter++;
         instantiateHelpers(chooseSelection, chooseCrossover, chooseMutation);
         doEvolution();
@@ -60,7 +58,6 @@ public class Population extends PopulationBasics {
 
     private void doEvolution() {
         /*selection*/
-        /*todo: fortfahren mit error tracking*/
         IChromosome[] parents = select.getParents(genePool);
 
         /*crossParents*/
@@ -93,7 +90,7 @@ public class Population extends PopulationBasics {
                         "Tried to often to generate new code that hasn't been submitted yet. " +
                         "Stopped to prevent infinite loop.");
             }
-            randomChromosome = new NumChromosome();
+            randomChromosome = new NumChromosome(generator);
             countTries++;
         } while (genePool.contains(randomChromosome));
         return randomChromosome;
@@ -244,5 +241,4 @@ public class Population extends PopulationBasics {
                 break;
         }
     }
-
 }

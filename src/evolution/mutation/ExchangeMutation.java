@@ -37,7 +37,7 @@ public class ExchangeMutation extends MutatorBasics {
         IChromosome mutatedChromosome;
 
         int[] mutatedSequence = chromosomeToMutate.getSequence();
-        int[] splitPos = super.generateTwoPositions(mutatedSequence.length-1);
+        int[] splitPos = super.generateTwoPositions(mutatedSequence.length - 1);
 
         int[] saveSwapValues = new int[2];
         saveSwapValues[0] = mutatedSequence[splitPos[0]];

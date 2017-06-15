@@ -24,8 +24,8 @@ public class SubmissionHandler {
     private GameEngine gameEngine;
     private LinkedBlockingQueue<Submission> submissions = new LinkedBlockingQueue<>();
 
+    /*functions*/
     public void addSubmission(Submission submission) {
-        //logger.info("");
         try {
             submissions.put(submission);
         } catch (InterruptedException e) {
@@ -34,12 +34,11 @@ public class SubmissionHandler {
         }
     }
 
-    public void dropSubmissions(){
+    public void dropSubmissions() {
         submissions.clear();
     }
 
     public void handleSubmissionRequest(int requestCounter) {
-        //logger.info("");
         if (requestCounter < GameSettings.INSTANCE.numberOfTries) {
             Submission currentLine = null;
             try {
@@ -66,6 +65,7 @@ public class SubmissionHandler {
         }
     }
 
+    /*getter + setter*/
     public LinkedBlockingQueue<Submission> getSubmissions() {
         return submissions;
     }

@@ -53,6 +53,4 @@ public class CodeValidator {
 
         return new Submission(sequenceToCheck, redResponse, whiteResponse);
     }
-
-    /*--getter + setter*/
 }

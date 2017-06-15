@@ -5,8 +5,6 @@ public interface IChromosome {
 
     int getChromosomeAtPos(int position);
 
-    void incrementGeneration();
-
     int[] getSequence();
 
     int getGeneration();
