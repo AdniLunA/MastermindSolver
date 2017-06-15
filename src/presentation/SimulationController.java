@@ -306,7 +306,7 @@ public class SimulationController implements Initializable {
 
     @FXML
     private void onclickRunAutomated() {
-        if(gameIsRunning) {
+        if (gameIsRunning) {
             switchSimulationMode();
             runSimulationAutomated();
         }

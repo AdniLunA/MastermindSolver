@@ -94,7 +94,7 @@ public class NumChromosome implements IChromosome, Comparable<NumChromosome> {
 
     @Override
     public String toString() {
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         int lastElem = sequence.length - 1;
         for (int i = 0; i < sequence.length; i++) {
             /*always with 2 digits*/

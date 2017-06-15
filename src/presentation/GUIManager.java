@@ -113,7 +113,6 @@ public class GUIManager {
             }
             gameEngine.startGame(code);
         }
-        /*todo: GUI error message invalid code*/
     }
 
     /*--

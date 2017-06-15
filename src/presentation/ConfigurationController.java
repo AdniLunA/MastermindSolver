@@ -251,8 +251,7 @@ public class ConfigurationController implements Initializable {
             j++;
         }
 
-        boolean[] accepted = {!emptyHoleFound, !duplicateFound};
-        return accepted;
+        return new boolean[]{!emptyHoleFound, !duplicateFound};
     }
 
     private void incrColor(int pos) {
@@ -261,14 +260,14 @@ public class ConfigurationController implements Initializable {
         }
         Circle circle = circles[pos];
         int nextState;
-        if(circleState[pos]!=GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
+        if (circleState[pos] != GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS) {
             addedColors.remove((Integer) circleState[pos]);
         }
         nextState = circleState[pos] + 1;
         if (nextState > numberOfColors) {
             nextState = 0;
         }
-        while(addedColors.contains(nextState)) {
+        while (addedColors.contains(nextState)) {
             nextState++;
             if (nextState > numberOfColors) {
                 nextState = 0;
@@ -276,7 +275,7 @@ public class ConfigurationController implements Initializable {
         }
         circleState[pos] = nextState;
 
-        if (nextState == numberOfColors){
+        if (nextState == numberOfColors) {
             clearHole(pos);
         } else {
             addedColors.add(nextState);
@@ -292,7 +291,7 @@ public class ConfigurationController implements Initializable {
         }
     }
 
-    private void clearHole(int pos){
+    private void clearHole(int pos) {
         circleState[pos] = GameSettings.INSTANCE.MAX_NUMBER_OF_COLORS;
         circles[pos].setFill(Color.BLACK);
     }
@@ -334,7 +333,7 @@ public class ConfigurationController implements Initializable {
     private void initializeCodeSettingArea() {
         for (int i = 0; i < lengthOfCode; i++) {
             circles[i].setVisible(true);
-            if(circleState[i] >= numberOfColors){
+            if (circleState[i] >= numberOfColors) {
                 clearHole(i);
             }
         }
