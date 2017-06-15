@@ -4,7 +4,6 @@ import engine.GameEngine;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 

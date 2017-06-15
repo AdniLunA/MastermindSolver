@@ -1,5 +1,5 @@
 package config;
 
 public enum SelectionEnum {
-    ROULETTE_WHEEL, TOURNAMENT;
+    ROULETTE_WHEEL, TOURNAMENT
 }

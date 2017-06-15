@@ -23,7 +23,6 @@ public class SubmissionHandler {
      */
     private GameEngine gameEngine;
     private LinkedBlockingQueue<Submission> submissions = new LinkedBlockingQueue<>();
-    ;
 
     public void addSubmission(Submission submission) {
         //logger.info("");

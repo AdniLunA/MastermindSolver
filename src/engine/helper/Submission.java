@@ -1,9 +1,6 @@
 package engine.helper;
 
-import config.LoggerGenerator;
 import evolution.IChromosome;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 /**
  *

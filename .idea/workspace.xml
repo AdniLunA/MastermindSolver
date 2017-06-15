@@ -2,34 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1ae8ddb-8ab3-48eb-9ac9-8284d26d1c36" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/efficiencyTest.log" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$1.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$10.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$11.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$11.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$12.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$12.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$13.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$13.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$2.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$3.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$4.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$5.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$6.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$7.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$8.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController$9.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/ConfigurationController.class" afterPath="$PROJECT_DIR$/bin/presentation/ConfigurationController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/GUIManager.class" afterPath="$PROJECT_DIR$/bin/presentation/GUIManager.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/SimulationController$1.class" afterPath="$PROJECT_DIR$/bin/presentation/SimulationController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/SimulationController.class" afterPath="$PROJECT_DIR$/bin/presentation/SimulationController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/presentation/simulationPage.fxml" afterPath="$PROJECT_DIR$/bin/presentation/simulationPage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/GameEngine.java" afterPath="$PROJECT_DIR$/src/engine/GameEngine.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/Mastermind_console.java" afterPath="$PROJECT_DIR$/src/application/Mastermind_console.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/application/Mastermind_gui.java" afterPath="$PROJECT_DIR$/src/application/Mastermind_gui.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/CrossoverEnum.java" afterPath="$PROJECT_DIR$/src/config/CrossoverEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/LoggerGenerator.java" afterPath="$PROJECT_DIR$/src/config/LoggerGenerator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/MersenneTwisterFast.java" afterPath="$PROJECT_DIR$/src/config/MersenneTwisterFast.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/MutationEnum.java" afterPath="$PROJECT_DIR$/src/config/MutationEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/SelectionEnum.java" afterPath="$PROJECT_DIR$/src/config/SelectionEnum.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/helper/Submission.java" afterPath="$PROJECT_DIR$/src/engine/helper/Submission.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/engine/helper/SubmissionHandler.java" afterPath="$PROJECT_DIR$/src/engine/helper/SubmissionHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/CrossoverBasics.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" afterPath="$PROJECT_DIR$/src/evolution/crossover/TwoPointCrossover.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presentation/ConfigurationController.java" afterPath="$PROJECT_DIR$/src/presentation/ConfigurationController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presentation/GUIManager.java" afterPath="$PROJECT_DIR$/src/presentation/GUIManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presentation/SimulationController.java" afterPath="$PROJECT_DIR$/src/presentation/SimulationController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presentation/configurationPage.fxml" afterPath="$PROJECT_DIR$/src/presentation/configurationPage.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/presentation/simulationPage.fxml" afterPath="$PROJECT_DIR$/src/presentation/simulationPage.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/EfficiencyTest.java" afterPath="$PROJECT_DIR$/src/test/EfficiencyTest.java" />
     </list>
     <ignored path="MastermindSolver.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -54,8 +40,10 @@
         <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-              <folding />
+              <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,7 +52,7 @@
         <entry file="file://$PROJECT_DIR$/src/application/Mastermind_gui.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="391">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+              <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -187,7 +175,6 @@
         <option value="$PROJECT_DIR$/src/evolution/mutation/InsertionMutation.java" />
         <option value="$PROJECT_DIR$/src/engine/helper/CodeSolver.java" />
         <option value="$PROJECT_DIR$/logs/exec_17-06-12_20-36-47.log" />
-        <option value="$PROJECT_DIR$/src/application/Mastermind_gui.java" />
         <option value="$PROJECT_DIR$/src/presentation/configurationPage.fxml" />
         <option value="$PROJECT_DIR$/src/presentation/simulationPage.fxml" />
         <option value="$PROJECT_DIR$/src/presentation/SimulationController.java" />
@@ -197,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/engine/helper/SubmissionHandler.java" />
         <option value="$PROJECT_DIR$/src/presentation/ConfigurationController.java" />
         <option value="$PROJECT_DIR$/src/presentation/GUIManager.java" />
+        <option value="$PROJECT_DIR$/src/application/Mastermind_gui.java" />
       </list>
     </option>
   </component>
@@ -204,9 +192,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-11" />
-    <option name="width" value="1932" />
-    <option name="height" value="1042" />
+    <option name="x" value="-1688" />
+    <option name="y" value="418" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -234,142 +223,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="presentation" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="evolution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="evolution" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="crossover" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="engine" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MastermindSolver" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="logs" />
+              <option name="myItemId" value="MastermindSolverGit" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Dropbox/linda_bopp/03_implementierung/SolvingLOC5NOC10NOT20/MastermindSolver" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="SearchEverywhereHistoryKey" value="fitness&#9;PSI&#9;JAVA://evolution.IPopulation#getSumPopulationFitness&#10;reset&#9;PSI&#9;JAVA://presentation.GUIManager#startWithPresetCode&#10;evolve&#9;PSI&#9;JAVA://evolution.IPopulation#evolve&#10;calculate submission&#9;PSI&#9;JAVA://engine.GameEngine#calculateNextSubmission&#10;/***&#9;null&#9;null&#10;copyOfRange&#9;PSI&#9;JAVA://java.util.Arrays#copyOfRange" />
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -378,6 +245,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="Properties" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -836,61 +704,39 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="0" width="1932" height="1042" extended-state="0" />
-    <editor active="true" />
+    <frame x="-1688" y="418" width="1696" height="1026" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.49781898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42794278" sideWeight="0.49781898" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41557017" sideWeight="0.50427353" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2431243" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.4957265" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31023103" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14797008" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.150978" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection Results" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32922733" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3850385" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48514852" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44664466" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41557017" sideWeight="0.50427353" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988003" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Dynamic Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.48514852" sideWeight="0.4946695" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32993197" sideWeight="0.49781898" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.42794278" sideWeight="0.49781898" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32785088" sideWeight="0.4957265" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2431243" sideWeight="0.4957265" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14797008" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3850385" sideWeight="0.49427083" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -925,7 +771,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/presentation/ConfigurationController.java</url>
-          <line>407</line>
+          <line>406</line>
           <properties />
           <option name="timeStamp" value="334" />
         </line-breakpoint>
@@ -985,7 +831,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="43" column="12" lean-forward="false" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1014,7 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="671">
           <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1022,7 +866,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="21" column="34" lean-forward="false" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1030,7 +873,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="515">
           <caret line="54" column="22" lean-forward="false" selection-start-line="54" selection-start-column="14" selection-end-line="54" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1061,9 +903,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="26" column="20" lean-forward="false" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,9 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
           <caret line="1229" column="0" lean-forward="false" selection-start-line="1229" selection-start-column="0" selection-end-line="1229" selection-end-column="0" />
-          <folding>
-            <element signature="e#45705#45706#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1109,7 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1154,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1162,59 +996,42 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="487" column="0" lean-forward="false" selection-start-line="487" selection-start-column="0" selection-end-line="487" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/presentation/simulationPage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
           <caret line="46" column="72" lean-forward="true" selection-start-line="46" selection-start-column="72" selection-end-line="46" selection-end-column="72" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/EfficiencyTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="31" column="34" lean-forward="false" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/presentation/configurationPage.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
           <caret line="99" column="106" lean-forward="false" selection-start-line="99" selection-start-column="91" selection-end-line="99" selection-end-column="106" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-13_09-18-21.log">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-13_09-44-39.log">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-13_09-18-21.log" />
+    <entry file="file://$PROJECT_DIR$/logs/exec_17-06-13_09-44-39.log" />
     <entry file="file://$PROJECT_DIR$/src/evolution/population/Population.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="126" column="46" lean-forward="true" selection-start-line="126" selection-start-column="46" selection-end-line="126" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1222,7 +1039,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="68" column="30" lean-forward="true" selection-start-line="68" selection-start-column="30" selection-end-line="68" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1230,9 +1046,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding>
-            <element signature="e#1259#1260#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1240,7 +1053,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="148" column="0" lean-forward="false" selection-start-line="148" selection-start-column="0" selection-end-line="148" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1248,10 +1060,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="587" column="0" lean-forward="false" selection-start-line="587" selection-start-column="0" selection-end-line="587" selection-end-column="0" />
-          <folding>
-            <element signature="e#6287#6288#0" expanded="true" />
-            <element signature="e#6361#6362#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1259,7 +1067,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="322">
           <caret line="197" column="0" lean-forward="false" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1267,10 +1074,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="2494" column="0" lean-forward="false" selection-start-line="2494" selection-start-column="0" selection-end-line="2494" selection-end-column="0" />
-          <folding>
-            <element signature="e#66573#66574#0" expanded="true" />
-            <element signature="e#66619#66620#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1278,7 +1081,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="163">
           <caret line="1773" column="0" lean-forward="false" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1296,9 +1098,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding>
-            <element signature="e#984#985#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1314,10 +1113,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="255" column="0" lean-forward="false" selection-start-line="255" selection-start-column="0" selection-end-line="255" selection-end-column="0" />
-          <folding>
-            <marker date="1497339563161" expanded="false" signature="11281:11292" ph=" { " />
-            <marker date="1497339563161" expanded="false" signature="11315:11321" ph=" }" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1325,7 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="318">
           <caret line="132" column="95" lean-forward="false" selection-start-line="132" selection-start-column="95" selection-end-line="132" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1333,7 +1127,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="158">
           <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1352,7 +1145,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="103" column="32" lean-forward="true" selection-start-line="103" selection-start-column="32" selection-end-line="103" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1367,15 +1159,17 @@
     <entry file="file://$PROJECT_DIR$/src/application/Mastermind_console.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-          <folding />
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/application/Mastermind_gui.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <caret line="28" column="0" lean-forward="false" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>

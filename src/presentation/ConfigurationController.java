@@ -19,7 +19,6 @@ import javafx.scene.paint.Stop;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 
 import java.net.URL;
 import java.util.ArrayList;
