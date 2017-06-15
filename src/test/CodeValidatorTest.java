@@ -1,5 +1,6 @@
 package test;
 
+import engine.GameEngine;
 import engine.helper.CodeValidator;
 import engine.helper.Submission;
 import evolution.NumChromosome;
@@ -8,9 +9,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertTrue;
 
 public class CodeValidatorTest {
+    private GameEngine engine = new GameEngine();
+
     @Test
     public void validate1() {
-        int sampleNOC = 10;
+        engine.settingsSetLocNocNot(5, 10, 15);
         int[] sampleSequence = {0, 1, 2, 3, 4};
         CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence));
 
@@ -37,7 +40,7 @@ public class CodeValidatorTest {
 
     @Test
     public void validate2() {
-        int sampleNOC = 4;
+        engine.settingsSetLocNocNot(2, 4, 15);
         int[] sampleSequence = {0, 1};
         CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence));
 
@@ -64,7 +67,7 @@ public class CodeValidatorTest {
 
     @Test
     public void validate3() {
-        int sampleNOC = 4;
+        engine.settingsSetLocNocNot(2, 4, 15);
         int[] sampleSequence = {1, 2};
         CodeValidator validator = new CodeValidator(new NumChromosome(sampleSequence));
 

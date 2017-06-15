@@ -23,8 +23,7 @@ public class CloneTest {
         long addAllTime = System.currentTimeMillis() - startTime;
 
         startTime = System.currentTimeMillis();
-        ArrayList clone = new ArrayList();
-        clone = (ArrayList) testlist.clone();
+        ArrayList clone = (ArrayList) testlist.clone();
         long cloneTime = System.currentTimeMillis() - startTime;
 
         System.out.println("manual: "+manualTime);

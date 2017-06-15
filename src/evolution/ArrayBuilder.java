@@ -4,11 +4,15 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ArrayBuilder {
-    //attributes
+    /*
+     * attributes
+     * */
     private Queue<Integer> child1Q = new LinkedList<Integer>();
     private Queue<Integer> child2Q = new LinkedList<Integer>();
 
-    //functions
+    /*
+     * functions
+     */
     public void addToQueue(int numberOfChild, int[] numbersToAdd) {
         Queue<Integer> chosenChild = ((numberOfChild == 1) ? child1Q : child2Q);
         for (int number : numbersToAdd) {
