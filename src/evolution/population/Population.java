@@ -106,19 +106,26 @@ public class Population extends PopulationBasics {
     private void replaceWeakestWithNewGenes(IChromosome[] newGenes) {
         boolean isGene0Known = genePool.contains(newGenes[0]);
         boolean isGene1Known = genePool.contains(newGenes[1]);
-        if (!isGene0Known || !isGene1Known) {
-            ArrayList<IChromosome> improvedGenePool = getPopulationSorted();
+        ArrayList<IChromosome> improvedGenePool = getPopulationSorted();
+        /*add some random genes*/
+        genePool.remove(improvedGenePool.get(improvedGenePool.size()-1));
+        genePool.remove(improvedGenePool.get(improvedGenePool.size()-2));
+        genePool.add(createNonDuplicateRandomChromosome());
+        genePool.add(createNonDuplicateRandomChromosome());
 
-            genePool.remove(improvedGenePool.get(improvedGenePool.size() - 1));
+        /*add new genes*/
+        if (!isGene0Known || !isGene1Known) {
+            genePool.remove(improvedGenePool.get(improvedGenePool.size() - 3));
             if (!isGene0Known && !isGene1Known) {
-                genePool.remove(improvedGenePool.get(improvedGenePool.size() - 2));
+                genePool.remove(improvedGenePool.get(improvedGenePool.size() - 4));
             }
-        }
-        if (!isGene0Known) {
-            genePool.add(newGenes[0]);
-        }
-        if (!isGene1Known) {
-            genePool.add(newGenes[1]);
+
+            if (!isGene0Known) {
+                genePool.add(newGenes[0]);
+            }
+            if (!isGene1Known) {
+                genePool.add(newGenes[1]);
+            }
         }
     }
 

@@ -75,14 +75,14 @@ public class CodeSolver {
                 population.evolve();
             }
 
+            fittest = population.getFittest();
             if (GameSettings.INSTANCE.trackSicknessByEvolving && !GameSettings.INSTANCE.efficiencyAnalysisEnabled) {
-                System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, population.getFittest().getSickness(), population.getFittest().getGeneration(), population.getSumPopulationSickness());
+                System.out.printf("- Evolution round #%02d, sickness of fittest: %3d, generation of fittest: %3d, sum sickness: %6d\n", i, fittest.getSickness(), fittest.getGeneration(), population.getSumPopulationSickness());
             }
             if (GameSettings.INSTANCE.loggingEnabled) {
                 logger.info("    Code Solver - population sickness at round #" + i + ": " + population.getSumPopulationSickness());
             }
 
-            fittest = population.getFittest();
             fittest.setGeneration(i);
         }
 
