@@ -1,7 +1,6 @@
 package evolution.mutation;
 
 import config.LoggerGenerator;
-import config.MersenneTwisterFast;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -50,7 +49,6 @@ public class InsertionMutation extends MutatorBasics {
         int[] sequenceToMutate = chromosomeToMutate.getSequence();
         int[] mutatedSequence = new int[sequenceToMutate.length];
 
-        MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         int insertionPos = generator.nextInt(0, sequenceToMutate.length - 1);
         int geneToInsert;
 

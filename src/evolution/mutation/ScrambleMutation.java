@@ -1,7 +1,6 @@
 package evolution.mutation;
 
 import config.LoggerGenerator;
-import config.MersenneTwisterFast;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
@@ -11,9 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ScrambleMutation extends MutatorBasics {
-    /*--
-     * debugging
-     */
     private final Logger logger = LoggerGenerator.scrambleMutation;
 
     @Override
@@ -51,7 +47,6 @@ public class ScrambleMutation extends MutatorBasics {
         for (int position : sequenceToScramble) {
             numberPool.add(position);
         }
-        MersenneTwisterFast generator = new MersenneTwisterFast(System.nanoTime());
         for (int i = 0; i < scrambledSequence.length; i++) {
             int itemPos = generator.nextInt(0, numberPool.size() - 1);
             scrambledSequence[i] = numberPool.get(itemPos);

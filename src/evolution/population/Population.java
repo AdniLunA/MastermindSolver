@@ -54,6 +54,7 @@ public class Population extends PopulationBasics {
     public void evolve(int selection, int crossover, int mutation) {
         generationCounter++;
         instantiateHelpers(selection, crossover, mutation);
+        doEvolution();
     }
 
     private void doEvolution() {
