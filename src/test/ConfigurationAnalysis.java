@@ -30,7 +30,8 @@ public class ConfigurationAnalysis {
                 + ", Population Size: " + GameSettings.INSTANCE.sizeOfPopulation
                 + ", repeat evolution max: " + GameSettings.INSTANCE.repeatEvolutionNTimes);
 
-        /*
+
+        GameSettings.INSTANCE.dynamicEvolution = false;
         GameSettings.INSTANCE.setUniformMixingRatio(0.25f);
         solveWithParams(1, SelectionEnum.TOURNAMENT, CrossoverEnum.UNIFORM, MutationEnum.SCRAMBLE, 0.0001);
         solveWithParams(2, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.K_POINT, MutationEnum.SCRAMBLE, 0.0005);
@@ -39,31 +40,30 @@ public class ConfigurationAnalysis {
         solveWithParams(5, SelectionEnum.TOURNAMENT, CrossoverEnum.K_POINT, MutationEnum.SCRAMBLE, 0.005);
         solveWithParams(6, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.UNIFORM, MutationEnum.EXCHANGE, 0.005);
         solveWithParams(7, SelectionEnum.TOURNAMENT, CrossoverEnum.K_POINT, MutationEnum.DISPLACEMENT, 0.005);
-     */   GameSettings.INSTANCE.setUniformMixingRatio(0.35f);
-     /*   solveWithParams(8, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.UNIFORM, MutationEnum.INVERSION, 0.005);
+        GameSettings.INSTANCE.setUniformMixingRatio(0.35f);
+        solveWithParams(8, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.UNIFORM, MutationEnum.INVERSION, 0.005);
         solveWithParams(9, SelectionEnum.TOURNAMENT, CrossoverEnum.K_POINT, MutationEnum.INSERTION, 0.005);
         solveWithParams(10, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.ONE_POINT, MutationEnum.SCRAMBLE, 0.005);
         solveWithParams(11, SelectionEnum.TOURNAMENT, CrossoverEnum.TWO_POINT, MutationEnum.SCRAMBLE, 0.005);
         solveWithParams(12, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.UNIFORM, MutationEnum.SCRAMBLE, 0.005);
         solveWithParams(13, SelectionEnum.TOURNAMENT, CrossoverEnum.UNIFORM, MutationEnum.SCRAMBLE, 0.005);
         solveWithParams(14, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.K_POINT, MutationEnum.SCRAMBLE, 0.005);
-        /**/
+
         GameSettings.INSTANCE.dynamicEvolution = true;
         for(int i = 1; i < 21; i++) {
             solveWithParams(i, SelectionEnum.ROULETTE_WHEEL, CrossoverEnum.K_POINT, MutationEnum.SCRAMBLE, 0.005);
-        }/**/
+        }
     }
 
     private static void solveWithParams(int nr, SelectionEnum sType, CrossoverEnum cType, MutationEnum mType, double mRatio) {
-        //engine.settingsSetEvolutionTypes(sType, cType, mType);
+        engine.settingsSetEvolutionTypes(sType, cType, mType);
         GameSettings.INSTANCE.setMutationRatio(mRatio);
 
         logTime.info("Configuration #" + nr,
-                "Dynamic Evolution"/*/
                 "Selection: " + GameSettings.INSTANCE.selectionType
                 + ", Crossover: " + GameSettings.INSTANCE.crossoverType
                 + ", Uniform Ratio: " + GameSettings.INSTANCE.uniformMixingRatio
-                + ", Mutation: " + GameSettings.INSTANCE.mutationType*/
+                + ", Mutation: " + GameSettings.INSTANCE.mutationType
                 + ", Mutation Ratio: " + GameSettings.INSTANCE.mutationRatio);
 
         long startTime = System.currentTimeMillis();
