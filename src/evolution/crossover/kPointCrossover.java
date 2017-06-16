@@ -2,7 +2,6 @@ package evolution.crossover;
 
 import config.LoggerGenerator;
 import engine.GameSettings;
-import evolution.ArrayBuilder;
 import evolution.IChromosome;
 import org.apache.logging.log4j.Logger;
 

@@ -4,7 +4,6 @@ import config.LoggerGenerator;
 import engine.GameSettings;
 import evolution.IChromosome;
 import evolution.NumChromosome;
-import evolution.SingleArrayBuilder;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;

@@ -4,7 +4,7 @@ import engine.GameEngine;
 import engine.helper.CodeSolver;
 import engine.helper.CodeValidator;
 import evolution.SicknessCalculator;
-import evolution.SingleArrayBuilder;
+import evolution.mutation.SingleArrayBuilder;
 import evolution.crossover.KPointCrossover;
 import evolution.crossover.OnePointCrossover;
 import evolution.crossover.TwoPointCrossover;

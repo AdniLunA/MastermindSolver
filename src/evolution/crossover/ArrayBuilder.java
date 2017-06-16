@@ -1,9 +1,9 @@
-package evolution;
+package evolution.crossover;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ArrayBuilder {
+class ArrayBuilder {
     /*
      * attributes
      * */
@@ -13,18 +13,18 @@ public class ArrayBuilder {
     /*
      * functions
      */
-    public void addToQueue(int numberOfChild, int[] numbersToAdd) {
+    void addToQueue(int numberOfChild, int[] numbersToAdd) {
         Queue<Integer> chosenChild = ((numberOfChild == 1) ? child1Q : child2Q);
         for (int number : numbersToAdd) {
             chosenChild.add(number);
         }
     }
 
-    public int[] getChild1Sequence() {
+    int[] getChild1Sequence() {
         return transformSequence(child1Q);
     }
 
-    public int[] getChild2Sequence() {
+    int[] getChild2Sequence() {
         return transformSequence(child2Q);
     }
 

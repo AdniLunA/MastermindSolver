@@ -110,7 +110,7 @@
                 </AnchorPane>
             </content>
         </ScrollPane>
-        <Text layoutX="292.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="application.InitializeGui Simulation" textAlignment="CENTER" wrappingWidth="800.0">
+        <Text layoutX="292.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GUI Simulation" textAlignment="CENTER" wrappingWidth="800.0">
             <font>
                 <Font name="System Bold" size="40.0" />
             </font>

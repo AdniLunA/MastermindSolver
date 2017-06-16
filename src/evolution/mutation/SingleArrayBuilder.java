@@ -1,23 +1,15 @@
-package evolution;
-
-import config.LoggerGenerator;
-import org.apache.logging.log4j.Logger;
+package evolution.mutation;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class SingleArrayBuilder {
-    /*--
-     * debugging
-     */
-    private final Logger logger = LoggerGenerator.singleArrayBuilder;
-
     /*attributes*/
     private Queue<Integer> arrayToBuild = new LinkedList<>();
 
     /*functions*/
-    public void addToQueue(int[] numbersToAdd) {
+    void addToQueue(int[] numbersToAdd) {
         for (int number : numbersToAdd) {
             arrayToBuild.add(number);
         }
@@ -27,7 +19,7 @@ public class SingleArrayBuilder {
         return arrayToBuild.size();
     }
 
-    public int[] insert(int position, int[] toInsert) {
+    int[] insert(int position, int[] toInsert) {
         int[] sequence = getSequence();
         if (position < sequence.length && position > -1) {
             addToQueue(Arrays.copyOfRange(sequence, 0, position));
